@@ -786,6 +786,13 @@
           }
         },
         "optional": true
+      },
+      "alt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
       }
     }
   },

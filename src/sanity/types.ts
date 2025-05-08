@@ -134,6 +134,7 @@ export type Post = {
     _type: "image";
     _key: string;
   }>;
+  alt?: string;
 };
 
 export type Author = {

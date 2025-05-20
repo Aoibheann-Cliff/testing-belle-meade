@@ -54,7 +54,7 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
         });
           }
         }
-        var x = window.matchMedia("(max-width: 1366px)")
+        const x = window.matchMedia("(max-width: 1366px)")
         myFunction(x);
         x.addEventListener("change", function() {
           myFunction(x);

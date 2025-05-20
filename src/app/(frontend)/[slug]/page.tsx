@@ -8,7 +8,6 @@ import { PortableText } from "@portabletext/react";
 import React from "react";
 import arrow from '../purple-arrow.svg';
 import PageEffects from "@/components/PageEffects";
-import { LayoutType } from "@/sanity/types";
 // import dynamic from "next/dynamic";
 // const PageEffects = dynamic(() => import("@/components/PageEffects"));
 
@@ -31,8 +30,8 @@ export default async function Page({
   const transformedSlides = page.slides?.flatMap((slide) => {
     if (slide.layout === "imageAndTextOverlay") {
       return [
-        { ...slide, layout: "imageAndTextOverlayWithText" as LayoutType },
-        { ...slide, layout: "imageAndTextOverlayPlain" as LayoutType },
+        { ...slide, layout: "imageAndTextOverlayWithText" },
+        { ...slide, layout: "imageAndTextOverlayPlain" },
       ];
     }
     return [slide];

@@ -370,10 +370,14 @@ export default function ContactForm() {
             </svg>
           </div>
     <h3 className="contact-form-title">Opportunities to purchase a private residence will commence in the fall of 2025.  To inquire, please complete the following form.</h3>
-    <form onSubmit={handleSubmit}>
+    {/* <form onSubmit={handleSubmit}>
     <Select
   options={aboutoptions}
-  values={selectedAbout ? [selectedAbout] : []}
+  values={
+    formData.about
+      ? [aboutoptions.find((opt) => opt.label === formData.about)]
+      : []
+  }
   onChange={(values) => setFormData((prev) => ({ ...prev, about: values }))}
   placeholder="I am"
   searchable={false}
@@ -555,7 +559,7 @@ export default function ContactForm() {
       <button type="submit" className="submit">
         SUBMIT
       </button>
-    </form>
+    </form> */}
     <div>
       </div>
     </div>

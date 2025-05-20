@@ -45,11 +45,11 @@ export default function ContactForm() {
 
   const aboutoptions = [
     {
-      value: 1,
+      value: 'Buyer',
       label: 'Buyer'
     },
     {
-      value: 2,
+      value: 'Agent',
       label: 'Agent'
     }
   ];
@@ -308,30 +308,30 @@ export default function ContactForm() {
 
   const residenceoptions = [
     {
-      value: 1,
+      value: 'One Bedroom',
       label: 'One Bedroom'
     },
     {
-      value: 2,
+      value: 'Two Bedroom',
       label: 'Two Bedroom'
     },
     {
-      value: 3,
+      value: 'Three Bedroom',
       label: 'Three Bedroom'
     },
     {
-      value: 4,
+      value: 'Four Bedroom',
       label: 'Four Bedroom'
     }
   ];
 
   const agentoptions = [
     {
-      value: 1,
+      value: 'Yes',
       label: 'Yes'
     },
     {
-      value: 2,
+      value: 'No',
       label: 'No'
     }
   ];
@@ -373,11 +373,7 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit}>
     <Select
   options={aboutoptions}
-  values={
-    formData.about
-      ? [aboutoptions.find((opt) => opt.label === formData.about)]
-      : []
-  }
+  values={selectedAbout ? [selectedAbout] : []}
   onChange={(values) => setFormData((prev) => ({ ...prev, about: values }))}
   placeholder="I am"
   searchable={false}

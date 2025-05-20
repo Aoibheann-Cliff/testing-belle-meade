@@ -48,7 +48,7 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
           });
           nextPageLink.addEventListener('mouseleave', () => {
             nextPageTitle.style.opacity = "0";
-            gsap.to(nextPageLink, { padding:"1.063rem", width: "3.125rem", duration: 10, ease: "power3.out", delay:1});
+            gsap.to(nextPageLink, { padding:"1.063rem", width: "3.125rem", duration: 1, ease: "power3.out", delay:1});
           setTimeout(() => {
             nextPageTitle.style.display = "none";
           }, 800);

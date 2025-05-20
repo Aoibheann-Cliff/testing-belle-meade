@@ -146,7 +146,7 @@ export default async function Page({
                       <div className="flickity-top-overlay"></div>
                       <div className="quote-text">
                         <div className="inner-quote-text">
-                          {slide.text.map((block, i) => {
+                          {(slide.text || []).map((block, i) => {
                             const Tag = block.style === 'normal' ? 'p' : block.style || 'p';
                             return (
                               <Tag key={i}>
@@ -198,7 +198,7 @@ export default async function Page({
                       <div className="text">
                         <div className="inner-text">
                           {slide.title && <h2 className="title">{slide.title}</h2>}
-                          {slide.text.map((block, i) => {
+                          {(slide.text || []).map((block, i) => {
                             const Tag = block.style === 'normal' ? 'p' : block.style || 'p';
                             return (
                               <Tag key={i}>
@@ -310,13 +310,13 @@ export default async function Page({
             {page.introimage && (
               <Image
                 src={urlFor(page.introimage).width(600).height(400).url()}
-                alt={page.introimage.alt || ""}
+                alt="symbol"
                 width={600}
                 height={400}
                 className="object-contain intro-image"
               />
             )}
-            <PortableText value={page.introblock} />
+           { page.introblock ? <PortableText value={page.introblock} /> : <></>}
           </section>
 
           <section className="text-section">
@@ -331,9 +331,9 @@ export default async function Page({
       )}
     </main>
     {page?.pageType === "slideshowpage" && totalSlides > 0 && (
-           <a href={`/${page.nextPage.slug.current}`} >
+           <a href={`/${page?.nextPage?.slug?.current}`} >
            <div className="next-page-link" id="nextPageLink">
-             <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
+             <div className="next-page-title" id="next-page-title">{page?.nextPage?.title}</div>
              <Image
                className="purple-arrow"
                src={arrow}

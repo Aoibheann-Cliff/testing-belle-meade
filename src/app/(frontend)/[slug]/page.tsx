@@ -208,6 +208,7 @@ export default async function Page({
                           )}
                         </div>
                       </div>
+                      <div className="image">
                       <Image
                         src={urlFor(slide.image).width(960).height(1080).quality(100).auto('format').url()}
                         alt={slide.image?.alt || ""}
@@ -218,6 +219,7 @@ export default async function Page({
                         blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
                         className="object-cover min-h-screen"
                       />
+                      </div>
                       <div className="flickity-bottom-overlay"></div>
                     </div>
                   );

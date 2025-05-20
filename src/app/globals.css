@@ -486,7 +486,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     width:100%;
 }
 
-.image-text-slide img{
+.image-text-slide .image{    
     width:50%;
 }
 

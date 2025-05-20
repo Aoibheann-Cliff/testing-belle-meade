@@ -371,7 +371,7 @@ export default function ContactForm() {
           </div>
     <h3 className="contact-form-title">Opportunities to purchase a private residence will commence in the fall of 2025.  To inquire, please complete the following form.</h3>
     <form onSubmit={handleSubmit}>
-    <Select
+    {/* <Select
   options={aboutoptions}
   values={
     formData.about
@@ -392,7 +392,7 @@ export default function ContactForm() {
     }
     return <div>{state.values[0].label}</div>;
   }}
-/>
+/> */}
 <input
   type="text"
   name="firstName"
@@ -416,11 +416,11 @@ export default function ContactForm() {
         name="email"
         // required
         placeholder="Email*"
-        className={`${errors.email ? 'border-red-500' : ''}`}
+        className={`${errors.lastName ? 'border-red-500' : ''}`}
         value={formData.email}
         onChange={handleChange}
       />
-<Select
+{/* <Select
   options={countryoptions}
   values={
     formData.country
@@ -444,7 +444,7 @@ export default function ContactForm() {
     }
     return <div>{state.values[0].label}</div>;
   }}
-/>
+/> */}
 <input
   type="text"
   name="address"
@@ -463,7 +463,7 @@ export default function ContactForm() {
   value={formData.city}
   onChange={handleChange}
 />
-<Select
+{/* <Select
   options={stateoptions}
   values={
     formData.state
@@ -487,7 +487,7 @@ export default function ContactForm() {
     }
     return <div>{state.values[0].label}</div>;
   }}
-/>
+/> */}
 <input
   type="text"
   name="zipcode"
@@ -497,7 +497,7 @@ export default function ContactForm() {
   value={formData.zipcode}
   onChange={handleChange}
 />
-<Select
+{/* <Select
   options={residenceoptions}
   values={
     formData.residence
@@ -521,8 +521,8 @@ export default function ContactForm() {
     }
     return <div>{state.values[0].label}</div>;
   }}
-/>
-<Select
+/> */}
+{/* <Select
   options={agentoptions}
   values={
     formData.agent
@@ -546,7 +546,7 @@ export default function ContactForm() {
     }
     return <div>{state.values[0].label}</div>;
   }}
-/>
+/> */}
 <input
   type="text"
   name="message"

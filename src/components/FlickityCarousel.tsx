@@ -40,8 +40,7 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
             }, 3000);
           } else {
             nextPageLink.addEventListener('mouseenter', () => {
-              nextPageTitle.style.display = "block";
-              // gsap.to(nextPageLink, { maxWidth: "fit-content" , duration: 1, ease: "power3.out",});
+              gsap.to(nextPageLink, { maxWidth: "fit-content" , duration: 1, ease: "power3.out",});
             setTimeout(() => {
               nextPageTitle.style.opacity = "1";
             }, 1000);

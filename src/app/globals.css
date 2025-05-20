@@ -772,6 +772,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
 .purple-arrow{
     height: 1.688rem;
     width: 0.844rem;
+    position:absolute;
 }
 
 .next-page-title{

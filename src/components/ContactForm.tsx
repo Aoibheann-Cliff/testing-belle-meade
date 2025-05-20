@@ -371,13 +371,15 @@ export default function ContactForm() {
           </div>
     <h3 className="contact-form-title">Opportunities to purchase a private residence will commence in the fall of 2025.  To inquire, please complete the following form.</h3>
     <form onSubmit={handleSubmit}>
-    {/* <Select
+    <Select
   options={aboutoptions}
-  values={
-    formData.about
-      ? [aboutoptions.find((opt) => opt.label === formData.about)]
+  values = {formData.about
+    ? aboutoptions.find((opt) => opt.label === formData.about)
+      ? [aboutoptions.find((opt) => opt.label === formData.about) as { label: string; value: string }]
       : []
-  }
+    : []}
+    onSelect={() => {}}
+    onDeselect={() => {}}
   onChange={(values) => setFormData((prev) => ({ ...prev, about: values }))}
   placeholder="I am"
   searchable={false}
@@ -392,7 +394,7 @@ export default function ContactForm() {
     }
     return <div>{state.values[0].label}</div>;
   }}
-/> */}
+/>
 <input
   type="text"
   name="firstName"
@@ -420,13 +422,15 @@ export default function ContactForm() {
         value={formData.email}
         onChange={handleChange}
       />
-{/* <Select
+<Select
   options={countryoptions}
-  values={
-    formData.country
-      ? [countryoptions.find((opt) => opt.label === formData.country)]
+  values = {formData.country
+    ? countryoptions.find((opt) => opt.label === formData.country)
+      ? [countryoptions.find((opt) => opt.label === formData.country) as { label: string; value: string }]
       : []
-  }
+    : []}
+    onSelect={() => {}}
+    onDeselect={() => {}}
   onChange={(values) => {
     const selected = values[0]?.label || "";
     setFormData((prev) => ({ ...prev, country: selected }));
@@ -444,7 +448,7 @@ export default function ContactForm() {
     }
     return <div>{state.values[0].label}</div>;
   }}
-/> */}
+/>
 <input
   type="text"
   name="address"
@@ -463,13 +467,15 @@ export default function ContactForm() {
   value={formData.city}
   onChange={handleChange}
 />
-{/* <Select
+<Select
   options={stateoptions}
-  values={
-    formData.state
-      ? [stateoptions.find((opt) => opt.label === formData.state)]
+  values = {formData.state
+    ? stateoptions.find((opt) => opt.label === formData.state)
+      ? [stateoptions.find((opt) => opt.label === formData.state) as { label: string; value: string }]
       : []
-  }
+    : []}
+    onSelect={() => {}}
+    onDeselect={() => {}}
   onChange={(values) => {
     const selected = values[0]?.label || "";
     setFormData((prev) => ({ ...prev, state: selected }));
@@ -487,7 +493,7 @@ export default function ContactForm() {
     }
     return <div>{state.values[0].label}</div>;
   }}
-/> */}
+/>
 <input
   type="text"
   name="zipcode"
@@ -497,13 +503,15 @@ export default function ContactForm() {
   value={formData.zipcode}
   onChange={handleChange}
 />
-{/* <Select
+<Select
   options={residenceoptions}
-  values={
-    formData.residence
-      ? [residenceoptions.find((opt) => opt.label === formData.residence)]
+  values = {formData.residence
+    ? residenceoptions.find((opt) => opt.label === formData.residence)
+      ? [residenceoptions.find((opt) => opt.label === formData.residence) as { label: string; value: string }]
       : []
-  }
+    : []}
+    onSelect={() => {}}
+    onDeselect={() => {}}
   onChange={(values) => {
     const selected = values[0]?.label || "";
     setFormData((prev) => ({ ...prev, residence: selected }));
@@ -521,33 +529,14 @@ export default function ContactForm() {
     }
     return <div>{state.values[0].label}</div>;
   }}
-/> */}
+/>
 <Select<{ label: string, value: string }>
   options={agentoptions}
-  // values={() => {
-  //   for (const opt of agentoptions) {
-  //     if (opt.label === formData.agent) {
-  //       return [opt]
-  //     }
-  //   }
-
-  //   return []
-  // }}
-
-  // values={
-  //   formData.agent
-  //     ? [agentoptions.find((opt) => opt.label === formData.agent)]
-  //     : []
-  // }
-
   values = {formData.agent
   ? agentoptions.find((opt) => opt.label === formData.agent)
     ? [agentoptions.find((opt) => opt.label === formData.agent) as { label: string; value: string }]
     : []
   : []}
-
-  // }
-  // }
   onSelect={() => {}}
   onDeselect={() => {}}
   onChange={(values) => {

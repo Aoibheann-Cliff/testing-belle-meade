@@ -773,6 +773,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     height: 1.688rem;
     width: 0.844rem;
     position:absolute;
+    right:1.063rem;
 }
 
 .next-page-title{

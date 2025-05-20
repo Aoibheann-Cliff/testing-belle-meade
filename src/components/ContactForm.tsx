@@ -11,7 +11,7 @@ export default function ContactForm() {
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
-    const newErrors = {};
+    const newErrors: Record<string, boolean> = {};
   
     if (!formData.firstName) newErrors.firstName = true;
     if (!formData.lastName) newErrors.lastName = true;

@@ -41,17 +41,17 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
           } else {
             nextPageLink.addEventListener('mouseenter', () => {
               nextPageTitle.style.display = "block";
-              gsap.to(nextPageLink, { maxWidth: "fit-content" , duration: 1, ease: "power3.out",});
+              // gsap.to(nextPageLink, { maxWidth: "fit-content" , duration: 1, ease: "power3.out",});
             setTimeout(() => {
               nextPageTitle.style.opacity = "1";
             }, 1000);
           });
           nextPageLink.addEventListener('mouseleave', () => {
             nextPageTitle.style.opacity = "0";
-            gsap.to(nextPageLink, { maxWidth: "3.125rem", duration: 1, ease: "power3.out", delay:1});
-          setTimeout(() => {
-            nextPageTitle.style.display = "none";
-          }, 2000);
+            gsap.to(nextPageLink, { maxWidth: "3.125rem", duration: 10, ease: "power3.out", delay:1});
+          // setTimeout(() => {
+          //   nextPageTitle.style.display = "none";
+          // }, 2000);
         });
           }
         }

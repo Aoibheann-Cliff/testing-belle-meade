@@ -11,6 +11,7 @@ export default function GlobalPageEffects() {
 
   useEffect(() => {
     const openBtn = document.getElementById("openForm");
+    const mobileopenBtn = document.getElementById("mobileopenForm");
     const closeBtn = document.getElementById("contactformclose");
     const formContainer = document.querySelector(".form-container");
     const menuContainer = document.getElementById('mobileMenu');
@@ -153,6 +154,29 @@ export default function GlobalPageEffects() {
       }, 1000);
     });
 
+    mobileopenBtn?.addEventListener("click", () => {
+      formContainer.style.display = "flex";
+      leftMenu.style.opacity = "0";
+      rightMenu.style.opacity = "0";
+      logo.src = purplesymbol.src;
+
+      setTimeout(() => {
+        leftMenu.style.display = "none";
+        rightMenu.style.display = "none";
+      }, 1000);
+
+      gsap.fromTo(formContainer, { top: "-100vh" }, {
+        top: "0",
+        duration: 1,
+        ease: "power3.out"
+      });
+
+      setTimeout(() => {
+        form.style.opacity = "1";
+        formFooter.style.opacity = "1";
+      }, 1000);
+    });
+
     closeBtn?.addEventListener("click", closeForm);
 
     return () => {
@@ -172,7 +196,6 @@ export default function GlobalPageEffects() {
       const menuFooter = document.getElementById('menuFooter');
       const logo = document.getElementById('logo');
       const openBtn = document.getElementById('openForm');
-      const bars = document.querySelectorAll('.bar');
 
       gsap.to(menu, { opacity: 0 });
       gsap.to(menuFooter, { opacity:0 });
@@ -195,7 +218,6 @@ export default function GlobalPageEffects() {
           logo.src = symbol.src;
           openBtn.style.color = "#fff9f2";
           openBtn.style.border = "1px solid #fff9f2";
-          bars.forEach(bar => bar.classList.remove('x'));
         }
       });
     }

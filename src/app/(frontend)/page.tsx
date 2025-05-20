@@ -7,7 +7,6 @@ import { components } from "@/sanity/portableTextComponents";
 import HomepageFlickityCarousel from "@/components/HomepageFlickityCarousel";
 import HomePageEffects from "@/components/HomePageEffects";
 import logoType from '../logotype.svg';
-import ipadlogoType from '../ipad-logotype.svg';
 import symbol from '../symbol.svg';
 
 export default async function Page() {

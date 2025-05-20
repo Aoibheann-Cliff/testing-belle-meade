@@ -44,6 +44,7 @@ export function Header() {
         <Link className="menuitem" href="https://www.hud.gov/offices/fheo/promotingfh/928-1.pdf" target="_blank"><h6>Fair Housing</h6></Link>
         <Link className="login" href=""><h6>Log In</h6></Link>
       </div>
+      <div className="mobileinquire" id="mobileopenForm">Inquire</div>
       </div>
       </div>
       <ContactForm />

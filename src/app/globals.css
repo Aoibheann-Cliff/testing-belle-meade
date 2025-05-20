@@ -897,7 +897,7 @@ input::placeholder{
 }
 
 .menu-footer{
-    padding: 2.313rem 3.125rem;
+    padding: 2.313rem 1.125rem;
     width:100%;
     position:absolute !important;
     bottom:0 !important;
@@ -1070,15 +1070,17 @@ div:has(> .react-dropdown-select) {
   #mobileMenu{
     z-index: -1;
     background: #fff9f2;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: fit-content;
+    height: 100vh;
     min-height: 100vh;
+    overflow:scroll;
     display: none;
     position: fixed;
     top: -100vh;
     right: 0;
+    flex-direction:column;
   }
 
   #menu{
@@ -1378,11 +1380,42 @@ div:has(> .react-dropdown-select) {
 
 @media only screen and (max-device-width : 1024px)
 and (orientation : landscape) {
-    h3{
-        font-size: 0.938rem;
-        line-height: 1.313rem;
+    h1{
+        font-size: 1.875rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 2.625rem;
     }
 
+    h2 {
+        font-size: 1.25REM;
+        line-height: 1.75rem;
+    }
+
+h5{
+    font-size: 0.75rem;
+    line-height: 1.05rem;
+    letter-spacing: 0.113rem;
+}
+
+h3{
+    font-size: 0.938rem;
+    line-height: 1.313rem;
+}
+
+p{
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.05rem;
+}
+
+h4{
+    font-size: 0.875rem;
+font-style: normal;
+font-weight: 400;
+line-height: 1.225rem;
+}
     .symbol{
         height:7.063rem;
     }
@@ -1407,18 +1440,115 @@ and (orientation : landscape) {
     .tagline{
         font-size: 0.938rem;
         line-height: 1.313rem;
-        max-width:50%;
+        max-width:100%;
         bottom:1.875rem;
     }
 
     header{
-        padding:3.063rem 1.875rem;
+        padding:3.063rem 3.75rem;
+    }
+    #mobileMenu .menuitem{
+        font-size: 1.563rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
     }
 
+    #menu{
+        gap:2.813rem;
+        padding-top: 8.75rem;
+        padding-bottom: 3.125rem;
+    }
+
+    .form-footer h6, .form-footer-menu .menuitem{
+        font-size: 0.75rem;
+        letter-spacing: 0.113rem;
+    }
+
+    .mobileinquire{
+        display:block;
+    }
+
+    .mobileinquire{
+        color:#4C2F48;
+        font-family: 'Dia';  
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.113rem;
+        margin-bottom:0.938rem;
+        padding:0.625rem 1.25rem;
+        border:1px solid #4C2F48;
+        cursor:pointer;
+        will-change:background-color, color;
+        transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        -o-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        -ms-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        -moz-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        -webkit-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .menu-footer{
+        flex-direction: column-reverse;
+        gap:1.563rem;
+        position:static !important;
+    }
+
+    .login{
+        padding:0px !important;
+        border:0px !important;
+    }
+
+    .textpage-title{
+        padding-bottom:1.875rem;
+    }
+
+    .introblock{
+        padding-bottom:1.875rem;
+        max-width:33.75rem;
+    }
+
+    .text-block .title{
+        padding-bottom:0.625rem;
+    }
+    
+    .intro-image {
+        width: 1.265rem;
+        height: 1.226rem;
+        margin-right: 1rem;
+    }
+
+    .container.textpage {
+        padding: 7.25rem 3.75rem 3.75rem;
+    }
+
+    .siteLogo {
+        width: 3.139rem;
+        top: 1.875rem;
+    }
+
+    .image-text-slide .text {
+        padding: 2.125rem 3.75rem;
+        justify-content: flex-end;
+    }
+
+    .image-text-slide .inner-text {
+        position:static;
+    }
+
+    .image-text-slide .inner-text .title{
+        width:100%;
+    }
 }
 
 @media only screen and (max-width:600px)
     and (orientation : portrait) {
+
+        h1{
+            font-size: 1.875rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 2.625rem;
+        }
 
     h5{
         font-size: 0.75rem;
@@ -1429,6 +1559,13 @@ and (orientation : landscape) {
     h3{
         font-size: 0.938rem;
         line-height: 1.313rem;
+    }
+
+    p{
+        font-size: 0.75rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.05rem;
     }
     
     header{
@@ -1479,6 +1616,8 @@ and (orientation : landscape) {
 
     .menu-footer{
         flex-direction: column-reverse;
+        gap:1.563rem;
+        position:static !important;
     }
 
     .login{
@@ -1514,4 +1653,125 @@ and (orientation : landscape) {
     .slide-footer{
         padding: 1.813rem  3.25rem !important;
     }
+
+    #mobileMenu .menuitem{
+        font-size: 1.563rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    #menu{
+        gap:2.813rem;
+        padding-top: 10.188rem;
+        padding-bottom: 3.125rem;
+    }
+
+    .form-footer h6, .form-footer-menu .menuitem{
+        font-size: 0.75rem;
+        letter-spacing: 0.113rem;
+    }
+
+    .mobileinquire{
+        display:block;
+    }
+
+    .mobileinquire{
+        color:#4C2F48;
+        font-family: 'Dia';  
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.113rem;
+        margin-bottom:0.938rem;
+        padding:0.625rem 1.25rem;
+        border:1px solid #4C2F48;
+        cursor:pointer;
+        will-change:background-color, color;
+        transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        -o-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        -ms-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        -moz-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        -webkit-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .form-container {
+        z-index: 99999;
+        background: #fff9f2;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        min-height: 100vh;
+        max-height: 100vh;
+        display: none;
+        position: fixed;
+        top: -100vh;
+        right: 0;
+        overflow: scroll;
+        padding: 8.125rem 1.563rem 0rem 1.563rem;
+    }
+
+    .form-container input, .form-container select{
+        width:100%;
+    }
+
+    div:has( > .react-dropdown-select){
+        width:100%;
+    }
+
+    .contact-form-title{
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.575rem;
+    }
+
+    .form-footer{
+        flex-direction: column-reverse;
+        gap:1.563rem;
+        position:static !important;
+        padding:2.313rem .125rem;
+    }
+
+    .image-text-slide{
+        flex-direction:column-reverse;
+    }
+    .image-text-slide .text{
+        width:100%;
+    }
+
+    .image-text-slide img{
+        width:100%;
+        height:50vh;
+    }
+
+    .textpage-title{
+        padding-bottom:1.875rem;
+    }
+
+    .introblock{
+        padding-bottom:1.875rem;
+    }
+
+    .text-block .title{
+        padding-bottom:0.625rem;
+    }
+    
+    .intro-image {
+        width: 1.265rem;
+        height: 1.226rem;
+        margin-right: 1rem;
+    }
+
+    .image-text-slide .text{
+        width: 100%;
+        height: 50vh !important;
+        padding:1.563rem;
+    }
+
+    .image-text-slide .inner-text {
+        position:static;
+    }
+
 }

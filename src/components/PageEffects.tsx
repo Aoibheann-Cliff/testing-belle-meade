@@ -27,7 +27,6 @@ export default function GlobalPageEffects() {
     const firstBar = document.getElementById('firstBar');
     const secondBar = document.getElementById('secondBar');
     const thirdBar = document.getElementById('thirdBar');
-    const nextPageLink = document.getElementById('nextPageLink');
 
     setTimeout(() => {
       wrapper.style.opacity = "1";

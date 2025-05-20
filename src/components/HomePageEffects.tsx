@@ -11,7 +11,7 @@ export default function GlobalPageEffects() {
 
   useEffect(() => {
     const openBtn = document.getElementById("openForm");
-    const mobileopenBtn = document.getElementById("mobileopenForm");
+    // const mobileopenBtn = document.getElementById("mobileopenForm");
     const closeBtn = document.getElementById("contactformclose");
     const formContainer = document.querySelector(".form-container");
     const menuContainer = document.getElementById('mobileMenu');

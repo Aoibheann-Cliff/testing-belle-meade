@@ -54,6 +54,7 @@ export default async function Page({
 
               switch (slide.layout) {
                 case "imageOnly":
+                  if (!slide.image) return <></>
                   return (
                     <div key={index} className={`relative min-h-screen overlay-slide ${index + 1 === totalSlides ? 'lastslide' : 'slide'}`}>
                       <div className="flickity-top-overlay"></div>
@@ -79,6 +80,7 @@ export default async function Page({
                   );
 
                 case "imageAndTextOverlayWithText":
+                  if (!slide.image) return <></>
                   return (
                     <div key={index} className={`relative min-h-screen overlay-slide ${index + 1 === totalSlides ? 'lastslide' : 'slide'}`}>
                       <Image
@@ -106,6 +108,7 @@ export default async function Page({
                   );
 
                 case "imageAndTextOverlayPlain":
+                  if (!slide.image) return <></>
                   return (
                     <div key={index} className={`min-h-screen ${index + 1 === totalSlides ? 'lastslide' : 'slide'}`}>
                       <div className="flickity-top-overlay"></div>
@@ -133,6 +136,7 @@ export default async function Page({
                 case "imageLeftQuoteRight":
                 case "imageRightQuoteLeft": {
                   const reverse = slide.layout === "imageLeftQuoteRight";
+                  if (!slide.image) return <></>
                   return (
                     <div
                       key={index}
@@ -183,6 +187,7 @@ export default async function Page({
                 case "imageLeftTextRight":
                 case "imageRightTextLeft": {
                   const reverse = slide.layout === "imageRightTextLeft";
+                  if (!slide.image) return <></>
                   return (
                     <div
                       key={index}
@@ -208,7 +213,6 @@ export default async function Page({
                           )}
                         </div>
                       </div>
-                      <div className="image">
                       <Image
                         src={urlFor(slide.image).width(960).height(1080).quality(100).auto('format').url()}
                         alt={slide.image?.alt || ""}
@@ -219,7 +223,6 @@ export default async function Page({
                         blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
                         className="object-cover min-h-screen"
                       />
-                      </div>
                       <div className="flickity-bottom-overlay"></div>
                     </div>
                   );
@@ -228,6 +231,7 @@ export default async function Page({
                 case "smallImageLeftLargeImageRight":
                 case "largeImageLeftSmallImageRight": {
                   const reverse = slide.layout === "largeImageLeftSmallImageRight";
+                  if (!slide.image) return <></>
                   return (
                     <div
                       key={index}
@@ -235,7 +239,7 @@ export default async function Page({
                       style={{ backgroundColor: bg }}
                     >
                       <div className="flickity-top-overlay"></div>
-                      {!reverse && (
+                      {!reverse && slide.smallImage && (
                         <div className="smallImageContainer">
                         <Image
                         src={urlFor(slide.smallImage).width(600).height(400).quality(100).auto('format').url()}
@@ -261,7 +265,7 @@ export default async function Page({
                         className="object-cover min-h-screen"
                       />
                       </div>
-                      {reverse && (
+                      {reverse && slide.smallImage && (
                         <div className="smallImageContainer">
                         <Image
                         src={urlFor(slide.smallImage).width(600).height(400).quality(100).auto('format').url()}

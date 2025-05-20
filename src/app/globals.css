@@ -1531,6 +1531,10 @@ line-height: 1.225rem;
         justify-content: flex-end;
     }
 
+    .image-text-slide img{
+        width:50%;
+    }
+
     .image-text-slide .inner-text {
         position:static;
     }
@@ -1744,6 +1748,7 @@ line-height: 1.225rem;
     .image-text-slide img{
         width:100%;
         height:50vh;
+        min-height:50vh;
     }
 
     .textpage-title{
@@ -1768,10 +1773,15 @@ line-height: 1.225rem;
         width: 100%;
         height: 50vh !important;
         padding:1.563rem;
+        justify-content: flex-end;
     }
 
     .image-text-slide .inner-text {
         position:static;
+    }
+
+    .image-text-slide .inner-text .title{
+        width:100%;
     }
 
 }

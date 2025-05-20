@@ -776,6 +776,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
 }
 
 .next-page-title{
+    display:block !important;
     opacity:0;
     padding-right:1.25rem;
     will-change:opacity;

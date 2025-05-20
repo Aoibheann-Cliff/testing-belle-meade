@@ -40,18 +40,37 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
             }, 3000);
           } else {
             nextPageLink.addEventListener('mouseenter', () => {
-              gsap.to(nextPageLink, { maxWidth: "fit-content" , duration: 1, ease: "power3.out",});
-            setTimeout(() => {
-              nextPageTitle.style.opacity = "1";
-            }, 1000);
-          });
-          nextPageLink.addEventListener('mouseleave', () => {
-            nextPageTitle.style.opacity = "0";
-            gsap.to(nextPageLink, { maxWidth: "3.125rem", duration: 10, ease: "power3.out", delay:1});
-          // setTimeout(() => {
-          //   nextPageTitle.style.display = "none";
-          // }, 2000);
-        });
+              const naturalWidth = nextPageTitle.scrollWidth + "px";
+            
+              gsap.to(nextPageLink, {
+                maxWidth: naturalWidth,
+                duration: 1,
+                ease: "power3.out"
+              });
+            
+              gsap.to(nextPageTitle, {
+                opacity: 1,
+                duration: 0.3,
+                ease: "power1.out",
+                delay: 0.7 // offset to match your timing
+              });
+            });
+            
+            nextPageLink.addEventListener('mouseleave', () => {
+              gsap.to(nextPageTitle, {
+                opacity: 0,
+                duration: 0.3,
+                ease: "power1.out"
+              });
+            
+              gsap.to(nextPageLink, {
+                maxWidth: "3.125rem",
+                duration: 1,
+                ease: "power3.out",
+                delay: 0.3
+              });
+            });
+            
           }
         }
         const x = window.matchMedia("(max-width: 1366px)")

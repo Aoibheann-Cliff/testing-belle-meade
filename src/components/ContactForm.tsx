@@ -8,7 +8,7 @@ export default function ContactForm() {
   const [formData, setFormData] = useState({ about: "", firstName: "", lastName: "", email: "", country: "", address: "", city: "", state: "", zipcode: "", residence: "", agent: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<Record<string, boolean>>({});
 
   const validateForm = () => {
     const newErrors: Record<string, boolean> = {};
@@ -522,13 +522,34 @@ export default function ContactForm() {
     return <div>{state.values[0].label}</div>;
   }}
 /> */}
-{/* <Select
+<Select<{ label: string, value: string }>
   options={agentoptions}
-  values={
-    formData.agent
-      ? [agentoptions.find((opt) => opt.label === formData.agent)]
-      : []
-  }
+  // values={() => {
+  //   for (const opt of agentoptions) {
+  //     if (opt.label === formData.agent) {
+  //       return [opt]
+  //     }
+  //   }
+
+  //   return []
+  // }}
+
+  // values={
+  //   formData.agent
+  //     ? [agentoptions.find((opt) => opt.label === formData.agent)]
+  //     : []
+  // }
+
+  values = {formData.agent
+  ? agentoptions.find((opt) => opt.label === formData.agent)
+    ? [agentoptions.find((opt) => opt.label === formData.agent) as { label: string; value: string }]
+    : []
+  : []}
+
+  // }
+  // }
+  onSelect={() => {}}
+  onDeselect={() => {}}
   onChange={(values) => {
     const selected = values[0]?.label || "";
     setFormData((prev) => ({ ...prev, agent: selected }));
@@ -546,7 +567,7 @@ export default function ContactForm() {
     }
     return <div>{state.values[0].label}</div>;
   }}
-/> */}
+/>
 <input
   type="text"
   name="message"

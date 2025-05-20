@@ -444,7 +444,7 @@ export type PAGE_QUERYResult = {
     slug: Slug | null;
   } | null;
   slides: Array<{
-    layout: "imageAndText" | "imageAndTextOverlay" | "imageLeftQuoteRight" | "imageLeftTextRight" | "imageOnly" | "imageRightQuoteLeft" | "imageRightTextLeft" | "largeImageLeftSmallImageRight" | "smallImageLeftLargeImageRight" | null;
+    layout: LayoutTypes;
     title: string | null;
     text: Array<{
       children?: Array<{
@@ -482,6 +482,8 @@ export type PAGE_QUERYResult = {
     } | null;
   }> | null;
 } | null;
+
+export type LayoutTypes = "imageAndText" | "imageAndTextOverlay" | "imageLeftQuoteRight" | "imageLeftTextRight" | "imageOnly" | "imageRightQuoteLeft" | "imageRightTextLeft" | "largeImageLeftSmallImageRight" | "smallImageLeftLargeImageRight" | "imageAndTextOverlayWithText" | "imageAndTextOverlayPlain" | null;
 
 // Query TypeMap
 import "@sanity/client";

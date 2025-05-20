@@ -30,7 +30,7 @@ export default function GlobalPageEffects() {
     const firstBar = document.getElementById('firstBar');
     const secondBar = document.getElementById('secondBar');
     const thirdBar = document.getElementById('thirdBar');
-
+    
     function toggleHamburger() {
     firstBar.style.transform = "rotate(45deg) translate(0.35rem, 0.35rem)";
     secondBar.style.width = "0";

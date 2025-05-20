@@ -28,6 +28,7 @@ export default function GlobalPageEffects() {
     const firstBar = document.getElementById('firstBar');
     const secondBar = document.getElementById('secondBar');
     const thirdBar = document.getElementById('thirdBar');
+    const nextPageLink = document.getElementById('nextPageLink');
 
     setTimeout(() => {
       wrapper.style.opacity = "1";
@@ -40,6 +41,7 @@ export default function GlobalPageEffects() {
       thirdBar.style.transform = "rotate(-45deg) translate(0.35rem, -0.35rem)";
       firstBar.style.backgroundColor = "#4c2f48";
       thirdBar.style.backgroundColor= "#4c2f48";
+      nextPageLink.style.zIndex = "1";
 
       const isOpen = menuContainer.style.display === "flex";
 
@@ -97,6 +99,7 @@ export default function GlobalPageEffects() {
       setTimeout(() => {
         leftMenu.style.opacity = "1";
         rightMenu.style.opacity = "1";
+        nextPageLink.style.zIndex = "9999";
       }, 2000);
     }
 
@@ -124,6 +127,7 @@ export default function GlobalPageEffects() {
         formContainer.style.display = "none";
         leftMenu.style.opacity = "1";
         rightMenu.style.opacity = "1";
+        nextPageLink.style.zIndex = "9999";
       }, 2000);
 
       closeMenu();
@@ -135,6 +139,7 @@ export default function GlobalPageEffects() {
       formContainer.style.display = "flex";
       leftMenu.style.opacity = "0";
       rightMenu.style.opacity = "0";
+      nextPageLink.style.zIndex = "1";
       logo.src = purplesymbol.src;
 
       setTimeout(() => {

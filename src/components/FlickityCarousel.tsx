@@ -32,8 +32,12 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
         function myFunction(x) {
           if (x.matches) {
             setTimeout(() => {
-              nextPageTitle.style.display = "block";
-              gsap.to(nextPageLink, { padding:"3.125rem", maxWidth: "fit-content" , duration: 1, ease: "power3.out",});
+              const naturalWidth = nextPageTitle.scrollWidth + "px";
+              gsap.to(nextPageLink, {
+                maxWidth: naturalWidth,
+                duration: 1,
+                ease: "power3.out"
+              });
             }, 2000);
             setTimeout(() => {
               nextPageTitle.style.opacity = "1";
@@ -41,7 +45,6 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
           } else {
             nextPageLink.addEventListener('mouseenter', () => {
               const naturalWidth = nextPageTitle.scrollWidth + "px";
-            
               gsap.to(nextPageLink, {
                 maxWidth: naturalWidth,
                 duration: 1,
@@ -52,14 +55,13 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
                 opacity: 1,
                 duration: 0.3,
                 ease: "power1.out",
-                delay: 0.7 // offset to match your timing
+                delay: 0.7
               });
             });
             
             nextPageLink.addEventListener('mouseleave', () => {
               gsap.to(nextPageTitle, {
                 opacity: 0,
-                duration: 0.3,
                 ease: "power1.out"
               });
             
@@ -67,7 +69,7 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
                 maxWidth: "3.125rem",
                 duration: 1,
                 ease: "power3.out",
-                delay: 0.3
+                delay:1.1,
               });
             });
             

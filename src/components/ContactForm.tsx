@@ -380,7 +380,10 @@ export default function ContactForm() {
     : []}
     onSelect={() => {}}
     onDeselect={() => {}}
-  onChange={(values) => setFormData((prev) => ({ ...prev, about: values }))}
+    onChange={(values) => {
+      const selected = values[0]?.label || "";
+      setFormData((prev) => ({ ...prev, about: selected }));
+    }}
   placeholder="I am"
   searchable={false}
   multi={false}

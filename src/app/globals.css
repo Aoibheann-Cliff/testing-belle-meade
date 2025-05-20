@@ -779,7 +779,8 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
 .next-page-title{
     display:block !important;
     opacity:0;
-    padding-right:1.25rem;
+    padding-right:5.188rem;
+    padding-left:3.125rem;
     will-change:opacity;
     transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
     -o-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -1098,6 +1099,7 @@ div:has(> .react-dropdown-select) {
     -ms-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
     -moz-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
     -webkit-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    margin:auto;
   }
 
   #mobileMenu .menuitem{
@@ -1111,6 +1113,10 @@ div:has(> .react-dropdown-select) {
     letter-spacing: 0px !important;
   }
   
+
+  .mobileinquire{
+        display:none;
+  }
 
 @media only screen and (max-width:1366px){
 

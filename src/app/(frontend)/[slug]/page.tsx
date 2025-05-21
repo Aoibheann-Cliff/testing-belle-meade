@@ -57,7 +57,7 @@ export default async function Page({
                 case "imageOnly":
                   if (!slide.image) return <></>
                   return (
-                    <div key={index} className={`relative min-h-screen overlay-slide ${index + 1 === totalSlides ? 'lastslide' : 'slide'}`}>
+                    <div key={index} className="relative min-h-screen overlay-slide">
                       <div className="flickity-top-overlay"></div>
                       <Image
                         src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
@@ -98,13 +98,27 @@ export default async function Page({
                           </button>
                         </div>
                       <div className="flickity-bottom-overlay"></div>
+                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
+                      <div className="next-page-link" id="nextPageLink">
+                        <a href={`/${page.nextPage.slug.current}`}>
+                            <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
+                            <Image
+                              className="purple-arrow"
+                              src={arrow}
+                              alt="arrow"
+                              width={27}
+                              height={13.5}
+                            />
+                        </a>
+                        </div>
+                      )}
                     </div>
                   );
 
                 case "imageAndTextOverlayWithText":
                   if (!slide.image) return <></>
                   return (
-                    <div key={index} className={`relative min-h-screen intro-slide overlay-slide ${index + 1 === totalSlides ? 'lastslide' : 'slide'}`}>
+                    <div key={index} className="relative min-h-screen intro-slide overlay-slide">
                       <Image
                         src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
                         alt={slide.image?.alt || ""}
@@ -150,13 +164,27 @@ export default async function Page({
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
                         </div>
+                        {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
+                      <div className="next-page-link" id="nextPageLink">
+                        <a href={`/${page.nextPage.slug.current}`}>
+                            <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
+                            <Image
+                              className="purple-arrow"
+                              src={arrow}
+                              alt="arrow"
+                              width={27}
+                              height={13.5}
+                            />
+                        </a>
+                        </div>
+                      )}
                     </div>
                   );
 
                 case "imageAndTextOverlayPlain":
                   if (!slide.image) return <></>
                   return (
-                    <div key={index} className={`min-h-screen ${index + 1 === totalSlides ? 'lastslide' : 'slide'}`}>
+                    <div key={index} className="min-h-screen">
                       <div className="flickity-top-overlay"></div>
                         <Image
                         src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
@@ -194,6 +222,20 @@ export default async function Page({
                           {slide.caption && (<h5 className="caption">{slide.caption}</h5>)}
                         </div>
                       <div className="flickity-bottom-overlay"></div>
+                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
+                      <div className="next-page-link" id="nextPageLink">
+                        <a href={`/${page.nextPage.slug.current}`}>
+                            <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
+                            <Image
+                              className="purple-arrow"
+                              src={arrow}
+                              alt="arrow"
+                              width={27}
+                              height={13.5}
+                            />
+                        </a>
+                        </div>
+                      )}
                     </div>
                   );
 
@@ -204,7 +246,7 @@ export default async function Page({
                   return (
                     <div
                       key={index}
-                      className={`quote-slide min-h-screen flex ${reverse ? "flex-row-reverse" : "flex-row"} ${index + 1 === totalSlides ? 'lastslide' : 'slide'}`}
+                      className={`quote-slide min-h-screen flex ${reverse ? "flex-row-reverse" : "flex-row"}`}
                       style={{ backgroundColor: bg }}
                     >
                       <div className="flickity-top-overlay"></div>
@@ -243,6 +285,20 @@ export default async function Page({
                           {slide.caption && (<h5 className="caption">{slide.caption}</h5>)}
                         </div>
                       <div className="flickity-bottom-overlay"></div>
+                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
+                      <div className="next-page-link" id="nextPageLink">
+                        <a href={`/${page.nextPage.slug.current}`}>
+                            <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
+                            <Image
+                              className="purple-arrow"
+                              src={arrow}
+                              alt="arrow"
+                              width={27}
+                              height={13.5}
+                            />
+                        </a>
+                        </div>
+                      )}
                     </div>
                   );
                 }
@@ -255,7 +311,7 @@ export default async function Page({
                   return (
                     <div
                       key={index}
-                      className={`image-text-slide min-h-screen flex ${reverse ? "flex-row-reverse" : "flex-row"} ${index + 1 === totalSlides ? 'lastslide' : 'slide'}`}
+                      className={`image-text-slide min-h-screen flex ${reverse ? "flex-row-reverse" : "flex-row"}`}
                       style={{ backgroundColor: bg }}
                     >
                       <div className="flickity-top-overlay"></div>
@@ -288,6 +344,20 @@ export default async function Page({
                         className="object-cover min-h-screen"
                       />
                       <div className="flickity-bottom-overlay"></div>
+                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
+                      <div className="next-page-link" id="nextPageLink">
+                        <a href={`/${page.nextPage.slug.current}`}>
+                            <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
+                            <Image
+                              className="purple-arrow"
+                              src={arrow}
+                              alt="arrow"
+                              width={27}
+                              height={13.5}
+                            />
+                        </a>
+                        </div>
+                      )}
                     </div>
                   );
                 }
@@ -299,7 +369,7 @@ export default async function Page({
                   return (
                     <div
                       key={index}
-                      className={`small-large-image-slide min-h-screen flex ${index + 1 === totalSlides ? 'lastslide' : 'slide'}`}
+                      className="small-large-image-slide min-h-screen flex"
                       style={{ backgroundColor: bg }}
                     >
                       <div className="flickity-top-overlay"></div>
@@ -351,6 +421,20 @@ export default async function Page({
                           {slide.caption && (<h5 className="caption">{slide.caption}</h5>)}
                         </div>
                       <div className="flickity-bottom-overlay"></div>
+                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
+                      <div className="next-page-link" id="nextPageLink">
+                        <a href={`/${page.nextPage.slug.current}`}>
+                            <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
+                            <Image
+                              className="purple-arrow"
+                              src={arrow}
+                              alt="arrow"
+                              width={27}
+                              height={13.5}
+                            />
+                        </a>
+                        </div>
+                      )}
                     </div>
                   );
                 }
@@ -394,20 +478,6 @@ export default async function Page({
         </>
       )}
     </main>
-    {page?.pageType === "slideshowpage" && totalSlides > 0 && (
-           <a href={`/${page?.nextPage?.slug?.current}`} >
-           <div className="next-page-link" id="nextPageLink">
-             <div className="next-page-title" id="next-page-title">{page?.nextPage?.title}</div>
-             <Image
-               className="purple-arrow"
-               src={arrow}
-               alt={"arrow"}
-               width={27}
-               height={13.5}
-             />
-         </div>
-         </a>
-    )}
         </>
   );
 }

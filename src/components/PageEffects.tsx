@@ -35,7 +35,7 @@ export default function GlobalPageEffects() {
     setTimeout(() => {
       wrapper.style.opacity = "1";
     }, 500);
-    
+
 
       const lightboxButtons = document.querySelectorAll('.lightbox');
       const lightboxCloseButtons = document.querySelectorAll('.lightbox-close');
@@ -251,12 +251,17 @@ export default function GlobalPageEffects() {
   }, []);
 
 
-  // Close menu and form on route change
   useEffect(() => {
     const menuContainer = document.getElementById('mobileMenu');
     const formContainer = document.querySelector('.form-container');
 
-    // Close menu
+    const checkForCarousel = () => {
+      const hasCarousel = !!document.querySelector('.carousel');
+      document.body.classList.toggle('has-slider', hasCarousel);
+    };
+
+    const timeout = setTimeout(checkForCarousel, 100);
+
     if (menuContainer?.style.display === "flex") {
       const menu = document.getElementById('menu');
       const menuFooter = document.getElementById('menuFooter');
@@ -323,6 +328,7 @@ export default function GlobalPageEffects() {
         rightMenu.style.opacity = "1";
       }, 2000);
     }
+    return () => clearTimeout(timeout);
   }, [pathname]);
 
   return null;

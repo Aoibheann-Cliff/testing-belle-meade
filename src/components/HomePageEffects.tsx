@@ -205,6 +205,13 @@ export default function GlobalPageEffects() {
     const menuContainer = document.getElementById('mobileMenu');
     const formContainer = document.querySelector('.form-container');
 
+    const checkForCarousel = () => {
+      const hasCarousel = !!document.querySelector('.carousel');
+      document.body.classList.toggle('has-slider', hasCarousel);
+    };
+
+    const timeout = setTimeout(checkForCarousel, 100);
+
     // Close menu
     if (menuContainer?.style.display === "flex") {
         const menu = document.getElementById('menu');
@@ -272,6 +279,7 @@ export default function GlobalPageEffects() {
         rightMenu.style.opacity = "1";
       }, 2000);
     }
+    return () => clearTimeout(timeout);
   }, [pathname]);
 
   return null;

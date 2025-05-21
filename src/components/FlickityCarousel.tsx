@@ -279,7 +279,7 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
         
             setTimeout(() => {
               nextPageLink.style.transform = "translateX(100vh)";
-            }, 1000);
+            }, 500);
           }
         });        
       }

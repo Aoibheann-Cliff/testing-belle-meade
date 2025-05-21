@@ -55,6 +55,8 @@ export default function HomepageFlickityCarousel({ children }: { children: React
         flkty.on('ready', checkIfLastSlideSelected);
         flkty.on('select', checkIfLastSlideSelected);
   
+        const width = window.innerWidth;
+        if (width > 1366) {
         const hoverMappings = [
           { menuSelector: '.design', slideClass: 'design-slide' },
           { menuSelector: '.craftsmanship', slideClass: 'craftsmanship-slide' },
@@ -82,6 +84,7 @@ export default function HomepageFlickityCarousel({ children }: { children: React
             });
           }
         });
+      }
       }
     });
   

@@ -93,10 +93,13 @@ export default function GlobalPageEffects() {
             menuContainer.style.display = "none";
           }
         });
+
+        setTimeout(() => {
+          logo.style.opacity = 1;
+          purpleLogo.style.opacity = 0;
+      }, 1000);
   
         setTimeout(() => {
-            logo.style.opacity = 1;
-            purpleLogo.style.opacity = 0;
             openBtn.style.color = "#fff9f2";
             openBtn.style.border = "1px solid #fff9f2";
         }, 1500);
@@ -128,7 +131,7 @@ export default function GlobalPageEffects() {
         setTimeout(() => {
           logo.style.opacity = 1;
           purpleLogo.style.opacity = 0;
-        }, 1500);
+        }, 1000);
   
         setTimeout(() => {
           formContainer.style.display = "none";
@@ -207,7 +210,7 @@ export default function GlobalPageEffects() {
 
     const checkForCarousel = () => {
       const hasCarousel = !!document.querySelector('.carousel');
-      document.body.classList.toggle('has-slider', hasCarousel);
+      document.body.classList.toggle('no-slider', !hasCarousel);
     };
 
     const timeout = setTimeout(checkForCarousel, 100);
@@ -229,7 +232,10 @@ export default function GlobalPageEffects() {
         thirdBar.style.backgroundColor= "#fff9f2";
         menu.style.opacity = "0";
         menuFooter.style.opacity = "0";
-  
+        setTimeout(() => {
+          logo.style.opacity = 1;
+          purpleLogo.style.opacity = 0;
+        }, 1000);
         gsap.to(menuContainer, {
           top: "-100vh",
           duration: 1,
@@ -237,8 +243,6 @@ export default function GlobalPageEffects() {
           ease: "power3.out",
           onComplete: () => {
             menuContainer.style.display = "none";
-            logo.style.opacity = 0;
-            purpleLogo.style.opacity = 1;
             openBtn.style.color = "#fff9f2";
             openBtn.style.border = "1px solid #fff9f2";
           }

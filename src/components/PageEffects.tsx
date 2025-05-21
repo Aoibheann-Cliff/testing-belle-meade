@@ -25,16 +25,16 @@ export default function GlobalPageEffects() {
     const logo = document.getElementById('logo');
     const purpleLogo = document.getElementById('purpleLogo');
     const navToggle = document.getElementById('navToggle');
-    const wrapper = document.getElementById('contentWrapper');
+    // const wrapper = document.getElementById('contentWrapper');
     const firstBar = document.getElementById('firstBar');
     const secondBar = document.getElementById('secondBar');
     const thirdBar = document.getElementById('thirdBar');
     const nextPageLink = document.getElementById('nextPageLink');
     const header = document.getElementById('header');
 
-    setTimeout(() => {
-      wrapper.style.opacity = "1";
-    }, 500);
+    // setTimeout(() => {
+    //   wrapper.style.opacity = "1";
+    // }, 500);
 
 
       const lightboxButtons = document.querySelectorAll('.lightbox');
@@ -142,6 +142,9 @@ export default function GlobalPageEffects() {
       setTimeout(() => {
         logo.style.opacity = 1;
         purpleLogo.style.opacity = 0;
+    }, 1000);
+
+      setTimeout(() => {
           openBtn.style.color = "#fff9f2";
           openBtn.style.border = "1px solid #fff9f2";
           setTimeout(() => {
@@ -176,7 +179,7 @@ export default function GlobalPageEffects() {
       setTimeout(() => {
         logo.style.opacity = 1;
         purpleLogo.style.opacity = 0;
-      }, 1500);
+      }, 1000);
 
       setTimeout(() => {
         formContainer.style.display = "none";
@@ -257,7 +260,7 @@ export default function GlobalPageEffects() {
 
     const checkForCarousel = () => {
       const hasCarousel = !!document.querySelector('.carousel');
-      document.body.classList.toggle('has-slider', hasCarousel);
+      document.body.classList.toggle('no-slider', !hasCarousel);
     };
 
     const timeout = setTimeout(checkForCarousel, 100);
@@ -278,7 +281,10 @@ export default function GlobalPageEffects() {
       thirdBar.style.backgroundColor= "#fff9f2";
       menu.style.opacity = "0";
       menuFooter.style.opacity = "0";
-
+      setTimeout(() => {
+        logo.style.opacity = 1;
+        purpleLogo.style.opacity = 0;
+      }, 1000);
       gsap.to(menuContainer, {
         top: "-100vh",
         duration: 1,
@@ -286,8 +292,6 @@ export default function GlobalPageEffects() {
         ease: "power3.out",
         onComplete: () => {
           menuContainer.style.display = "none";
-          logo.style.opacity = 1;
-          purpleLogo.style.opacity = 0;
           openBtn.style.color = "#fff9f2";
           openBtn.style.border = "1px solid #fff9f2";
         }
@@ -320,7 +324,7 @@ export default function GlobalPageEffects() {
       setTimeout(() => {
         logo.style.opacity = 1;
         purpleLogo.style.opacity = 0;
-      }, 1500);
+      }, 1000);
 
       setTimeout(() => {
         formContainer.style.display = "none";

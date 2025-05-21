@@ -241,26 +241,35 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
   
         setFlickityInstance(flkty);
   
-        flkty.on( 'change', function( index ) {
+        flkty.on('change', function(index) {
           closeLightbox();
           if (index === flkty.slides.length - 1) {
-            header.style.opacity = 0;
-            header.style.pointerEvents = "none";
-            footer.style.opacity = 0;
-            footer.style.pointerEvents = "none";
+            requestAnimationFrame(() => {
+              header.style.visibility = "hidden";
+              header.style.pointerEvents = "none";
+              footer.style.opacity = 0;
+              footer.style.pointerEvents = "none";
+              console.log(header.style.opacity)
+            });
+        
             setTimeout(() => {
               nextPageLink.style.transform = "translateX(0px)";
             }, 1000);
-        } else {
-            header.style.opacity = 1;
-            header.style.pointerEvents = "all";
-            footer.style.opacity = 1;
-            footer.style.pointerEvents = "all";
+        
+          } else {
+            requestAnimationFrame(() => {
+              header.style.visibility = "visible";
+              header.style.pointerEvents = "all";
+              footer.style.opacity = 1;
+              footer.style.pointerEvents = "all";
+              console.log(header.style.opacity)
+            });
+        
             setTimeout(() => {
               nextPageLink.style.transform = "translateX(100vh)";
-          }, 1000);
-        }
-        });
+            }, 1000);
+          }
+        });        
       }
     });
   

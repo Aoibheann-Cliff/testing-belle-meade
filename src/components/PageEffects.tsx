@@ -29,11 +29,47 @@ export default function GlobalPageEffects() {
     const secondBar = document.getElementById('secondBar');
     const thirdBar = document.getElementById('thirdBar');
     const nextPageLink = document.getElementById('nextPageLink');
+    const header = document.getElementById('header');
 
     setTimeout(() => {
       wrapper.style.opacity = "1";
     }, 500);
+    
 
+      const lightboxButtons = document.querySelectorAll('.lightbox');
+      const lightboxCloseButtons = document.querySelectorAll('.lightbox-close');
+      lightboxButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          const selectedSlide = document.querySelector('.flickity-cell.is-selected');
+          const img = selectedSlide?.querySelector('.image-lightbox');
+  
+          if (img) {
+            img.style.display = "block";
+            header.style.opacity = "0";
+            setTimeout(() => {
+              header.style.display = "none";
+              img.style.opacity = "1";
+            }, 600);
+          }
+        });
+      });
+
+      lightboxCloseButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          const selectedSlide = document.querySelector('.flickity-cell.is-selected');
+          const img = selectedSlide?.querySelector('.image-lightbox');
+  
+          if (img) {
+            img.style.opacity = "0";
+            header.style.display = "block";
+            setTimeout(() => {
+              img.style.display = "none";
+              header.style.opacity = "1";
+            }, 600);
+          }
+        });
+      });
+      
 
     function toggleHamburger() {
       firstBar.style.transform = "rotate(45deg) translate(0.35rem, 0.35rem)";
@@ -41,7 +77,9 @@ export default function GlobalPageEffects() {
       thirdBar.style.transform = "rotate(-45deg) translate(0.35rem, -0.35rem)";
       firstBar.style.backgroundColor = "#4c2f48";
       thirdBar.style.backgroundColor= "#4c2f48";
-      nextPageLink.style.zIndex = "1";
+      if (nextPageLink) {
+        nextPageLink.style.zIndex = "1";
+      }
 
       const isOpen = menuContainer.style.display === "flex";
 
@@ -99,7 +137,9 @@ export default function GlobalPageEffects() {
       setTimeout(() => {
         leftMenu.style.opacity = "1";
         rightMenu.style.opacity = "1";
-        nextPageLink.style.zIndex = "9999";
+        if (nextPageLink) {
+          nextPageLink.style.zIndex = "9999";
+        }
       }, 2000);
     }
 
@@ -127,7 +167,9 @@ export default function GlobalPageEffects() {
         formContainer.style.display = "none";
         leftMenu.style.opacity = "1";
         rightMenu.style.opacity = "1";
-        nextPageLink.style.zIndex = "9999";
+        if (nextPageLink) {
+          nextPageLink.style.zIndex = "9999";
+        }
       }, 2000);
 
       closeMenu();
@@ -139,7 +181,9 @@ export default function GlobalPageEffects() {
       formContainer.style.display = "flex";
       leftMenu.style.opacity = "0";
       rightMenu.style.opacity = "0";
-      nextPageLink.style.zIndex = "1";
+      if (nextPageLink) {
+        nextPageLink.style.zIndex = "1";
+      }
       logo.src = purplesymbol.src;
 
       setTimeout(() => {

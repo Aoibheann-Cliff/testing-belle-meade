@@ -13,6 +13,7 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
   useEffect(() => {
     let Flickity: any;
     let flkty: any;
+    
   
     // This runs after Flickity selects a slide
     const checkIfLastSlideSelected = () => {
@@ -95,6 +96,37 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
       import('flickity-fade'),
     ]).then(([flickityModule]) => {
       Flickity = flickityModule.default;
+
+      function closeLightbox() {
+        const selectedSlide = document.querySelector('.flickity-cell.is-selected');
+        const img = selectedSlide?.querySelector('.image-lightbox');
+      
+        if (img) {
+          img.style.opacity = "0";
+          header.style.display = "block";
+          setTimeout(() => {
+            img.style.display = "none";
+            header.style.opacity = "1";
+          }, 600);
+        }
+      }
+
+
+      var previousButtons = document.querySelectorAll('.button-previous');
+
+      previousButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          flkty.previous();
+        });
+      });
+
+      var nextButtons = document.querySelectorAll('.button-next');
+
+      nextButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          flkty.next();
+        });
+      });
   
       if (carouselRef.current) {
         flkty = new Flickity(carouselRef.current, {
@@ -110,10 +142,10 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
   
         setFlickityInstance(flkty);
   
-        // Important: Run on select instead of change
-        // flkty.on('ready', checkIfLastSlideSelected);
         flkty.on('select', checkIfLastSlideSelected);
-  
+        flkty.on( 'change', function( index ) {
+          closeLightbox();
+        });
       }
     });
   
@@ -124,7 +156,7 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
   
 
   return (
-    <div className="carousel" ref={carouselRef}>
+    <div className="carousel" id="carousel" ref={carouselRef}>
       {children}
     </div>
   );

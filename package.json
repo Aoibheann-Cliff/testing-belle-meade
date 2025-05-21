@@ -17,13 +17,15 @@
     "flickity": "^3.0.0",
     "flickity-fade": "^2.0.0",
     "gsap": "^3.13.0",
+    "lightbox.js-react": "^1.5.3",
     "next": "15.3.2",
     "next-sanity": "^9.11.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-dropdown-select": "^4.12.0",
     "sanity": "^3.88.2",
-    "styled-components": "^6.1.18"
+    "styled-components": "^6.1.18",
+    "yet-another-react-lightbox": "^3.23.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

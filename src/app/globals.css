@@ -306,6 +306,12 @@ header{
     justify-content: space-between;
     width: 100%;
     padding:2.5rem 3.125rem 0rem 3.125rem;
+    will-change:opacity;
+    transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -o-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -ms-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -moz-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -webkit-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .nav-toggle{
@@ -1118,6 +1124,14 @@ div:has(> .react-dropdown-select) {
         display:none;
   }
 
+  .button-next, .button-previous{
+    display:none;
+  }
+
+  .lightbox{
+    display:none;
+  }
+
 @media only screen and (max-width:1366px){
 
     h1{
@@ -1465,9 +1479,9 @@ line-height: 1.225rem;
     }
 
     #menu{
-        gap:2.813rem;
+        gap:2.5rem;
         padding-top: 8.75rem;
-        padding-bottom: 3.125rem;
+        padding-bottom: 0rem;
     }
 
     .form-footer h6, .form-footer-menu .menuitem{
@@ -1509,11 +1523,11 @@ line-height: 1.225rem;
     }
 
     .textpage-title{
-        padding-bottom:1.875rem;
+        padding-bottom:1.563rem;
     }
 
     .introblock{
-        padding-bottom:1.875rem;
+        padding-bottom:1.563rem;
         max-width:33.75rem;
     }
 
@@ -1537,7 +1551,7 @@ line-height: 1.225rem;
     }
 
     .image-text-slide .text {
-        padding: 2.125rem 3.75rem;
+        padding: 2.125rem 1.25rem 2.125rem 3.75rem;
         justify-content: flex-end;
     }
 
@@ -1547,10 +1561,256 @@ line-height: 1.225rem;
 
     .image-text-slide .inner-text {
         position:static;
+        width:100%;
     }
 
     .image-text-slide .inner-text .title{
         width:100%;
+    }
+
+    .button-next, .button-previous{
+        display:none;
+      }
+
+    .button-previous img, .button-next img{
+        height: auto !important;
+        width: 0.566rem;
+        object-fit:contain;
+    }
+
+    .button-next{
+        padding-left:0.938rem;
+    }
+
+    .button-previous{
+        padding-right:0.938rem;
+    }
+
+    .slide-footer .count{
+        padding:0px;
+    }
+
+    .slide-footer .caption{
+        padding-left:1.25rem;
+    }
+
+    .lastslide .button-next{
+        display:none;
+    }
+
+    .flickity-prev-next-button.previous, .flickity-prev-next-button.next{
+        display:none !important;
+    }
+
+    .button-next, .button-previous{
+        display:block;
+      }
+
+    .flickity-cell:first-of-type .button-previous {
+        display:none;
+    }
+
+    .slide-overlay {
+        padding: 3.125rem 3.75rem 4.75rem 3.75rem;
+    }
+
+    .slide-footer{
+        padding: 2.188rem 3.75rem;
+    }
+
+    .slide-overlay h3{
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height:1.75rem;
+    }
+
+    .slide-footer .title{
+        display:none;
+    }
+
+    .lightbox{
+        display:block;
+        position:absolute;
+        right:1.875rem;
+        bottom:2.188rem;
+      }
+
+      .lightbox img{
+        width:1.75rem;
+        height:auto !important;
+        object-fit:contain;
+      }
+
+      .inner-quote-text h3{
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.4rem;
+      }
+
+      .largeImageContainer{
+        display:none;
+      }
+
+      .smallImageContainer{
+        width:100%;
+        height:100%;
+      }
+
+      .smallImageContainer img{
+        height:100% !important;
+        width:auto;
+      }
+
+      .next-page-title{
+        padding-left:0.938rem;
+        padding-right:2.313rem;
+      }
+
+      .purple-arrow {
+        width: 0.406rem;
+        height: 0.813rem;
+        position: absolute;
+        right: 1.063rem;
+    }
+
+    .react-dropdown-select, input{
+        padding:0.688rem 0rem !important;
+        height:2.3rem;
+        min-height:2.3rem;
+        font-size: 0.875rem;
+        letter-spacing: 0.131rem;
+      }
+
+      .custom-placeholder{
+        font-size: 0.875rem !important;
+        letter-spacing: 0.131rem !important;
+      }
+
+      .form-container input, .form-container select{
+        width: calc(50% - 0.625rem);
+      }
+
+      .react-dropdown-select-dropdown{
+        top:2.3rem;
+      }
+
+      form{
+        gap:1.25rem;
+      }
+
+      .form-container{
+        justify-content: flex-start;
+        padding:10.5rem 3.75rem 0rem 3.75rem;
+      }
+
+      .submit{
+        margin-top:3.438rem;
+        font-size: 0.875rem;
+        letter-spacing: 0.131rem;
+      }
+
+      .react-dropdown-select-item{
+        font-size: 0.875rem;
+        letter-spacing: 0.131rem;
+      }
+
+      .form-footer{
+        padding-top:4.688rem;
+        padding-bottom:4.688rem;
+        position:static;
+        flex-direction: column-reverse;
+        gap:1.563rem;
+      }
+
+      .image-lightbox{
+        position:fixed;
+        top:0;
+        left:0;
+        display:none;
+        opacity:0;
+        z-index: 1000000;
+        width:100%;
+      }
+
+      .image-lightbox img{
+        object-fit: contain;
+      }
+
+      .lightbox-close{
+        position:absolute;
+        left:1.563rem;
+        top:2.125rem;
+        z-index:1000000;
+      }
+
+      .largeImageContainer{
+        display:none;
+      }
+
+      .smallImageContainer{
+        width:100%;
+      }
+
+      .smallImageContainer img{
+        width:100%;
+      }
+
+      .image-lightbox{
+        will-change:opacity;
+        transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        -o-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        -ms-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        -moz-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        -webkit-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .lightbox{
+        display:block;
+        position:absolute;
+        right:1.563rem;
+        bottom:1.75rem;
+      }
+
+      .lightbox img{
+        width:1.75rem;
+        height:auto !important;
+        object-fit:contain;
+      }
+
+      .next-page-link{
+        height:fit-content;
+        top:0;
+        bottom:0;
+        padding:0.438rem 0rem 0.688rem 0rem !important;
+        margin:auto;
+      }
+
+      .next-page-title{
+        padding-left:0.938rem;
+        padding-right:2.313rem;
+        font-size: 0.875rem;
+      }
+
+      .purple-arrow {
+        width: auto;
+        height: 0.813rem;
+        position: absolute;
+        right: 1.281rem;
+    }
+
+    .flickity-top-overlay, .flickity-bottom-overlay{
+        height:6.25rem;
+    }
+
+    .contact-form-title{
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.575rem;
+        max-width:85%;
+        margin:0 auto 3.813rem auto;
     }
 }
 
@@ -1648,24 +1908,11 @@ line-height: 1.225rem;
     }
 
     .flickity-prev-next-button.previous, .flickity-prev-next-button.next{
-        width:0.566rem !important;
-        height:0.566rem !important;
-    }
-
-    .flickity-prev-next-button.previous {
-        left: 1.563rem !important;
-        top: unset !important;
-        bottom: 1.813rem !important;
-    }
-
-    .flickity-prev-next-button.next{
-        top: unset !important;
-        bottom: 1.813rem !important;
-        left: 5.188rem !important;
+        display:none;
     }
 
     .slide-footer{
-        padding: 1.813rem  3.25rem !important;
+        padding: 1.813rem 1.563rem !important;
     }
 
     #mobileMenu .menuitem{
@@ -1739,6 +1986,7 @@ line-height: 1.225rem;
         font-style: normal;
         font-weight: 400;
         line-height: 1.575rem;
+        margin-bottom:4.688rem;
     }
 
     .form-footer{
@@ -1759,14 +2007,17 @@ line-height: 1.225rem;
         width:100%;
         height:50vh;
         min-height:50vh;
+        position:absolute;
+        z-index:-1;
+        top:0;
     }
 
     .textpage-title{
-        padding-bottom:1.875rem;
+        padding-bottom:1.563rem;
     }
 
     .introblock{
-        padding-bottom:1.875rem;
+        padding-bottom:1.563rem;
     }
 
     .text-block .title{
@@ -1781,17 +2032,220 @@ line-height: 1.225rem;
 
     .image-text-slide .text{
         width: 100%;
-        height: 50vh !important;
+        height: fit-content !important;
+        min-height:50vh;
         padding:1.563rem;
         justify-content: flex-end;
+        position:absolute;
+        bottom:0;
     }
 
     .image-text-slide .inner-text {
         position:static;
+        width:100%;
     }
 
     .image-text-slide .inner-text .title{
         width:100%;
     }
 
+    .contact-form-close{
+        top:2.188rem;
+        left:1.563rem;
+        position:fixed;
+    }
+
+    .button-next, .button-previous{
+        display:block;
+      }
+
+    .button-previous img, .button-next img{
+        height: auto !important;
+        width: 0.566rem;
+        object-fit:contain;
+    }
+
+    .button-next{
+        padding-left:0.938rem;
+    }
+
+    .button-previous{
+        padding-right:0.938rem;
+    }
+
+    .slide-footer .count{
+        padding:0px;
+    }
+
+    .slide-footer .caption{
+        padding-left:1.25rem;
+    }
+
+    .lastslide .button-next{
+        display:none;
+    }
+
+    .flickity-cell:first-of-type .button-previous {
+        display:none;
+    }
+
+    .slide-overlay {
+        padding: 3.125rem 1.563rem 4.688rem;
+    }
+
+    .slide-overlay h3{
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height:1.75rem;
+    }
+
+    .image-lightbox{
+        will-change:opacity;
+        transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        -o-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        -ms-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        -moz-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        -webkit-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .lightbox{
+        display:block;
+        position:absolute;
+        right:1.563rem;
+        bottom:1.75rem;
+      }
+
+      .lightbox img{
+        width:1.75rem;
+        height:auto !important;
+        object-fit:contain;
+      }
+
+      .quote-slide{
+        flex-direction:column;
+      }
+
+      .quote-image{
+        order:2;
+        height:50vh;
+      }
+
+      .quote-text{
+        order:1;
+        height:50vh;
+      }
+
+      .flickity-cell img{
+        height:50vh;
+      }
+
+      .quote-image, .quote-text{
+        width:100%;
+      }
+
+      .inner-quote-text h3{
+        font-size: 1.063rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.488rem;
+      }
+
+      .inner-quote-text{
+        gap:1.125rem !important;
+      }
+
+      .object-contain{
+        object-fit: contain !important;
+      }
+
+      button img{
+        height:auto !important;
+      }
+
+      .image-lightbox{
+        position:fixed;
+        top:0;
+        left:0;
+        display:none;
+        opacity:0;
+        z-index: 1000000;
+      }
+
+      .lightbox-close{
+        position:absolute;
+        left:1.563rem;
+        top:2.125rem;
+        z-index:1000000;
+      }
+
+      .largeImageContainer{
+        display:none;
+      }
+
+      .smallImageContainer{
+        width:100%;
+      }
+
+      .smallImageContainer img{
+        width:100%;
+      }
+
+      .react-dropdown-select, input{
+        padding:0.688rem 0rem !important;
+        height:2.3rem;
+        min-height:2.3rem;
+        font-size: 0.875rem;
+        letter-spacing: 0.131rem;
+      }
+
+      .react-dropdown-select-dropdown{
+        top:2.3rem;
+      }
+
+      form{
+        gap:2.5rem;
+      }
+
+      .submit{
+        margin-top:2.188rem;
+        font-size: 0.875rem;
+        letter-spacing: 0.131rem;
+      }
+
+      .react-dropdown-select-item{
+        font-size: 0.875rem;
+        letter-spacing: 0.131rem;
+      }
+
+      .form-footer{
+        padding-top:4.688rem;
+        padding-bottom:4.688rem;
+      }
+
+      .custom-placeholder{
+        font-size: 0.875rem !important;
+        letter-spacing: 0.131rem !important;
+      }
+
+      .next-page-link{
+        height:fit-content;
+        top:0;
+        bottom:0;
+        padding:0.438rem 0rem 0.688rem 0rem !important;
+        margin:auto;
+      }
+
+      .next-page-title{
+        padding-left:0.938rem;
+        padding-right:2.313rem;
+        font-size: 0.875rem;
+      }
+
+      .purple-arrow {
+        width: auto;
+        height: 0.813rem;
+        position: absolute;
+        right: 1.281rem;
+    }
 }

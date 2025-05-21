@@ -5,7 +5,7 @@ import ContactForm from "@/components/ContactForm";
 
 export function Header() {
   return (
-      <header className="flex items-center justify-between">
+      <header className="flex items-center justify-between" id="header">
       <div className="left-menu" id="leftMenu">
       <a className="nav-toggle" id="navToggle">
           <div className="bar" id="firstBar"></div>

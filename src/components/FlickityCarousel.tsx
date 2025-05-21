@@ -168,6 +168,7 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
       Flickity = flickityModule.default;
 
       function closeLightbox() {
+        document.body.classList.remove('lightbox-visible');
         const selectedSlide = document.querySelector('.flickity-cell.is-selected');
         const img = selectedSlide?.querySelector('.image-lightbox');
       
@@ -212,19 +213,24 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
   
         setFlickityInstance(flkty);
   
-        flkty.on('change', function(index) {
-          closeLightbox();
+        flkty.on('change', function(index) { 
+          if (document.body.classList.contains('lightbox-visible')) {
+            closeLightbox();
+          }
           if (index === flkty.slides.length - 1) {
             requestAnimationFrame(() => {
               const width = window.innerWidth;
               if (width <= 1366) {
-                header.style.visibility = "hidden";
+                header.style.opacity = 1;
                 header.style.pointerEvents = "none";
                 footer.style.opacity = 0;
                 footer.style.pointerEvents = "none";
                 nextPageTitle.style.opacity = 1;
+                setTimeout(() => {
+                  nextPageLink.style.transform = "translateX(0px)";
+                }, 2000);
               } else {
-                header.style.visibility = "hidden";
+                header.style.opacity = 0;
                 header.style.pointerEvents = "none";
                 footer.style.opacity = 0;
                 footer.style.pointerEvents = "none";
@@ -257,16 +263,16 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
                     delay:1.1,
                   });
                 });
+                setTimeout(() => {
+                  nextPageLink.style.transform = "translateX(0px)";
+                }, 1000);
               }
             });
         
-            setTimeout(() => {
-              nextPageLink.style.transform = "translateX(0px)";
-            }, 1000);
         
           } else {
             requestAnimationFrame(() => {
-              header.style.visibility = "visible";
+              header.style.opacity = "1";
               header.style.pointerEvents = "all";
               footer.style.opacity = 1;
               footer.style.pointerEvents = "all";

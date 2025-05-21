@@ -804,7 +804,6 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     height:100svh;
     justify-content: center;
     align-items: center;
-    padding:1.063rem;
     width:fit-content;
     max-width:3.125rem;
     will-change:opacity, transform;
@@ -820,7 +819,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     width: 0.844rem;
     top:0;
     bottom:0;
-    position:absolute;
+    position:fixed;
     right:1.063rem;
     margin:auto 0;
 }
@@ -1772,7 +1771,7 @@ line-height: 1.225rem;
       .purple-arrow {
         width: 0.406rem;
         height: 0.813rem;
-        position: absolute;
+        /* position: absolute; */
         right: 1.063rem;
     }
 
@@ -1877,7 +1876,7 @@ line-height: 1.225rem;
       }
 
       .lightbox img{
-        width:1.75rem;
+        width:1.75rem; 
         height:auto !important;
         object-fit:contain;
       }
@@ -1886,7 +1885,7 @@ line-height: 1.225rem;
         height:fit-content;
         top:0;
         bottom:0;
-        padding:0.438rem 0rem 0.688rem 0rem !important;
+        padding:0.438rem 0rem !important;
         margin:auto;
         max-width:fit-content;
       }
@@ -1899,8 +1898,7 @@ line-height: 1.225rem;
 
       .purple-arrow {
         width: auto;
-        height: 0.813rem;
-        position: absolute;
+        height: 0.813rem !important;
         right: 1.281rem;
     }
 
@@ -2366,7 +2364,7 @@ line-height: 1.225rem;
         height:fit-content;
         top:0;
         bottom:0;
-        padding:0.438rem 0rem 0.688rem 0rem !important;
+        padding:0.438rem 0rem !important;
         margin:auto;
         max-width:fit-content;
       }
@@ -2379,8 +2377,8 @@ line-height: 1.225rem;
 
       .purple-arrow {
         width: auto;
-        height: 0.813rem;
-        position: absolute;
+        height: 0.813rem !important;
+        /* position: absolute; */
         right: 1.281rem;
     }
     .intro-slide .slide-footer{

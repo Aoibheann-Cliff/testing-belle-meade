@@ -45,6 +45,7 @@ export default function GlobalPageEffects() {
           const img = selectedSlide?.querySelector('.image-lightbox');
   
           if (img) {
+            document.body.classList.add('lightbox-visible');
             img.style.display = "block";
             header.style.opacity = "0";
             setTimeout(() => {
@@ -57,6 +58,7 @@ export default function GlobalPageEffects() {
 
       lightboxCloseButtons.forEach(button => {
         button.addEventListener('click', function () {
+          document.body.classList.remove('lightbox-visible');
           const selectedSlide = document.querySelector('.flickity-cell.is-selected');
           const img = selectedSlide?.querySelector('.image-lightbox');
   

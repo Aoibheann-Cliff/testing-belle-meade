@@ -99,8 +99,8 @@ export default async function Page({
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
+                     <a href={`/${page.nextPage.slug.current}`}>
                       <div className="next-page-link" id="nextPageLink">
-                        <a href={`/${page.nextPage.slug.current}`}>
                             <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
                             <Image
                               className="purple-arrow"
@@ -109,8 +109,8 @@ export default async function Page({
                               width={27}
                               height={13.5}
                             />
-                        </a>
                         </div>
+                        </a>
                       )}
                     </div>
                   );
@@ -165,8 +165,8 @@ export default async function Page({
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
                         </div>
                         {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
+                     <a href={`/${page.nextPage.slug.current}`}>
                       <div className="next-page-link" id="nextPageLink">
-                        <a href={`/${page.nextPage.slug.current}`}>
                             <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
                             <Image
                               className="purple-arrow"
@@ -175,8 +175,8 @@ export default async function Page({
                               width={27}
                               height={13.5}
                             />
-                        </a>
                         </div>
+                        </a>
                       )}
                     </div>
                   );
@@ -223,8 +223,8 @@ export default async function Page({
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
+                     <a href={`/${page.nextPage.slug.current}`}>
                       <div className="next-page-link" id="nextPageLink">
-                        <a href={`/${page.nextPage.slug.current}`}>
                             <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
                             <Image
                               className="purple-arrow"
@@ -233,8 +233,8 @@ export default async function Page({
                               width={27}
                               height={13.5}
                             />
-                        </a>
                         </div>
+                        </a>
                       )}
                     </div>
                   );
@@ -286,8 +286,8 @@ export default async function Page({
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
+                     <a href={`/${page.nextPage.slug.current}`}>
                       <div className="next-page-link" id="nextPageLink">
-                        <a href={`/${page.nextPage.slug.current}`}>
                             <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
                             <Image
                               className="purple-arrow"
@@ -296,8 +296,8 @@ export default async function Page({
                               width={27}
                               height={13.5}
                             />
-                        </a>
                         </div>
+                        </a>
                       )}
                     </div>
                   );
@@ -345,8 +345,8 @@ export default async function Page({
                       />
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
+                     <a href={`/${page.nextPage.slug.current}`}>
                       <div className="next-page-link" id="nextPageLink">
-                        <a href={`/${page.nextPage.slug.current}`}>
                             <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
                             <Image
                               className="purple-arrow"
@@ -355,8 +355,8 @@ export default async function Page({
                               width={27}
                               height={13.5}
                             />
-                        </a>
                         </div>
+                        </a>
                       )}
                     </div>
                   );
@@ -422,8 +422,8 @@ export default async function Page({
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
+                     <a href={`/${page.nextPage.slug.current}`}>
                       <div className="next-page-link" id="nextPageLink">
-                        <a href={`/${page.nextPage.slug.current}`}>
                             <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
                             <Image
                               className="purple-arrow"
@@ -432,8 +432,8 @@ export default async function Page({
                               width={27}
                               height={13.5}
                             />
-                        </a>
                         </div>
+                        </a>
                       )}
                     </div>
                   );

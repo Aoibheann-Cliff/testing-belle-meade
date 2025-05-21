@@ -21,11 +21,11 @@ body{
     font-family: 'Millionaire-Roman';
     overscroll-behavior: none;
     height:100svh;
-    overflow-x: scroll;
+    overflow-y: scroll;
 }
 
 body.has-slider{
-    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 h1{

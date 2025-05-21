@@ -1944,7 +1944,7 @@ line-height: 1.225rem;
         font-size: 0.938rem;
         line-height: 1.313rem;
         max-width:50%;
-        bottom:1.875rem;
+        bottom:1.875rem !important;
     }
 
     .siteLogo {

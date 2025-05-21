@@ -540,6 +540,10 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     width:100% !important;
 }
 
+.overlay-slide .slide-footer{
+    display:none;
+}
+
 .small-large-image-slide{
     display:flex;
     flex-direction: row;
@@ -1869,6 +1873,10 @@ line-height: 1.225rem;
     .mobile-close{
         display:block;
     }
+
+    .overlay-slide .slide-footer{
+        display:block;
+    }
 }
 
 @media only screen and (max-width:600px)
@@ -2316,5 +2324,8 @@ line-height: 1.225rem;
         height: 0.813rem;
         position: absolute;
         right: 1.281rem;
+    }
+    .overlay-slide .slide-footer{
+        display:block;
     }
 }

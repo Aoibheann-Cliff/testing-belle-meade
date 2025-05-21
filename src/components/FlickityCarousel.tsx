@@ -103,7 +103,7 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
       
         if (img) {
           img.style.opacity = "0";
-          header.style.display = "block";
+          header.style.display = "flex";
           setTimeout(() => {
             img.style.display = "none";
             header.style.opacity = "1";

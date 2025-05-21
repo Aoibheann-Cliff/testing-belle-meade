@@ -12,9 +12,6 @@ import arrowprevious from '@/app/mobile-arrow.svg';
 import lightbox from '@/app/lightbox.svg';
 import PageEffects from "@/components/PageEffects";
 import { LayoutTypes } from "@/sanity/types";
-// import dynamic from "next/dynamic";
-// const PageEffects = dynamic(() => import("@/components/PageEffects"));
-
 
 export default async function Page({
   params,

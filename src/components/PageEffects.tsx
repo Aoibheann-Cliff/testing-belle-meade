@@ -71,36 +71,47 @@ export default function GlobalPageEffects() {
       });
       
 
-    function toggleHamburger() {
-      firstBar.style.transform = "rotate(45deg) translate(0.35rem, 0.35rem)";
-      secondBar.style.width = "0";
-      thirdBar.style.transform = "rotate(-45deg) translate(0.35rem, -0.35rem)";
-      firstBar.style.backgroundColor = "#4c2f48";
-      thirdBar.style.backgroundColor= "#4c2f48";
-      if (nextPageLink) {
-        nextPageLink.style.zIndex = "1";
+      function toggleHamburger() {
+        const width = window.innerWidth;
+      
+        if (width <= 600) {
+          firstBar.style.transform = "rotate(45deg) translate(0.375rem, 0.375rem)";
+          thirdBar.style.transform = "rotate(-45deg) translate(0.375rem, -0.375rem)";
+        } else {
+          firstBar.style.transform = "rotate(45deg) translate(0.35rem, 0.35rem)";
+          thirdBar.style.transform = "rotate(-45deg) translate(0.35rem, -0.35rem)";
+        }
+      
+        secondBar.style.width = "0";
+        firstBar.style.backgroundColor = "#4c2f48";
+        thirdBar.style.backgroundColor = "#4c2f48";
+      
+        if (nextPageLink) {
+          nextPageLink.style.zIndex = "1";
+        }
+      
+        const isOpen = menuContainer.style.display === "flex";
+      
+        if (!isOpen) {
+          menuContainer.style.display = "flex";
+          logo.src = purplesymbol.src;
+          openBtn.style.color = "#4c2f48";
+          openBtn.style.border = "1px solid #4c2f48";
+      
+          gsap.fromTo(menuContainer, { top: "-100vh" }, {
+            top: "0",
+            duration: 1,
+            ease: "power3.out",
+            onComplete: () => {
+              menu.style.opacity = "1";
+              menuFooter.style.opacity = "1";
+            }
+          });
+        } else {
+          closeMenu();
+        }
       }
-
-      const isOpen = menuContainer.style.display === "flex";
-
-      if (!isOpen) {
-        menuContainer.style.display = "flex";
-        logo.src = purplesymbol.src;
-        openBtn.style.color = "#4c2f48";
-        openBtn.style.border = "1px solid #4c2f48";
-        gsap.fromTo(menuContainer, { top: "-100vh" }, {
-          top: "0",
-          duration: 1,
-          ease: "power3.out",
-          onComplete: () => {
-            menu.style.opacity = "1";
-            menuFooter.style.opacity = "1";
-          }
-        });
-      } else {
-        closeMenu();
-      }
-    }
+      
 
     function closeMenu() {
       firstBar.style.transform = "rotate(0deg) translate(0rem, 0rem)";

@@ -271,6 +271,18 @@ h6{
     right:3.125rem;
 }
 
+.desktop-close{
+    display:block;
+}
+
+.ipad-close{
+    display:none;
+}
+
+.mobile-close{
+    display:none;
+}
+
 .form, .form-footer{
     opacity:0;
     will-change:opacity;
@@ -305,7 +317,7 @@ header{
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding:2.5rem 3.125rem 0rem 3.125rem;
+    padding:2.5rem 3.125rem 2.5rem 3.125rem;
     will-change:opacity;
     transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
     -o-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -1400,6 +1412,18 @@ div:has(> .react-dropdown-select) {
         left:3.125rem;
         right:unset;
     }
+
+    .desktop-close{
+        display:none;
+    }
+    
+    .ipad-close{
+        display:block;
+    }
+    
+    .mobile-close{
+        display:none;
+    }
 }
 
 @media only screen and (max-device-width : 1024px)
@@ -1812,6 +1836,18 @@ line-height: 1.225rem;
         max-width:85%;
         margin:0 auto 3.813rem auto;
     }
+
+    .desktop-close{
+        display:none;
+    }
+    
+    .ipad-close{
+        display:none;
+    }
+    
+    .mobile-close{
+        display:block;
+    }
 }
 
 @media only screen and (max-width:600px)
@@ -2053,6 +2089,18 @@ line-height: 1.225rem;
         top:2.188rem;
         left:1.563rem;
         position:fixed;
+    }
+
+    .desktop-close{
+        display:none;
+    }
+    
+    .ipad-close{
+        display:none;
+    }
+    
+    .mobile-close{
+        display:block;
     }
 
     .button-next, .button-previous{

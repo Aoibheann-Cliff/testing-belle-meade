@@ -349,10 +349,24 @@ export default function ContactForm() {
       <div className="form-container">
         <div className="form" id="form">
           <div className="contact-form-close" id="contactformclose">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <path d="M1 1L29 29" stroke="#4C2F48"/>
-            <path d="M29 1L1 29" stroke="#4C2F48"/>
-            </svg>
+            <div className="desktop-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M1 1L29 29" stroke="#4C2F48"/>
+                <path d="M29 1L1 29" stroke="#4C2F48"/>
+              </svg>
+            </div>
+            <div className="ipad-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M1.00049 0.707031L26.9999 26.7027" stroke="#4C2F48"/>
+                <path d="M26.9995 0.707031L1.0001 26.7027" stroke="#4C2F48"/>
+              </svg>
+            </div>
+            <div className="mobile-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M1 1L23 23" stroke="#4C2F48"/>
+                <path d="M23 1L1 23" stroke="#4C2F48"/>
+              </svg>
+            </div>
           </div>
           <h3 className="contact-form-thank-you">Thank you for your inquiry.</h3>
         </div>
@@ -364,11 +378,25 @@ export default function ContactForm() {
   <div className="form-container">
     <div className="form" id="form">
       <div className="contact-form-close" id="contactformclose">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <path d="M1 1L29 29" stroke="#4C2F48"/>
-            <path d="M29 1L1 29" stroke="#4C2F48"/>
-            </svg>
-          </div>
+      <div className="desktop-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M1 1L29 29" stroke="#4C2F48"/>
+                <path d="M29 1L1 29" stroke="#4C2F48"/>
+              </svg>
+            </div>
+            <div className="ipad-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M1.00049 0.707031L26.9999 26.7027" stroke="#4C2F48"/>
+                <path d="M26.9995 0.707031L1.0001 26.7027" stroke="#4C2F48"/>
+              </svg>
+            </div>
+            <div className="mobile-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M1 1L23 23" stroke="#4C2F48"/>
+                <path d="M23 1L1 23" stroke="#4C2F48"/>
+              </svg>
+            </div>
+      </div>
     <h3 className="contact-form-title">Opportunities to purchase a private residence will commence in the fall of 2025.  To inquire, please complete the following form.</h3>
     <form onSubmit={handleSubmit}>
     <Select

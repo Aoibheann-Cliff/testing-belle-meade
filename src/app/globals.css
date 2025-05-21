@@ -539,7 +539,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     width:100% !important;
 }
 
-.overlay-slide .slide-footer{
+.intro-slide .slide-footer{
     display:none;
 }
 
@@ -1882,8 +1882,8 @@ line-height: 1.225rem;
         display:block;
     }
 
-    .overlay-slide .slide-footer{
-        display:block;
+    .intro-slide .slide-footer{
+        display:flex;
     }
 }
 
@@ -2333,7 +2333,7 @@ line-height: 1.225rem;
         position: absolute;
         right: 1.281rem;
     }
-    .overlay-slide .slide-footer{
+    .intro-slide .slide-footer{
         display:flex;
     }
 }

@@ -104,7 +104,7 @@ export default async function Page({
                 case "imageAndTextOverlayWithText":
                   if (!slide.image) return <></>
                   return (
-                    <div key={index} className={`relative min-h-screen overlay-slide ${index + 1 === totalSlides ? 'lastslide' : 'slide'}`}>
+                    <div key={index} className={`relative min-h-screen intro-slide overlay-slide ${index + 1 === totalSlides ? 'lastslide' : 'slide'}`}>
                       <Image
                         src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
                         alt={slide.image?.alt || ""}

@@ -1500,6 +1500,12 @@ div:has(> .react-dropdown-select) {
     .next-page-link{
         max-width:fit-content;
     }
+
+    .purple-arrow {
+        width: auto;
+        height: 1.5rem !important;
+        right: 1.188rem;
+    }
 }
 
 @media only screen and (max-device-width : 1024px)
@@ -1771,7 +1777,6 @@ line-height: 1.225rem;
       .purple-arrow {
         width: 0.406rem;
         height: 0.813rem;
-        /* position: absolute; */
         right: 1.063rem;
     }
 
@@ -1895,12 +1900,6 @@ line-height: 1.225rem;
         padding-right:2.313rem;
         font-size: 0.875rem;
       }
-
-      .purple-arrow {
-        width: auto;
-        height: 0.813rem !important;
-        right: 1.281rem;
-    }
 
     .flickity-top-overlay, .flickity-bottom-overlay{
         height:6.25rem;
@@ -2378,7 +2377,6 @@ line-height: 1.225rem;
       .purple-arrow {
         width: auto;
         height: 0.813rem !important;
-        /* position: absolute; */
         right: 1.281rem;
     }
     .intro-slide .slide-footer{

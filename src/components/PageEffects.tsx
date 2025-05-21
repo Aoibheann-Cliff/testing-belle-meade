@@ -48,7 +48,7 @@ export default function GlobalPageEffects() {
             img.style.display = "block";
             header.style.opacity = "0";
             setTimeout(() => {
-              header.style.display = "flex";
+              header.style.display = "none";
               img.style.opacity = "1";
             }, 600);
           }
@@ -62,7 +62,7 @@ export default function GlobalPageEffects() {
   
           if (img) {
             img.style.opacity = "0";
-            header.style.display = "block";
+            header.style.display = "flex";
             setTimeout(() => {
               img.style.display = "none";
               header.style.opacity = "1";

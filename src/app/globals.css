@@ -1497,6 +1497,10 @@ div:has(> .react-dropdown-select) {
     .inquire{
         height:2.25rem;
     }
+
+    .next-page-link{
+        max-width:fit-content;
+    }
 }
 
 @media only screen and (max-device-width : 1024px)
@@ -1807,6 +1811,7 @@ line-height: 1.225rem;
         font-size: 0.875rem;
         letter-spacing: 0.131rem;
         height:2.25rem;
+        margin-bottom:1.875rem;
       }
 
       .react-dropdown-select-item{
@@ -1883,6 +1888,7 @@ line-height: 1.225rem;
         bottom:0;
         padding:0.438rem 0rem 0.688rem 0rem !important;
         margin:auto;
+        max-width:fit-content;
       }
 
       .next-page-title{
@@ -2343,6 +2349,7 @@ line-height: 1.225rem;
         margin-top:2.188rem;
         font-size: 0.875rem;
         letter-spacing: 0.131rem;
+        margin-bottom:1.875rem;
       }
 
       .react-dropdown-select-item{
@@ -2361,6 +2368,7 @@ line-height: 1.225rem;
         bottom:0;
         padding:0.438rem 0rem 0.688rem 0rem !important;
         margin:auto;
+        max-width:fit-content;
       }
 
       .next-page-title{

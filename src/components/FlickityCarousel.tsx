@@ -19,35 +19,6 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
       const header = document.getElementById('header');
       const footer = document.getElementById('footer');
 
-      nextPageLink.addEventListener('mouseenter', () => {
-        const naturalWidth = nextPageTitle.scrollWidth + "px";
-        gsap.to(nextPageLink, {
-          maxWidth: naturalWidth,
-          duration: 1,
-          ease: "power3.out"
-        });
-      
-        gsap.to(nextPageTitle, {
-          opacity: 1,
-          duration: 0.3,
-          ease: "power1.out",
-          delay: 0.7
-        });
-      });
-      
-      nextPageLink.addEventListener('mouseleave', () => {
-        gsap.to(nextPageTitle, {
-          opacity: 0,
-          ease: "power1.out"
-        });
-      
-        gsap.to(nextPageLink, {
-          maxWidth: "3.125rem",
-          duration: 1,
-          ease: "power3.out",
-          delay:1.1,
-        });
-      });
 
     //     nextPageLink?.style.setProperty('display', 'flex');
     //     setTimeout(() => {
@@ -245,11 +216,48 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
           closeLightbox();
           if (index === flkty.slides.length - 1) {
             requestAnimationFrame(() => {
-              header.style.visibility = "hidden";
-              header.style.pointerEvents = "none";
-              footer.style.opacity = 0;
-              footer.style.pointerEvents = "none";
-              console.log(header.style.opacity)
+              const width = window.innerWidth;
+              if (width <= 1366) {
+                header.style.visibility = "hidden";
+                header.style.pointerEvents = "none";
+                footer.style.opacity = 0;
+                footer.style.pointerEvents = "none";
+                nextPageTitle.style.opacity = 1;
+              } else {
+                header.style.visibility = "hidden";
+                header.style.pointerEvents = "none";
+                footer.style.opacity = 0;
+                footer.style.pointerEvents = "none";
+                nextPageLink.addEventListener('mouseenter', () => {
+                  const naturalWidth = nextPageTitle.scrollWidth + "px";
+                  gsap.to(nextPageLink, {
+                    maxWidth: naturalWidth,
+                    duration: 1,
+                    ease: "power3.out"
+                  });
+                
+                  gsap.to(nextPageTitle, {
+                    opacity: 1,
+                    duration: 0.3,
+                    ease: "power1.out",
+                    delay: 0.7
+                  });
+                });
+                
+                nextPageLink.addEventListener('mouseleave', () => {
+                  gsap.to(nextPageTitle, {
+                    opacity: 0,
+                    ease: "power1.out"
+                  });
+                
+                  gsap.to(nextPageLink, {
+                    maxWidth: "3.125rem",
+                    duration: 1,
+                    ease: "power3.out",
+                    delay:1.1,
+                  });
+                });
+              }
             });
         
             setTimeout(() => {
@@ -262,7 +270,7 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
               header.style.pointerEvents = "all";
               footer.style.opacity = 1;
               footer.style.pointerEvents = "all";
-              console.log(header.style.opacity)
+  
             });
         
             setTimeout(() => {

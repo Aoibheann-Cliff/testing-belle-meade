@@ -28,6 +28,10 @@ body.has-slider{
     overflow-y: hidden;
 }
 
+.min-h-screen{
+    min-height: 100svh;
+}
+
 h1{
     color:#FFF9F2 !important;
     font-family: 'Millionaire-Roman';  
@@ -108,7 +112,7 @@ h6{
     top:0;
     left:0;
     width:100%;
-    height:100vh;
+    height:100svh;
     background:#4C2F48 !important;
     opacity:1;
     will-change:opacity;
@@ -122,7 +126,7 @@ h6{
 .overlay{
     z-index: 1;
     width: 100%;
-    height: 100vh;
+    height: 100svh;
     position: absolute;
     top: 0;
     left: 0;
@@ -309,7 +313,7 @@ form{
 .container{
     width:100%;
     max-width:100%;
-    min-height:100vh;
+    min-height:100svh;
 }
 
 header{
@@ -521,7 +525,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
 
 .image-text-slide .text{
     width:50%;
-    height:100vh;
+    height:100svh;
     padding:3.125rem;
     display:flex;
     gap:1.563rem;
@@ -583,12 +587,12 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
 
 .flickity-cell{
     width:100%;
-    height:100vh;
+    height:100svh;
 }
 
 .flickity-cell img{
     object-fit: cover;
-    height:100vh;
+    height:100svh;
 }
 
 .flickity-top-overlay{
@@ -642,7 +646,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
 }
 
 .contactpage{
-    min-height:100vh;
+    min-height:100svh;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -785,11 +789,11 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     display:flex;
     top:0;
     right:0;
-    transform: translateX(100vh);
+    transform: translateX(100svh);
     background: #C6BBCF;
     color:#4C2F48;
     z-index:9999;
-    height:100vh;
+    height:100svh;
     justify-content: center;
     align-items: center;
     padding:1.063rem;
@@ -881,22 +885,22 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
 }
 
 .homepage, .slideshowpage{
-    height:100vh;
+    height:100svh;
     overflow:hidden;
 }
 
 .form-container{
     position:fixed;
     z-index:99999;
-    top:-100vh;
+    top:-100svh;
     right:0;
     width:100%;
-    height:100vh;
-    max-height:100vh;
+    height:100svh;
+    max-height:100svh;
     overflow:scroll;
     display:none;
     flex-direction: column;
-    min-height:100vh;
+    min-height:100svh;
     justify-content:center;
     align-items: center;
     background:#FFF9F2
@@ -1135,12 +1139,12 @@ div:has(> .react-dropdown-select) {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 100vh;
-    min-height: 100vh;
+    height: 100svh;
+    min-height: 100svh;
     overflow:scroll;
     display: none;
     position: fixed;
-    top: -100vh;
+    top: -100svh;
     right: 0;
     flex-direction:column;
   }
@@ -2050,12 +2054,12 @@ line-height: 1.225rem;
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        height: 100vh;
-        min-height: 100vh;
-        max-height: 100vh;
+        height: 100svh;
+        min-height: 100svh;
+        max-height: 100svh;
         display: none;
         position: fixed;
-        top: -100vh;
+        top: -100svh;
         right: 0;
         overflow: scroll;
         padding: 8.125rem 1.563rem 0rem 1.563rem;
@@ -2253,6 +2257,7 @@ line-height: 1.225rem;
 
       .inner-quote-text{
         gap:1.125rem !important;
+        padding-top:4.5rem;
       }
 
       .object-contain{

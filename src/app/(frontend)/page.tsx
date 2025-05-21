@@ -30,7 +30,7 @@ export default async function Page() {
           src={urlFor(homepage.homepageimage)
             .width(1920)
             .height(1080)
-            .quality(100)
+            .quality(70)
             .auto("format")
             .url()}
           alt={homepage.homepageimage.alt || ""}
@@ -52,7 +52,7 @@ export default async function Page() {
           src={urlFor(homepage.designpageimage)
             .width(1920)
             .height(1080)
-            .quality(100)
+            .quality(70)
             .auto("format")
             .url()}
           alt={homepage.designpageimage.alt || ""}
@@ -69,7 +69,7 @@ export default async function Page() {
           src={urlFor(homepage.craftsmanshippageimage)
             .width(1920)
             .height(1080)
-            .quality(100)
+            .quality(70)
             .auto("format")
             .url()}
           alt={homepage.craftsmanshippageimage.alt || ""}
@@ -86,7 +86,7 @@ export default async function Page() {
           src={urlFor(homepage.residencespageimage)
             .width(1920)
             .height(1080)
-            .quality(100)
+            .quality(70)
             .auto("format")
             .url()}
           alt={homepage.residencespageimage.alt || ""}
@@ -103,7 +103,7 @@ export default async function Page() {
           src={urlFor(homepage.amenitiespageimage)
             .width(1920)
             .height(1080)
-            .quality(100)
+            .quality(70)
             .auto("format")
             .url()}
           alt={homepage.amenitiespageimage.alt || ""}
@@ -120,7 +120,7 @@ export default async function Page() {
           src={urlFor(homepage.parkpageimage)
             .width(1920)
             .height(1080)
-            .quality(100)
+            .quality(70)
             .auto("format")
             .url()}
           alt={homepage.parkpageimage.alt || ""}
@@ -137,7 +137,7 @@ export default async function Page() {
           src={urlFor(homepage.villagepageimage)
             .width(1920)
             .height(1080)
-            .quality(100)
+            .quality(70)
             .auto("format")
             .url()}
           alt={homepage.villagepageimage.alt || ""}

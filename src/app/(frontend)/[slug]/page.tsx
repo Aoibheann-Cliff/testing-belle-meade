@@ -63,7 +63,7 @@ export default async function Page({
                     <div key={index} className={`relative min-h-screen overlay-slide ${index + 1 === totalSlides ? 'lastslide' : 'slide'}`}>
                       <div className="flickity-top-overlay"></div>
                       <Image
-                        src={urlFor(slide.image).width(3840).height(2160).quality(100).auto('format').url()}
+                        src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
                         alt={slide.image?.alt || ""}
                         width={3840}
                         height={2160}
@@ -80,7 +80,7 @@ export default async function Page({
                           </svg>
                         </div>
                         <Image
-                          src={urlFor(slide.image).width(3840).height(2160).quality(100).auto('format').url()}
+                          src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
                           alt={slide.image?.alt || ""}
                           width={3840}
                           height={2160}
@@ -109,7 +109,7 @@ export default async function Page({
                   return (
                     <div key={index} className={`relative min-h-screen overlay-slide ${index + 1 === totalSlides ? 'lastslide' : 'slide'}`}>
                       <Image
-                        src={urlFor(slide.image).width(3840).height(2160).quality(100).auto('format').url()}
+                        src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
                         alt={slide.image?.alt || ""}
                         width={3840}
                         height={2160}
@@ -126,7 +126,7 @@ export default async function Page({
                           </svg>
                         </div>
                         <Image
-                          src={urlFor(slide.image).width(3840).height(2160).quality(100).auto('format').url()}
+                          src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
                           alt={slide.image?.alt || ""}
                           width={3840}
                           height={2160}
@@ -162,7 +162,7 @@ export default async function Page({
                     <div key={index} className={`min-h-screen ${index + 1 === totalSlides ? 'lastslide' : 'slide'}`}>
                       <div className="flickity-top-overlay"></div>
                         <Image
-                        src={urlFor(slide.image).width(3840).height(2160).quality(100).auto('format').url()}
+                        src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
                         alt={slide.image?.alt || ""}
                         width={3840}
                         height={2160}
@@ -179,7 +179,7 @@ export default async function Page({
                           </svg>
                         </div>
                         <Image
-                          src={urlFor(slide.image).width(3840).height(2160).quality(100).auto('format').url()}
+                          src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
                           alt={slide.image?.alt || ""}
                           width={3840}
                           height={2160}
@@ -228,7 +228,7 @@ export default async function Page({
                       </div>
                       <div className="quote-image">
                       <Image
-                        src={urlFor(slide.image).width(960).height(1080).quality(100).auto('format').url()}
+                        src={urlFor(slide.image).width(960).height(1080).quality(70).auto('format').url()}
                         alt={slide.image?.alt || ""}
                         width={960}
                         height={1080}
@@ -281,7 +281,7 @@ export default async function Page({
                         </div>
                       </div>
                       <Image
-                        src={urlFor(slide.image).width(960).height(1080).quality(100).auto('format').url()}
+                        src={urlFor(slide.image).width(960).height(1080).quality(70).auto('format').url()}
                         alt={slide.image?.alt || ""}
                         width={960}
                         height={1080}
@@ -309,7 +309,7 @@ export default async function Page({
                       {!reverse && slide.smallImage && (
                         <div className="smallImageContainer">
                         <Image
-                        src={urlFor(slide.smallImage).width(600).height(400).quality(100).auto('format').url()}
+                        src={urlFor(slide.smallImage).width(600).height(400).quality(70).auto('format').url()}
                         alt={slide.smallImage?.alt || ""}
                         width={600}
                         height={400}
@@ -322,7 +322,7 @@ export default async function Page({
                       )}
                       <div className="largeImageContainer">
                       <Image
-                        src={urlFor(slide.image).width(960).height(1080).quality(100).auto('format').url()}
+                        src={urlFor(slide.image).width(960).height(1080).quality(70).auto('format').url()}
                         alt={slide.image?.alt || ""}
                         width={960}
                         height={1080}
@@ -335,7 +335,7 @@ export default async function Page({
                       {reverse && slide.smallImage && (
                         <div className="smallImageContainer">
                         <Image
-                        src={urlFor(slide.smallImage).width(600).height(400).quality(100).auto('format').url()}
+                        src={urlFor(slide.smallImage).width(600).height(400).quality(70).auto('format').url()}
                         alt={slide.smallImage?.alt || ""}
                         width={600}
                         height={400}

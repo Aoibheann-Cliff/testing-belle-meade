@@ -819,6 +819,8 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     width: 0.844rem;
     top:0;
     bottom:0;
+    z-index:10000;
+    opacity:1;
     position:fixed;
     right:1.063rem;
     margin:auto 0;

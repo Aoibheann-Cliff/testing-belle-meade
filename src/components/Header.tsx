@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from "next/image";
 import symbol from '../app/symbol.svg';
+import purplesymbol from '../app/purple-symbol.svg';
 import ContactForm from "@/components/ContactForm";
 
 export function Header() {
@@ -19,7 +20,8 @@ export function Header() {
       </div>
       <div className="siteLogo">
         <Link className="" href="/">
-          <Image  id="logo" src={symbol} alt=""/>
+          <Image id="logo" src={symbol} alt=""/>
+          <Image id="purpleLogo" src={purplesymbol} alt=""/>
         </Link>
       </div>
       <div className="right-menu" id="rightMenu">

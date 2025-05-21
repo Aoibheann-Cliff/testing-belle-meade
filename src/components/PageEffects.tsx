@@ -23,6 +23,7 @@ export default function GlobalPageEffects() {
     const leftMenu = document.getElementById('leftMenu');
     const rightMenu = document.getElementById('rightMenu');
     const logo = document.getElementById('logo');
+    const purpleLogo = document.getElementById('purpleLogo');
     const navToggle = document.getElementById('navToggle');
     const wrapper = document.getElementById('contentWrapper');
     const firstBar = document.getElementById('firstBar');
@@ -94,7 +95,8 @@ export default function GlobalPageEffects() {
       
         if (!isOpen) {
           menuContainer.style.display = "flex";
-          logo.src = purplesymbol.src;
+          logo.style.opacity = 0;
+          purpleLogo.style.opacity = 1;
           openBtn.style.color = "#4c2f48";
           openBtn.style.border = "1px solid #4c2f48";
       
@@ -138,7 +140,8 @@ export default function GlobalPageEffects() {
       });
 
       setTimeout(() => {
-          logo.src = symbol.src;
+        logo.style.opacity = 1;
+        purpleLogo.style.opacity = 0;
           openBtn.style.color = "#fff9f2";
           openBtn.style.border = "1px solid #fff9f2";
           setTimeout(() => {
@@ -171,7 +174,8 @@ export default function GlobalPageEffects() {
       });
 
       setTimeout(() => {
-        logo.src = symbol.src;
+        logo.style.opacity = 1;
+        purpleLogo.style.opacity = 0;
       }, 1500);
 
       setTimeout(() => {
@@ -195,7 +199,8 @@ export default function GlobalPageEffects() {
       if (nextPageLink) {
         nextPageLink.style.zIndex = "1";
       }
-      logo.src = purplesymbol.src;
+      logo.style.opacity = 0;
+      purpleLogo.style.opacity = 1;
 
       setTimeout(() => {
         leftMenu.style.display = "none";
@@ -218,7 +223,8 @@ export default function GlobalPageEffects() {
       formContainer.style.display = "flex";
       leftMenu.style.opacity = "0";
       rightMenu.style.opacity = "0";
-      logo.src = purplesymbol.src;
+      logo.style.opacity = 0;
+      purpleLogo.style.opacity = 1;
 
       setTimeout(() => {
         leftMenu.style.display = "none";
@@ -275,7 +281,8 @@ export default function GlobalPageEffects() {
         ease: "power3.out",
         onComplete: () => {
           menuContainer.style.display = "none";
-          logo.src = symbol.src;
+          logo.style.opacity = 1;
+          purpleLogo.style.opacity = 0;
           openBtn.style.color = "#fff9f2";
           openBtn.style.border = "1px solid #fff9f2";
         }
@@ -306,7 +313,8 @@ export default function GlobalPageEffects() {
       });
 
       setTimeout(() => {
-        logo.src = symbol.src;
+        logo.style.opacity = 1;
+        purpleLogo.style.opacity = 0;
       }, 1500);
 
       setTimeout(() => {

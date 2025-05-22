@@ -31,6 +31,14 @@ export default function GlobalPageEffects() {
     const firstBar = document.getElementById('firstBar');
     const secondBar = document.getElementById('secondBar');
     const thirdBar = document.getElementById('thirdBar');
+
+    setTimeout(() => {
+      header.style.opacity = "1";
+    }, 1000);
+
+    setTimeout(() => {
+      footer.style.opacity = "1";
+    }, 1000);
     
     function toggleHamburger() {
       const width = window.innerWidth;

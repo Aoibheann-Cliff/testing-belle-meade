@@ -1201,6 +1201,9 @@ div:has(> .react-dropdown-select) {
     flex-direction: row-reverse !important;
 }
 
+.image-lightbox{
+    background:red !important;
+}
   @media only screen and (max-width:1366px)
   and (orientation : portrait) {
     .tagline{
@@ -2293,7 +2296,7 @@ line-height: 1.225rem;
       }
 
       .quote-slide{
-        flex-direction:column;
+        flex-direction:column !important;
       }
 
       .quote-image{

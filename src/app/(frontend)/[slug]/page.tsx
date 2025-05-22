@@ -81,7 +81,7 @@ export default async function Page({
                         blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
                         className="w-full aspect-[1920/1080] object-cover min-h-screen"
                       />
-                                            <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
+                        <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                                             <div className="lightbox-close">
                           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
                           <path d="M1 1L29 29" stroke="#ffffff"/>
@@ -100,7 +100,7 @@ export default async function Page({
                         />
                       </div>
                       </div>
-                      )};
+                      )}
                         <div className="slide-footer">
                           <h5 className="title">{page.title}</h5>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
@@ -174,7 +174,7 @@ export default async function Page({
                         />
                           </div>
                         </div>
-                      )};
+                      )}
                       <div className="slide-overlay">
                         <div className="text">
                           {slide.title && <h5 className="title">{slide.title}</h5>}
@@ -255,7 +255,7 @@ export default async function Page({
                         />
                       </div>
                       </div>
-                      )};
+                      )}
                         <div className="slide-footer">
                           <h5 className="title">{page.title}</h5>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
@@ -331,7 +331,7 @@ export default async function Page({
                         className="object-cover h-full w-full"
                       />
                       </div>
-                      )};
+                      )}
                       </div>
                         <div className="slide-footer">
                           <h5 className="title">{page.title}</h5>

@@ -4,7 +4,7 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import gsap from 'gsap';
-import Panzoom from 'panzoom';
+import panzoom from 'panzoom';
 import purplesymbol from '../app/purple-symbol.svg';
 import symbol from '../app/symbol.svg';
 
@@ -33,17 +33,22 @@ export default function GlobalPageEffects() {
     const nextPageLink = document.getElementById('nextPageLink');
     const header = document.getElementById('header');
 
+
     document.querySelectorAll('.image-lightbox img').forEach((img) => {
-      const panzoomInstance = Panzoom(img, {
-        maxScale: 5,
-        minScale: 1,
-        bounds: true,               // Prevents dragging image outside boundaries
-        contain: 'inside'           // Keeps the image inside its container
+      const panzoomInstance = panzoom(img, {
+        maxZoom: 5,          // old package expects maxZoom/minZoom, NOT maxScale/minScale
+        minZoom: 1,
+        pinchSpeed: 2,
+        bounds: true,
+        boundsPadding: 0.1,  // no 'contain' in old version
       });
     
-      // Optional: enable zoom with mouse wheel
-      img.parentElement.addEventListener('wheel', panzoomInstance.zoomWithWheel);
+      img.addEventListener('click', () => {
+        console.log('Transform:', panzoomInstance.getTransform());
+      });
+  
     });
+    
 
     setTimeout(() => {
       wrapper.style.opacity = "1";

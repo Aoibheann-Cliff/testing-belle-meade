@@ -4,6 +4,7 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import gsap from 'gsap';
+import Panzoom from 'panzoom';
 import purplesymbol from '../app/purple-symbol.svg';
 import symbol from '../app/symbol.svg';
 
@@ -32,47 +33,19 @@ export default function GlobalPageEffects() {
     const nextPageLink = document.getElementById('nextPageLink');
     const header = document.getElementById('header');
 
+    document.querySelectorAll('.image-lightbox img').forEach((img) => {
+      const panzoomInstance = Panzoom(img, {
+        maxScale: 5,
+        contain: 'outside'
+      });
+  
+      // Optional: enable zoom with mouse wheel
+      img.parentElement.addEventListener('wheel', panzoomInstance.zoomWithWheel);
+    });
+
     setTimeout(() => {
       wrapper.style.opacity = "1";
     }, 1000);
-
-
-      // const lightboxButtons = document.querySelectorAll('.lightbox');
-      // const lightboxCloseButtons = document.querySelectorAll('.lightbox-close');
-      // lightboxButtons.forEach(button => {
-      //   button.addEventListener('click', function () {
-      //     const selectedSlide = document.querySelector('.flickity-cell.is-selected');
-      //     const img = selectedSlide?.querySelector('.image-lightbox');
-  
-      //     if (img) {
-      //       document.body.classList.add('lightbox-visible');
-      //       img.style.display = "block";
-      //       header.style.opacity = "0";
-      //       setTimeout(() => {
-      //         header.style.display = "none";
-      //         img.style.opacity = "1";
-      //       }, 600);
-      //     }
-      //   });
-      // });
-
-      // lightboxCloseButtons.forEach(button => {
-      //   button.addEventListener('click', function () {
-      //     document.body.classList.remove('lightbox-visible');
-      //     const selectedSlide = document.querySelector('.flickity-cell.is-selected');
-      //     const img = selectedSlide?.querySelector('.image-lightbox');
-  
-      //     if (img) {
-      //       img.style.opacity = "0";
-      //       header.style.display = "flex";
-      //       setTimeout(() => {
-      //         img.style.display = "none";
-      //         header.style.opacity = "1";
-      //       }, 600);
-      //     }
-      //   });
-      // });
-      
 
       function toggleHamburger() {
         const width = window.innerWidth;

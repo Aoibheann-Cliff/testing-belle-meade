@@ -527,7 +527,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     width:100%;
 }
 
-.image-text-slide img{    
+.image-text-slide .image-container , .image-text-slide video{    
     width:50%;
 }
 
@@ -1197,6 +1197,10 @@ div:has(> .react-dropdown-select) {
     display:none;
   }
 
+  .flex-row-reverse {
+    flex-direction: row-reverse !important;
+}
+
   @media only screen and (max-width:1366px)
   and (orientation : portrait) {
     .tagline{
@@ -1656,12 +1660,16 @@ line-height: 1.225rem;
         top: 1.875rem;
     }
 
+    .image-text-slide .image-container img{
+        min-height:auto !important;
+    }
+
     .image-text-slide .text {
         padding: 2.125rem 1.25rem 2.125rem 3.75rem;
         justify-content: flex-end;
     }
 
-    .image-text-slide img{
+    .image-text-slide .image-container , .image-text-slide video{
         width:50%;
     }
 
@@ -2140,7 +2148,7 @@ line-height: 1.225rem;
         width:100%;
     }
 
-    .image-text-slide img{
+    .image-text-slide .image-container , .image-text-slide video{
         width:100%;
         height:50vh;
         min-height:50vh;
@@ -2422,6 +2430,11 @@ line-height: 1.225rem;
     
     .inquire{
         height:2.125rem;
+    }
+
+
+    .image-text-slide .image-container img{
+        min-height:auto !important;
     }
 }
 

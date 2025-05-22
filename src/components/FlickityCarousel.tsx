@@ -128,7 +128,6 @@ lightboxCloseButtons.forEach(button => {
               const width = window.innerWidth;
               if (width <= 1366) {
                 const naturalWidth = nextPageTitle.scrollWidth + "px";
-                header.style.opacity = 0;
                 header.style.pointerEvents = "none";
                 footer.style.opacity = 0;
                 footer.style.pointerEvents = "none";
@@ -148,7 +147,11 @@ lightboxCloseButtons.forEach(button => {
                   delay: 4
                 });
               } else {
-                header.style.opacity = 0;
+                gsap.to(header, {
+                  opacity: 0,
+                  duration: 0.6,
+                  ease: "power1.out",
+                });
                 header.style.pointerEvents = "none";
                 footer.style.opacity = 0;
                 footer.style.pointerEvents = "none";

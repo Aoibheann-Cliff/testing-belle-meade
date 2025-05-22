@@ -12,7 +12,6 @@ import arrowprevious from '@/app/mobile-arrow.svg';
 import lightbox from '@/app/lightbox.svg';
 import PageEffects from "@/components/PageEffects";
 import { LayoutTypes } from "@/sanity/types";
-import LightboxImage from "@/components/LightboxImage";
 
 export default async function Page({
   params,
@@ -60,6 +59,18 @@ export default async function Page({
                   return (
                     <div key={index} className="relative min-h-screen overlay-slide">
                       <div className="flickity-top-overlay"></div>
+                      {slide.mediaType === 'video' && (
+                      <video
+                        src={slide.videoFile.asset.url}
+                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      />
+                      )}
+                      {slide.mediaType === 'image' && (
+                        <div>
                       <Image
                         src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
                         alt={slide.image?.alt || ""}
@@ -77,8 +88,7 @@ export default async function Page({
                           <path d="M29 1L1 29" stroke="#ffffff"/>
                           </svg>
                         </div>
-                        
-                        <LightboxImage
+                        <Image
                           src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
                           alt={slide.image?.alt || ""}
                           width={3840}
@@ -89,6 +99,8 @@ export default async function Page({
                           className="w-full aspect-[1920/1080] object-contain min-h-screen overlay-img"
                         />
                       </div>
+                      </div>
+                      )};
                         <div className="slide-footer">
                           <h5 className="title">{page.title}</h5>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
@@ -121,6 +133,18 @@ export default async function Page({
                   if (!slide.image) return <></>
                   return (
                     <div key={index} className="relative min-h-screen intro-slide overlay-slide">
+                   {slide.mediaType === 'video' && (
+                      <video
+                        src={slide.videoFile.asset.url}
+                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      />
+                      )}
+                      {slide.mediaType === 'image' && (
+                        <div>
                       <Image
                         src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
                         alt={slide.image?.alt || ""}
@@ -138,17 +162,19 @@ export default async function Page({
                           <path d="M29 1L1 29" stroke="#ffffff"/>
                           </svg>
                         </div>
-                        <LightboxImage
-                            src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
-                            alt={slide.image?.alt || ""}
-                            width={3840}
-                            height={2160}
-                            quality={100}
-                            placeholder="blur"
-                            blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                            className="w-full aspect-[1920/1080] object-contain min-h-screen overlay-img"
-                          />
+                        <Image
+                          src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
+                          alt={slide.image?.alt || ""}
+                          width={3840}
+                          height={2160}
+                          quality={100}
+                          placeholder="blur"
+                          blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
+                          className="w-full aspect-[1920/1080] object-contain min-h-screen overlay-img"
+                        />
                           </div>
+                        </div>
+                      )};
                       <div className="slide-overlay">
                         <div className="text">
                           {slide.title && <h5 className="title">{slide.title}</h5>}
@@ -188,6 +214,18 @@ export default async function Page({
                   return (
                     <div key={index} className="min-h-screen">
                       <div className="flickity-top-overlay"></div>
+                      {slide.mediaType === 'video' && (
+                      <video
+                        src={slide.videoFile.asset.url}
+                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      />
+                      )}
+                      {slide.mediaType === 'image' && (
+                        <div>
                         <Image
                         src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
                         alt={slide.image?.alt || ""}
@@ -216,6 +254,8 @@ export default async function Page({
                           className="w-full aspect-[1920/1080] object-contain min-h-screen overlay-img"
                         />
                       </div>
+                      </div>
+                      )};
                         <div className="slide-footer">
                           <h5 className="title">{page.title}</h5>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
@@ -268,6 +308,18 @@ export default async function Page({
                         </div>
                       </div>
                       <div className="quote-image">
+                      {slide.mediaType === 'video' && (
+                      <video
+                        src={slide.videoFile.asset.url}
+                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      />
+                      )}
+                      {slide.mediaType === 'image' && (
+                        <div>
                       <Image
                         src={urlFor(slide.image).width(960).height(1080).quality(70).auto('format').url()}
                         alt={slide.image?.alt || ""}
@@ -278,6 +330,8 @@ export default async function Page({
                         blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
                         className="object-cover h-full w-full"
                       />
+                      </div>
+                      )};
                       </div>
                         <div className="slide-footer">
                           <h5 className="title">{page.title}</h5>
@@ -308,7 +362,7 @@ export default async function Page({
                 case "imageAndText":
                 case "imageLeftTextRight":
                 case "imageRightTextLeft": {
-                  const reverse = slide.layout === "imageRightTextLeft";
+                  const reverse = slide.layout === "imageLeftTextRight";
                   if (!slide.image) return <></>
                   return (
                     <div
@@ -335,6 +389,18 @@ export default async function Page({
                           )}
                         </div>
                       </div>
+                      {slide.mediaType === 'video' && (
+                      <video
+                        src={slide.videoFile.asset.url}
+                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      />
+                      )}
+                      {slide.mediaType === 'image' && (
+                        <div className="image-container">
                       <Image
                         src={urlFor(slide.image).width(960).height(1080).quality(70).auto('format').url()}
                         alt={slide.image?.alt || ""}
@@ -345,6 +411,8 @@ export default async function Page({
                         blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
                         className="object-cover min-h-screen"
                       />
+                      </div>
+                    )}
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
                         <a href={`/${page.nextPage.slug.current}`}>
@@ -377,6 +445,18 @@ export default async function Page({
                       <div className="flickity-top-overlay"></div>
                       {!reverse && slide.smallImage && (
                         <div className="smallImageContainer">
+                      {slide.mediaType === 'video' && (
+                      <video
+                        src={slide.videoFile.asset.url}
+                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      />
+                      )}
+                      {slide.mediaType === 'image' && (
+                        <div>
                         <Image
                         src={urlFor(slide.smallImage).width(600).height(400).quality(70).auto('format').url()}
                         alt={slide.smallImage?.alt || ""}
@@ -387,6 +467,8 @@ export default async function Page({
                         blurDataURL={urlFor(slide.smallImage).width(10).height(6).quality(10).url()}
                         className="object-cover"
                       />
+                        </div>
+                      )}
                         </div>
                       )}
                       <div className="largeImageContainer">
@@ -400,6 +482,8 @@ export default async function Page({
                         playsInline
                       />
                       )}
+                      {slide.mediaType === 'image' && (
+                        <div>
                       <Image
                         src={urlFor(slide.image).width(960).height(1080).quality(70).auto('format').url()}
                         alt={slide.image?.alt || ""}
@@ -411,8 +495,22 @@ export default async function Page({
                         className="object-cover min-h-screen"
                       />
                       </div>
+                    )}
+                      </div>
                       {reverse && slide.smallImage && (
                         <div className="smallImageContainer">
+                                                {slide.mediaType === 'video' && (
+                      <video
+                        src={slide.videoFile.asset.url}
+                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      />
+                      )}
+                      {slide.mediaType === 'image' && (
+                        <div>
                         <Image
                         src={urlFor(slide.smallImage).width(600).height(400).quality(70).auto('format').url()}
                         alt={slide.smallImage?.alt || ""}
@@ -423,6 +521,8 @@ export default async function Page({
                         blurDataURL={urlFor(slide.smallImage).width(10).height(6).quality(10).url()}
                         className="object-cover"
                       />
+                      </div>
+                    )}
                         </div>
                       )}
                         <div className="slide-footer">

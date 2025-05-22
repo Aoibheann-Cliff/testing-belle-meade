@@ -18,148 +18,6 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
       const nextPageTitle = document.getElementById('next-page-title');
       const header = document.getElementById('header');
       const footer = document.getElementById('footer');
-
-
-    //     nextPageLink?.style.setProperty('display', 'flex');
-    //     setTimeout(() => {
-    //       nextPageLink?.style.setProperty('opacity', '1');
-    //     }, 500);
-    //     function myFunction(x) {
-    //       if (x.matches) {
-    //         setTimeout(() => {
-    //           const naturalWidth = nextPageTitle.scrollWidth + "px";
-    //           gsap.to(nextPageLink, {
-    //             maxWidth: naturalWidth,
-    //             duration: 1,
-    //             ease: "power3.out"
-    //           });
-    //         }, 2000);
-    //         setTimeout(() => {
-    //           nextPageTitle.style.opacity = "1";
-    //         }, 3000);
-    //       } else {
-    //         nextPageLink.addEventListener('mouseenter', () => {
-    //           const naturalWidth = nextPageTitle.scrollWidth + "px";
-    //           gsap.to(nextPageLink, {
-    //             maxWidth: naturalWidth,
-    //             duration: 1,
-    //             ease: "power3.out"
-    //           });
-            
-    //           gsap.to(nextPageTitle, {
-    //             opacity: 1,
-    //             duration: 0.3,
-    //             ease: "power1.out",
-    //             delay: 0.7
-    //           });
-    //         });
-            
-    //         nextPageLink.addEventListener('mouseleave', () => {
-    //           gsap.to(nextPageTitle, {
-    //             opacity: 0,
-    //             ease: "power1.out"
-    //           });
-            
-    //           gsap.to(nextPageLink, {
-    //             maxWidth: "3.125rem",
-    //             duration: 1,
-    //             ease: "power3.out",
-    //             delay:1.1,
-    //           });
-    //         });
-            
-    //       }
-    //     }
-    //     const x = window.matchMedia("(max-width: 1366px)")
-    //     myFunction(x);
-    //     x.addEventListener("change", function() {
-    //       myFunction(x);
-    //     });
-    //   } else {
-    //     nextPageLink?.style.setProperty('display', 'none');
-    //     nextPageLink?.style.setProperty('opacity', '0');
-    //     nextPageTitle.style.display = "none";
-    //     nextPageTitle.style.opacity = "0";
-    //     nextPageLink.style.padding = "1.063rem";
-    //     nextPageLink.style.maxWidth = "3.125rem";
-    // };
-    
-  
-    // This runs after Flickity selects a slide
-    // const checkIfLastSlideSelected = () => {
-    //   const nextPageLink = document.getElementById('nextPageLink');
-    //   const nextPageTitle = document.getElementById('next-page-title');
-
-    //   if (!flkty) return;
-  
-    //   const selectedElement = flkty.selectedElement;
-    //   const lastCell = flkty.cells[flkty.cells.length - 1]?.element;
-  
-    //   if (selectedElement === lastCell) {
-    //     nextPageLink?.style.setProperty('display', 'flex');
-    //     setTimeout(() => {
-    //       nextPageLink?.style.setProperty('opacity', '1');
-    //     }, 500);
-    //     function myFunction(x) {
-    //       if (x.matches) {
-    //         setTimeout(() => {
-    //           const naturalWidth = nextPageTitle.scrollWidth + "px";
-    //           gsap.to(nextPageLink, {
-    //             maxWidth: naturalWidth,
-    //             duration: 1,
-    //             ease: "power3.out"
-    //           });
-    //         }, 2000);
-    //         setTimeout(() => {
-    //           nextPageTitle.style.opacity = "1";
-    //         }, 3000);
-    //       } else {
-    //         nextPageLink.addEventListener('mouseenter', () => {
-    //           const naturalWidth = nextPageTitle.scrollWidth + "px";
-    //           gsap.to(nextPageLink, {
-    //             maxWidth: naturalWidth,
-    //             duration: 1,
-    //             ease: "power3.out"
-    //           });
-            
-    //           gsap.to(nextPageTitle, {
-    //             opacity: 1,
-    //             duration: 0.3,
-    //             ease: "power1.out",
-    //             delay: 0.7
-    //           });
-    //         });
-            
-    //         nextPageLink.addEventListener('mouseleave', () => {
-    //           gsap.to(nextPageTitle, {
-    //             opacity: 0,
-    //             ease: "power1.out"
-    //           });
-            
-    //           gsap.to(nextPageLink, {
-    //             maxWidth: "3.125rem",
-    //             duration: 1,
-    //             ease: "power3.out",
-    //             delay:1.1,
-    //           });
-    //         });
-            
-    //       }
-    //     }
-    //     const x = window.matchMedia("(max-width: 1366px)")
-    //     myFunction(x);
-    //     x.addEventListener("change", function() {
-    //       myFunction(x);
-    //     });
-    //   } else {
-    //     nextPageLink?.style.setProperty('display', 'none');
-    //     nextPageLink?.style.setProperty('opacity', '0');
-    //     nextPageTitle.style.display = "none";
-    //     nextPageTitle.style.opacity = "0";
-    //     nextPageLink.style.padding = "1.063rem";
-    //     nextPageLink.style.maxWidth = "3.125rem";
-    //   }
-    // };
   
     Promise.all([
       import('flickity'),
@@ -167,11 +25,63 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
     ]).then(([flickityModule]) => {
       Flickity = flickityModule.default;
 
+      const lightboxButtons = document.querySelectorAll('.lightbox');
+const lightboxCloseButtons = document.querySelectorAll('.lightbox-close');
+const lightboxImages = document.querySelectorAll('.image-lightbox img');
+
+lightboxButtons.forEach(button => {
+  button.addEventListener('click', function () {
+    const selectedSlide = document.querySelector('.flickity-cell.is-selected');
+    const img = selectedSlide?.querySelector('.image-lightbox');
+
+    if (img) {
+      document.body.classList.add('lightbox-visible');
+      img.style.display = "block";
+      header.style.opacity = "0";
+
+      flkty.options.draggable = !flkty.options.draggable;
+      flkty.updateDraggable();
+
+      setTimeout(() => {
+        header.style.display = "none";
+        img.style.opacity = "1";
+      }, 600);
+    }
+  });
+});
+
+lightboxCloseButtons.forEach(button => {
+  button.addEventListener('click', function () {
+    document.body.classList.remove('lightbox-visible');
+    const selectedSlide = document.querySelector('.flickity-cell.is-selected');
+    const img = selectedSlide?.querySelector('.image-lightbox');
+
+    flkty.options.draggable = true;
+    flkty.updateDraggable();
+    if (img) {
+      img.style.opacity = "0";
+      header.style.display = "flex";
+      setTimeout(() => {
+        img.style.display = "none";
+        header.style.opacity = "1";
+      }, 600);
+    }
+  });
+});
+
+      lightboxImages.forEach(img => {
+      img.addEventListener('click', () => {
+        img.classList.toggle('zoomed');
+      });
+      });
+
       function closeLightbox() {
         document.body.classList.remove('lightbox-visible');
         const selectedSlide = document.querySelector('.flickity-cell.is-selected');
         const img = selectedSlide?.querySelector('.image-lightbox');
-      
+        flkty.options.draggable = true;
+        flkty.updateDraggable();
+
         if (img) {
           img.style.opacity = "0";
           header.style.display = "flex";
@@ -215,17 +125,34 @@ export default function FlickityCarousel({ children }: { children: React.ReactNo
   
         flkty.on('change', function(index) { 
           if (index === flkty.slides.length - 1) {
+            gsap.to(header, {
+              opacity: 0,
+              duration: 0.6,
+              ease: "power1.out",
+            });
             requestAnimationFrame(() => {
               const width = window.innerWidth;
               if (width <= 1366) {
+                const naturalWidth = nextPageTitle.scrollWidth + "px";
                 header.style.opacity = 0;
                 header.style.pointerEvents = "none";
                 footer.style.opacity = 0;
                 footer.style.pointerEvents = "none";
-                nextPageTitle.style.opacity = 1;
                 setTimeout(() => {
                   nextPageLink.style.transform = "translateX(0px)";
                 }, 1000);
+                gsap.to(nextPageLink, {
+                  maxWidth: naturalWidth,
+                  duration: 1,
+                  delay: 3,
+                  ease: "power3.out"
+                });
+                gsap.to(nextPageTitle, {
+                  opacity: 1,
+                  duration: 0.3,
+                  ease: "power1.out",
+                  delay: 4
+                });
               } else {
                 header.style.opacity = 0;
                 header.style.pointerEvents = "none";

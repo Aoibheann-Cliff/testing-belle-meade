@@ -198,6 +198,20 @@ export const pageType = defineType({
           name: 'slide',
           type: 'object',
           title: 'Slide',
+          preview: {
+            select: {
+              title: 'title',
+              caption: 'caption',
+              media: 'image',
+            },
+            prepare(selection) {
+              const { title, caption, media } = selection
+              return {
+                title: title || caption || 'Untitled Slide',
+                media,
+              }
+            },
+          },
           fields: [
             {
               name: 'layout',
@@ -205,15 +219,40 @@ export const pageType = defineType({
               type: 'string',
               options: {
                 list: [
-                  { title: 'Image Only', value: 'imageOnly' },
-                  { title: 'Image & Text', value: 'imageAndText' },
-                  { title: 'Image & Text Overlay', value: 'imageAndTextOverlay' },
-                  { title: 'Image Right, Text Left', value: 'imageRightTextLeft' },
-                  { title: 'Image Left, Quote Right', value: 'imageLeftQuoteRight' },
-                  { title: 'Image Right, Quote Left', value: 'imageRightQuoteLeft' },
-                  { title: 'Image Left, Text Right', value: 'imageLeftTextRight' },
-                  { title: 'Small Image Left, Large Image Right', value: 'smallImageLeftLargeImageRight' },
-                  { title: 'Large Image Left, Small Image Right', value: 'largeImageLeftSmallImageRight' },
+                  { title: 'Media Only', value: 'imageOnly' },
+                  { title: 'Media & Text', value: 'imageAndText' },
+                  { title: 'Media & Text Overlay', value: 'imageAndTextOverlay' },
+                  { title: 'Media Right, Text Left', value: 'imageRightTextLeft' },
+                  { title: 'Media Left, Quote Right', value: 'imageLeftQuoteRight' },
+                  { title: 'Media Right, Quote Left', value: 'imageRightQuoteLeft' },
+                  { title: 'Media Left, Text Right', value: 'imageLeftTextRight' },
+                  { title: 'Small Media Left, Large Media Right', value: 'smallImageLeftLargeImageRight' },
+                  { title: 'Large Media Left, Small Media Right', value: 'largeImageLeftSmallImageRight' },
+                ],
+                layout: 'dropdown',
+              },
+            },
+            {
+              name: 'mediaType',
+              title: "Media Type",
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Image', value: 'image' },
+                  { title: 'Video', value: 'video' },
+                ],
+                layout: 'dropdown',
+              },
+            },
+            {
+              name: 'smallmediaType',
+              title: "Small Media Type",
+              type: 'string',
+              hidden: ({ parent }) => parent?.layout !== 'smallImageLeftLargeImageRight' && parent?.layout !== 'largeImageLeftSmallImageRight',
+              options: {
+                list: [
+                  { title: 'Image', value: 'image' },
+                  { title: 'Video', value: 'video' },
                 ],
                 layout: 'dropdown',
               },
@@ -222,20 +261,39 @@ export const pageType = defineType({
               name: 'image',
               title: 'Image',
               type: 'image',
+              hidden: ({ parent }) => parent?.mediaType !== 'image',
               options: { hotspot: true },
               fields: [
                 { name: 'alt', type: 'string', title: 'Alt Text' }
               ]
             },
             {
+              name: 'videoFile',
+              title: 'Video File',
+              hidden: ({ parent }) => parent?.mediaType !== 'video',
+              type: 'file',
+              options: {
+                accept: 'video/*'
+              }
+            },
+            {
               name: 'smallImage',
               title: 'Small Image',
               type: 'image',
               options: { hotspot: true },
-              hidden: ({ parent }) => parent?.layout !== 'smallImageLeftLargeImageRight' && parent?.layout !== 'largeImageLeftSmallImageRight',
+              hidden: ({ parent }) => parent?.smallmediaType !== 'image' && parent?.layout !== 'smallImageLeftLargeImageRight' && parent?.layout !== 'largeImageLeftSmallImageRight',
               fields: [
                 { name: 'alt', type: 'string', title: 'Alt Text' }
               ]
+            },
+            {
+              name: 'smallvideoFile',
+              title: 'Small Video File',
+              hidden: ({ parent }) => parent?.smallmediaType !== 'video' && parent?.layout !== 'smallImageLeftLargeImageRight' && parent?.layout !== 'largeImageLeftSmallImageRight',
+              type: 'file',
+              options: {
+                accept: 'video/*'
+              }
             },
             {
               name: 'title',
@@ -259,7 +317,7 @@ export const pageType = defineType({
               name: 'caption',
               title: 'Caption',
               type: 'string',
-              hidden: ({ parent }) => parent?.layout !== 'imageOnly' && parent?.layout !== 'imageAndText' && parent?.layout !== 'imageRightTextLeft' && parent?.layout !== 'imageLeftTextRight' && parent?.layout !== 'imageLeftQuoteRight' && parent?.layout !== 'imageRightQuoteLeft' && parent?.layout !== 'imageAndTextOverlay' && parent?.layout !== 'smallImageLeftLargeImageRight' && parent?.layout !== 'largeImageLeftSmallImageRight',
+              hidden: ({ parent }) => parent?.layout !== 'imageOnly' && parent?.layout !== 'imageRightTextLeft' && parent?.layout !== 'imageLeftTextRight' && parent?.layout !== 'imageLeftQuoteRight' && parent?.layout !== 'imageRightQuoteLeft' && parent?.layout !== 'imageAndTextOverlay' && parent?.layout !== 'smallImageLeftLargeImageRight' && parent?.layout !== 'largeImageLeftSmallImageRight',
             },
             {
             name: 'link',

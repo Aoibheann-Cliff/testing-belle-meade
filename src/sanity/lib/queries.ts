@@ -25,9 +25,15 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
     title,
     text,
     link,
+    mediaType,
     caption,
     credit,
     backgroundColor,
+    videoFile{
+      asset->{
+        url
+      }
+    },
     image {
       asset->{
         url

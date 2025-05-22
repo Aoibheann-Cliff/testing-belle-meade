@@ -1,10 +1,40 @@
 "use client";
 import Link from 'next/link';
 import Select from "react-dropdown-select";
+import { client } from '@/sanity/lib/client';
+import { groq } from 'next-sanity';
+import { useEffect, useState } from 'react';
 
-import React, { useState } from "react";
+interface PageData {
+  title: string;
+  slug: string;
+}
 
 export default function ContactForm() {
+  const [teamPage, setTeamPage] = useState<PageData | null>(null);
+  const [legalPage, setLegalPage] = useState<PageData | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const teamdata = await client.fetch(
+        groq`*[_id == "d8f59a49-e8bc-4e49-b6ba-5c1bb6ee979b"][0]{
+          title,
+          "slug": slug.current
+        }`
+      );
+      setTeamPage(teamdata);
+
+      const legaldata = await client.fetch(
+        groq`*[_id == "ecd6ff2b-434b-4a36-88c3-d88484466fe3"][0]{
+          title,
+          "slug": slug.current
+        }`
+      );
+      setLegalPage(legaldata);
+    };
+    fetchData();
+  }, []);
+
   const [formData, setFormData] = useState({ about: "", firstName: "", lastName: "", email: "", country: "", address: "", city: "", state: "", zipcode: "", residence: "", agent: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
@@ -607,8 +637,20 @@ export default function ContactForm() {
     <div className="form-footer" id="formFooter">
       <a className="addresslink" href="https://maps.app.goo.gl/ngRsVcKPu2c7aXJLA" target="_blank">4500 Harding Pike, Nashville</a>
       <div className="form-footer-menu">
-        <Link className="menuitem" href="/team">Team</Link>
-        <Link className="menuitem" href="/legal">Legal</Link>
+      {teamPage && (
+          <Link className="menuitem team" href={`/${teamPage.slug}`}>
+            <h6>
+              {teamPage.title}
+            </h6>
+          </Link>
+        )}
+        {legalPage && (
+          <Link className="menuitem legal" href={`/${legalPage.slug}`}>
+            <h6>
+              {legalPage.title}
+            </h6>
+          </Link>
+        )}
         <Link className="menuitem" href="https://www.hud.gov/offices/fheo/promotingfh/928-1.pdf" target="_blank">Fair Housing</Link>
         <Link className="login" href="">Log In</Link>
       </div>

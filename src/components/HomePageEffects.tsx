@@ -97,7 +97,7 @@ export default function GlobalPageEffects() {
         setTimeout(() => {
           logo.style.opacity = 1;
           purpleLogo.style.opacity = 0;
-      }, 1000);
+      }, 1250);
   
         setTimeout(() => {
             openBtn.style.color = "#fff9f2";
@@ -131,7 +131,7 @@ export default function GlobalPageEffects() {
         setTimeout(() => {
           logo.style.opacity = 1;
           purpleLogo.style.opacity = 0;
-        }, 1000);
+        }, 1250);
   
         setTimeout(() => {
           formContainer.style.display = "none";
@@ -235,7 +235,7 @@ export default function GlobalPageEffects() {
         setTimeout(() => {
           logo.style.opacity = 1;
           purpleLogo.style.opacity = 0;
-        }, 1000);
+        }, 1250);
         gsap.to(menuContainer, {
           top: "-100vh",
           duration: 1,
@@ -273,9 +273,9 @@ export default function GlobalPageEffects() {
       });
 
       setTimeout(() => {
-        logo.style.opacity = 0;
-        purpleLogo.style.opacity = 1;
-      }, 1500);
+        logo.style.opacity = 1;
+        purpleLogo.style.opacity = 0;
+      }, 1250);
 
       setTimeout(() => {
         formContainer.style.display = "none";

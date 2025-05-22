@@ -134,7 +134,6 @@ lightboxCloseButtons.forEach(button => {
               duration: 0.6,
               ease: "power1.out",
             });
-            requestAnimationFrame(() => {
               const width = window.innerWidth;
               if (width <= 1366) {
                 const naturalWidth = nextPageTitle.scrollWidth + "px";
@@ -167,16 +166,13 @@ lightboxCloseButtons.forEach(button => {
                 footer.style.pointerEvents = "none";
 
                 nextPageLink.addEventListener('mouseenter', () => {
-                  // Cancel any ongoing tweens on these elements to prevent conflicts
                   gsap.killTweensOf([nextPageLink, nextPageTitle]);
-                
-                  // Immediately make title visible for opacity animation
                   nextPageTitle.style.display = 'block';
                 
                   const naturalWidth = nextPageTitle.scrollWidth + "px";
                 
                   gsap.to(nextPageLink, {
-                    maxWidth: naturalWidth,
+                    width: naturalWidth,
                     duration: 0.6,
                     ease: "power3.out"
                   });
@@ -195,16 +191,16 @@ lightboxCloseButtons.forEach(button => {
                   gsap.to(nextPageTitle, {
                     opacity: 0,
                     duration: 0.3,
-                    onComplete: () => {
-                      nextPageTitle.style.display = 'none';
-                    }
                   });
                 
                   gsap.to(nextPageLink, {
-                    maxWidth: "3.125rem",
+                    width: "3.125rem",
                     duration: 0.6,
                     ease: "power3.out",
                     delay: 0.6,
+                    onComplete: () => {
+                      nextPageTitle.style.display = 'none';
+                    }
                   });
                 });
                 
@@ -213,7 +209,6 @@ lightboxCloseButtons.forEach(button => {
                   nextPageLink.style.transform = "translateX(0px)";
                 }, 1000);
               }
-            });
         
         
           } else {

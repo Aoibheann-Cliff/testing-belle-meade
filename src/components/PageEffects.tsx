@@ -32,6 +32,7 @@ export default function GlobalPageEffects() {
     const thirdBar = document.getElementById('thirdBar');
     const nextPageLink = document.getElementById('nextPageLink');
     const header = document.getElementById('header');
+    const footer = document.getElementById('footer');
 
 
     document.querySelectorAll('.image-lightbox img').forEach((img) => {
@@ -50,6 +51,13 @@ export default function GlobalPageEffects() {
   
     });
     
+    setTimeout(() => {
+      header.style.opacity = "1";
+    }, 1000);
+
+    setTimeout(() => {
+      footer.style.opacity = "1";
+    }, 1000);
 
     setTimeout(() => {
       wrapper.style.opacity = "1";

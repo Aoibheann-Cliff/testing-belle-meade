@@ -177,15 +177,15 @@ lightboxCloseButtons.forEach(button => {
                 
                   gsap.to(nextPageLink, {
                     maxWidth: naturalWidth,
-                    duration: 1,
+                    duration: 0.6,
                     ease: "power3.out"
                   });
                 
                   gsap.to(nextPageTitle, {
                     opacity: 1,
-                    duration: 0.6,
+                    duration: 0.3,
                     ease: "power1.out",
-                    delay: 0.7
+                    delay: 0.6
                   });
                 });
                 
@@ -194,7 +194,7 @@ lightboxCloseButtons.forEach(button => {
                 
                   gsap.to(nextPageTitle, {
                     opacity: 0,
-                    duration: 0.6,
+                    duration: 0.3,
                     onComplete: () => {
                       nextPageTitle.style.display = 'none';
                     }
@@ -202,9 +202,9 @@ lightboxCloseButtons.forEach(button => {
                 
                   gsap.to(nextPageLink, {
                     maxWidth: "3.125rem",
-                    duration: 1,
+                    duration: 0.6,
                     ease: "power3.out",
-                    delay: 1,
+                    delay: 0.6,
                   });
                 });
                 

@@ -799,7 +799,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     top:0;
     right:0;
     transform: translateX(100svh);
-    background: #C6BBCF;
+    background: #FFF9F2;
     color:#4C2F48;
     z-index:9999;
     height:100svh;
@@ -808,11 +808,11 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     width:fit-content;
     max-width:3.125rem;
     will-change:opacity, transform;
-    transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 500ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -o-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 500ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -ms-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 500ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -moz-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 500ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -webkit-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 500ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -o-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -ms-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -moz-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -webkit-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .purple-arrow{
@@ -834,11 +834,11 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     padding-right:5.188rem;
     padding-left:3.125rem;
     will-change:opacity;
-    transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -o-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -ms-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -moz-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -webkit-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -o-transition: opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -ms-transition: opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -moz-transition: opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -webkit-transition: opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 #logo{

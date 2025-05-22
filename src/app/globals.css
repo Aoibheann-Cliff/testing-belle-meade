@@ -1307,14 +1307,10 @@ div:has(> .react-dropdown-select) {
     .logotype, .carousel-logotype{
         display:none;
     }
-    .flickity-prev-next-button.previous {
-        opacity:1;
-        cursor:auto !important;
-    }
 
-    .flickity-prev-next-button.next{
+    .flickity-prev-next-button.previous, .flickity-prev-next-button.next, .flickity-enabled .flickity-prev-next-button.next, .flickity-enabled .flickity-prev-next-button.previous {
         opacity:1;
-        cursor:auto !important;
+        cursor:pointer !important;
     }
 
     .left-menu .menuitem, .right-menu .menuitem{

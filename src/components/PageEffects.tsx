@@ -36,11 +36,11 @@ export default function GlobalPageEffects() {
     document.querySelectorAll('.image-lightbox img').forEach((img) => {
       const panzoomInstance = Panzoom(img, {
         maxScale: 5,
-        minScale : 1,
-        bounds: true,
-        contain: 'outside'
+        minScale: 1,
+        bounds: true,               // Prevents dragging image outside boundaries
+        contain: 'inside'           // Keeps the image inside its container
       });
-  
+    
       // Optional: enable zoom with mouse wheel
       img.parentElement.addEventListener('wheel', panzoomInstance.zoomWithWheel);
     });

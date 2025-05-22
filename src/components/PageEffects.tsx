@@ -40,6 +40,7 @@ export default function GlobalPageEffects() {
         minZoom: 1,
         pinchSpeed: 2,
         bounds: true,
+        excludeClass: 'panzoom-exclude',
         boundsPadding: 0.1,  // no 'contain' in old version
       });
     

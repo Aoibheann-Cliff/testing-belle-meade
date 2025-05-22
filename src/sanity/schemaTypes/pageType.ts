@@ -61,6 +61,19 @@ export const pageType = defineType({
       hidden: ({ document }) => document?.pageType !== "contactpage",
     }),
     defineField({
+      name: 'homepagemediaType',
+      title: "Home Page Media Type",
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Image', value: 'image' },
+          { title: 'Video', value: 'video' },
+        ],
+        layout: 'dropdown',
+      },
+      hidden: ({ document }) => document?.pageType !== "homepage",
+    }),
+    defineField({
       name: 'homepageimage',
       title: 'Homepage Image',
       type: 'image',
@@ -74,6 +87,28 @@ export const pageType = defineType({
           title: 'Alternative text',
         })
       ],
+      hidden: ({ document }) => document?.homepagemediaType !== "image",
+    }),
+    defineField({
+      name: 'homepagevideo',
+      title: 'Home Page Video',
+      type: 'file',
+      options: {
+        accept: 'video/*'
+      },
+      hidden: ({ document }) => document?.homepagemediaType !== "video",
+    }),
+    defineField({
+      name: 'designpagemediaType',
+      title: "Design Page Media Type",
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Image', value: 'image' },
+          { title: 'Video', value: 'video' },
+        ],
+        layout: 'dropdown',
+      },
       hidden: ({ document }) => document?.pageType !== "homepage",
     }),
     defineField({
@@ -90,6 +125,28 @@ export const pageType = defineType({
           title: 'Alternative text',
         })
       ],
+      hidden: ({ document }) => document?.designpagemediaType !== "image",
+    }),
+    defineField({
+      name: 'designpagevideo',
+      title: 'Design Page Video',
+      type: 'file',
+      options: {
+        accept: 'video/*'
+      },
+      hidden: ({ document }) => document?.designpagemediaType !== "video",
+    }),
+    defineField({
+      name: 'craftsmanshippagemediaType',
+      title: "Craftsmanship Page Media Type",
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Image', value: 'image' },
+          { title: 'Video', value: 'video' },
+        ],
+        layout: 'dropdown',
+      },
       hidden: ({ document }) => document?.pageType !== "homepage",
     }),
     defineField({
@@ -106,6 +163,28 @@ export const pageType = defineType({
           title: 'Alternative text',
         })
       ],
+      hidden: ({ document }) => document?.craftsmanshippagemediaType !== "image",
+    }),
+    defineField({
+      name: 'craftsmanshippagevideo',
+      title: 'Craftsmanship Page Video',
+      type: 'file',
+      options: {
+        accept: 'video/*'
+      },
+      hidden: ({ document }) => document?.craftsmanshippagemediaType !== "video",
+    }),
+    defineField({
+      name: 'residencespagemediaType',
+      title: "Residences Page Media Type",
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Image', value: 'image' },
+          { title: 'Video', value: 'video' },
+        ],
+        layout: 'dropdown',
+      },
       hidden: ({ document }) => document?.pageType !== "homepage",
     }),
     defineField({
@@ -122,6 +201,28 @@ export const pageType = defineType({
           title: 'Alternative text',
         })
       ],
+      hidden: ({ document }) => document?.residencespagemediaType !== "image",
+    }),
+    defineField({
+      name: 'residencespagevideo',
+      title: 'Residences Page Video',
+      type: 'file',
+      options: {
+        accept: 'video/*'
+      },
+      hidden: ({ document }) => document?.residencespagemediaType !== "video",
+    }),
+    defineField({
+      name: 'amenitiespagemediaType',
+      title: "Amenities Page Media Type",
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Image', value: 'image' },
+          { title: 'Video', value: 'video' },
+        ],
+        layout: 'dropdown',
+      },
       hidden: ({ document }) => document?.pageType !== "homepage",
     }),
     defineField({
@@ -138,6 +239,28 @@ export const pageType = defineType({
           title: 'Alternative text',
         })
       ],
+      hidden: ({ document }) => document?.amenitiespagemediaType !== "image",
+    }),
+    defineField({
+      name: 'amenitiespagevideo',
+      title: 'Amenities Page Video',
+      type: 'file',
+      options: {
+        accept: 'video/*'
+      },
+      hidden: ({ document }) => document?.amenitiespagemediaType !== "video",
+    }),
+    defineField({
+      name: 'parkpagemediaType',
+      title: "Park Page Media Type",
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Image', value: 'image' },
+          { title: 'Video', value: 'video' },
+        ],
+        layout: 'dropdown',
+      },
       hidden: ({ document }) => document?.pageType !== "homepage",
     }),
     defineField({
@@ -154,6 +277,28 @@ export const pageType = defineType({
           title: 'Alternative text',
         })
       ],
+      hidden: ({ document }) => document?.parkpagemediaType !== "image",
+    }),
+    defineField({
+      name: 'parkpagevideo',
+      title: 'Park Page Video',
+      type: 'file',
+      options: {
+        accept: 'video/*'
+      },
+      hidden: ({ document }) => document?.parkpagemediaType !== "video",
+    }),
+    defineField({
+      name: 'villagepagemediaType',
+      title: "Village Page Media Type",
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Image', value: 'image' },
+          { title: 'Video', value: 'video' },
+        ],
+        layout: 'dropdown',
+      },
       hidden: ({ document }) => document?.pageType !== "homepage",
     }),
     defineField({
@@ -170,7 +315,16 @@ export const pageType = defineType({
           title: 'Alternative text',
         })
       ],
-      hidden: ({ document }) => document?.pageType !== "homepage",
+      hidden: ({ document }) => document?.villagepagemediaType !== "image",
+    }),
+    defineField({
+      name: 'villagepagevideo',
+      title: 'Village Page Video',
+      type: 'file',
+      options: {
+        accept: 'video/*'
+      },
+      hidden: ({ document }) => document?.villagepagemediaType !== "video",
     }),
     defineField({
       name: 'textSections',

@@ -12,21 +12,6 @@ export default function HomepageFlickityCarousel({ children }: { children: React
     let Flickity: any;
     let flkty: any;
   
-    // This runs after Flickity selects a slide
-    const checkIfLastSlideSelected = () => {
-      const nextPageLink = document.getElementById('nextPageLink');
-      if (!flkty) return;
-  
-      const selectedElement = flkty.selectedElement;
-      const lastCell = flkty.cells[flkty.cells.length - 1]?.element;
-  
-      if (selectedElement === lastCell) {
-        nextPageLink?.style.setProperty('display', 'flex');
-      } else {
-        nextPageLink?.style.setProperty('display', 'none');
-      }
-    };
-  
     Promise.all([
       import('flickity'),
       import('flickity-fade'),
@@ -51,9 +36,6 @@ export default function HomepageFlickityCarousel({ children }: { children: React
         setTimeout(() => {
           flkty.playPlayer();
         }, 4000);
-
-        flkty.on('ready', checkIfLastSlideSelected);
-        flkty.on('select', checkIfLastSlideSelected);
   
         const width = window.innerWidth;
         if (width > 1366) {
@@ -65,11 +47,11 @@ export default function HomepageFlickityCarousel({ children }: { children: React
           { menuSelector: '.park', slideClass: 'park-slide' },
           { menuSelector: '.village', slideClass: 'village-slide' },
         ];
-  
         hoverMappings.forEach(({ menuSelector, slideClass }) => {
           const menuElement = document.querySelector(menuSelector);
           if (menuElement) {
             menuElement.addEventListener('mouseenter', () => {
+              console.log( 'menu' + menuElement);
               flkty.pausePlayer();
               const targetIndex = flkty.cells.findIndex((cell: any) =>
                 cell.element.classList.contains(slideClass)

@@ -33,10 +33,12 @@ lightboxButtons.forEach(button => {
   button.addEventListener('click', function () {
     const selectedSlide = document.querySelector('.flickity-cell.is-selected');
     const img = selectedSlide?.querySelector('.image-lightbox');
+    const close = document.querySelector('.flickity-cell.is-selected .lightbox-close');
 
     if (img) {
       document.body.classList.add('lightbox-visible');
       img.style.display = "block";
+      close.style.display = "block";
       header.style.opacity = "0";
 
       flkty.options.draggable = !flkty.options.draggable;
@@ -45,6 +47,7 @@ lightboxButtons.forEach(button => {
       setTimeout(() => {
         header.style.display = "none";
         img.style.opacity = "1";
+        close.style.opacity = 1;
       }, 600);
     }
   });
@@ -55,14 +58,17 @@ lightboxCloseButtons.forEach(button => {
     document.body.classList.remove('lightbox-visible');
     const selectedSlide = document.querySelector('.flickity-cell.is-selected');
     const img = selectedSlide?.querySelector('.image-lightbox');
+    const close = document.querySelector('.flickity-cell.is-selected .lightbox-close');
 
     flkty.options.draggable = true;
     flkty.updateDraggable();
     if (img) {
       img.style.opacity = "0";
       header.style.display = "flex";
+      close.style.opacity = "0";
       setTimeout(() => {
         img.style.display = "none";
+        close.style.display = "none";
         header.style.opacity = "1";
       }, 600);
     }
@@ -73,14 +79,18 @@ lightboxCloseButtons.forEach(button => {
         document.body.classList.remove('lightbox-visible');
         const selectedSlide = document.querySelector('.flickity-cell.is-selected');
         const img = selectedSlide?.querySelector('.image-lightbox');
+        const close = document.querySelector('.flickity-cell.is-selected .lightbox-close');
+
         flkty.options.draggable = true;
         flkty.updateDraggable();
 
         if (img) {
           img.style.opacity = "0";
           header.style.display = "flex";
+          close.style.opacity = "0";
           setTimeout(() => {
             img.style.display = "none";
+            close.style.display = "none";
             header.style.opacity = "1";
           }, 600);
         }

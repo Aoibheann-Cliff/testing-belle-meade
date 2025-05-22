@@ -163,7 +163,7 @@ h6{
     width: auto;
     height: 8.625rem;
     position: absolute;
-    z-index:100;
+    z-index:3;
     top: 0;
     left: 0;
     right: 0;
@@ -215,7 +215,7 @@ h6{
 
 .carousel-overlay{
     position:fixed;
-    z-index:5;
+    z-index:2;
     background:#000000;
     opacity:35%;
     width:100%;
@@ -1275,7 +1275,7 @@ div:has(> .react-dropdown-select) {
         height:4.918rem;
         width: auto;
         position: absolute;
-        z-index:100;
+        z-index:3;
         top: 0;
         left: 0;
         right: 0;

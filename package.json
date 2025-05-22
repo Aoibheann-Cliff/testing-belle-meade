@@ -18,6 +18,7 @@
     "flickity-fade": "^2.0.0",
     "gsap": "^3.13.0",
     "lightbox.js-react": "^1.5.3",
+    "medium-zoom": "^1.1.0",
     "next": "15.3.2",
     "next-sanity": "^9.11.0",
     "react": "^19.0.0",

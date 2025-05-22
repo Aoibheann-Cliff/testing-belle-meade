@@ -69,12 +69,6 @@ lightboxCloseButtons.forEach(button => {
   });
 });
 
-      lightboxImages.forEach(img => {
-      img.addEventListener('click', () => {
-        img.classList.toggle('zoomed');
-      });
-      });
-
       function closeLightbox() {
         document.body.classList.remove('lightbox-visible');
         const selectedSlide = document.querySelector('.flickity-cell.is-selected');

@@ -12,6 +12,7 @@ import arrowprevious from '@/app/mobile-arrow.svg';
 import lightbox from '@/app/lightbox.svg';
 import PageEffects from "@/components/PageEffects";
 import { LayoutTypes } from "@/sanity/types";
+import LightboxImage from "@/components/LightboxImage";
 
 export default async function Page({
   params,
@@ -77,7 +78,7 @@ export default async function Page({
                           </svg>
                         </div>
                         
-                        <Image
+                        <LightboxImage
                           src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
                           alt={slide.image?.alt || ""}
                           width={3840}
@@ -137,17 +138,17 @@ export default async function Page({
                           <path d="M29 1L1 29" stroke="#ffffff"/>
                           </svg>
                         </div>
-                        <Image
-                          src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
-                          alt={slide.image?.alt || ""}
-                          width={3840}
-                          height={2160}
-                          quality={100}
-                          placeholder="blur"
-                          blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                          className="w-full aspect-[1920/1080] object-contain min-h-screen overlay-img"
-                        />
-                      </div>
+                        <LightboxImage
+                            src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
+                            alt={slide.image?.alt || ""}
+                            width={3840}
+                            height={2160}
+                            quality={100}
+                            placeholder="blur"
+                            blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
+                            className="w-full aspect-[1920/1080] object-contain min-h-screen overlay-img"
+                          />
+                          </div>
                       <div className="slide-overlay">
                         <div className="text">
                           {slide.title && <h5 className="title">{slide.title}</h5>}

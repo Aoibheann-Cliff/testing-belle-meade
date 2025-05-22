@@ -36,6 +36,8 @@ export default function GlobalPageEffects() {
     document.querySelectorAll('.image-lightbox img').forEach((img) => {
       const panzoomInstance = Panzoom(img, {
         maxScale: 5,
+        minScale : 1,
+        bounds: true,
         contain: 'outside'
       });
   

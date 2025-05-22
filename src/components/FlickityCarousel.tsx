@@ -168,7 +168,7 @@ lightboxCloseButtons.forEach(button => {
                 nextPageLink.addEventListener('mouseenter', () => {
                   gsap.killTweensOf([nextPageLink, nextPageTitle]);
                   nextPageTitle.style.display = 'block';
-                
+                  void nextPageTitle.offsetWidth;
                   const naturalWidth = nextPageTitle.scrollWidth + "px";
                 
                   gsap.to(nextPageLink, {

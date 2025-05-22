@@ -165,8 +165,16 @@ lightboxCloseButtons.forEach(button => {
                 header.style.pointerEvents = "none";
                 footer.style.opacity = 0;
                 footer.style.pointerEvents = "none";
+
                 nextPageLink.addEventListener('mouseenter', () => {
+                  // Cancel any ongoing tweens on these elements to prevent conflicts
+                  gsap.killTweensOf([nextPageLink, nextPageTitle]);
+                
+                  // Immediately make title visible for opacity animation
+                  nextPageTitle.style.display = 'block';
+                
                   const naturalWidth = nextPageTitle.scrollWidth + "px";
+                
                   gsap.to(nextPageLink, {
                     maxWidth: naturalWidth,
                     duration: 1,
@@ -175,25 +183,32 @@ lightboxCloseButtons.forEach(button => {
                 
                   gsap.to(nextPageTitle, {
                     opacity: 1,
-                    duration: 0.3,
+                    duration: 0.6,
                     ease: "power1.out",
                     delay: 0.7
                   });
                 });
                 
                 nextPageLink.addEventListener('mouseleave', () => {
+                  gsap.killTweensOf([nextPageLink, nextPageTitle]);
+                
                   gsap.to(nextPageTitle, {
                     opacity: 0,
-                    ease: "power1.out"
+                    duration: 0.6,
+                    onComplete: () => {
+                      nextPageTitle.style.display = 'none';
+                    }
                   });
                 
                   gsap.to(nextPageLink, {
                     maxWidth: "3.125rem",
                     duration: 1,
                     ease: "power3.out",
-                    delay:1.1,
+                    delay: 1,
                   });
                 });
+                
+
                 setTimeout(() => {
                   nextPageLink.style.transform = "translateX(0px)";
                 }, 1000);

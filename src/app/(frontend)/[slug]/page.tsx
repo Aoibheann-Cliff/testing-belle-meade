@@ -445,7 +445,7 @@ export default async function Page({
                       <div className="flickity-top-overlay"></div>
                       {!reverse && slide.smallImage && (
                         <div className="smallImageContainer">
-                      {slide.mediaType === 'video' && (
+                      {slide.smallmediaType === 'video' && (
                       <video
                         src={slide.videoFile.asset.url}
                         className="w-full aspect-[1920/1080] object-cover min-h-screen"
@@ -455,7 +455,7 @@ export default async function Page({
                         playsInline
                       />
                       )}
-                      {slide.mediaType === 'image' && (
+                      {slide.smallmediaType === 'image' && (
                         <div>
                         <Image
                         src={urlFor(slide.smallImage).width(600).height(400).quality(70).auto('format').url()}

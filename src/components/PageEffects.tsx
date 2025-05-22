@@ -36,12 +36,12 @@ export default function GlobalPageEffects() {
 
     document.querySelectorAll('.image-lightbox img').forEach((img) => {
       const panzoomInstance = panzoom(img, {
-        maxZoom: 5,          // old package expects maxZoom/minZoom, NOT maxScale/minScale
+        maxZoom: 5,
         minZoom: 1,
         pinchSpeed: 2,
         bounds: true,
         excludeClass: 'panzoom-exclude',
-        boundsPadding: 0.1,  // no 'contain' in old version
+        boundsPadding: 0.1,
       });
     
       img.addEventListener('click', () => {

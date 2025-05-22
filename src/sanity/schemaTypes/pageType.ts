@@ -435,7 +435,7 @@ export const pageType = defineType({
               title: 'Small Image',
               type: 'image',
               options: { hotspot: true },
-              hidden: ({ parent }) => parent?.smallmediaType !== 'image' && parent?.layout !== 'smallImageLeftLargeImageRight' && parent?.layout !== 'largeImageLeftSmallImageRight',
+              hidden: ({ parent }) => parent?.smallmediaType !== 'image',
               fields: [
                 { name: 'alt', type: 'string', title: 'Alt Text' }
               ]
@@ -443,7 +443,7 @@ export const pageType = defineType({
             {
               name: 'smallvideoFile',
               title: 'Small Video File',
-              hidden: ({ parent }) => parent?.smallmediaType !== 'video' && parent?.layout !== 'smallImageLeftLargeImageRight' && parent?.layout !== 'largeImageLeftSmallImageRight',
+              hidden: ({ parent }) => parent?.smallmediaType !== 'video',
               type: 'file',
               options: {
                 accept: 'video/*'

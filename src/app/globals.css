@@ -579,10 +579,11 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     width:50%;
 }
 
-.smallImageContainer img{
+.smallImageContainer img, .smallImageContainer video{
     width:60%;
     margin: auto;
     height:fit-content !important;
+    min-height:auto !important;
 }
 
 .largeImageContainer{
@@ -833,11 +834,11 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     padding-right:5.188rem;
     padding-left:3.125rem;
     will-change:opacity;
-    transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -o-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -ms-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -moz-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -webkit-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -o-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -ms-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -moz-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -webkit-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 #logo{
@@ -1772,9 +1773,10 @@ line-height: 1.225rem;
         height:100%;
       }
 
-      .smallImageContainer img{
+      .smallImageContainer img, .smallImageContainer video{
         height:100% !important;
         width:auto;
+        min-height:auto !important;
       }
 
       .next-page-title{
@@ -1877,7 +1879,7 @@ line-height: 1.225rem;
         width:100%;
       }
 
-      .smallImageContainer img{
+      .smallImageContainer img, .smallImageContainer video{
         width:100%;
       }
 
@@ -2348,7 +2350,7 @@ line-height: 1.225rem;
         width:100%;
       }
 
-      .smallImageContainer img{
+      .smallImageContainer img, .smallImageContainer video{
         width:100%;
       }
 

@@ -39,6 +39,7 @@ export default function HomepageFlickityCarousel({ children }: { children: React
   
         const width = window.innerWidth;
         if (width > 1366) {
+          setTimeout(() => {
         const hoverMappings = [
           { menuSelector: '.design', slideClass: 'design-slide' },
           { menuSelector: '.craftsmanship', slideClass: 'craftsmanship-slide' },
@@ -66,6 +67,7 @@ export default function HomepageFlickityCarousel({ children }: { children: React
             });
           }
         });
+      }, 1000);
       }
       }
     });

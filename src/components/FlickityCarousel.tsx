@@ -116,7 +116,10 @@ lightboxCloseButtons.forEach(button => {
 
       setTimeout(() => {
         if (window.innerWidth < 1366 && flkty) {
-          flkty.select(1); // Go to second slide (index 1)
+          // Only go to slide 2 if currently on slide 1
+          if (flkty.selectedIndex === 0) {
+            flkty.select(1);
+          }
         }
       }, 4000);
   

@@ -20,7 +20,7 @@ html{
 }
 
 body{
-    background:#4C2F48 !important;
+    background:#fff9f2!important;
     color:#FFF9F2 !important;
     font-family: 'Millionaire-Roman';
     overscroll-behavior: none;
@@ -1860,6 +1860,7 @@ line-height: 1.225rem;
         height:100% !important;
         width:auto;
         min-height:auto !important;
+        aspect-ratio: 1 / 1;
       }
 
       .next-page-title{
@@ -2068,6 +2069,14 @@ line-height: 1.225rem;
         position: fixed;
         top: 0;
         left: 0;
+    }
+
+    .quote-slide .flickity-top-overlay, .flickity-bottom-overlay {
+        height: 5.5rem !important;
+    }
+
+    .inner-quote-text{
+        width:90%;
     }
 
 }
@@ -2484,6 +2493,7 @@ line-height: 1.225rem;
 
       .smallImageContainer img, .smallImageContainer video{
         width:100%;
+        aspect-ratio: 1 / 1;
       }
 
       .react-dropdown-select, input{
@@ -2563,6 +2573,14 @@ line-height: 1.225rem;
     .slide-overlay .text {
         width: 100%;
         max-width: 100%;
+    }
+
+    .quote-slide .flickity-top-overlay, .flickity-bottom-overlay {
+        height: 5.5rem !important;
+    }
+
+    .inner-quote-text{
+        width:90%;
     }
 }
 

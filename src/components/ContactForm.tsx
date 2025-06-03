@@ -51,8 +51,8 @@ export default function ContactForm() {
     if (!formData.city) newErrors.city = true;
     if (!formData.state) newErrors.state = true;
     if (!formData.zipcode) newErrors.zipcode = true;
-    if (!formData.agent) newErrors.agent = true;
-    if (!formData.company) newErrors.company = true;
+    if (!formData.agent && !formData.company) newErrors.agent = true;
+    // if (!formData.company) newErrors.company = true;
   
     setErrors(newErrors);
   
@@ -401,6 +401,27 @@ export default function ContactForm() {
           </div>
           <h3 className="contact-form-thank-you">Thank you for your inquiry.</h3>
         </div>
+        <div className="form-footer" id="formFooter">
+      <a className="addresslink" href="https://maps.app.goo.gl/ngRsVcKPu2c7aXJLA" target="_blank">4500 Harding Pike, Nashville</a>
+      <div className="form-footer-menu">
+      {teamPage && (
+          <Link className="menuitem team" href={`/${teamPage.slug}`}>
+            <h6>
+              {teamPage.title}
+            </h6>
+          </Link>
+        )}
+        {legalPage && (
+          <Link className="menuitem legal" href={`/${legalPage.slug}`}>
+            <h6>
+              {legalPage.title}
+            </h6>
+          </Link>
+        )}
+        <Link className="menuitem" href="https://www.hud.gov/offices/fheo/promotingfh/928-1.pdf" target="_blank">Fair Housing</Link>
+        <Link className="login" href="">Log In</Link>
+      </div>
+      </div>
       </div>
     )
   }
@@ -597,8 +618,8 @@ export default function ContactForm() {
     <input
       type="text"
       name="company"
-      placeholder="Company*"
-      className={`${errors.company ? 'border-red-500' : ''}`}
+      placeholder="Real Estate Company*"
+      className={`${errors.agent ? 'border-red-500' : ''}`}
       value={formData.company}
       onChange={handleChange}
       style={{ display: 'block', opacity: 1, width: '100%' }}

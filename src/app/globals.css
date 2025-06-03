@@ -733,7 +733,8 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
 }
 
 .slide-overlay .text{
-    max-width:46.875rem;
+    max-width:45%;
+    width:45%;
     display:flex;
     flex-direction: column;
 }
@@ -1245,43 +1246,43 @@ div:has(> .react-dropdown-select) {
   }
 
 
-@media only screen and (max-width:1440px){
+  @media only screen and (max-width:1440px){
 
     h1{
-        font-size: 2.5rem;
-        line-height: 3.5rem;
+        font-size: 2.25rem;
+        line-height: 3.15rem;
     }
 
     h2{
-        font-size: 1.75rem;
-        line-height: 2.45rem;
+        font-size: 1.575rem;
+        line-height: 2.2rem;
     }
 
     h3{
-        font-size:1.25rem;
-        line-height: 1.75rem;
+        font-size:1.125rem;
+        line-height: 1.575rem;
     }
 
     h4{
         font-family: 'Dia';
-        font-size: 1rem;
-        line-height: 1.4rem;
+        font-size: 0.9rem;
+        line-height: 1.26rem;
     }
 
     p{
-        font-size: 0.813rem;
-        line-height: 1.138rem;
+        font-size: 0.7317rem;
+        line-height: 1.024rem;
     }
 
     h5{
-        font-size: 0.813rem;
-        line-height: 1.313rem;
-        letter-spacing: 0.122rem;
+        font-size: 0.7317rem;
+        line-height: 1.1817rem;
+        letter-spacing: 0.1098rem;
     }
 
     h6{
-        font-size: 0.625rem;
-        letter-spacing: 0.094rem;
+        font-size: 0.5625rem;
+        letter-spacing: 0.0846rem;
     }
 
     .symbol{
@@ -1400,7 +1401,8 @@ div:has(> .react-dropdown-select) {
       }
 
       .slide-overlay .text{
-        max-width:33.438rem;
+        max-width:45%;
+        width:45%;
       }
 
       footer{
@@ -1473,18 +1475,18 @@ div:has(> .react-dropdown-select) {
     }
 
     .inquire{
-        font-size: 0.813rem;
-        letter-spacing: 0.122rem;
+        font-size: 0.7317rem;
+        letter-spacing: 0.1098rem;
     }
 
     .tagline{
         bottom:3.063rem;
-        font-size:1rem;
-        line-height:1.4rem;
+        font-size:0.9rem;
+        line-height:1.26rem;
     }
 
     footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
-        font-size:0.625rem;
+        font-size:0.5625rem;
     }
 
     .menuitem:after{

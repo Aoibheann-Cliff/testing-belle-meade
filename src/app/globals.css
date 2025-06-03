@@ -1493,9 +1493,24 @@ div:has(> .react-dropdown-select) {
         top:1.25rem;
     }
 
-    .inquire{
+    .inquire, .submit{
         font-size: 0.7317rem;
         letter-spacing: 0.1098rem;
+    }
+
+    .custom-placeholder {
+        font-size: 0.8442rem;
+      }
+    
+      .react-dropdown-select-content div{
+        font-size: 0.8442rem;
+        letter-spacing: 0.1269rem;
+      }
+    
+      .form-container input, .form-container select{
+        letter-spacing: 0.1269rem;
+        font-size: 0.8442rem;
+        height:1.6875rem;
     }
 
     .tagline{
@@ -2001,6 +2016,11 @@ line-height: 1.225rem;
     .intro-slide .slide-footer{
         display:flex;
     }
+
+    .contact-form-title{
+        font-size: 1.125rem;
+        line-height: 1.575rem;
+    }
 }
 
 @media only screen and (max-width:820px)
@@ -2475,7 +2495,6 @@ line-height: 1.225rem;
     .inquire{
         height:2.125rem;
     }
-
 
     .image-text-slide .image-container img{
         min-height:auto !important;

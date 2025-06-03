@@ -151,7 +151,40 @@ export default function GlobalPageEffects() {
       }, 2000);
     }
 
+    const width = window.innerWidth;
     function closeForm() {
+    if (width <= 1024) {
+      form.style.opacity = "0";
+      formFooter.style.opacity = "0";
+
+      setTimeout(() => {
+        leftMenu.style.display = "flex";
+        rightMenu.style.display = "flex";
+      }, 1000);
+
+      gsap.fromTo(formContainer, { top: "0" }, {
+        top: "-100vh",
+        delay: 1,
+        duration: 1,
+        ease: "power3.out"
+      });
+
+      // setTimeout(() => {
+      //   logo.style.opacity = 1;
+      //   purpleLogo.style.opacity = 0;
+      // }, 1250);
+
+      setTimeout(() => {
+        formContainer.style.display = "none";
+        leftMenu.style.opacity = "1";
+        rightMenu.style.opacity = "1";
+        if (nextPageLink) {
+          nextPageLink.style.zIndex = "9999";
+        }
+      }, 2000);
+
+    }
+    if (width > 1024) {
       form.style.opacity = "0";
       formFooter.style.opacity = "0";
 
@@ -181,8 +214,9 @@ export default function GlobalPageEffects() {
         }
       }, 2000);
 
-      closeMenu();
-    }
+        closeMenu();
+  }
+}
 
     navToggle?.addEventListener('click', toggleHamburger);
 

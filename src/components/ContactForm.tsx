@@ -393,10 +393,9 @@ export default function ContactForm() {
               </svg>
             </div>
             <div className="mobile-close">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M1 1L23 23" stroke="#4C2F48"/>
-                <path d="M23 1L1 23" stroke="#4C2F48"/>
-              </svg>
+              <svg width="12" height="22" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11 1L1 11L11 21" stroke="#4C2F48"/>
+                </svg>
             </div>
           </div>
           <h3 className="contact-form-thank-you">Thank you for your inquiry.</h3>
@@ -443,9 +442,8 @@ export default function ContactForm() {
               </svg>
             </div>
             <div className="mobile-close">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M1 1L23 23" stroke="#4C2F48"/>
-                <path d="M23 1L1 23" stroke="#4C2F48"/>
+              <svg width="12" height="22" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 1L1 11L11 21" stroke="#4C2F48"/>
               </svg>
             </div>
       </div>

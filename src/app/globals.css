@@ -1894,6 +1894,10 @@ line-height: 1.225rem;
         gap:1.25rem;
       }
 
+      .form-container .agent-company-input{
+        width:100% !important;
+      }
+
       .form-container{
         justify-content: flex-start;
         padding:10.5rem 3.75rem 0rem 3.75rem;
@@ -2194,8 +2198,13 @@ line-height: 1.225rem;
         padding: 8.125rem 1.563rem 0rem 1.563rem;
     }
 
-    .form-container input, .form-container select{
-        width:100%;
+    .form-container input, .form-container select, .agent-company-input{
+        width:100% !important;
+    }
+
+    .agent-company-input{
+        height: 1.6875rem;
+        min-height: 2.3rem;
     }
 
     div:has( > .react-dropdown-select){
@@ -2271,9 +2280,15 @@ line-height: 1.225rem;
     }
 
     .contact-form-close{
-        top:2.188rem;
-        left:1.563rem;
+        padding-top:2.188rem;
+        padding-bottom:2.188rem;
+        padding-left:1.563rem;
+        top:0;
+        left:0;
+        width:100%;
+        background-color: #fff9f2;
         position:fixed;
+        z-index:1;
     }
 
     .desktop-close{

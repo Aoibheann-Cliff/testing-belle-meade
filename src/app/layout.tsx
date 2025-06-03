@@ -11,6 +11,7 @@ export default function RootLayout({
     
     <html lang="en">
       <head>
+        <meta name="theme-color" content="#FFF9F2" />
         <title>Belle Meade Village</title>
       </head>
       <body>{children}</body>

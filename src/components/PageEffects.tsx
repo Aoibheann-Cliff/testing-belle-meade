@@ -118,11 +118,11 @@ export default function GlobalPageEffects() {
       menu.style.opacity = "0";
       menuFooter.style.opacity = "0";
       header.style.backgroundColor = "transparent";
-      menuBackground.style.display = "none";
 
       setTimeout(() => {
         leftMenu.style.display = "flex";
         rightMenu.style.display = "flex";
+        menuBackground.style.display = "none";
       }, 1000);
 
       gsap.to(menuContainer, {
@@ -311,9 +311,11 @@ export default function GlobalPageEffects() {
       firstBar.style.backgroundColor = "#fff9f2";
       thirdBar.style.backgroundColor= "#fff9f2";
       header.style.backgroundColor = "transparent";
-      menuBackground.style.display = "none";
       menu.style.opacity = "0";
       menuFooter.style.opacity = "0";
+      setTimeout(() => {
+        menuBackground.style.display = "none";
+      }, 1000);
       setTimeout(() => {
         logo.style.opacity = 1;
         purpleLogo.style.opacity = 0;

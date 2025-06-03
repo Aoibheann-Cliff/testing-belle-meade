@@ -28,6 +28,10 @@ body{
     overflow-y: scroll;
 }
 
+main{
+    background:#4C2F48 !important;
+}
+
 body.has-slider{
     overflow-y: hidden;
 }
@@ -205,6 +209,12 @@ h6{
     -ms-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
     -moz-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
     -webkit-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+
+.logotype img{
+    height:8.625rem !important;
+    object-fit:contain !important;
 }
 
 .ipad-logotype, .carousel-ipad-logotype{
@@ -1272,12 +1282,7 @@ div:has(> .react-dropdown-select) {
 
 .slide-0 .logotype, .slide-0 .tagline{
     opacity:1 !important;
-}
-
-.logotype img{
-    height:12.313rem !important;
-    object-fit:contain !important;
-
+    display:block !important;
 }
 
 .hover-slide{
@@ -1367,6 +1372,10 @@ div:has(> .react-dropdown-select) {
         -ms-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
         -moz-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
         -webkit-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .logotype img{
+        height:4.918rem !important;
     }
 
     .carousel-ipad-logotype{
@@ -1592,6 +1601,10 @@ div:has(> .react-dropdown-select) {
       .nav-toggle:hover {
         cursor: pointer;
       }
+
+      .next-page-title{
+        display:block;
+      }
       
       .x:nth-of-type(1) {
         will-change:background-color, transform;
@@ -1631,6 +1644,63 @@ div:has(> .react-dropdown-select) {
       .hover-slide{
         display:none;
       }
+}
+
+
+@media only screen and (max-width:1366px){
+
+    h1{
+        font-size: 2.5rem;
+        line-height: 3.5rem;
+    }
+
+    h2{
+        font-size: 1.75rem;
+        line-height: 2.45rem;
+    }
+
+    h3{
+        font-size:1.25rem;
+        line-height: 1.75rem;
+    }
+
+    h4{
+        font-family: 'Dia';
+        font-size: 1rem;
+        line-height: 1.4rem;
+    }
+
+    p{
+        font-size: 0.813rem;
+        line-height: 1.138rem;
+    }
+
+    h5{
+        font-size: 0.813rem;
+        line-height: 1.313rem;
+        letter-spacing: 0.122rem;
+    }
+
+    h6{
+        font-size: 0.625rem;
+        letter-spacing: 0.094rem;
+    }
+
+
+    .inquire{
+        font-size: 0.813rem;
+        letter-spacing: 0.122rem;
+    }
+
+    .tagline{
+        font-size:1rem;
+        line-height:1.4rem;
+    }
+
+    footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
+        font-size:0.625rem;
+    }
+
 }
 
 @media only screen and (max-device-width : 1023px)
@@ -2126,7 +2196,7 @@ line-height: 1.225rem;
     }
 }
 
-@media only screen and (max-width:820px)
+@media only screen and (max-width:765px)
     and (orientation : portrait) {
 
         h1{

@@ -23,7 +23,6 @@ export default async function Page() {
       <HomepageFlickityCarousel>
   {homepage?.homepageslides?.map((slide, index) => (
     <div className={`slide-${index}`} key={index}>
-      <div className="symbol" id="symbol"><Image src={symbol} alt="symbol"/></div>
       <div className="logotype" id="logotype"><Image src={logoType} alt="logotype"/></div>
         <h3 className="tagline" id="tagline">
           {homepage.text}

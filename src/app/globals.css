@@ -362,6 +362,10 @@ header{
     background: #4C2F48 !important;
 }
 
+.no-slider{
+    background: #4C2F48 !important;
+}
+
 .nav-toggle{
     display:none;
 }

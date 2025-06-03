@@ -1245,7 +1245,7 @@ div:has(> .react-dropdown-select) {
   }
 
 
-@media only screen and (max-width:1400px){
+@media only screen and (max-width:1440px){
 
     h1{
         font-size: 2.5rem;

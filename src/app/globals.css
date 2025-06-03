@@ -1501,6 +1501,12 @@ div:has(> .react-dropdown-select) {
     .contact-form-title{
         font-size: 1.125rem;
         line-height: 1.575rem;
+        margin-bottom:2rem;
+        margin-top:2.125rem;
+    }
+
+    .submit{
+        margin-top:2.125rem;
     }
 
     .custom-placeholder {

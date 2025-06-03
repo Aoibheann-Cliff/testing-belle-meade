@@ -56,20 +56,26 @@ export const HOMEPAGE_QUERY = `
   *[_type == "page" && slug.current == "home"][0]{
     title,
     text,
-    homepagemediaType,
+    homepageslides[]{
+      mediaType,
+      videoFile{
+        asset->{
+          url
+        }
+      },
+      image {
+        asset->{
+          url
+        },
+        alt
+      }
+    },
     designpagemediaType,
     craftsmanshippagemediaType,
     residencespagemediaType,
     amenitiespagemediaType,
     parkpagemediaType,
     villagepagemediaType,
-    homepageimage {
-      asset->{
-        _id,
-        url
-      },
-      alt
-    },
     designpageimage {
       asset->{
         _id,
@@ -111,11 +117,6 @@ export const HOMEPAGE_QUERY = `
         url
       },
       alt
-    },
-    homepagevideo{
-      asset->{
-        url
-      }
     },
     designpagevideo{
       asset->{

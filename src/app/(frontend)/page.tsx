@@ -20,46 +20,44 @@ export default async function Page() {
     <div className="ipad-logotype" id="ipadlogotype"><Image src={logoType} alt="logotype"/></div>
     <main id="contentWrapper" className="container content-wrapper homepage">
       <HomePageEffects />
-     <HomepageFlickityCarousel>
-      {homepage?.homepageimage && (
-        <div className="carousel-cell home-slide">
-                <div className="carousel-overlay"></div>
-                <div className="carousel-logotype"><Image src={logoType} alt="logotype"/></div>
-                <div className="carousel-ipad-logotype"><Image src={logoType} alt="logotype"/></div>
-                {homepage.homepagemediaType === 'video' && (
-                      <video
-                        src={homepage.homepagevideo.asset.url}
-                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                      />
-                      )}
-                      {homepage.homepagemediaType === 'image' && (
-                        <div>
-        <Image
-          className="w-full aspect-[1920/1080] object-cover min-h-screen"
-          src={urlFor(homepage.homepageimage)
-            .width(1920)
-            .height(1080)
-            .quality(70)
-            .auto("format")
-            .url()}
-          alt={homepage.homepageimage.alt || ""}
-          width={1920}
-          height={1080}
-        />
-        </div>)}
-        {homepage?.text && (
+      <HomepageFlickityCarousel>
+  {homepage?.homepageslides?.map((slide, index) => (
+    <div className={`slide-${index}`} key={index}>
+      <div className="symbol" id="symbol"><Image src={symbol} alt="symbol"/></div>
+      <div className="logotype" id="logotype"><Image src={logoType} alt="logotype"/></div>
         <h3 className="tagline" id="tagline">
           {homepage.text}
         </h3>
+      <div className="carousel-overlay"></div>
+      {slide.mediaType === 'image' && slide.image && (
+        <Image
+          src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
+          alt={slide.image.alt || ""}
+          width={3840}
+          height={2160}
+          quality={100}
+          placeholder="blur"
+          blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
+          className="slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
+        />
       )}
-        </div>
+      {slide.mediaType === 'video' && slide.videoFile && (
+        <video
+          className="slide-video w-full aspect-[1920/1080] object-cover min-h-screen"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src={slide.videoFile.asset.url} type="video/mp4" />
+        </video>
       )}
+    </div>
+  ))}
+</HomepageFlickityCarousel>
+
       {homepage?.designpageimage && (
-                  <div className="carousel-cell design-slide">
+                  <div className="carousel-cell hover-slide design-slide">
                           <div className="carousel-overlay"></div>
                           {homepage.designpagemediaType === 'video' && (
                       <video
@@ -90,7 +88,7 @@ export default async function Page() {
         </div>
       )}
       {homepage?.craftsmanshippageimage && (
-        <div className="carousel-cell craftsmanship-slide">
+        <div className="carousel-cell hover-slide craftsmanship-slide">
                 <div className="carousel-overlay"></div>
                 {homepage.craftsmanshippagemediaType === 'video' && (
                       <video
@@ -121,7 +119,7 @@ export default async function Page() {
         </div>
       )}
       {homepage?.residencespageimage && (
-          <div className="carousel-cell residences-slide">
+          <div className="carousel-cell hover-slide residences-slide">
                   <div className="carousel-overlay"></div>
                   {homepage.residencespagemediaType === 'video' && (
                       <video
@@ -152,7 +150,7 @@ export default async function Page() {
         </div>
       )}
       {homepage?.amenitiespageimage && (
-        <div className="carousel-cell amenities-slide">
+        <div className="carousel-cell hover-slide amenities-slide">
                 <div className="carousel-overlay"></div>
                 {homepage.amenitiespagemediaType === 'video' && (
                       <video
@@ -183,7 +181,7 @@ export default async function Page() {
         </div>
       )}
       {homepage?.parkpageimage && (
-        <div className="carousel-cell park-slide">
+        <div className="carousel-cell hover-slide park-slide">
                 <div className="carousel-overlay"></div>
                 {homepage.parkpagemediaType === 'video' && (
                       <video
@@ -214,7 +212,7 @@ export default async function Page() {
         </div>
       )}
             {homepage?.villagepageimage && (
-          <div className="carousel-cell village-slide">
+          <div className="carousel-cell hover-slide village-slide">
                   <div className="carousel-overlay"></div>
                   {homepage.villagepagemediaType === 'video' && (
                       <video
@@ -244,7 +242,6 @@ export default async function Page() {
                       )}
               </div>
       )}
-      </HomepageFlickityCarousel>
       {homepage?.body && (
         <div className="prose">
           <PortableText value={homepage.body} components={components} />

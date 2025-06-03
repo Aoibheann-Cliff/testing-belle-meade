@@ -74,29 +74,64 @@ export const pageType = defineType({
       hidden: ({ document }) => document?.pageType !== "homepage",
     }),
     defineField({
-      name: 'homepageimage',
-      title: 'Homepage Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-      fields: [
+      name: 'homepageslides',
+      title: 'Slides',
+      type: 'array',
+      of: [
         defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
+          name: 'slide',
+          type: 'object',
+          title: 'Slide',
+          preview: {
+            select: {
+              title: 'title',
+              caption: 'caption',
+              media: 'image',
+            },
+            prepare(selection) {
+              const { title, caption, media } = selection
+              return {
+                title: title || caption || 'Untitled Slide',
+                media,
+              }
+            },
+          },
+          fields: [
+            {
+              name: 'mediaType',
+              title: "Media Type",
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Image', value: 'image' },
+                  { title: 'Video', value: 'video' },
+                ],
+                layout: 'dropdown',
+              },
+            },
+            {
+              name: 'image',
+              title: 'Image',
+              type: 'image',
+              hidden: ({ parent }) => parent?.mediaType !== 'image',
+              options: { hotspot: true },
+              fields: [
+                { name: 'alt', type: 'string', title: 'Alt Text' }
+              ]
+            },
+            {
+              name: 'videoFile',
+              title: 'Video File',
+              hidden: ({ parent }) => parent?.mediaType !== 'video',
+              type: 'file',
+              options: {
+                accept: 'video/*'
+              }
+            },
+          ]
         })
       ],
-      hidden: ({ document }) => document?.homepagemediaType !== "image",
-    }),
-    defineField({
-      name: 'homepagevideo',
-      title: 'Home Page Video',
-      type: 'file',
-      options: {
-        accept: 'video/*'
-      },
-      hidden: ({ document }) => document?.homepagemediaType !== "video",
+      hidden: ({ document }) => document?.pageType !== "homepage",
     }),
     defineField({
       name: 'designpagemediaType',

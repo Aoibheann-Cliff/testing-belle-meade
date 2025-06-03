@@ -96,7 +96,7 @@ export default async function Page({
                           quality={100}
                           placeholder="blur"
                           blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                          className="w-full aspect-[1920/1080] object-contain min-h-screen overlay-img"
+                          className="w-full overlay-img"
                         />
                       </div>
                       </div>
@@ -170,7 +170,7 @@ export default async function Page({
                           quality={100}
                           placeholder="blur"
                           blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                          className="w-full aspect-[1920/1080] object-contain min-h-screen overlay-img"
+                          className="w-full overlay-img"
                         />
                           </div>
                         </div>
@@ -251,7 +251,7 @@ export default async function Page({
                           quality={100}
                           placeholder="blur"
                           blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                          className="w-full aspect-[1920/1080] object-contain min-h-screen overlay-img"
+                          className="w-full overlay-img"
                         />
                       </div>
                       </div>

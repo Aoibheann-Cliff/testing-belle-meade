@@ -37,7 +37,7 @@ lightboxButtons.forEach(button => {
 
     if (img) {
       document.body.classList.add('lightbox-visible');
-      img.style.display = "block";
+      img.style.display = "flex";
       close.style.display = "block";
       header.style.opacity = "0";
 
@@ -116,7 +116,6 @@ lightboxCloseButtons.forEach(button => {
 
       setTimeout(() => {
         if (window.innerWidth < 1366 && flkty) {
-          // Only go to slide 2 if currently on slide 1
           if (flkty.selectedIndex === 0) {
             flkty.select(1);
           }
@@ -148,6 +147,7 @@ lightboxCloseButtons.forEach(button => {
                 }, 1000);
                 gsap.to(nextPageLink, {
                   maxWidth: naturalWidth,
+                  width: naturalWidth,
                   duration: 1,
                   delay: 3,
                   ease: "power3.out"

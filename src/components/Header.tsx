@@ -102,22 +102,22 @@ export function Header() {
           <div className="bar" id="thirdBar"></div>
         </a>
         {designPage && (
-          <Link className="menuitem design" href={`/${designPage.slug}`}>
+          <Link className="menuitem design" id="design" href={`/${designPage.slug}`}>
             {designPage.title}
           </Link>
         )}
         {craftsmanshipPage && (
-          <Link className="menuitem craftsmanship" href={`/${craftsmanshipPage.slug}`}>
+          <Link className="menuitem craftsmanship" id="craftsmanship" href={`/${craftsmanshipPage.slug}`}>
             {craftsmanshipPage.title}
           </Link>
         )}
         {residencesPage && (
-          <Link className="menuitem residences" href={`/${residencesPage.slug}`}>
+          <Link className="menuitem residences"  id="residences" href={`/${residencesPage.slug}`}>
             {residencesPage.title}
           </Link>
         )}
         {amenitiesPage && (
-          <Link className="menuitem amenities" href={`/${amenitiesPage.slug}`}>
+          <Link className="menuitem amenities" id="amenities" href={`/${amenitiesPage.slug}`}>
             {amenitiesPage.title}
           </Link>
         )}
@@ -130,12 +130,12 @@ export function Header() {
       </div>
       <div className="right-menu" id="rightMenu">
       {parkPage && (
-          <Link className="menuitem park" href={`/${parkPage.slug}`}>
+          <Link className="menuitem park"  id="park" href={`/${parkPage.slug}`}>
             {parkPage.title}
           </Link>
         )}
         {villagePage && (
-          <Link className="menuitem village" href={`/${villagePage.slug}`}>
+          <Link className="menuitem village" id="village" href={`/${villagePage.slug}`}>
             {villagePage.title}
           </Link>
         )}

@@ -93,7 +93,6 @@ export default function GlobalPageEffects() {
           purpleLogo.style.opacity = 1;
           openBtn.style.color = "#4c2f48";
           openBtn.style.border = "1px solid #4c2f48";
-          header.style.backgroundColor = "#FFF9F2";
       
           gsap.fromTo(menuContainer, { top: "-100vh" }, {
             top: "0",
@@ -157,8 +156,8 @@ export default function GlobalPageEffects() {
       }, 2000);
     }
 
-    const width = window.innerWidth;
     function closeForm() {
+    const width = window.innerWidth;
     if (width <= 1024) {
       form.style.opacity = "0";
       formFooter.style.opacity = "0";

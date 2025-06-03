@@ -33,6 +33,8 @@ export default function GlobalPageEffects() {
     const firstBar = document.getElementById('firstBar');
     const secondBar = document.getElementById('secondBar');
     const thirdBar = document.getElementById('thirdBar');
+    const header = document.getElementById('header');
+    const footer = document.getElementById('footer');
 
     setTimeout(() => {
       header.style.opacity = "1";
@@ -45,7 +47,75 @@ export default function GlobalPageEffects() {
     setTimeout(() => {
       wrapper.style.opacity = "1";
     }, 1000);
-    
+
+    setTimeout(() => {
+      const designMenuItem = document.getElementById('design');
+      const designSlide = document.querySelector('.design-slide');
+
+      designMenuItem.addEventListener('mouseenter', () => {
+      designSlide.style.opacity = '1';
+      });
+
+      designMenuItem.addEventListener('mouseleave', () => {
+      designSlide.style.opacity = '0';
+      });
+
+      const craftsmanshipMenuItem = document.getElementById('craftsmanship');
+      const craftsmanshipSlide = document.querySelector('.craftsmanship-slide');
+
+      craftsmanshipMenuItem.addEventListener('mouseenter', () => {
+        craftsmanshipSlide.style.opacity = '1';
+      });
+
+      craftsmanshipMenuItem.addEventListener('mouseleave', () => {
+      craftsmanshipSlide.style.opacity = '0';
+      });
+
+      const residencesMenuItem = document.getElementById('residences');
+      const residencesSlide = document.querySelector('.residences-slide');
+
+      residencesMenuItem.addEventListener('mouseenter', () => {
+        residencesSlide.style.opacity = '1';
+      });
+
+      residencesMenuItem.addEventListener('mouseleave', () => {
+      residencesSlide.style.opacity = '0';
+      });
+
+      const amenitiesMenuItem = document.getElementById('amenities');
+      const amenitiesSlide = document.querySelector('.amenities-slide');
+
+      amenitiesMenuItem.addEventListener('mouseenter', () => {
+        amenitiesSlide.style.opacity = '1';
+      });
+
+      amenitiesMenuItem.addEventListener('mouseleave', () => {
+        amenitiesSlide.style.opacity = '0';
+      });
+
+      const parkMenuItem = document.getElementById('park');
+      const parkSlide = document.querySelector('.park-slide');
+
+      parkMenuItem.addEventListener('mouseenter', () => {
+        parkSlide.style.opacity = '1';
+      });
+
+      parkMenuItem.addEventListener('mouseleave', () => {
+        parkSlide.style.opacity = '0';
+      });
+
+      const villageMenuItem = document.getElementById('village');
+      const villageSlide = document.querySelector('.village-slide');
+
+      villageMenuItem.addEventListener('mouseenter', () => {
+        villageSlide.style.opacity = '1';
+      });
+
+      villageMenuItem.addEventListener('mouseleave', () => {
+      villageSlide.style.opacity = '0';
+      });
+
+  }, 1000);
     function toggleHamburger() {
       const width = window.innerWidth;
     
@@ -219,6 +289,8 @@ export default function GlobalPageEffects() {
           }, 6000);
       } else{
         overlay.style.display = "none";
+        symbolimg.style.display = "none";
+        logotype.style.display = "none";
       }
   }
   popupScroll();

@@ -29,6 +29,7 @@ export default async function Page() {
         </h3>
       <div className="carousel-overlay"></div>
       {slide.mediaType === 'image' && slide.image && (
+        <div>
         <Image
           src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
           alt={slide.image.alt || ""}
@@ -37,8 +38,21 @@ export default async function Page() {
           quality={100}
           placeholder="blur"
           blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-          className="slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
+          className={`${slide.mobileimage && ('has-mobile-image')} slide-image w-full aspect-[1920/1080] object-cover min-h-screen`}
         />
+        {slide.mobileimage && (
+          <Image
+            src={urlFor(slide.mobileimage).width(3840).height(2160).quality(70).auto('format').url()}
+            alt={slide.image?.alt || ""}
+            width={3840}
+            height={2160}
+            quality={100}
+            placeholder="blur"
+            blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
+            className="mobile-image slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
+          />
+          )}
+        </div>
       )}
       {slide.mediaType === 'video' && slide.videoFile && (
         <video

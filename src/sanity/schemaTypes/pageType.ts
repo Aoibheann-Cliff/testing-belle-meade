@@ -91,7 +91,7 @@ export const pageType = defineType({
             prepare(selection) {
               const { title, caption, media } = selection
               return {
-                title: title || caption || 'Untitled Slide',
+                title: title || caption || 'Slide',
                 media,
               }
             },
@@ -114,7 +114,17 @@ export const pageType = defineType({
               title: 'Image',
               type: 'image',
               hidden: ({ parent }) => parent?.mediaType !== 'image',
-              options: { hotspot: true },
+              options: { hotspot: false },
+              fields: [
+                { name: 'alt', type: 'string', title: 'Alt Text' }
+              ]
+            },
+            {
+              name: 'mobileimage',
+              title: 'Mobile Image',
+              type: 'image',
+              hidden: ({ parent }) => parent?.mediaType !== 'image',
+              options: { hotspot: false },
               fields: [
                 { name: 'alt', type: 'string', title: 'Alt Text' }
               ]
@@ -151,7 +161,7 @@ export const pageType = defineType({
       title: 'Design Page Image',
       type: 'image',
       options: {
-        hotspot: true,
+        hotspot: false,
       },
       fields: [
         defineField({
@@ -189,7 +199,7 @@ export const pageType = defineType({
       title: 'Craftsmanship Page Image',
       type: 'image',
       options: {
-        hotspot: true,
+        hotspot: false,
       },
       fields: [
         defineField({
@@ -227,7 +237,7 @@ export const pageType = defineType({
       title: 'Residences Page Image',
       type: 'image',
       options: {
-        hotspot: true,
+        hotspot: false,
       },
       fields: [
         defineField({
@@ -265,7 +275,7 @@ export const pageType = defineType({
       title: 'Amenities Page Image',
       type: 'image',
       options: {
-        hotspot: true,
+        hotspot: false,
       },
       fields: [
         defineField({
@@ -303,7 +313,7 @@ export const pageType = defineType({
       title: 'Park & Gardens Page Image',
       type: 'image',
       options: {
-        hotspot: true,
+        hotspot: false,
       },
       fields: [
         defineField({
@@ -341,7 +351,7 @@ export const pageType = defineType({
       title: 'Belle Meade Village Page Image',
       type: 'image',
       options: {
-        hotspot: true,
+        hotspot: false,
       },
       fields: [
         defineField({
@@ -451,7 +461,7 @@ export const pageType = defineType({
               title: 'Image',
               type: 'image',
               hidden: ({ parent }) => parent?.mediaType !== 'image',
-              options: { hotspot: true },
+              options: { hotspot: false },
               fields: [
                 { name: 'alt', type: 'string', title: 'Alt Text' }
               ]
@@ -469,8 +479,18 @@ export const pageType = defineType({
               name: 'smallImage',
               title: 'Small Image',
               type: 'image',
-              options: { hotspot: true },
+              options: { hotspot: false },
               hidden: ({ parent }) => parent?.smallmediaType !== 'image',
+              fields: [
+                { name: 'alt', type: 'string', title: 'Alt Text' }
+              ]
+            },
+            {
+              name: 'mobileimage',
+              title: 'Mobile Image',
+              type: 'image',
+              hidden: ({ parent }) => parent?.mediaType !== 'image',
+              options: { hotspot: false },
               fields: [
                 { name: 'alt', type: 'string', title: 'Alt Text' }
               ]
@@ -495,6 +515,12 @@ export const pageType = defineType({
               title: 'Text',
               type: 'blockContent',
               hidden: ({ parent }) => parent?.layout !== 'imageAndText' && parent?.layout !== 'imageRightTextLeft' && parent?.layout !== 'imageLeftTextRight' && parent?.layout !== 'imageLeftQuoteRight' && parent?.layout !== 'imageRightQuoteLeft'  && parent?.layout !== 'imageAndTextOverlay',
+            },
+            {
+              name: 'mobiletext',
+              title: 'Mobile Text',
+              type: 'blockContent',
+              hidden: ({ parent }) => parent?.layout !== 'imageLeftQuoteRight' && parent?.layout !== 'imageRightQuoteLeft',
             },
             {
               name: 'credit',

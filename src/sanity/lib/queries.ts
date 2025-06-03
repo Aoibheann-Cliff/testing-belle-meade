@@ -24,6 +24,7 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
     layout,
     title,
     text,
+    mobiletext,
     linkText,
     link,
     mediaType,
@@ -37,6 +38,12 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
       }
     },
     image {
+      asset->{
+        url
+      },
+      alt
+    },
+    mobileimage {
       asset->{
         url
       },
@@ -64,6 +71,12 @@ export const HOMEPAGE_QUERY = `
         }
       },
       image {
+        asset->{
+          url
+        },
+        alt
+      },
+      mobileimage {
         asset->{
           url
         },

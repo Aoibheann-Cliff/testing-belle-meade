@@ -1857,8 +1857,9 @@ line-height: 1.225rem;
     }
 
     .image-text-slide .text {
-        padding: 2.125rem 1.25rem 2.125rem 3.75rem;
-        justify-content: flex-end;
+        padding: 7.125rem 2.375rem 2.125rem 3.75rem;
+        overflow-x:scroll;
+        /* justify-content: flex-end; */
     }
 
     .image-text-slide .image-container , .image-text-slide video{
@@ -1868,6 +1869,7 @@ line-height: 1.225rem;
     .image-text-slide .inner-text {
         position:static;
         width:100%;
+        max-width:100%;
     }
 
     .image-text-slide .inner-text .title{
@@ -1979,8 +1981,8 @@ line-height: 1.225rem;
       }
 
       .purple-arrow {
-        width: 0.406rem;
-        height: 0.813rem;
+        width: 0.406rem !important;
+        height: 0.813rem !important;
         right: 1.063rem;
     }
 

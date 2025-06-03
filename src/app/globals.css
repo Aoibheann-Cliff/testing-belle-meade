@@ -556,15 +556,11 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
 .image-text-slide .inner-text{
     flex-direction: column;
     gap: 1.563rem;
-    width: 80%;
+    width: 55%;
     display: flex;
     position: absolute;
     z-index: 2;
     bottom: 3.125rem;
-}
-
-.image-text-slide .inner-text .title{
-    width:70%;
 }
 
 .overlay-img{
@@ -577,6 +573,10 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
 
 .intro-slide .slide-footer{
     display:none;
+}
+
+.intro-slide .text a{
+    padding-top:1.875rem;
 }
 
 .small-large-image-slide{
@@ -785,7 +785,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     flex-direction: column;
     align-items: center;
     gap:1.563rem;
-    width: 59%;
+    width: 50%;
 }
 
 .credit{
@@ -928,6 +928,27 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     justify-content:center;
     align-items: center;
     background:#FFF9F2
+}
+
+.form-container .agent-company-input{
+    width: calc(50% - 0.75rem);
+    position:relative;
+}
+
+.agent-company-input input{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    display:none;
+    opacity:0;
+}
+
+.agent-company-input .react-dropdown-select-content input{
+    position: static;
+    width: 100%;
+    top: 0;
+    display:block;
+    opacity:1;
 }
 
 .form-container input, .form-container select{
@@ -1224,7 +1245,7 @@ div:has(> .react-dropdown-select) {
   }
 
 
-@media only screen and (max-width:1366px){
+@media only screen and (max-width:1400px){
 
     h1{
         font-size: 2.5rem;

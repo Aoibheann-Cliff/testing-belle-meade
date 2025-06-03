@@ -35,7 +35,7 @@ export default function ContactForm() {
     fetchData();
   }, []);
 
-  const [formData, setFormData] = useState({ about: "", firstName: "", lastName: "", email: "", country: "", address: "", city: "", state: "", zipcode: "", residence: "", agent: "", message: "" });
+  const [formData, setFormData] = useState({ about: "", firstName: "", lastName: "", email: "", country: "", address: "", city: "", state: "", zipcode: "", residence: "", agent: "", company: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
   const [errors, setErrors] = useState<Record<string, boolean>>({});
@@ -52,6 +52,7 @@ export default function ContactForm() {
     if (!formData.state) newErrors.state = true;
     if (!formData.zipcode) newErrors.zipcode = true;
     if (!formData.agent) newErrors.agent = true;
+    if (!formData.company) newErrors.company = true;
   
     setErrors(newErrors);
   
@@ -591,33 +592,50 @@ export default function ContactForm() {
     return <div>{state.values[0].label}</div>;
   }}
 />
-<Select<{ label: string, value: string }>
-  options={agentoptions}
-  values = {formData.agent
-  ? agentoptions.find((opt) => opt.label === formData.agent)
-    ? [agentoptions.find((opt) => opt.label === formData.agent) as { label: string; value: string }]
-    : []
-  : []}
-  onSelect={() => {}}
-  onDeselect={() => {}}
-  onChange={(values) => {
-    const selected = values[0]?.label || "";
-    setFormData((prev) => ({ ...prev, agent: selected }));
-  }}
-  placeholder="represented by an agent?*"
-  searchable={false}
-  multi={false}
-  dropdownHandle={true}
-  clearable={false}
-  className={`${errors.agent ? 'border-red-500' : ''}`}
-  contentRenderer={({ props, state }) => {
-    // Custom renderer to fix placeholder visibility
-    if (!state.values.length) {
-      return <div className="custom-placeholder">{props.placeholder}</div>;
-    }
-    return <div>{state.values[0].label}</div>;
-  }}
-/>
+<div className="agent-company-input">
+  {formData.about === "Buyer" ? (
+    <input
+      type="text"
+      name="company"
+      placeholder="Company*"
+      className={`${errors.company ? 'border-red-500' : ''}`}
+      value={formData.company}
+      onChange={handleChange}
+      style={{ display: 'block', opacity: 1, width: '100%' }}
+    />
+  ) : (
+    <Select<{ label: string, value: string }>
+      options={agentoptions}
+      values={
+        formData.agent
+          ? agentoptions.find((opt) => opt.label === formData.agent)
+            ? [agentoptions.find((opt) => opt.label === formData.agent) as { label: string; value: string }]
+            : []
+          : []
+      }
+      onSelect={() => {}}
+      onDeselect={() => {}}
+      onChange={(values) => {
+        const selected = values[0]?.label || "";
+        setFormData((prev) => ({ ...prev, agent: selected }));
+      }}
+      placeholder="represented by an agent?*"
+      searchable={false}
+      multi={false}
+      dropdownHandle={true}
+      style={{opacity: 1, width: '100%' }}
+      clearable={false}
+      className={`custom-select ${errors.agent ? 'border-red-500' : ''}`}
+      contentRenderer={({ props, state }) => {
+        // Custom renderer to fix placeholder visibility
+        if (!state.values.length) {
+          return <div className="custom-placeholder">{props.placeholder}</div>;
+        }
+        return <div>{state.values[0].label}</div>;
+      }}
+    />
+  )}
+</div>
 <input
   type="text"
   name="message"

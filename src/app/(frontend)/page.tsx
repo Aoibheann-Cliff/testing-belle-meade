@@ -13,11 +13,12 @@ export default async function Page() {
   const { data: homepage } = await sanityFetch({ query: HOMEPAGE_QUERY });
 
   return (
-    <main className="container homepage">
-      <div className="loading-overlay" id="overlay"></div>
-      <div className="symbol" id="symbol"><Image src={symbol} alt="symbol"/></div>
-      <div className="logotype" id="logotype"><Image src={logoType} alt="logotype"/></div>
-      <div className="ipad-logotype" id="ipadlogotype"><Image src={logoType} alt="logotype"/></div>
+    <>
+    <div className="loading-overlay" id="overlay"></div>
+    <div className="symbol" id="symbol"><Image src={symbol} alt="symbol"/></div>
+    <div className="logotype" id="logotype"><Image src={logoType} alt="logotype"/></div>
+    <div className="ipad-logotype" id="ipadlogotype"><Image src={logoType} alt="logotype"/></div>
+    <main id="contentWrapper" className="container content-wrapper homepage">
       <HomePageEffects />
      <HomepageFlickityCarousel>
       {homepage?.homepageimage && (
@@ -250,5 +251,6 @@ export default async function Page() {
         </div>
       )}
     </main>
+    </>
   );
 }

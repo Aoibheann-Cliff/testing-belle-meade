@@ -26,6 +26,7 @@ export default function GlobalPageEffects() {
     const leftMenu = document.getElementById('leftMenu');
     const rightMenu = document.getElementById('rightMenu');
     const logo = document.getElementById('logo');
+    const wrapper = document.getElementById('contentWrapper');
     const purpleLogo = document.getElementById('purpleLogo');
     const navToggle = document.getElementById('navToggle');
     const firstBar = document.getElementById('firstBar');
@@ -38,6 +39,10 @@ export default function GlobalPageEffects() {
 
     setTimeout(() => {
       footer.style.opacity = "1";
+    }, 1000);
+
+    setTimeout(() => {
+      wrapper.style.opacity = "1";
     }, 1000);
     
     function toggleHamburger() {
@@ -168,14 +173,14 @@ export default function GlobalPageEffects() {
 
       gsap.fromTo(formContainer, { top: "-100vh" }, {
         top: "0",
-        duration: 1,
+        duration: 1.5,
         ease: "power3.out"
       });
 
       setTimeout(() => {
         form.style.opacity = "1";
         formFooter.style.opacity = "1";
-      }, 1000);
+      }, 1500);
     });
 
     closeBtn?.addEventListener("click", closeForm);
@@ -184,27 +189,37 @@ export default function GlobalPageEffects() {
     overlay.style.opacity = "1";
     overlay.style.background = "#4C2F48";
 
-    setTimeout(() => {
-      symbolimg.style.opacity = "1";
-    }, 1000);
-    setTimeout(() => {
-      symbolimg.style.opacity = "0";
-    }, 2500);
-    setTimeout(() => {
-      symbolimg.style.display = "none";
-      logotype.style.opacity = "1";
-      ipadlogotype.style.opacity = "1";
-    }, 3500);
-    setTimeout(() => {
-      overlay.style.opacity = "0";
-      logotype.style.opacity = "0";
-      ipadlogotype.style.opacity = "0";
-    }, 5000);
-    setTimeout(() => {
-      logotype.style.display = "none";
-      ipadlogotype.style.display = "none";
-      overlay.style.display = "none";
-    }, 6000);
+    function popupScroll() {
+      if (!localStorage.getItem('showPopup')) {
+          localStorage.setItem('showPopup', 'true'); 
+          overlay.style.opacity = "1";
+          setTimeout(() => {
+            symbolimg.style.opacity = "1";
+          }, 1000);
+          setTimeout(() => {
+            symbolimg.style.opacity = "0";
+          }, 2500);
+          setTimeout(() => {
+            symbolimg.style.display = "none";
+            logotype.style.opacity = "1";
+            ipadlogotype.style.opacity = "1";
+          }, 3500);
+          setTimeout(() => {
+            overlay.style.opacity = "0";
+            logotype.style.opacity = "0";
+            ipadlogotype.style.opacity = "0";
+          }, 5000);
+          setTimeout(() => {
+            logotype.style.display = "none";
+            ipadlogotype.style.display = "none";
+            overlay.style.display = "none";
+          }, 6000);
+      } else{
+        overlay.style.display = "none";
+      }
+  }
+  popupScroll();
+
 
     return () => {
       navToggle?.removeEventListener('click', toggleHamburger);

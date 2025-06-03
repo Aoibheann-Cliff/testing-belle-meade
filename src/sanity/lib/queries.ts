@@ -24,6 +24,7 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
     layout,
     title,
     text,
+    linkText,
     link,
     mediaType,
     smallmediaType,

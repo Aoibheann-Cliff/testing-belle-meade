@@ -59,7 +59,7 @@ export default async function Page({
                   return (
                     <div key={index} className="relative min-h-screen overlay-slide">
                       <div className="flickity-top-overlay"></div>
-                      {slide.mediaType === 'video' && (
+                      {slide.mediaType === 'video' && slide.videoFile?.asset?.url && (
                       <video
                         src={slide.videoFile.asset.url}
                         className="w-full aspect-[1920/1080] object-cover min-h-screen"
@@ -133,7 +133,7 @@ export default async function Page({
                   if (!slide.image) return <></>
                   return (
                     <div key={index} className="relative min-h-screen intro-slide overlay-slide">
-                   {slide.mediaType === 'video' && (
+                   {slide.mediaType === 'video' && slide.videoFile?.asset?.url &&  (
                       <video
                         src={slide.videoFile.asset.url}
                         className="w-full aspect-[1920/1080] object-cover min-h-screen"
@@ -179,9 +179,9 @@ export default async function Page({
                         <div className="text">
                           {slide.title && <h5 className="title">{slide.title}</h5>}
                           {slide.text && <PortableText value={slide.text} />}
-                          {slide.link && (
-                            <a href={slide.link} target="_blank" className="underline">
-                              {new URL(slide.link).hostname.replace(/^www\./, "")}
+                          {slide.linkText && slide.link &&(
+                            <a href={slide.link} target="_blank">
+                              <h5>{slide.linkText}</h5>
                             </a>
                           )}
                         </div>
@@ -214,7 +214,7 @@ export default async function Page({
                   return (
                     <div key={index} className="min-h-screen">
                       <div className="flickity-top-overlay"></div>
-                      {slide.mediaType === 'video' && (
+                      {slide.mediaType === 'video' && slide.videoFile?.asset?.url && (
                       <video
                         src={slide.videoFile.asset.url}
                         className="w-full aspect-[1920/1080] object-cover min-h-screen"
@@ -308,7 +308,7 @@ export default async function Page({
                         </div>
                       </div>
                       <div className="quote-image">
-                      {slide.mediaType === 'video' && (
+                      {slide.mediaType === 'video'  && slide.videoFile?.asset?.url && (
                       <video
                         src={slide.videoFile.asset.url}
                         className="w-full aspect-[1920/1080] object-cover min-h-screen"
@@ -382,14 +382,14 @@ export default async function Page({
                               </Tag>
                             );
                           })}
-                          {slide.link && (
-                            <a href={slide.link} target="_blank" className="link">
-                              <h5>{new URL(slide.link).hostname.replace(/^www\./, "")}</h5>
+                        {slide.linkText && slide.link &&(
+                            <a href={slide.link} target="_blank">
+                              <h5>{slide.linkText}</h5>
                             </a>
                           )}
                         </div>
                       </div>
-                      {slide.mediaType === 'video' && (
+                      {slide.mediaType === 'video' && slide.videoFile?.asset?.url && (
                       <video
                         src={slide.videoFile.asset.url}
                         className="w-full aspect-[1920/1080] object-cover min-h-screen"
@@ -445,7 +445,7 @@ export default async function Page({
                       <div className="flickity-top-overlay"></div>
                       {!reverse && slide.smallImage && (
                         <div className="smallImageContainer">
-                      {slide.smallmediaType === 'video' && (
+                      {slide.smallmediaType === 'video' && slide.videoFile?.asset?.url && (
                       <video
                         src={slide.videoFile.asset.url}
                         className="w-full aspect-[1920/1080] object-cover min-h-screen"
@@ -472,7 +472,7 @@ export default async function Page({
                         </div>
                       )}
                       <div className="largeImageContainer">
-                      {slide.mediaType === 'video' && (
+                      {slide.mediaType === 'video' && slide.videoFile?.asset?.url && (
                       <video
                         src={slide.videoFile.asset.url}
                         className="w-full aspect-[1920/1080] object-cover min-h-screen"
@@ -499,7 +499,7 @@ export default async function Page({
                       </div>
                       {reverse && slide.smallImage && (
                         <div className="smallImageContainer">
-                                                {slide.mediaType === 'video' && (
+                                                {slide.mediaType === 'video' && slide.videoFile?.asset?.url && (
                       <video
                         src={slide.videoFile.asset.url}
                         className="w-full aspect-[1920/1080] object-cover min-h-screen"

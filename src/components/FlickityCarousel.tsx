@@ -128,18 +128,11 @@ lightboxCloseButtons.forEach(button => {
         setFlickityInstance(flkty);
   
         flkty.on('change', function(index) { 
+          if(nextPageLink){
           if (index === flkty.slides.length - 1) {
-            gsap.to(header, {
-              opacity: 0,
-              duration: 0.6,
-              ease: "power1.out",
-            });
               const width = window.innerWidth;
               if (width <= 1366) {
                 const naturalWidth = nextPageTitle.scrollWidth + "px";
-                header.style.pointerEvents = "none";
-                footer.style.opacity = 0;
-                footer.style.pointerEvents = "none";
                 setTimeout(() => {
                   nextPageLink.style.transform = "translateX(0px)";
                 }, 1000);
@@ -156,15 +149,6 @@ lightboxCloseButtons.forEach(button => {
                   delay: 4
                 });
               } else {
-                gsap.to(header, {
-                  opacity: 0,
-                  duration: 0.6,
-                  ease: "power1.out",
-                });
-                header.style.pointerEvents = "none";
-                footer.style.opacity = 0;
-                footer.style.pointerEvents = "none";
-
                 nextPageLink.addEventListener('mouseenter', () => {
                   gsap.killTweensOf([nextPageLink, nextPageTitle]);
                   nextPageTitle.style.display = 'block';
@@ -225,6 +209,7 @@ lightboxCloseButtons.forEach(button => {
               nextPageLink.style.transform = "translateX(100vh)";
             }, 500);
           }
+        }
         });        
       }
     });

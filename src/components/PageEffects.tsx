@@ -203,14 +203,14 @@ export default function GlobalPageEffects() {
 
       gsap.fromTo(formContainer, { top: "-100vh" }, {
         top: "0",
-        duration: 1,
+        duration: 1.5,
         ease: "power3.out"
       });
 
       setTimeout(() => {
         form.style.opacity = "1";
         formFooter.style.opacity = "1";
-      }, 1000);
+      }, 1500);
     });
 
     mobileopenBtn?.addEventListener("click", () => {
@@ -227,14 +227,14 @@ export default function GlobalPageEffects() {
 
       gsap.fromTo(formContainer, { top: "-100vh" }, {
         top: "0",
-        duration: 1,
+        duration: 1.5,
         ease: "power3.out"
       });
 
       setTimeout(() => {
         form.style.opacity = "1";
         formFooter.style.opacity = "1";
-      }, 1000);
+      }, 1500);
     });
 
     closeBtn?.addEventListener("click", closeForm);

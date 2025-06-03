@@ -474,10 +474,16 @@ export const pageType = defineType({
               hidden: ({ parent }) => parent?.layout !== 'imageOnly' && parent?.layout !== 'imageRightTextLeft' && parent?.layout !== 'imageLeftTextRight' && parent?.layout !== 'imageLeftQuoteRight' && parent?.layout !== 'imageRightQuoteLeft' && parent?.layout !== 'imageAndTextOverlay' && parent?.layout !== 'smallImageLeftLargeImageRight' && parent?.layout !== 'largeImageLeftSmallImageRight',
             },
             {
+            name: 'linkText',
+            title: 'Link Text',
+            type: 'string',
+            hidden: ({ parent }) => parent?.layout !== 'imageAndText' && parent?.layout !== 'imageAndTextOverlay',
+          },
+            {
             name: 'link',
             title: 'Link',
             type: 'url',
-            hidden: ({ parent }) => parent?.layout !== 'imageAndText',
+            hidden: ({ parent }) => parent?.layout !== 'imageAndText' && parent?.layout !== 'imageAndTextOverlay',
           },
           {
             name: 'backgroundColor',

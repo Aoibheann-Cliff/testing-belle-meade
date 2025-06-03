@@ -16,6 +16,7 @@ export default function GlobalPageEffects() {
     const closeBtn = document.getElementById("contactformclose");
     const formContainer = document.querySelector(".form-container");
     const menuContainer = document.getElementById('mobileMenu');
+    const menuBackground = document.getElementById('menuBackground');
     const symbolimg = document.getElementById('symbol');
     const logotype = document.getElementById('logotype');
     const ipadlogotype = document.getElementById('ipadlogotype');
@@ -64,6 +65,7 @@ export default function GlobalPageEffects() {
     
       if (!isOpen) {
         menuContainer.style.display = "flex";
+        menuBackground.style.display = "flex";
         logo.style.opacity = 0;
         purpleLogo.style.opacity = 1;
         openBtn.style.color = "#4c2f48";
@@ -91,6 +93,7 @@ export default function GlobalPageEffects() {
         thirdBar.style.backgroundColor= "#fff9f2";
         menu.style.opacity = "0";
         menuFooter.style.opacity = "0";
+        menuBackground.style.display = "none";
   
         setTimeout(() => {
           leftMenu.style.display = "flex";
@@ -248,6 +251,7 @@ export default function GlobalPageEffects() {
         gsap.to(menu, { opacity: 0 });
         gsap.to(menuFooter, { opacity:0 });
   
+        menuBackground.style.display = "none";
         firstBar.style.transform = "rotate(0deg) translate(0rem, 0rem)";
         secondBar.style.width = "";
         thirdBar.style.transform = "rotate(0deg) translate(0rem, 0rem)";

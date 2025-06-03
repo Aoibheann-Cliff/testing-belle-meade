@@ -142,6 +142,7 @@ export function Header() {
         <div className="inquire" id="openForm">Inquire</div>
       </div>
       <div id="mobileMenu">
+        <div id="menuBackground" className="menu-background"></div>
         <div id="menu">
           {designPage && (
             <Link className="menuitem design" href={`/${designPage.slug}`}>

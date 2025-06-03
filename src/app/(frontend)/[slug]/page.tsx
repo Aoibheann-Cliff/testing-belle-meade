@@ -79,9 +79,9 @@ export default async function Page({
                         quality={100}
                         placeholder="blur"
                         blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                        className="slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
                       />
-                                                                  <div className="lightbox-close panzoom-exclude">
+                            <div className="lightbox-close panzoom-exclude">
                           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
                           <path d="M1 1L29 29" stroke="#ffffff"/>
                           <path d="M29 1L1 29" stroke="#ffffff"/>
@@ -153,7 +153,7 @@ export default async function Page({
                         quality={100}
                         placeholder="blur"
                         blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className="w-full aspect-[1920/1080] object-cover min-h-screen overlay-img"
+                        className="slide-image w-full aspect-[1920/1080] object-cover min-h-screen overlay-img"
                       />
                                              <div className="lightbox-close panzoom-exclude">
                           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -234,7 +234,7 @@ export default async function Page({
                         quality={100}
                         placeholder="blur"
                         blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                        className="slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
                       />
                       <div className="lightbox-close panzoom-exclude">
                           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -465,7 +465,7 @@ export default async function Page({
                         quality={100}
                         placeholder="blur"
                         blurDataURL={urlFor(slide.smallImage).width(10).height(6).quality(10).url()}
-                        className="object-cover"
+                        className="object-cover slide-image"
                       />
                         </div>
                       )}

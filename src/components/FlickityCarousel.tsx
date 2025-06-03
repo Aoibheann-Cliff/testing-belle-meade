@@ -112,6 +112,13 @@ lightboxCloseButtons.forEach(button => {
           flkty.next();
         });
       });
+
+
+      setTimeout(() => {
+        if (window.innerWidth < 1366 && flkty) {
+          flkty.select(1); // Go to second slide (index 1)
+        }
+      }, 4000);
   
       if (carouselRef.current) {
         flkty = new Flickity(carouselRef.current, {

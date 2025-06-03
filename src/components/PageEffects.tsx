@@ -17,6 +17,7 @@ export default function GlobalPageEffects() {
     const closeBtn = document.getElementById("contactformclose");
     const formContainer = document.querySelector(".form-container");
     const menuContainer = document.getElementById('mobileMenu');
+    const menuBackground = document.getElementById('menuBackground');
     const form = document.getElementById('form');
     const formFooter = document.getElementById('formFooter');
     const menu = document.getElementById('menu');
@@ -50,7 +51,8 @@ export default function GlobalPageEffects() {
       });
   
     });
-    
+  
+
     setTimeout(() => {
       header.style.opacity = "1";
     }, 1000);
@@ -86,10 +88,12 @@ export default function GlobalPageEffects() {
       
         if (!isOpen) {
           menuContainer.style.display = "flex";
+          menuBackground.style.display = "flex";
           logo.style.opacity = 0;
           purpleLogo.style.opacity = 1;
           openBtn.style.color = "#4c2f48";
           openBtn.style.border = "1px solid #4c2f48";
+          header.style.backgroundColor = "#FFF9F2";
       
           gsap.fromTo(menuContainer, { top: "-100vh" }, {
             top: "0",
@@ -114,6 +118,8 @@ export default function GlobalPageEffects() {
       thirdBar.style.backgroundColor= "#fff9f2";
       menu.style.opacity = "0";
       menuFooter.style.opacity = "0";
+      header.style.backgroundColor = "transparent";
+      menuBackground.style.display = "none";
 
       setTimeout(() => {
         leftMenu.style.display = "flex";
@@ -280,6 +286,7 @@ export default function GlobalPageEffects() {
 
 
   useEffect(() => {
+
     const menuContainer = document.getElementById('mobileMenu');
     const formContainer = document.querySelector('.form-container');
 
@@ -304,6 +311,8 @@ export default function GlobalPageEffects() {
       thirdBar.style.transform = "rotate(0deg) translate(0rem, 0rem)";
       firstBar.style.backgroundColor = "#fff9f2";
       thirdBar.style.backgroundColor= "#fff9f2";
+      header.style.backgroundColor = "transparent";
+      menuBackground.style.display = "none";
       menu.style.opacity = "0";
       menuFooter.style.opacity = "0";
       setTimeout(() => {
@@ -330,6 +339,7 @@ export default function GlobalPageEffects() {
       const leftMenu = document.getElementById('leftMenu');
       const rightMenu = document.getElementById('rightMenu');
       const logo = document.getElementById('logo');
+      header.style.backgroundColor = "transparent";
 
       form.style.opacity = "0";
       formFooter.style.opacity = "0";

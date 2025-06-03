@@ -1108,7 +1108,10 @@ div:has(> .react-dropdown-select) {
 }
 
 .react-dropdown-select:focus-within{
-    border:0px !important;
+    border-top:0px !important;
+    border-left:0px !important;
+    border-right:0px !important;
+    border-bottom:1px solid #4d2e4880 !important;
 }
 
 .css-13lhtxh-DropdownHandleComponent:hover path, .css-1kgs3nr-DropdownHandleComponent:focus path{
@@ -1211,6 +1214,7 @@ div:has(> .react-dropdown-select) {
     top: -100svh;
     right: 0;
     flex-direction:column;
+    overflow-y:scroll
   }
 
   #menu{
@@ -1669,8 +1673,9 @@ line-height: 1.225rem;
 
     #menu{
         gap:2.5rem;
-        padding-top: 8.75rem;
-        padding-bottom: 0rem;
+        padding-top: 8.75rem !important;
+        padding-bottom: 0rem !important; 
+        height:fit-content !important;
     }
 
     .form-footer h6, .form-footer-menu .menuitem{
@@ -1893,14 +1898,14 @@ line-height: 1.225rem;
       form{
         gap:1.25rem;
       }
-
+/* 
       .form-container .agent-company-input{
         width:100% !important;
-      }
+      } */
 
       .form-container{
         justify-content: flex-start;
-        padding:10.5rem 3.75rem 0rem 3.75rem;
+        padding:10.5rem 3.5rem 0rem 3.5rem;
       }
 
       .submit{
@@ -2030,6 +2035,39 @@ line-height: 1.225rem;
 
     .intro-slide .slide-footer{
         display:flex;
+    }
+
+    .flickity-cell .slide-image{
+        width:100vw;
+        height: 100svh !important;
+    }
+
+    .slide-overlay .text {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .menu-background{
+        display:none;
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        background-color: #FFF9F2;
+        padding: 3.63rem 3.75rem;
+        z-index:1000;
+    }
+
+    .contact-form-close{
+        z-index: 1;
+        background-color: #fff9f2;
+        width: 100%;
+        padding-top:  2.732rem;
+        padding-bottom: 2.9rem;
+        padding-left: 3.125rem;
+        position: fixed;
+        top: 0;
+        left: 0;
     }
 
 }
@@ -2235,8 +2273,8 @@ line-height: 1.225rem;
 
     .image-text-slide .image-container , .image-text-slide video{
         width:100%;
-        height:50vh;
-        min-height:50vh;
+        height:50svh;
+        min-height:50svh;
         position:absolute;
         z-index:-1;
         top:0;
@@ -2263,7 +2301,7 @@ line-height: 1.225rem;
     .image-text-slide .text{
         width: 100%;
         height: fit-content !important;
-        min-height:50vh;
+        min-height:50svh;
         padding:1.563rem;
         justify-content: flex-end;
         position:absolute;
@@ -2376,16 +2414,16 @@ line-height: 1.225rem;
 
       .quote-image{
         order:2;
-        height:50vh;
+        height:50svh;
       }
 
       .quote-text{
         order:1;
-        height:50vh;
+        height:50svh;
       }
 
       .flickity-cell img{
-        height:50vh;
+        height:50svh;
       }
 
       .quote-image, .quote-text{
@@ -2520,6 +2558,11 @@ line-height: 1.225rem;
 
     .image-text-slide .image-container img{
         min-height:auto !important;
+    }
+
+    .slide-overlay .text {
+        width: 100%;
+        max-width: 100%;
     }
 }
 

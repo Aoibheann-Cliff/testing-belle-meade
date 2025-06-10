@@ -119,6 +119,55 @@ export const HOMEPAGE_QUERY = `
       },
       alt
     },
+    backgroundmobileimage {
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    designpagemobileimage {
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    craftsmanshippagemobileimage {
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    residencespagemobileimage {
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    amenitiespagemobileimage {
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    parkpagemobileimage {
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    villagepagemobileimage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
     backgroundvideo{
       asset->{
         url

@@ -137,9 +137,9 @@ export default async function Page({
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                     <a href={`/${page.nextPage.slug.current}`}>
                       <div className="next-page-link" id="nextPageLink">
-                            <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
+                            <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
+                            <a href={`/${page.nextPage.slug.current}`}>
                             <Image
                               className="purple-arrow"
                               src={arrow}
@@ -147,8 +147,8 @@ export default async function Page({
                               width={27}
                               height={13.5}
                             />
+                            </a>
                         </div>
-                        </a>
                       )}
                     </div>
                   );
@@ -157,6 +157,7 @@ export default async function Page({
                   if (!slide.image) return <></>
                   return (
                     <div key={index} className="relative min-h-screen intro-slide overlay-slide">
+                      <div className="flickity-top-overlay"></div>
                    {slide.mediaType === 'video' && slide.videoFile?.asset?.url &&  (
                       <video
                         src={slide.videoFile.asset.url}
@@ -241,9 +242,9 @@ export default async function Page({
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
                         </div>
                         {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                        <a href={`/${page.nextPage.slug.current}`}>
-                          <div className="next-page-link" id="nextPageLink">
-                            <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
+                      <div className="next-page-link" id="nextPageLink">
+                            <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
+                            <a href={`/${page.nextPage.slug.current}`}>
                             <Image
                               className="purple-arrow"
                               src={arrow}
@@ -251,16 +252,17 @@ export default async function Page({
                               width={27}
                               height={13.5}
                             />
-                          </div>
-                        </a>
+                            </a>
+                        </div>
                       )}
+                      <div className="flickity-bottom-overlay"></div>
                     </div>
                   );
 
                 case "imageAndTextOverlayPlain":
                   if (!slide.image) return <></>
                   return (
-                    <div key={index} className="min-h-screen">
+                    <div key={index} className="min-h-screen image-text-overlay-plain">
                       <div className="flickity-top-overlay"></div>
                       {slide.mediaType === 'video' && slide.videoFile?.asset?.url && (
                       <video
@@ -328,6 +330,17 @@ export default async function Page({
                       </div>
                       </div>
                       )}
+                        <div className="slide-overlay">
+                        <div className="text">
+                          {slide.title && <h5 className="title">{slide.title}</h5>}
+                          {slide.text && <PortableText value={slide.text} />}
+                          {slide.linkText && slide.link &&(
+                            <a href={slide.link} target="_blank">
+                              <h5>{slide.linkText}</h5>
+                            </a>
+                          )}
+                        </div>
+                      </div>
                         <div className="slide-footer">
                           <h5 className="title">{page.title}</h5>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
@@ -337,9 +350,9 @@ export default async function Page({
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                        <a href={`/${page.nextPage.slug.current}`}>
-                          <div className="next-page-link" id="nextPageLink">
-                            <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
+                      <div className="next-page-link" id="nextPageLink">
+                            <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
+                            <a href={`/${page.nextPage.slug.current}`}>
                             <Image
                               className="purple-arrow"
                               src={arrow}
@@ -347,8 +360,8 @@ export default async function Page({
                               width={27}
                               height={13.5}
                             />
-                          </div>
-                        </a>
+                            </a>
+                        </div>
                       )}
                     </div>
                   );
@@ -434,9 +447,9 @@ export default async function Page({
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                        <a href={`/${page.nextPage.slug.current}`}>
-                          <div className="next-page-link" id="nextPageLink">
-                            <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
+                      <div className="next-page-link" id="nextPageLink">
+                            <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
+                            <a href={`/${page.nextPage.slug.current}`}>
                             <Image
                               className="purple-arrow"
                               src={arrow}
@@ -444,8 +457,8 @@ export default async function Page({
                               width={27}
                               height={13.5}
                             />
-                          </div>
-                        </a>
+                            </a>
+                        </div>
                       )}
                     </div>
                   );
@@ -517,11 +530,18 @@ export default async function Page({
                           )}
                       </div>
                     )}
+                      <div className="slide-footer">
+                          <h5 className="title">{page.title}</h5>
+                          <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
+                          <h5 className="count">{index + 1} / {totalSlides}</h5>
+                          <div className="button-next"><Image src={arrownext} alt="next"/></div>
+                          {slide.caption && (<h5 className="caption">{slide.caption}</h5>)}
+                        </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                        <a href={`/${page.nextPage.slug.current}`}>
-                          <div className="next-page-link" id="nextPageLink">
-                            <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
+                      <div className="next-page-link" id="nextPageLink">
+                            <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
+                            <a href={`/${page.nextPage.slug.current}`}>
                             <Image
                               className="purple-arrow"
                               src={arrow}
@@ -529,8 +549,8 @@ export default async function Page({
                               width={27}
                               height={13.5}
                             />
-                          </div>
-                        </a>
+                            </a>
+                        </div>
                       )}
                     </div>
                   );
@@ -662,9 +682,9 @@ export default async function Page({
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                        <a href={`/${page.nextPage.slug.current}`}>
-                          <div className="next-page-link" id="nextPageLink">
-                            <div className="next-page-title" id="next-page-title">{page.nextPage.title}</div>
+                      <div className="next-page-link" id="nextPageLink">
+                            <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
+                            <a href={`/${page.nextPage.slug.current}`}>
                             <Image
                               className="purple-arrow"
                               src={arrow}
@@ -672,8 +692,8 @@ export default async function Page({
                               width={27}
                               height={13.5}
                             />
-                          </div>
-                        </a>
+                            </a>
+                        </div>
                       )}
                     </div>
                   );

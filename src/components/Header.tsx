@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { client } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 import symbol from '../app/symbol.svg';
@@ -15,6 +16,7 @@ interface PageData {
 }
 
 export function Header() {
+  const pathname = usePathname();
   const [designPage, setDesignPage] = useState<PageData | null>(null);
   const [craftsmanshipPage, setCraftsmanshipPage] = useState<PageData | null>(null);
   const [residencesPage, setResidencesPage] = useState<PageData | null>(null);
@@ -102,22 +104,38 @@ export function Header() {
           <div className="bar" id="thirdBar"></div>
         </a>
         {designPage && (
-          <Link className="menuitem design" id="design" href={`/${designPage.slug}`}>
+          <Link 
+            className={`menuitem design`} 
+            id="design" 
+            href={`/${designPage.slug}`}
+          >
             {designPage.title}
           </Link>
         )}
         {craftsmanshipPage && (
-          <Link className="menuitem craftsmanship" id="craftsmanship" href={`/${craftsmanshipPage.slug}`}>
+          <Link 
+            className={`menuitem craftsmanship`} 
+            id="craftsmanship" 
+            href={`/${craftsmanshipPage.slug}`}
+          >
             {craftsmanshipPage.title}
           </Link>
         )}
         {residencesPage && (
-          <Link className="menuitem residences"  id="residences" href={`/${residencesPage.slug}`}>
+          <Link 
+            className={`menuitem residences`} 
+            id="residences" 
+            href={`/${residencesPage.slug}`}
+          >
             {residencesPage.title}
           </Link>
         )}
         {amenitiesPage && (
-          <Link className="menuitem amenities" id="amenities" href={`/${amenitiesPage.slug}`}>
+          <Link 
+            className={`menuitem amenities`} 
+            id="amenities" 
+            href={`/${amenitiesPage.slug}`}
+          >
             {amenitiesPage.title}
           </Link>
         )}
@@ -129,13 +147,21 @@ export function Header() {
         </Link>
       </div>
       <div className="right-menu" id="rightMenu">
-      {parkPage && (
-          <Link className="menuitem park"  id="park" href={`/${parkPage.slug}`}>
+        {parkPage && (
+          <Link 
+            className={`menuitem park`} 
+            id="park" 
+            href={`/${parkPage.slug}`}
+          >
             {parkPage.title}
           </Link>
         )}
         {villagePage && (
-          <Link className="menuitem village" id="village" href={`/${villagePage.slug}`}>
+          <Link 
+            className={`menuitem village`} 
+            id="village" 
+            href={`/${villagePage.slug}`}
+          >
             {villagePage.title}
           </Link>
         )}
@@ -145,32 +171,32 @@ export function Header() {
         <div id="menuBackground" className="menu-background"></div>
         <div id="menu">
           {designPage && (
-            <Link className="menuitem design" href={`/${designPage.slug}`}>
+            <Link className={`menuitem design ${pathname === `/${designPage.slug}` ? 'active' : ''}`}  href={`/${designPage.slug}`}>
               {designPage.title}
             </Link>
           )}
         {craftsmanshipPage && (
-          <Link className="menuitem craftsmanship" href={`/${craftsmanshipPage.slug}`}>
+          <Link className={`menuitem craftsmanship ${pathname === `/${craftsmanshipPage.slug}` ? 'active' : ''}`} href={`/${craftsmanshipPage.slug}`}>
             {craftsmanshipPage.title}
           </Link>
         )}
         {residencesPage && (
-          <Link className="menuitem residences" href={`/${residencesPage.slug}`}>
+          <Link className={`menuitem residences ${pathname === `/${residencesPage.slug}` ? 'active' : ''}`}  href={`/${residencesPage.slug}`}>
             {residencesPage.title}
           </Link>
         )}
         {amenitiesPage && (
-          <Link className="menuitem amenities" href={`/${amenitiesPage.slug}`}>
+          <Link className={`menuitem amenities ${pathname === `/${amenitiesPage.slug}` ? 'active' : ''}`} href={`/${amenitiesPage.slug}`}>
             {amenitiesPage.title}
           </Link>
         )}
       {parkPage && (
-          <Link className="menuitem park" href={`/${parkPage.slug}`}>
+          <Link className={`menuitem park ${pathname === `/${parkPage.slug}` ? 'active' : ''}`} href={`/${parkPage.slug}`}>
             {parkPage.title}
           </Link>
         )}
         {villagePage && (
-          <Link className="menuitem village" href={`/${villagePage.slug}`}>
+          <Link className={`menuitem village ${pathname === `/${villagePage.slug}` ? 'active' : ''}`} href={`/${villagePage.slug}`}>
             {villagePage.title}
           </Link>
         )}
@@ -181,14 +207,14 @@ export function Header() {
           </a>
           <div className="form-footer-menu" id="menuFooter">
           {teamPage && (
-          <Link className="menuitem team" href={`/${teamPage.slug}`}>
+          <Link className={`menuitem team ${pathname === `/${teamPage.slug}` ? 'active' : ''}`} href={`/${teamPage.slug}`}>
             <h6>
               {teamPage.title}
             </h6>
           </Link>
         )}
         {legalPage && (
-          <Link className="menuitem legal" href={`/${legalPage.slug}`}>
+          <Link className={`menuitem legal ${pathname === `/${legalPage.slug}` ? 'active' : ''}`} href={`/${legalPage.slug}`}>
             <h6>
               {legalPage.title}
             </h6>

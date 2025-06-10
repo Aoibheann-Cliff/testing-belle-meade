@@ -12,7 +12,7 @@ export default function GlobalPageEffects() {
 
   useEffect(() => {
     const openBtn = document.getElementById("openForm");
-    // const mobileopenBtn = document.getElementById("mobileopenForm");
+    const mobileopenBtn = document.getElementById("mobileopenForm");
     const closeBtn = document.getElementById("contactformclose");
     const formContainer = document.querySelector(".form-container");
     const menuContainer = document.getElementById('mobileMenu');
@@ -197,6 +197,31 @@ export default function GlobalPageEffects() {
       }
   
       function closeForm() {
+        const width = window.innerWidth;
+        if (width <= 1024) {
+          form.style.opacity = "0";
+          formFooter.style.opacity = "0";
+    
+          setTimeout(() => {
+            leftMenu.style.display = "flex";
+            rightMenu.style.display = "flex";
+          }, 1000);
+    
+          gsap.fromTo(formContainer, { top: "0" }, {
+            top: "-100vh",
+            delay: 1,
+            duration: 1,
+            ease: "power3.out"
+          });
+    
+    
+          setTimeout(() => {
+            formContainer.style.display = "none";
+            leftMenu.style.opacity = "1";
+            rightMenu.style.opacity = "1";
+          }, 2000);
+        }
+        if (width > 1024) {
         menu.style.opacity = "0";
         menuFooter.style.opacity = "0";
         form.style.opacity = "0";
@@ -227,12 +252,37 @@ export default function GlobalPageEffects() {
   
         closeMenu();
       }
+      }
 
 
 
     navToggle?.addEventListener('click', toggleHamburger);
 
     openBtn?.addEventListener("click", () => {
+      formContainer.style.display = "flex";
+      leftMenu.style.opacity = "0";
+      rightMenu.style.opacity = "0";
+      logo.style.opacity = 0;
+      purpleLogo.style.opacity = 1;
+
+      setTimeout(() => {
+        leftMenu.style.display = "none";
+        rightMenu.style.display = "none";
+      }, 1000);
+
+      gsap.fromTo(formContainer, { top: "-100vh" }, {
+        top: "0",
+        duration: 1.5,
+        ease: "power3.out"
+      });
+
+      setTimeout(() => {
+        form.style.opacity = "1";
+        formFooter.style.opacity = "1";
+      }, 1500);
+    });
+
+    mobileopenBtn?.addEventListener("click", () => {
       formContainer.style.display = "flex";
       leftMenu.style.opacity = "0";
       rightMenu.style.opacity = "0";

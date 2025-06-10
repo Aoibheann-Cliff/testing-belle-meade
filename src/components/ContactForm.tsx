@@ -52,7 +52,6 @@ export default function ContactForm() {
     if (!formData.state) newErrors.state = true;
     if (!formData.zipcode) newErrors.zipcode = true;
     if (!formData.agent && !formData.company) newErrors.agent = true;
-    // if (!formData.company) newErrors.company = true;
   
     setErrors(newErrors);
   
@@ -612,7 +611,7 @@ export default function ContactForm() {
   }}
 />
 <div className="agent-company-input">
-  {formData.about === "Buyer" ? (
+  {formData.about === "Agent" ? (
     <input
       type="text"
       name="company"

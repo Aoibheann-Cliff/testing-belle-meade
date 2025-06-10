@@ -357,7 +357,7 @@ export default function GlobalPageEffects() {
     const formContainer = document.querySelector('.form-container');
 
     const checkForCarousel = () => {
-      const hasCarousel = !!document.querySelector('.carousel');
+      const hasCarousel = !!document.querySelector('.background-video');
       document.body.classList.toggle('no-slider', !hasCarousel);
     };
 

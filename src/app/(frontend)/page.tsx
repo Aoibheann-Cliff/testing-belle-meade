@@ -20,54 +20,38 @@ export default async function Page() {
     <div className="ipad-logotype" id="ipadlogotype"><Image src={logoType} alt="logotype"/></div>
     <main id="contentWrapper" className="container content-wrapper homepage">
       <HomePageEffects />
-      <HomepageFlickityCarousel>
-  {homepage?.homepageslides?.map((slide, index) => (
-    <div className={`slide-${index}`} key={index}>
+
+    <div className="background-video">
+      <div className="carousel-overlay"></div>
       <div className="logotype" id="logotype"><Image src={logoType} alt="logotype"/></div>
         <h3 className="tagline" id="tagline">
           {homepage.text}
         </h3>
-      <div className="carousel-overlay"></div>
-      {slide.mediaType === 'image' && slide.image && (
-        <div>
-        <Image
-          src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
-          alt={slide.image.alt || ""}
-          width={3840}
-          height={2160}
-          quality={100}
-          placeholder="blur"
-          blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-          className={`${slide.mobileimage && ('has-mobile-image')} slide-image w-full aspect-[1920/1080] object-cover min-h-screen`}
-        />
-        {slide.mobileimage && (
-          <Image
-            src={urlFor(slide.mobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-            alt={slide.image?.alt || ""}
-            width={3840}
-            height={2160}
-            quality={100}
-            placeholder="blur"
-            blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-            className="mobile-image slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
+        {homepage.backgroundmediaType === 'video' && (
+          <video
+            src={homepage.backgroundvideo.asset.url}
+            className="w-full aspect-[1920/1080] object-cover min-h-screen"
+            autoPlay
+            muted
+            loop
+            playsInline
           />
           )}
-        </div>
-      )}
-      {slide.mediaType === 'video' && slide.videoFile && (
-        <video
-          className="slide-video w-full aspect-[1920/1080] object-cover min-h-screen"
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
-          <source src={slide.videoFile.asset.url} type="video/mp4" />
-        </video>
-      )}
+          {homepage.backgroundmediaType === 'image' && (
+            <Image
+            className="w-full aspect-[1920/1080] min-h-screen"
+            src={urlFor(homepage.backgroundimage)
+              .width(1920)
+              .height(1080)
+              .quality(70)
+              .auto("format")
+              .url()}
+            alt={homepage.backgroundimage.alt || ""}
+            width={1920}
+            height={1080}
+          />
+        )}
     </div>
-  ))}
-</HomepageFlickityCarousel>
 
       {homepage?.designpageimage && (
                   <div className="carousel-cell hover-slide design-slide">

@@ -62,8 +62,8 @@ export const pageType = defineType({
       hidden: ({ document }) => document?.pageType !== "contactpage",
     }),
     defineField({
-      name: 'homepagemediaType',
-      title: "Home Page Media Type",
+      name: 'backgroundmediaType',
+      title: "Background Media Type",
       type: 'string',
       options: {
         list: [
@@ -75,74 +75,19 @@ export const pageType = defineType({
       hidden: ({ document }) => document?.pageType !== "homepage",
     }),
     defineField({
-      name: 'homepageslides',
-      title: 'Slides',
-      type: 'array',
-      of: [
-        defineField({
-          name: 'slide',
-          type: 'object',
-          title: 'Slide',
-          preview: {
-            select: {
-              title: 'title',
-              caption: 'caption',
-              media: 'image',
-            },
-            prepare(selection) {
-              const { title, caption, media } = selection
-              return {
-                title: title || caption || 'Slide',
-                media,
-              }
-            },
-          },
-          fields: [
-            {
-              name: 'mediaType',
-              title: "Media Type",
-              type: 'string',
-              options: {
-                list: [
-                  { title: 'Image', value: 'image' },
-                  { title: 'Video', value: 'video' },
-                ],
-                layout: 'dropdown',
-              },
-            },
-            {
-              name: 'image',
-              title: 'Image',
-              type: 'image',
-              hidden: ({ parent }) => parent?.mediaType !== 'image',
-              options: { hotspot: false },
-              fields: [
-                { name: 'alt', type: 'string', title: 'Alt Text' }
-              ]
-            },
-            {
-              name: 'mobileimage',
-              title: 'Mobile Image',
-              type: 'image',
-              hidden: ({ parent }) => parent?.mediaType !== 'image',
-              options: { hotspot: false },
-              fields: [
-                { name: 'alt', type: 'string', title: 'Alt Text' }
-              ]
-            },
-            {
-              name: 'videoFile',
-              title: 'Video File',
-              hidden: ({ parent }) => parent?.mediaType !== 'video',
-              type: 'file',
-              options: {
-                accept: 'video/*'
-              }
-            },
-          ]
-        })
-      ],
-      hidden: ({ document }) => document?.pageType !== "homepage",
+      name: 'backgroundimage',
+      title: 'Background Image',
+      type: 'image',
+      hidden: ({ document }) => document?.backgroundmediaType !== "image",
+    }),
+    defineField({
+      name: 'backgroundvideo',
+      title: 'Background Video',
+      type: 'file',
+      options: {
+        accept: 'video/*'
+      },
+      hidden: ({ document }) => document?.backgroundmediaType !== "video",
     }),
     defineField({
       name: 'designpagemediaType',

@@ -43,7 +43,7 @@ export default async function Page({
 
   return (
     <>
-    <main id="contentWrapper" className={`container content-wrapper ${page.pageType}`}>
+    <main id="contentWrapper" className={`container content-wrapper ${page.pageType} ${page._id}`}>
       <PageEffects />
       {/* Slideshow Page */}
       {page?.pageType === "slideshowpage" && totalSlides > 0 && (
@@ -72,27 +72,15 @@ export default async function Page({
                       {slide.mediaType === 'image' && (
                         <div>
                       <Image
-                        src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
+                        src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').auto('format').url()}
                         alt={slide.image?.alt || ""}
                         width={3840}
                         height={2160}
                         quality={100}
                         placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className={`${slide.mobileimage && ('has-mobile-image')} slide-image w-full aspect-[1920/1080] object-cover min-h-screen`}
+                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
+                        className={`slide-image w-full aspect-[1920/1080] object-cover min-h-screen`}
                       />
-                      {slide.mobileimage && (
-                      <Image
-                        src={urlFor(slide.mobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-                        alt={slide.image?.alt || ""}
-                        width={3840}
-                        height={2160}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className="mobile-image slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
-                      />
-                          )}
                             <div className="lightbox-close panzoom-exclude">
                           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
                           <path d="M1 1L29 29" stroke="#ffffff"/>
@@ -101,27 +89,15 @@ export default async function Page({
                         </div>
                         <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                         <Image
-                          src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
+                          src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').auto('format').url()}
                           alt={slide.image?.alt || ""}
                           width={3840}
                           height={2160}
                           quality={100}
                           placeholder="blur"
-                          blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                          className={`${slide.mobileimage && ('has-mobile-image')} w-full overlay-img`}
+                          blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
+                          className={`w-full overlay-img`}
                         />
-                      {slide.mobileimage && (
-                      <Image
-                        src={urlFor(slide.mobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-                        alt={slide.image?.alt || ""}
-                        width={3840}
-                        height={2160}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className="mobile-image w-full overlay-img"
-                      />
-                          )}
                       </div>
                       </div>
                       )}
@@ -171,28 +147,16 @@ export default async function Page({
                       {slide.mediaType === 'image' && (
                         <div>
                       <Image
-                        src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
+                        src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').auto('format').url()}
                         alt={slide.image?.alt || ""}
                         width={3840}
                         height={2160}
                         quality={100}
                         placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className={`${slide.mobileimage && ('has-mobile-image')} slide-image w-full aspect-[1920/1080] object-cover min-h-screen overlay-img`}
+                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
+                        className={`slide-image w-full aspect-[1920/1080] object-cover min-h-screen overlay-img`}
                       />
-                      {slide.mobileimage && (
-                      <Image
-                        src={urlFor(slide.mobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-                        alt={slide.image?.alt || ""}
-                        width={3840}
-                        height={2160}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className="mobile-image slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
-                      />
-                          )}
-                                             <div className="lightbox-close panzoom-exclude">
+                       <div className="lightbox-close panzoom-exclude">
                           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
                           <path d="M1 1L29 29" stroke="#ffffff"/>
                           <path d="M29 1L1 29" stroke="#ffffff"/>
@@ -200,27 +164,15 @@ export default async function Page({
                         </div>
                       <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                         <Image
-                          src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
+                          src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').auto('format').url()}
                           alt={slide.image?.alt || ""}
                           width={3840}
                           height={2160}
                           quality={100}
                           placeholder="blur"
-                          blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                          className={`${slide.mobileimage && ('has-mobile-image')} w-full overlay-img`}
+                          blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
+                          className={`w-full overlay-img`}
                         />
-                         {slide.mobileimage && (
-                      <Image
-                        src={urlFor(slide.mobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-                        alt={slide.image?.alt || ""}
-                        width={3840}
-                        height={2160}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className="mobile-image w-full overlay-img"
-                      />
-                          )}
                           </div>
                         </div>
                       )}
@@ -277,27 +229,15 @@ export default async function Page({
                       {slide.mediaType === 'image' && (
                         <div>
                         <Image
-                        src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
+                        src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').auto('format').url()}
                         alt={slide.image?.alt || ""}
                         width={3840}
                         height={2160}
                         quality={100}
                         placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className={`${slide.mobileimage && ('has-mobile-image')} slide-image w-full aspect-[1920/1080] object-cover min-h-screen`}
+                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
+                        className={`slide-image w-full aspect-[1920/1080] object-cover min-h-screen`}
                       />
-                      {slide.mobileimage && (
-                      <Image
-                        src={urlFor(slide.mobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-                        alt={slide.image?.alt || ""}
-                        width={3840}
-                        height={2160}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className="mobile-image slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
-                      />
-                          )}
                       <div className="lightbox-close panzoom-exclude">
                           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
                           <path d="M1 1L29 29" stroke="#ffffff"/>
@@ -306,27 +246,15 @@ export default async function Page({
                         </div>
                       <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                         <Image
-                          src={urlFor(slide.image).width(3840).height(2160).quality(70).auto('format').url()}
+                          src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').auto('format').url()}
                           alt={slide.image?.alt || ""}
                           width={3840}
                           height={2160}
                           quality={100}
                           placeholder="blur"
-                          blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                          className={`${slide.mobileimage && ('has-mobile-image')} w-full overlay-img`}
+                          blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
+                          className={`w-full overlay-img`}
                         />
-                                              {slide.mobileimage && (
-                      <Image
-                        src={urlFor(slide.mobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-                        alt={slide.image?.alt || ""}
-                        width={3840}
-                        height={2160}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className="mobile-image w-full overlay-img"
-                      />
-                          )}
                       </div>
                       </div>
                       )}
@@ -414,27 +342,15 @@ export default async function Page({
                       {slide.mediaType === 'image' && (
                         <div>
                       <Image
-                        src={urlFor(slide.image).width(960).height(1080).quality(70).auto('format').url()}
+                        src={urlFor(slide.image).width(960).height(1080).quality(70).fit('crop').auto('format').url()}
                         alt={slide.image?.alt || ""}
                         width={960}
                         height={1080}
                         quality={100}
                         placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className={`${slide.mobileimage && ('has-mobile-image')} object-cover h-full w-full`}
+                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
+                        className={`object-cover h-full w-full`}
                       />
-                      {slide.mobileimage && (
-                      <Image
-                        src={urlFor(slide.mobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-                        alt={slide.image?.alt || ""}
-                        width={3840}
-                        height={2160}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className="mobile-image slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
-                      />
-                      )}
                       </div>
                       )}
                       </div>
@@ -507,27 +423,15 @@ export default async function Page({
                       {slide.mediaType === 'image' && (
                         <div className="image-container">
                       <Image
-                        src={urlFor(slide.image).width(960).height(1080).quality(70).auto('format').url()}
+                        src={urlFor(slide.image).width(960).height(1080).quality(70).fit('crop').auto('format').url()}
                         alt={slide.image?.alt || ""}
                         width={960}
                         height={1080}
                         quality={100}
                         placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className={`${slide.mobileimage && ('has-mobile-image')} object-cover min-h-screen`}
+                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
+                        className={`object-cover min-h-screen`}
                       />
-                          {slide.mobileimage && (
-                      <Image
-                        src={urlFor(slide.mobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-                        alt={slide.image?.alt || ""}
-                        width={3840}
-                        height={2160}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className="mobile-image slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
-                      />
-                          )}
                       </div>
                     )}
                       <div className="slide-footer">
@@ -582,27 +486,15 @@ export default async function Page({
                       {slide.smallmediaType === 'image' && (
                         <div>
                         <Image
-                        src={urlFor(slide.smallImage).width(600).height(400).quality(70).auto('format').url()}
+                        src={urlFor(slide.smallImage).width(600).height(400).quality(70).fit('crop').auto('format').url()}
                         alt={slide.smallImage?.alt || ""}
                         width={600}
                         height={400}
                         quality={100}
                         placeholder="blur"
-                        blurDataURL={urlFor(slide.smallImage).width(10).height(6).quality(10).url()}
-                        className={`${slide.mobileimage && ('has-mobile-image')} object-cover slide-image`}
+                        blurDataURL={urlFor(slide.smallImage).width(10).height(6).quality(10).fit('crop').url()}
+                        className={`object-cover slide-image`}
                       />
-                        {slide.mobileimage && (
-                      <Image
-                        src={urlFor(slide.mobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-                        alt={slide.image?.alt || ""}
-                        width={3840}
-                        height={2160}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className="mobile-image slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
-                      />
-                      )}
                         </div>
                       )}
                         </div>
@@ -621,13 +513,13 @@ export default async function Page({
                       {slide.mediaType === 'image' && (
                         <div>
                       <Image
-                        src={urlFor(slide.image).width(960).height(1080).quality(70).auto('format').url()}
+                        src={urlFor(slide.image).width(960).height(1080).quality(70).fit('crop').auto('format').url()}
                         alt={slide.image?.alt || ""}
                         width={960}
                         height={1080}
                         quality={100}
                         placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
+                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
                         className="object-cover min-h-screen"
                       />
                       </div>
@@ -648,27 +540,15 @@ export default async function Page({
                       {slide.mediaType === 'image' && (
                         <div>
                         <Image
-                        src={urlFor(slide.smallImage).width(600).height(400).quality(70).auto('format').url()}
+                        src={urlFor(slide.smallImage).width(600).height(400).quality(70).fit('crop').auto('format').url()}
                         alt={slide.smallImage?.alt || ""}
                         width={600}
                         height={400}
                         quality={100}
                         placeholder="blur"
-                        blurDataURL={urlFor(slide.smallImage).width(10).height(6).quality(10).url()}
-                        className={`${slide.mobileimage && ('has-mobile-image')} object-cover`}
+                        blurDataURL={urlFor(slide.smallImage).width(10).height(6).quality(10).fit('crop').url()}
+                        className={`object-cover`}
                       />
-                      {slide.mobileimage && (
-                      <Image
-                        src={urlFor(slide.mobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-                        alt={slide.image?.alt || ""}
-                        width={3840}
-                        height={2160}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
-                        className="mobile-image slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
-                      />
-                      )}
                       </div>
                     )}
                         </div>
@@ -717,7 +597,7 @@ export default async function Page({
           <section className="introblock">
             {page.introimage && (
               <Image
-                src={urlFor(page.introimage).width(600).height(400).url()}
+                src={urlFor(page.introimage).width(600).height(400).fit('crop').url()}
                 alt="symbol"
                 width={600}
                 height={400}

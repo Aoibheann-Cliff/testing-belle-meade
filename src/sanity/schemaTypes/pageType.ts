@@ -81,12 +81,6 @@ export const pageType = defineType({
       hidden: ({ document }) => document?.backgroundmediaType !== "image",
     }),
     defineField({
-      name: 'backgroundmobileimage',
-      title: 'Background Mobile Image',
-      type: 'image',
-      hidden: ({ document }) => document?.backgroundmediaType !== "image",
-    }),
-    defineField({
       name: 'backgroundvideo',
       title: 'Background Video',
       type: 'file',
@@ -113,23 +107,7 @@ export const pageType = defineType({
       title: 'Design Page Image',
       type: 'image',
       options: {
-        hotspot: false,
-      },
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        })
-      ],
-      hidden: ({ document }) => document?.designpagemediaType !== "image",
-    }),
-    defineField({
-      name: 'designpagemobileimage',
-      title: 'Design Page Mobile Image',
-      type: 'image',
-      options: {
-        hotspot: false,
+        hotspot: true,
       },
       fields: [
         defineField({
@@ -167,23 +145,7 @@ export const pageType = defineType({
       title: 'Craftsmanship Page Image',
       type: 'image',
       options: {
-        hotspot: false,
-      },
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        })
-      ],
-      hidden: ({ document }) => document?.craftsmanshippagemediaType !== "image",
-    }),
-    defineField({
-      name: 'craftsmanshippagemobileimage',
-      title: 'Craftsmanship Page Mobile Image',
-      type: 'image',
-      options: {
-        hotspot: false,
+        hotspot: true,
       },
       fields: [
         defineField({
@@ -221,23 +183,7 @@ export const pageType = defineType({
       title: 'Residences Page Image',
       type: 'image',
       options: {
-        hotspot: false,
-      },
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        })
-      ],
-      hidden: ({ document }) => document?.residencespagemediaType !== "image",
-    }),
-    defineField({
-      name: 'residencespagemobileimage',
-      title: 'Residences Page Mobile Image',
-      type: 'image',
-      options: {
-        hotspot: false,
+        hotspot: true,
       },
       fields: [
         defineField({
@@ -275,23 +221,7 @@ export const pageType = defineType({
       title: 'Amenities Page Image',
       type: 'image',
       options: {
-        hotspot: false,
-      },
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        })
-      ],
-      hidden: ({ document }) => document?.amenitiespagemediaType !== "image",
-    }),
-    defineField({
-      name: 'amenitiespagemobileimage',
-      title: 'Amenities Page Mobile Image',
-      type: 'image',
-      options: {
-        hotspot: false,
+        hotspot: true,
       },
       fields: [
         defineField({
@@ -329,23 +259,7 @@ export const pageType = defineType({
       title: 'Park & Gardens Page Image',
       type: 'image',
       options: {
-        hotspot: false,
-      },
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        })
-      ],
-      hidden: ({ document }) => document?.parkpagemediaType !== "image",
-    }),
-    defineField({
-      name: 'parkpagemobileimage',
-      title: 'Park & Gardens Page Mobile Image',
-      type: 'image',
-      options: {
-        hotspot: false,
+        hotspot: true,
       },
       fields: [
         defineField({
@@ -383,23 +297,7 @@ export const pageType = defineType({
       title: 'Belle Meade Village Page Image',
       type: 'image',
       options: {
-        hotspot: false,
-      },
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        })
-      ],
-      hidden: ({ document }) => document?.villagepagemediaType !== "image",
-    }),
-    defineField({
-      name: 'villagepagemobileimage',
-      title: 'Belle Meade Village Page Mobile Image',
-      type: 'image',
-      options: {
-        hotspot: false,
+        hotspot: true,
       },
       fields: [
         defineField({
@@ -509,7 +407,7 @@ export const pageType = defineType({
               title: 'Image',
               type: 'image',
               hidden: ({ parent }) => parent?.mediaType !== 'image',
-              options: { hotspot: false },
+              options: { hotspot: true },
               fields: [
                 { name: 'alt', type: 'string', title: 'Alt Text' }
               ]
@@ -527,18 +425,8 @@ export const pageType = defineType({
               name: 'smallImage',
               title: 'Small Image',
               type: 'image',
-              options: { hotspot: false },
+              options: { hotspot: true },
               hidden: ({ parent }) => parent?.smallmediaType !== 'image',
-              fields: [
-                { name: 'alt', type: 'string', title: 'Alt Text' }
-              ]
-            },
-            {
-              name: 'mobileimage',
-              title: 'Mobile Image',
-              type: 'image',
-              hidden: ({ parent }) => parent?.mediaType !== 'image',
-              options: { hotspot: false },
               fields: [
                 { name: 'alt', type: 'string', title: 'Alt Text' }
               ]

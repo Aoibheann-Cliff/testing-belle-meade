@@ -40,7 +40,7 @@ export default async function Page() {
           {homepage.backgroundmediaType === 'image' && (
             <div>
             <Image
-            className={`${homepage.backgroundmobileimage && ('has-mobile-image')} w-full aspect-[1920/1080] min-h-screen`}
+            className={`w-full aspect-[1920/1080] min-h-screen`}
             src={urlFor(homepage.backgroundimage)
               .width(1920)
               .height(1080)
@@ -51,18 +51,6 @@ export default async function Page() {
             width={1920}
             height={1080}
           />
-          {homepage.backgroundmobileimage && (
-            <Image
-              src={urlFor(homepage.backgroundmobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-              alt={homepage.backgroundmobileimage?.alt || ""}
-              width={3840}
-              height={2160}
-              quality={100}
-              placeholder="blur"
-              blurDataURL={urlFor(homepage.backgroundmobileimage).width(10).height(6).quality(10).url()}
-              className="mobile-image slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
-            />
-            )}
             </div>
         )}
     </div>
@@ -83,7 +71,7 @@ export default async function Page() {
                       {homepage.designpagemediaType === 'image' && (
                         <div>
         <Image
-          className={`${homepage.deisgnmobileimage && ('has-mobile-image')} w-full aspect-[1920/1080] min-h-screen`}
+          className={`w-full aspect-[1920/1080] min-h-screen`}
           src={urlFor(homepage.designpageimage)
             .width(1920)
             .height(1080)
@@ -94,18 +82,6 @@ export default async function Page() {
           width={1920}
           height={1080}
         />
-          {homepage.designmobileimage && (
-            <Image
-              src={urlFor(homepage.designmobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-              alt={homepage.designmobileimage?.alt || ""}
-              width={3840}
-              height={2160}
-              quality={100}
-              placeholder="blur"
-              blurDataURL={urlFor(homepage.designmobileimage).width(10).height(6).quality(10).url()}
-              className="mobile-image slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
-            />
-            )}
         </div>
         )}
         </div>
@@ -126,7 +102,7 @@ export default async function Page() {
                       {homepage.craftsmanshippagemediaType === 'image' && (
                         <div>
         <Image
-          className={`${homepage.craftsmanshipmobileimage && ('has-mobile-image')} w-full aspect-[1920/1080] min-h-screen`}
+          className={`w-full aspect-[1920/1080] min-h-screen`}
           src={urlFor(homepage.craftsmanshippageimage)
             .width(1920)
             .height(1080)
@@ -137,18 +113,6 @@ export default async function Page() {
           width={1920}
           height={1080}
         />
-          {homepage.craftsmanshipmobileimage && (
-            <Image
-              src={urlFor(homepage.craftsmanshipmobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-              alt={homepage.craftsmanshipmobileimage?.alt || ""}
-              width={3840}
-              height={2160}
-              quality={100}
-              placeholder="blur"
-              blurDataURL={urlFor(homepage.craftsmanshipmobileimage).width(10).height(6).quality(10).url()}
-              className="mobile-image slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
-            />
-            )}
         </div> 
                       )}
         </div>
@@ -169,7 +133,7 @@ export default async function Page() {
                       {homepage.residencespagemediaType === 'image' && (
                         <div>
         <Image
-          className={`${homepage.residencesmobileimage && ('has-mobile-image')} w-full aspect-[1920/1080] min-h-screen`}
+          className={`w-full aspect-[1920/1080] min-h-screen`}
           src={urlFor(homepage.residencespageimage)
             .width(1920)
             .height(1080)
@@ -180,18 +144,6 @@ export default async function Page() {
           width={1920}
           height={1080}
         />
-                  {homepage.residencesmobileimage && (
-            <Image
-              src={urlFor(homepage.residencesmobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-              alt={homepage.residencesmobileimage?.alt || ""}
-              width={3840}
-              height={2160}
-              quality={100}
-              placeholder="blur"
-              blurDataURL={urlFor(homepage.residencesmobileimage).width(10).height(6).quality(10).url()}
-              className="mobile-image slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
-            />
-            )}
         </div>
                       )}
         </div>
@@ -212,7 +164,7 @@ export default async function Page() {
                       {homepage.amenitiespagemediaType === 'image' && (
                         <div>
         <Image
-          className={`${homepage.amenitiesmobileimage && ('has-mobile-image')} w-full aspect-[1920/1080] min-h-screen`}
+          className={`w-full aspect-[1920/1080] min-h-screen`}
           src={urlFor(homepage.amenitiespageimage)
             .width(1920)
             .height(1080)
@@ -223,18 +175,6 @@ export default async function Page() {
           width={1920}
           height={1080}
         />
-                          {homepage.amenitiesmobileimage && (
-            <Image
-              src={urlFor(homepage.amenitiesmobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-              alt={homepage.amenitiesmobileimage?.alt || ""}
-              width={3840}
-              height={2160}
-              quality={100}
-              placeholder="blur"
-              blurDataURL={urlFor(homepage.amenitiesmobileimage).width(10).height(6).quality(10).url()}
-              className="mobile-image slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
-            />
-            )}
         </div>
                       )}
         </div>
@@ -255,7 +195,7 @@ export default async function Page() {
                       {homepage.parkpagemediaType === 'image' && (
                         <div>
         <Image
-          className={`${homepage.parkpagemobileimage && ('has-mobile-image')} w-full aspect-[1920/1080] min-h-screen`}
+          className={`w-full aspect-[1920/1080] min-h-screen`}
           src={urlFor(homepage.parkpageimage)
             .width(1920)
             .height(1080)
@@ -266,18 +206,6 @@ export default async function Page() {
           width={1920}
           height={1080}
         />
-    {homepage.parkpagemobileimage && (
-            <Image
-              src={urlFor(homepage.parkpagemobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-              alt={homepage.parkpagemobileimage?.alt || ""}
-              width={3840}
-              height={2160}
-              quality={100}
-              placeholder="blur"
-              blurDataURL={urlFor(homepage.parkpagemobileimage).width(10).height(6).quality(10).url()}
-              className="mobile-image slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
-            />
-            )}
         </div>
                       )}
         </div>
@@ -298,7 +226,7 @@ export default async function Page() {
                       {homepage.villagepagemediaType === 'image' && (
                         <div>
         <Image
-          className={`${homepage.villagepagemobileimage && ('has-mobile-image')} w-full aspect-[1920/1080] min-h-screen`}
+          className={`w-full aspect-[1920/1080] min-h-screen`}
           src={urlFor(homepage.villagepageimage)
             .width(1920)
             .height(1080)
@@ -309,18 +237,6 @@ export default async function Page() {
           width={1920}
           height={1080}
         />
-            {homepage.villagepagemobileimage && (
-            <Image
-              src={urlFor(homepage.villagepagemobileimage).width(3840).height(2160).quality(70).auto('format').url()}
-              alt={homepage.villagepagemobileimage?.alt || ""}
-              width={3840}
-              height={2160}
-              quality={100}
-              placeholder="blur"
-              blurDataURL={urlFor(homepage.villagepagemobileimage).width(10).height(6).quality(10).url()}
-              className="mobile-image slide-image w-full aspect-[1920/1080] object-cover min-h-screen"
-            />
-            )}
               </div>
                       )}
               </div>

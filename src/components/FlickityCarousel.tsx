@@ -115,7 +115,7 @@ lightboxCloseButtons.forEach(button => {
 
 
       setTimeout(() => {
-        if (window.innerWidth < 1366 && flkty) {
+        if (window.innerWidth < 1023 && flkty) {
           if (flkty.selectedIndex === 0) {
             flkty.select(1);
           }

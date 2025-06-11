@@ -41,18 +41,16 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
       asset->{
         url
       },
-      alt
-    },
-    mobileimage {
-      asset->{
-        url
-      },
+      hotspot,
+      crop,
       alt
     },
     smallImage {
       asset->{
         url
       },
+      hotspot,
+      crop,
       alt
     }
   }
@@ -75,6 +73,8 @@ export const HOMEPAGE_QUERY = `
         _id,
         url
       },
+      hotspot,
+      crop,
       alt
     },
     designpageimage {
@@ -82,6 +82,8 @@ export const HOMEPAGE_QUERY = `
         _id,
         url
       },
+      hotspot,
+      crop,
       alt
     },
     craftsmanshippageimage {
@@ -89,6 +91,8 @@ export const HOMEPAGE_QUERY = `
         _id,
         url
       },
+      hotspot,
+      crop,
       alt
     },
     residencespageimage {
@@ -96,6 +100,8 @@ export const HOMEPAGE_QUERY = `
         _id,
         url
       },
+      hotspot,
+      crop,
       alt
     },
     amenitiespageimage {
@@ -103,6 +109,8 @@ export const HOMEPAGE_QUERY = `
         _id,
         url
       },
+      hotspot,
+      crop,
       alt
     },
     parkpageimage {
@@ -110,6 +118,8 @@ export const HOMEPAGE_QUERY = `
         _id,
         url
       },
+      hotspot,
+      crop,
       alt
     },
     villagepageimage{
@@ -117,55 +127,8 @@ export const HOMEPAGE_QUERY = `
         _id,
         url
       },
-      alt
-    },
-    backgroundmobileimage {
-      asset->{
-        _id,
-        url
-      },
-      alt
-    },
-    designpagemobileimage {
-      asset->{
-        _id,
-        url
-      },
-      alt
-    },
-    craftsmanshippagemobileimage {
-      asset->{
-        _id,
-        url
-      },
-      alt
-    },
-    residencespagemobileimage {
-      asset->{
-        _id,
-        url
-      },
-      alt
-    },
-    amenitiespagemobileimage {
-      asset->{
-        _id,
-        url
-      },
-      alt
-    },
-    parkpagemobileimage {
-      asset->{
-        _id,
-        url
-      },
-      alt
-    },
-    villagepagemobileimage{
-      asset->{
-        _id,
-        url
-      },
+      hotspot,
+      crop,
       alt
     },
     backgroundvideo{

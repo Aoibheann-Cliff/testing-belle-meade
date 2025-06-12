@@ -274,7 +274,7 @@ export type Page = {
     credit?: string;
     caption?: string;
     link?: string;
-    backgroundColor?: "#A59B93" | "#C6BBCF" | "#8D8A53" | "#4C2F48";
+    backgroundColor?: "#A59B93" | "#C6BBCF" | "#898f65" | "#4C2F48";
     _type: "slide";
     _key: string;
   }>;
@@ -467,7 +467,7 @@ export type PAGE_QUERYResult = {
     link: string | null;
     caption: string | null;
     credit: string | null;
-    backgroundColor: "#4C2F48" | "#8D8A53" | "#A59B93" | "#C6BBCF" | null;
+    backgroundColor: "#4C2F48" | "#898f65" | "#A59B93" | "#C6BBCF" | null;
     image: {
       asset: {
         url: string | null;

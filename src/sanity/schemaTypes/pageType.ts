@@ -503,7 +503,7 @@ export const pageType = defineType({
               list: [
                 { title: 'Warm Gray', value: '#A59B93' },
                 { title: 'Lilac', value: '#C6BBCF' },
-                { title: 'Khaki', value: '#8D8A53' },
+                { title: 'Khaki', value: '#898f65' },
                 { title: 'Purple', value: '#4C2F48' },
               ],
               layout: 'dropdown',

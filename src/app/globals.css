@@ -2067,15 +2067,6 @@ line-height: 1.225rem;
         line-height: 1.4rem;
       }
 
-      .largeImageContainer{
-        display:none;
-      }
-
-      .smallImageContainer{
-        width:100%;
-        height:100%;
-      }
-
       .smallImageContainer img, .smallImageContainer video{
         height:100% !important;
         width:auto;
@@ -2187,15 +2178,23 @@ line-height: 1.225rem;
       }
 
       .largeImageContainer{
-        display:none;
+        width:50%;
+        height:100svh;
       }
 
       .smallImageContainer{
-        width:100%;
+        width:50%;
+        height:100svh;
+        display:flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      .smallImageContainer img, .smallImageContainer video{
-        width:100%;
+      .flickity-cell .smallImageContainer img, .flickity-cell .smallImageContainer video{
+        width: auto !important;
+        height: 50vh !important;
+        min-height: 50vh !important;
+        aspect-ratio: auto !important;
       }
 
       .image-lightbox{
@@ -2783,17 +2782,46 @@ line-height: 1.225rem;
         -webkit-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
       }
 
+      .largeImageLeftSmallImageRight{
+        flex-direction: column;
+      }
+
+      .smallImageLeftLargeImageRight{
+        flex-direction: column;
+      }
+
       .largeImageContainer{
-        display:none;
+        width:100%;
+        height:50svh;
       }
 
       .smallImageContainer{
         width:100%;
+        height:50svh;
       }
 
-      .smallImageContainer img, .smallImageContainer video{
+      .largeImageContainer img{
+        height:50svh;
+        min-height:50svh;
+        overflow:hidden;
+      }
+
+      .largeImageLeftSmallImageRight .smallImageContainer img, .largeImageLeftSmallImageRight .smallImageContainer video{
         width:100%;
         aspect-ratio: 1 / 1;
+        aspect-ratio: 1;
+        width: 100%;
+        padding: 1.563rem 1.563rem 6rem 1.563rem;
+        height: 50svh !important;
+      }
+
+      .smallImageLeftLargeImageRight .smallImageContainer img, .smallImageLeftLargeImageRightt .smallImageContainer video{
+        width:100%;
+        aspect-ratio: 1 / 1;
+        aspect-ratio: 1;
+        width: 100%;
+        padding: 6rem 1.563rem 1.563rem 1.563rem;
+        height: 50svh !important;
       }
 
       .react-dropdown-select, input{

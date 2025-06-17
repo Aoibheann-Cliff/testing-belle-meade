@@ -467,7 +467,7 @@ export default async function Page({
                   return (
                     <div
                       key={index}
-                      className="small-large-image-slide min-h-screen flex"
+                      className={`small-large-image-slide ${slide.layout}  min-h-screen flex`}
                       style={{ backgroundColor: bg }}
                     >
                       <div className="flickity-top-overlay"></div>

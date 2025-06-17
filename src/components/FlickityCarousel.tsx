@@ -120,7 +120,7 @@ lightboxCloseButtons.forEach(button => {
             flkty.select(1);
           }
         }
-      }, 4000);
+      }, 3500);
   
       if (carouselRef.current) {
         flkty = new Flickity(carouselRef.current, {

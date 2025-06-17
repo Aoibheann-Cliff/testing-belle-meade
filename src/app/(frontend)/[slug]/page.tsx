@@ -79,7 +79,12 @@ export default async function Page({
                         quality={100}
                         placeholder="blur"
                         blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
-                        className={`slide-image w-full aspect-[1920/1080] object-cover min-h-screen`}
+                        className={`slide-image w-full h-full min-h-screen`}
+                        style={{
+                          objectPosition: slide.image?.hotspot ? 
+                            `${(slide.image.hotspot.x * 100)}% ${(slide.image.hotspot.y * 100)}%` : 
+                            'center'
+                        }}
                       />
                             <div className="lightbox-close panzoom-exclude">
                           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -96,7 +101,12 @@ export default async function Page({
                           quality={100}
                           placeholder="blur"
                           blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
-                          className={`w-full overlay-img`}
+                          className={`w-full h-full overlay-img`}
+                          style={{
+                            objectPosition: slide.image?.hotspot ? 
+                              `${(slide.image.hotspot.x * 100)}% ${(slide.image.hotspot.y * 100)}%` : 
+                              'center'
+                          }}
                         />
                       </div>
                       </div>
@@ -154,7 +164,12 @@ export default async function Page({
                         quality={100}
                         placeholder="blur"
                         blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
-                        className={`slide-image w-full aspect-[1920/1080] object-cover min-h-screen overlay-img`}
+                        className={`slide-image w-full h-full min-h-screen`}
+                        style={{
+                          objectPosition: slide.image?.hotspot ? 
+                            `${(slide.image.hotspot.x * 100)}% ${(slide.image.hotspot.y * 100)}%` : 
+                            'center'
+                        }}
                       />
                        <div className="lightbox-close panzoom-exclude">
                           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -171,7 +186,12 @@ export default async function Page({
                           quality={100}
                           placeholder="blur"
                           blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
-                          className={`w-full overlay-img`}
+                          className={`w-full h-full overlay-img`}
+                          style={{
+                            objectPosition: slide.image?.hotspot ? 
+                              `${(slide.image.hotspot.x * 100)}% ${(slide.image.hotspot.y * 100)}%` : 
+                              'center'
+                          }}
                         />
                           </div>
                         </div>
@@ -236,7 +256,12 @@ export default async function Page({
                         quality={100}
                         placeholder="blur"
                         blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
-                        className={`slide-image w-full aspect-[1920/1080] object-cover min-h-screen`}
+                        className={`slide-image w-full h-full min-h-screen`}
+                        style={{
+                          objectPosition: slide.image?.hotspot ? 
+                            `${(slide.image.hotspot.x * 100)}% ${(slide.image.hotspot.y * 100)}%` : 
+                            'center'
+                        }}
                       />
                       <div className="lightbox-close panzoom-exclude">
                           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -253,7 +278,12 @@ export default async function Page({
                           quality={100}
                           placeholder="blur"
                           blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
-                          className={`w-full overlay-img`}
+                          className={`w-full h-full overlay-img`}
+                          style={{
+                            objectPosition: slide.image?.hotspot ? 
+                              `${(slide.image.hotspot.x * 100)}% ${(slide.image.hotspot.y * 100)}%` : 
+                              'center'
+                          }}
                         />
                       </div>
                       </div>
@@ -601,7 +631,7 @@ export default async function Page({
                 alt="symbol"
                 width={600}
                 height={400}
-                className="object-contain intro-image"
+                className="intro-image"
               />
             )}
            { page.introblock ? <PortableText value={page.introblock} /> : <></>}

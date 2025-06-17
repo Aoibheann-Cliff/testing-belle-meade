@@ -2332,11 +2332,13 @@ line-height: 1.225rem;
     }
 
     .inner-quote-text{
-        width:90%;
+        width:100%;
+        padding: 0rem 2.75rem 0rem 3.75rem;
     }
 
     .inner-text-has-mobile-text{
-        width:75%;
+        width:100%;
+        padding: 0rem 2.75rem 0rem 3.75rem;
     }
 
     .has-mobile-image{

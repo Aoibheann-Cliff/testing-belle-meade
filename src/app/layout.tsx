@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import arrownext from '@/app/mobile-arrow-next.svg';
 import Head from 'next/head';
 
 export default function RootLayout({

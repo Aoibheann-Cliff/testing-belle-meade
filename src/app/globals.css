@@ -574,6 +574,20 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     cursor:pointer !important;
 }
 
+.flickity-prev-next-button.next{
+    background-size: contain !important;
+    height: 1.5rem !important;
+    width: .75rem !important;
+    right: 3.125rem !important;
+}
+
+.flickity-prev-next-button.previous{
+    background-size: contain !important;
+    height: 1.5rem !important;
+    width: .75rem !important;
+    left: 3.125rem !important;
+}
+
 .flickity-prev-next-button .flickity-button-icon{
     display:none !important;
 }
@@ -1535,20 +1549,6 @@ div:has(> .react-dropdown-select) {
         width: 1.774rem;
         height: 1.719rem;
         margin-right: 0.625rem;
-    }
-
-    .flickity-prev-next-button.next{
-        background-size: contain !important;
-        height: 1.5rem !important;
-        width: .75rem !important;
-        right: 2.375rem !important;
-    }
-
-    .flickity-prev-next-button.previous{
-        background-size: contain !important;
-        height: 1.5rem !important;
-        width: .75rem !important;
-        left: 2.375rem !important;
     }
 
     .inner-quote-text{

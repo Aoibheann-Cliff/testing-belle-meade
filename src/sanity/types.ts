@@ -284,6 +284,7 @@ export type Page = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "page";
   };
+  nextPageBackgroundColour?: "#A59B93" | "#C6BBCF" | "#898f65" | "#4C2F48";
 };
 
 export type SanityImageCrop = {
@@ -443,6 +444,7 @@ export type PAGE_QUERYResult = {
     title: string | null;
     slug: Slug | null;
   } | null;
+  nextPageBackgroundColour: "#4C2F48" | "#898f65" | "#A59B93" | "#C6BBCF" | null;
   slides: Array<{
     layout: LayoutTypes;
     title: string | null;
@@ -490,6 +492,6 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"page\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": PAGES_SLUGS_QUERYResult;
-    "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  headline,\n  introimage,\n  introblock,\n  introtext,\n  pageType,\n  contactformtext,\n  textSections,\n  nextPage->{\n    title,\n    slug\n  },\n  slides[]{\n    layout,\n    title,\n    text,\n    link,\n    caption,\n    credit,\n    backgroundColor,\n    image {\n      asset->{\n        url\n      },\n      alt\n    },\n    smallImage {\n      asset->{\n        url\n      },\n      alt\n    }\n  }\n}": PAGE_QUERYResult;
+    "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  headline,\n  introimage,\n  introblock,\n  introtext,\n  pageType,\n  contactformtext,\n  textSections,\n  nextPage->{\n    title,\n    slug\n  },\n  nextPageBackgroundColour,\n  slides[]{\n    layout,\n    title,\n    text,\n    link,\n    caption,\n    credit,\n    backgroundColor,\n    image {\n      asset->{\n        url\n      },\n      alt\n    },\n    smallImage {\n      asset->{\n        url\n      },\n      alt\n    }\n  }\n}": PAGE_QUERYResult;
   }
 }

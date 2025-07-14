@@ -55,15 +55,15 @@ export default function GlobalPageEffects() {
 
     setTimeout(() => {
       header.style.opacity = "1";
-    }, 1000);
+    }, 100);
 
     setTimeout(() => {
       footer.style.opacity = "1";
-    }, 1000);
+    }, 100);
 
     setTimeout(() => {
       wrapper.style.opacity = "1";
-    }, 1000);
+    }, 100);
 
       function toggleHamburger() {
         const width = window.innerWidth;

@@ -229,11 +229,11 @@ h6{
 .content-wrapper{
     opacity:0;
     will-change:opacity;
-    transition: opacity 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -o-transition: opacity 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -ms-transition: opacity 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -moz-transition: opacity 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -webkit-transition: opacity 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -o-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -ms-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -moz-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -webkit-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .carousel-overlay{
@@ -572,6 +572,8 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
 .flickity-prev-next-button.previous, .flickity-prev-next-button.next, .flickity-enabled .flickity-prev-next-button.next, .flickity-enabled .flickity-prev-next-button.previous {
     opacity:1;
     cursor:pointer !important;
+    background-size: contain !important;
+    border-radius: 0px !important;
 }
 
 .flickity-prev-next-button.next{
@@ -716,23 +718,13 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
 }
 
 .flickity-prev-next-button.previous {
-    left: 0rem !important;
     background: url('./arrow.svg') !important;
     background-repeat: no-repeat !important;
-    width:50% !important;
-    height:100% !important;
-    left: 0 !important;
-    opacity:0;
 }
 
 .flickity-prev-next-button.next {
-    right: 0rem !important;
     background: url('./next-arrow.svg') !important;
     background-repeat: no-repeat !important;
-    width:50% !important;
-    height:100% !important;
-    right: 0 !important;
-    opacity:0;
 }
 
 .flickity-button:active{
@@ -2034,10 +2026,6 @@ line-height: 1.225rem;
         font-style: normal;
         font-weight: 400;
         line-height:1.75rem;
-    }
-
-    .slide-footer .title{
-        display:none;
     }
 
     .lightbox{

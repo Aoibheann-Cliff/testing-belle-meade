@@ -123,7 +123,7 @@ export default async function Page({
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                      <div className="next-page-link" id="nextPageLink">
+                      <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: page.nextPageBackgroundColour || "#c6bbcf" }}>
                             <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
                             <a href={`/${page.nextPage.slug.current}`}>
                             <Image
@@ -214,7 +214,7 @@ export default async function Page({
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
                         </div>
                         {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                      <div className="next-page-link" id="nextPageLink">
+                      <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: page.nextPageBackgroundColour || "#c6bbcf" }}>
                             <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
                             <a href={`/${page.nextPage.slug.current}`}>
                             <Image
@@ -308,7 +308,7 @@ export default async function Page({
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                      <div className="next-page-link" id="nextPageLink">
+                      <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: page.nextPageBackgroundColour || "#c6bbcf" }}>
                             <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
                             <a href={`/${page.nextPage.slug.current}`}>
                             <Image
@@ -393,7 +393,7 @@ export default async function Page({
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                      <div className="next-page-link" id="nextPageLink">
+                      <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: page.nextPageBackgroundColour || "#c6bbcf" }}>
                             <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
                             <a href={`/${page.nextPage.slug.current}`}>
                             <Image
@@ -473,7 +473,7 @@ export default async function Page({
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                      <div className="next-page-link" id="nextPageLink">
+                      <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: page.nextPageBackgroundColour || "#c6bbcf" }}>
                             <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
                             <a href={`/${page.nextPage.slug.current}`}>
                             <Image
@@ -592,7 +592,7 @@ export default async function Page({
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                      <div className="next-page-link" id="nextPageLink">
+                      <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: page.nextPageBackgroundColour || "#c6bbcf" }}>
                             <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
                             <a href={`/${page.nextPage.slug.current}`}>
                             <Image

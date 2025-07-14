@@ -20,6 +20,7 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
     title,
     slug
   },
+  nextPageBackgroundColour,
   slides[]{
     layout,
     title,

@@ -52,6 +52,7 @@ export default function GlobalPageEffects() {
       const designMenuItem = document.getElementById('design');
       const designSlide = document.querySelector('.design-slide');
 
+      if(designMenuItem){
       designMenuItem.addEventListener('mouseenter', () => {
       designSlide.style.opacity = '1';
       });
@@ -59,10 +60,12 @@ export default function GlobalPageEffects() {
       designMenuItem.addEventListener('mouseleave', () => {
       designSlide.style.opacity = '0';
       });
+    }
 
       const craftsmanshipMenuItem = document.getElementById('craftsmanship');
       const craftsmanshipSlide = document.querySelector('.craftsmanship-slide');
 
+      if(craftsmanshipMenuItem){
       craftsmanshipMenuItem.addEventListener('mouseenter', () => {
         craftsmanshipSlide.style.opacity = '1';
       });
@@ -70,10 +73,12 @@ export default function GlobalPageEffects() {
       craftsmanshipMenuItem.addEventListener('mouseleave', () => {
       craftsmanshipSlide.style.opacity = '0';
       });
+      }
 
       const residencesMenuItem = document.getElementById('residences');
       const residencesSlide = document.querySelector('.residences-slide');
 
+      if(residencesMenuItem){
       residencesMenuItem.addEventListener('mouseenter', () => {
         residencesSlide.style.opacity = '1';
       });
@@ -81,10 +86,12 @@ export default function GlobalPageEffects() {
       residencesMenuItem.addEventListener('mouseleave', () => {
       residencesSlide.style.opacity = '0';
       });
+    }
 
       const amenitiesMenuItem = document.getElementById('amenities');
       const amenitiesSlide = document.querySelector('.amenities-slide');
 
+      if(amenitiesMenuItem){
       amenitiesMenuItem.addEventListener('mouseenter', () => {
         amenitiesSlide.style.opacity = '1';
       });
@@ -92,10 +99,12 @@ export default function GlobalPageEffects() {
       amenitiesMenuItem.addEventListener('mouseleave', () => {
         amenitiesSlide.style.opacity = '0';
       });
+    }
 
       const parkMenuItem = document.getElementById('park');
       const parkSlide = document.querySelector('.park-slide');
 
+      if(parkMenuItem){
       parkMenuItem.addEventListener('mouseenter', () => {
         parkSlide.style.opacity = '1';
       });
@@ -103,10 +112,12 @@ export default function GlobalPageEffects() {
       parkMenuItem.addEventListener('mouseleave', () => {
         parkSlide.style.opacity = '0';
       });
+    }
 
       const villageMenuItem = document.getElementById('village');
       const villageSlide = document.querySelector('.village-slide');
 
+      if(villageMenuItem){
       villageMenuItem.addEventListener('mouseenter', () => {
         villageSlide.style.opacity = '1';
       });
@@ -114,6 +125,7 @@ export default function GlobalPageEffects() {
       villageMenuItem.addEventListener('mouseleave', () => {
       villageSlide.style.opacity = '0';
       });
+    }
 
   }, 1000);
     function toggleHamburger() {

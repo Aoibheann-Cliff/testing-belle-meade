@@ -530,6 +530,21 @@ export const pageType = defineType({
       description: 'Choose the page to link to next.',
       hidden: ({ document }) => document?.pageType !== "slideshowpage",
     }),
+    defineField({
+      name: 'nextPageBackgroundColour',
+      title: 'Next Page Background Colour',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Warm Gray', value: '#A59B93' },
+          { title: 'Lilac', value: '#C6BBCF' },
+          { title: 'Khaki', value: '#898f65' },
+          { title: 'Purple', value: '#4C2F48' },
+        ],
+        layout: 'dropdown',
+      },
+      hidden: ({ document }) => document?.pageType !== "slideshowpage",
+    }),
   ],
   preview: {
     select: {

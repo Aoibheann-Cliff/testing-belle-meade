@@ -229,11 +229,11 @@ h6{
 .content-wrapper{
     opacity:0;
     will-change:opacity;
-    transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -o-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -ms-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -moz-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -webkit-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: opacity 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -o-transition: opacity 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -ms-transition: opacity 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -moz-transition: opacity 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -webkit-transition: opacity 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .carousel-overlay{

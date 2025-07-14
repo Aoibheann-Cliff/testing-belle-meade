@@ -569,6 +569,11 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     opacity:0 !important;
 }
 
+.flickity-prev-next-button.previous, .flickity-prev-next-button.next, .flickity-enabled .flickity-prev-next-button.next, .flickity-enabled .flickity-prev-next-button.previous {
+    opacity:1;
+    cursor:pointer !important;
+}
+
 .flickity-prev-next-button .flickity-button-icon{
     display:none !important;
 }
@@ -850,14 +855,6 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
 
 .flickity-button:disabled{
     cursor:auto !important
-}
-
-.flickity-enabled .flickity-prev-next-button.next{
-  cursor: url(./next-arrow.svg), auto !important;
-}
-
-.flickity-enabled .flickity-prev-next-button {
-  cursor: url(./arrow.svg), auto !important;
 }
 
 .next-page-link{

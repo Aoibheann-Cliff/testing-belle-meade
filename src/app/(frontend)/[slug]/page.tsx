@@ -112,7 +112,7 @@ export default async function Page({
                       </div>
                       )}
                         <div className="slide-footer">
-                          <h5 className="title">{page.title}</h5>
+                        <a href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
@@ -208,7 +208,7 @@ export default async function Page({
                         </div>
                       </div>
                       <div className="slide-footer">
-                          <h5 className="title">{page.title}</h5>
+                          <a href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
@@ -300,7 +300,7 @@ export default async function Page({
                         </div>
                       </div>
                         <div className="slide-footer">
-                          <h5 className="title">{page.title}</h5>
+                          <a href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
@@ -385,7 +385,7 @@ export default async function Page({
                       )}
                       </div>
                         <div className="slide-footer">
-                          <h5 className="title">{page.title}</h5>
+                          <a href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
@@ -465,7 +465,7 @@ export default async function Page({
                       </div>
                     )}
                       <div className="slide-footer">
-                          <h5 className="title">{page.title}</h5>
+                          <a href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
@@ -584,7 +584,7 @@ export default async function Page({
                         </div>
                       )}
                         <div className="slide-footer">
-                          <h5 className="title">{page.title}</h5>
+                          <a href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>

@@ -617,10 +617,6 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     width:100% !important;
 }
 
-.intro-slide .slide-footer{
-    display:none;
-}
-
 .bbb09081-bee7-496a-b6fa-303cc8625205 .intro-slide .slide-footer, .bbb09081-bee7-496a-b6fa-303cc8625205 .image-text-overlay-plain .slide-footer{
     display:none;
 }

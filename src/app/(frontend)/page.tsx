@@ -21,36 +21,73 @@ export default async function Page() {
     <main id="contentWrapper" className="container content-wrapper homepage">
       <HomePageEffects />
 
-    <div className="background-video">
+    <div
+      className={
+        "background-video" +
+        (homepage.mobilebackgroundvideo ? " has-background-mobile-video" : "") +
+        (homepage.mobilebackgroundimage ? " has-background-mobile-image" : "")
+      }
+    >
       <div className="carousel-overlay"></div>
       <div className="logotype" id="logotype"><Image src={logoType} alt="logotype"/></div>
         <h3 className="tagline" id="tagline">
           {homepage.text}
         </h3>
         {homepage.backgroundmediaType === 'video' && (
+        <div className={`h-full`}>
+          {homepage.backgroundvideo && (
           <video
             src={homepage.backgroundvideo.asset.url}
-            className="w-full aspect-[1920/1080] object-cover min-h-screen"
+            className="desktop-video w-full aspect-[1920/1080] object-cover min-h-screen"
             autoPlay
             muted
             loop
             playsInline
           />
           )}
+          {homepage.mobilebackgroundvideo && (
+          <video
+            src={homepage.mobilebackgroundvideo.asset.url}
+            className="mobile-video w-full aspect-[1920/1080] object-cover min-h-screen"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          )}
+        </div>
+          )}
           {homepage.backgroundmediaType === 'image' && (
-            <div>
+            <div className={`h-full`}>
+            {homepage.backgroundimage && (
             <Image
-            className={`w-full aspect-[1920/1080] min-h-screen`}
+            priority={true}
+            className="desktop-image w-full aspect-[1920/1080] min-h-screen"
             src={urlFor(homepage.backgroundimage)
               .width(1920)
               .height(1080)
-              .quality(70)
+              .quality(100)
               .auto("format")
               .url()}
             alt={homepage.backgroundimage.alt || ""}
             width={1920}
             height={1080}
           />
+        )}
+           {homepage.mobilebackgroundimage && (
+            <Image
+            className="mobile-image w-full aspect-[1920/1080] min-h-screen"
+            src={urlFor(homepage.mobilebackgroundimage)
+              .width(1920)
+              .height(1080)
+              .quality(100)
+              .auto("format")
+              .url()}
+            alt={homepage.mobilebackgroundimage.alt || ""}
+            width={1920}
+            height={1080}
+          />
+        )}
             </div>
         )}
     </div>
@@ -75,7 +112,7 @@ export default async function Page() {
           src={urlFor(homepage.designpageimage)
             .width(1920)
             .height(1080)
-            .quality(70)
+            .quality(100)
             .auto("format")
             .url()}
           alt={homepage.designpageimage.alt || ""}
@@ -106,7 +143,7 @@ export default async function Page() {
           src={urlFor(homepage.craftsmanshippageimage)
             .width(1920)
             .height(1080)
-            .quality(70)
+            .quality(100)
             .auto("format")
             .url()}
           alt={homepage.craftsmanshippageimage.alt || ""}
@@ -137,7 +174,7 @@ export default async function Page() {
           src={urlFor(homepage.residencespageimage)
             .width(1920)
             .height(1080)
-            .quality(70)
+            .quality(100)
             .auto("format")
             .url()}
           alt={homepage.residencespageimage.alt || ""}
@@ -168,7 +205,7 @@ export default async function Page() {
           src={urlFor(homepage.amenitiespageimage)
             .width(1920)
             .height(1080)
-            .quality(70)
+            .quality(100)
             .auto("format")
             .url()}
           alt={homepage.amenitiespageimage.alt || ""}
@@ -199,7 +236,7 @@ export default async function Page() {
           src={urlFor(homepage.parkpageimage)
             .width(1920)
             .height(1080)
-            .quality(70)
+            .quality(100)
             .auto("format")
             .url()}
           alt={homepage.parkpageimage.alt || ""}
@@ -230,7 +267,7 @@ export default async function Page() {
           src={urlFor(homepage.villagepageimage)
             .width(1920)
             .height(1080)
-            .quality(70)
+            .quality(100)
             .auto("format")
             .url()}
           alt={homepage.villagepageimage.alt || ""}

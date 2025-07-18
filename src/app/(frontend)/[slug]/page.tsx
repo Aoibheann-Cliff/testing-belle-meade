@@ -72,7 +72,9 @@ export default async function Page({
                       {slide.mediaType === 'image' && (
                         <div>
                       <Image
-                        src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').auto('format').url()}
+                        priority={true}
+                        unoptimized
+                        src={urlFor(slide.image).width(3840).height(2160).quality(100).fit('crop').format('jpg').url()}
                         alt={slide.image?.alt || ""}
                         width={3840}
                         height={2160}
@@ -94,7 +96,8 @@ export default async function Page({
                         </div>
                         <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                         <Image
-                          src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').auto('format').url()}
+                          unoptimized
+                          src={urlFor(slide.image).width(3840).height(2160).quality(100).fit('crop').format('jpg').url()}
                           alt={slide.image?.alt || ""}
                           width={3840}
                           height={2160}
@@ -122,20 +125,27 @@ export default async function Page({
                           </button>
                         </div>
                       <div className="flickity-bottom-overlay"></div>
-                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                      <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: page.nextPageBackgroundColour || "#c6bbcf" }}>
-                            <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
+                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {
+                        const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase();
+                        let strokeColor;
+                        if (!nextBg || nextBg === "#c6bbcf") {
+                          strokeColor = "#4C2F48";
+                        } else {
+                          strokeColor = "#fff";
+                        }
+                        return (
+                          <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
+                            <div className="next-page-title" id="next-page-title">
+                              <a style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                            </div>
                             <a href={`/${page.nextPage.slug.current}`}>
-                            <Image
-                              className="purple-arrow"
-                              src={arrow}
-                              alt="arrow"
-                              width={27}
-                              height={13.5}
-                            />
+                              <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
+                              </svg>
                             </a>
-                        </div>
-                      )}
+                          </div>
+                        );
+                      })()}
                     </div>
                   );
 
@@ -157,7 +167,9 @@ export default async function Page({
                       {slide.mediaType === 'image' && (
                         <div>
                       <Image
-                        src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').auto('format').url()}
+                        priority={true}
+                        unoptimized
+                        src={urlFor(slide.image).width(3840).height(2160).quality(100).fit('crop').format('jpg').url()}
                         alt={slide.image?.alt || ""}
                         width={3840}
                         height={2160}
@@ -179,7 +191,7 @@ export default async function Page({
                         </div>
                       <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                         <Image
-                          src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').auto('format').url()}
+                          src={urlFor(slide.image).width(3840).height(2160).quality(100).fit('crop').format('jpg').url()}
                           alt={slide.image?.alt || ""}
                           width={3840}
                           height={2160}
@@ -213,20 +225,27 @@ export default async function Page({
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
                         </div>
-                        {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                      <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: page.nextPageBackgroundColour || "#c6bbcf" }}>
-                            <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
-                            <a href={`/${page.nextPage.slug.current}`}>
-                            <Image
-                              className="purple-arrow"
-                              src={arrow}
-                              alt="arrow"
-                              width={27}
-                              height={13.5}
-                            />
-                            </a>
-                        </div>
-                      )}
+                        {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {
+                          const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase();
+                          let strokeColor;
+                          if (!nextBg || nextBg === "#c6bbcf") {
+                            strokeColor = "#4C2F48";
+                          } else {
+                            strokeColor = "#fff";
+                          }
+                          return (
+                            <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
+                              <div className="next-page-title" id="next-page-title">
+                                <a style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                              </div>
+                              <a href={`/${page.nextPage.slug.current}`}>
+                                <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
+                                </svg>
+                              </a>
+                            </div>
+                          );
+                        })()}
                       <div className="flickity-bottom-overlay"></div>
                     </div>
                   );
@@ -249,7 +268,9 @@ export default async function Page({
                       {slide.mediaType === 'image' && (
                         <div>
                         <Image
-                        src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').auto('format').url()}
+                        priority={true}
+                        unoptimized
+                        src={urlFor(slide.image).width(3840).height(2160).quality(100).fit('crop').format('jpg').url()}
                         alt={slide.image?.alt || ""}
                         width={3840}
                         height={2160}
@@ -271,7 +292,8 @@ export default async function Page({
                         </div>
                       <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                         <Image
-                          src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').auto('format').url()}
+                        unoptimized
+                          src={urlFor(slide.image).width(3840).height(2160).quality(100).fit('crop').format('jpg').url()}
                           alt={slide.image?.alt || ""}
                           width={3840}
                           height={2160}
@@ -307,20 +329,27 @@ export default async function Page({
                           {slide.caption && (<h5 className="caption">{slide.caption}</h5>)}
                         </div>
                       <div className="flickity-bottom-overlay"></div>
-                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                      <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: page.nextPageBackgroundColour || "#c6bbcf" }}>
-                            <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
+                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {
+                        const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase();
+                        let strokeColor;
+                        if (!nextBg || nextBg === "#c6bbcf") {
+                          strokeColor = "#4C2F48";
+                        } else {
+                          strokeColor = "#fff";
+                        }
+                        return (
+                          <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
+                            <div className="next-page-title" id="next-page-title">
+                              <a style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                            </div>
                             <a href={`/${page.nextPage.slug.current}`}>
-                            <Image
-                              className="purple-arrow"
-                              src={arrow}
-                              alt="arrow"
-                              width={27}
-                              height={13.5}
-                            />
+                              <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
+                              </svg>
                             </a>
-                        </div>
-                      )}
+                          </div>
+                        );
+                      })()}
                     </div>
                   );
 
@@ -370,11 +399,12 @@ export default async function Page({
                       />
                       )}
                       {slide.mediaType === 'image' && (
-                        <div>
+                        <div className={`h-full`}>
                       <Image
-                        src={urlFor(slide.image).width(960).height(1080).quality(70).fit('crop').auto('format').url()}
+                        unoptimized
+                        src={urlFor(slide.image).width(1920).height(2160).quality(100).fit('crop').format('jpg').url()}
                         alt={slide.image?.alt || ""}
-                        width={960}
+                        width={1920}
                         height={1080}
                         quality={100}
                         placeholder="blur"
@@ -392,20 +422,27 @@ export default async function Page({
                           {slide.caption && (<h5 className="caption">{slide.caption}</h5>)}
                         </div>
                       <div className="flickity-bottom-overlay"></div>
-                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                      <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: page.nextPageBackgroundColour || "#c6bbcf" }}>
-                            <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
+                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {
+                        const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase();
+                        let strokeColor;
+                        if (!nextBg || nextBg === "#c6bbcf") {
+                          strokeColor = "#4C2F48";
+                        } else {
+                          strokeColor = "#fff";
+                        }
+                        return (
+                          <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
+                            <div className="next-page-title" id="next-page-title">
+                              <a style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                            </div>
                             <a href={`/${page.nextPage.slug.current}`}>
-                            <Image
-                              className="purple-arrow"
-                              src={arrow}
-                              alt="arrow"
-                              width={27}
-                              height={13.5}
-                            />
+                              <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
+                              </svg>
                             </a>
-                        </div>
-                      )}
+                          </div>
+                        );
+                      })()}
                     </div>
                   );
                 }
@@ -453,9 +490,10 @@ export default async function Page({
                       {slide.mediaType === 'image' && (
                         <div className="image-container">
                       <Image
-                        src={urlFor(slide.image).width(960).height(1080).quality(70).fit('crop').auto('format').url()}
+                        unoptimized
+                        src={urlFor(slide.image).width(1920).height(2160).quality(100).fit('crop').format('jpg').url()}
                         alt={slide.image?.alt || ""}
-                        width={960}
+                        width={1920}
                         height={1080}
                         quality={100}
                         placeholder="blur"
@@ -472,20 +510,27 @@ export default async function Page({
                           {slide.caption && (<h5 className="caption">{slide.caption}</h5>)}
                         </div>
                       <div className="flickity-bottom-overlay"></div>
-                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                      <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: page.nextPageBackgroundColour || "#c6bbcf" }}>
-                            <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
+                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {
+                        const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase();
+                        let strokeColor;
+                        if (!nextBg || nextBg === "#c6bbcf") {
+                          strokeColor = "#4C2F48";
+                        } else {
+                          strokeColor = "#fff";
+                        }
+                        return (
+                          <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
+                            <div className="next-page-title" id="next-page-title">
+                              <a style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                            </div>
                             <a href={`/${page.nextPage.slug.current}`}>
-                            <Image
-                              className="purple-arrow"
-                              src={arrow}
-                              alt="arrow"
-                              width={27}
-                              height={13.5}
-                            />
+                              <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
+                              </svg>
                             </a>
-                        </div>
-                      )}
+                          </div>
+                        );
+                      })()}
                     </div>
                   );
                 }
@@ -516,7 +561,8 @@ export default async function Page({
                       {slide.smallmediaType === 'image' && (
                         <div>
                         <Image
-                        src={urlFor(slide.smallImage).width(600).height(400).quality(70).fit('crop').auto('format').url()}
+                        unoptimized
+                        src={urlFor(slide.smallImage).width(600).height(400).quality(100).fit('crop').format('jpg').url()}
                         alt={slide.smallImage?.alt || ""}
                         width={600}
                         height={400}
@@ -543,9 +589,10 @@ export default async function Page({
                       {slide.mediaType === 'image' && (
                         <div>
                       <Image
-                        src={urlFor(slide.image).width(960).height(1080).quality(70).fit('crop').auto('format').url()}
+                        unoptimized
+                        src={urlFor(slide.image).width(1920).height(2160).quality(100).fit('crop').format('jpg').url()}
                         alt={slide.image?.alt || ""}
-                        width={960}
+                        width={1920}
                         height={1080}
                         quality={100}
                         placeholder="blur"
@@ -570,7 +617,8 @@ export default async function Page({
                       {slide.mediaType === 'image' && (
                         <div>
                         <Image
-                        src={urlFor(slide.smallImage).width(600).height(400).quality(70).fit('crop').auto('format').url()}
+                        unoptimized
+                        src={urlFor(slide.smallImage).width(600).height(400).quality(100).fit('crop').format('jpg').url()}
                         alt={slide.smallImage?.alt || ""}
                         width={600}
                         height={400}
@@ -591,20 +639,27 @@ export default async function Page({
                           {slide.caption && (<h5 className="caption">{slide.caption}</h5>)}
                         </div>
                       <div className="flickity-bottom-overlay"></div>
-                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (
-                      <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: page.nextPageBackgroundColour || "#c6bbcf" }}>
-                            <div className="next-page-title" id="next-page-title"><a href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a></div>
+                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {
+                        const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase();
+                        let strokeColor;
+                        if (!nextBg || nextBg === "#c6bbcf") {
+                          strokeColor = "#4C2F48";
+                        } else {
+                          strokeColor = "#fff";
+                        }
+                        return (
+                          <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
+                            <div className="next-page-title" id="next-page-title">
+                              <a style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                            </div>
                             <a href={`/${page.nextPage.slug.current}`}>
-                            <Image
-                              className="purple-arrow"
-                              src={arrow}
-                              alt="arrow"
-                              width={27}
-                              height={13.5}
-                            />
+                              <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
+                              </svg>
                             </a>
-                        </div>
-                      )}
+                          </div>
+                        );
+                      })()}
                     </div>
                   );
                 }

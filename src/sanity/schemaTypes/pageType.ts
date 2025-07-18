@@ -81,8 +81,23 @@ export const pageType = defineType({
       hidden: ({ document }) => document?.backgroundmediaType !== "image",
     }),
     defineField({
+      name: 'mobilebackgroundimage',
+      title: 'Mobile Background Image',
+      type: 'image',
+      hidden: ({ document }) => document?.backgroundmediaType !== "image",
+    }),
+    defineField({
       name: 'backgroundvideo',
       title: 'Background Video',
+      type: 'file',
+      options: {
+        accept: 'video/*'
+      },
+      hidden: ({ document }) => document?.backgroundmediaType !== "video",
+    }),
+    defineField({
+      name: 'mobilebackgroundvideo',
+      title: 'Mobile Background Video',
       type: 'file',
       options: {
         accept: 'video/*'

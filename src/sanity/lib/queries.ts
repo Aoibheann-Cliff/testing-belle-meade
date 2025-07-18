@@ -78,6 +78,15 @@ export const HOMEPAGE_QUERY = `
       crop,
       alt
     },
+    mobilebackgroundimage {
+      asset->{
+        _id,
+        url
+      },
+      hotspot,
+      crop,
+      alt
+    },
     designpageimage {
       asset->{
         _id,
@@ -133,6 +142,11 @@ export const HOMEPAGE_QUERY = `
       alt
     },
     backgroundvideo{
+      asset->{
+        url
+      }
+    },
+   mobilebackgroundvideo{
       asset->{
         url
       }

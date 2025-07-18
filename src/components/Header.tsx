@@ -150,6 +150,12 @@ export function Header() {
               <Link
                 className="menuitem"
                 href={item.url}
+                onClick={(e) => {
+                  if (pathname === item.url) {
+                    e.preventDefault();
+                    window.location.reload();
+                  }
+                }}
                 onMouseEnter={() => handleMouseEnter(item)}
                 onMouseLeave={handleMouseLeave}
               >
@@ -174,6 +180,12 @@ export function Header() {
               <Link
                 className="menuitem"
                 href={item.url}
+                onClick={(e) => {
+                  if (pathname === item.url) {
+                    e.preventDefault();
+                    window.location.reload();
+                  }
+                }}
                 onMouseEnter={() => handleMouseEnter(item)}
                 onMouseLeave={handleMouseLeave}
               >
@@ -191,6 +203,12 @@ export function Header() {
                 key={item.label}
                 className={`menuitem ${pathname === item.url ? 'active' : ''}`}
                 href={item.url}
+                onClick={(e) => {
+                  if (pathname === item.url) {
+                    e.preventDefault();
+                    window.location.reload();
+                  }
+                }}
               >
                 {item.label}
               </Link>

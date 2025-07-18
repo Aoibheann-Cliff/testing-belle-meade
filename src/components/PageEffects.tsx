@@ -53,17 +53,17 @@ export default function GlobalPageEffects() {
     });
   
 
-    setTimeout(() => {
-      header.style.opacity = "1";
-    }, 100);
+    // setTimeout(() => {
+    //   header.style.opacity = "1";
+    // }, 100);
 
-    setTimeout(() => {
-      footer.style.opacity = "1";
-    }, 100);
+    // setTimeout(() => {
+    //   footer.style.opacity = "1";
+    // }, 100);
 
-    setTimeout(() => {
-      wrapper.style.opacity = "1";
-    }, 100);
+    // setTimeout(() => {
+    //   wrapper.style.opacity = "1";
+    // }, 100);
 
       function toggleHamburger() {
         const width = window.innerWidth;

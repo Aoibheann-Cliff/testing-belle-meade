@@ -63,12 +63,6 @@ export const HOMEPAGE_QUERY = `
     title,
     text,
     backgroundmediaType,
-    designpagemediaType,
-    craftsmanshippagemediaType,
-    residencespagemediaType,
-    amenitiespagemediaType,
-    parkpagemediaType,
-    villagepagemediaType,
     backgroundimage {
       asset->{
         _id,
@@ -87,96 +81,12 @@ export const HOMEPAGE_QUERY = `
       crop,
       alt
     },
-    designpageimage {
-      asset->{
-        _id,
-        url
-      },
-      hotspot,
-      crop,
-      alt
-    },
-    craftsmanshippageimage {
-      asset->{
-        _id,
-        url
-      },
-      hotspot,
-      crop,
-      alt
-    },
-    residencespageimage {
-      asset->{
-        _id,
-        url
-      },
-      hotspot,
-      crop,
-      alt
-    },
-    amenitiespageimage {
-      asset->{
-        _id,
-        url
-      },
-      hotspot,
-      crop,
-      alt
-    },
-    parkpageimage {
-      asset->{
-        _id,
-        url
-      },
-      hotspot,
-      crop,
-      alt
-    },
-    villagepageimage{
-      asset->{
-        _id,
-        url
-      },
-      hotspot,
-      crop,
-      alt
-    },
     backgroundvideo{
       asset->{
         url
       }
     },
    mobilebackgroundvideo{
-      asset->{
-        url
-      }
-    },
-    designpagevideo{
-      asset->{
-        url
-      }
-    },
-    craftsmanshippagevideo{
-      asset->{
-        url
-      }
-    },
-    residencespagevideo{
-      asset->{
-        url
-      }
-    },
-    amenitiespagevideo{
-      asset->{
-        url
-      }
-    },
-    parkpagevideo{
-      asset->{
-        url
-      }
-    },
-    villagepagevideo{
       asset->{
         url
       }

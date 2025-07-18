@@ -36,17 +36,17 @@ export default function GlobalPageEffects() {
     const header = document.getElementById('header');
     const footer = document.getElementById('footer');
 
-    setTimeout(() => {
-      header.style.opacity = "1";
-    }, 1000);
+    // setTimeout(() => {
+    //   header.style.opacity = "1";
+    // }, 1000);
 
-    setTimeout(() => {
-      footer.style.opacity = "1";
-    }, 1000);
+    // setTimeout(() => {
+    //   footer.style.opacity = "1";
+    // }, 1000);
 
-    setTimeout(() => {
-      wrapper.style.opacity = "1";
-    }, 1000);
+    // setTimeout(() => {
+    //   wrapper.style.opacity = "1";
+    // }, 1000);
 
     setTimeout(() => {
       const designMenuItem = document.getElementById('design');

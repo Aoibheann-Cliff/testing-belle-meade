@@ -211,7 +211,15 @@ export default async function Page({
                       <div className="slide-overlay">
                         <div className="text">
                           {slide.title && <h5 className="title">{slide.title}</h5>}
-                          {slide.text && <PortableText value={slide.text} />}
+                          {slide.text && <div className={`${slide.mobiletext && ('has-mobile-text')}`}><PortableText value={slide.text} /></div>}
+                          {(slide.mobiletext || []).map((block, i) => {
+                            const Tag = block.style === 'normal' ? 'p' : block.style || 'p';
+                            return (
+                              <Tag className="mobile-text" key={i}>
+                                {block.children?.map((child) => child.text).join('')}
+                              </Tag>
+                            );
+                          })}
                           {slide.linkText && slide.link &&(
                             <a href={slide.link} target="_blank">
                               <h5>{slide.linkText}</h5>
@@ -313,7 +321,15 @@ export default async function Page({
                         <div className="slide-overlay">
                         <div className="text">
                           {slide.title && <h5 className="title">{slide.title}</h5>}
-                          {slide.text && <PortableText value={slide.text} />}
+                          {slide.text && <div className={`${slide.mobiletext && ('has-mobile-text')}`}><PortableText value={slide.text} /></div>}
+                          {(slide.mobiletext || []).map((block, i) => {
+                            const Tag = block.style === 'normal' ? 'p' : block.style || 'p';
+                            return (
+                              <Tag className="mobile-text" key={i}>
+                                {block.children?.map((child) => child.text).join('')}
+                              </Tag>
+                            );
+                          })}
                           {slide.linkText && slide.link &&(
                             <a href={slide.link} target="_blank">
                               <h5>{slide.linkText}</h5>
@@ -465,7 +481,15 @@ export default async function Page({
                           {(slide.text || []).map((block, i) => {
                             const Tag = block.style === 'normal' ? 'p' : block.style || 'p';
                             return (
-                              <Tag key={i}>
+                              <Tag className={`${slide.mobiletext && ('has-mobile-text')}`} key={i}>
+                                {block.children?.map((child) => child.text).join('')}
+                              </Tag>
+                            );
+                          })}
+                          {(slide.mobiletext || []).map((block, i) => {
+                            const Tag = block.style === 'normal' ? 'p' : block.style || 'p';
+                            return (
+                              <Tag className="mobile-text" key={i}>
                                 {block.children?.map((child) => child.text).join('')}
                               </Tag>
                             );

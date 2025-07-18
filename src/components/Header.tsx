@@ -1,232 +1,212 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { client } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
+import { urlFor } from '@/sanity/lib/image';
 import symbol from '../app/symbol.svg';
 import purplesymbol from '../app/purple-symbol.svg';
 import ContactForm from '@/components/ContactForm';
 
-interface PageData {
-  title: string;
-  slug: string;
+interface MenuItem {
+  label: string;
+  url: string;
+  image?: any;
 }
 
 export function Header() {
   const pathname = usePathname();
-  const [designPage, setDesignPage] = useState<PageData | null>(null);
-  const [craftsmanshipPage, setCraftsmanshipPage] = useState<PageData | null>(null);
-  const [residencesPage, setResidencesPage] = useState<PageData | null>(null);
-  const [amenitiesPage, setAmenitiesPage] = useState<PageData | null>(null);
-  const [parkPage, setParkPage] = useState<PageData | null>(null);
-  const [villagePage, setVillagePage] = useState<PageData | null>(null);
-  const [teamPage, setTeamPage] = useState<PageData | null>(null);
-  const [legalPage, setLegalPage] = useState<PageData | null>(null);
+  const [leftMenu, setLeftMenu] = useState<MenuItem[]>([]);
+  const [rightMenu, setRightMenu] = useState<MenuItem[]>([]);
+  // Only ever two images: current (fading in) and previous (fading out)
+  const [currentImage, setCurrentImage] = useState<{ src: string; alt: string; visible: boolean; key: string } | null>(null);
+  const [prevImage, setPrevImage] = useState<{ src: string; alt: string; visible: boolean; key: string } | null>(null);
+  const fadeTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const designdata = await client.fetch(
-        groq`*[_id == "943fada5-3ce6-4c3e-adc7-df42ed737f1e"][0]{
-          title,
-          "slug": slug.current
-        }`
-      );
-      setDesignPage(designdata);
-
-      const craftsmanshipdata = await client.fetch(
-        groq`*[_id == "a2c3d63f-6a92-4fac-b3cb-2655f4d01883"][0]{
-          title,
-          "slug": slug.current
-        }`
-      );
-      setCraftsmanshipPage(craftsmanshipdata);
-
-      const residencesdata = await client.fetch(
-        groq`*[_id == "dd8fc234-38be-4d2a-b7a4-5bf54a630fc9"][0]{
-          title,
-          "slug": slug.current
-        }`
-      );
-      setResidencesPage(residencesdata);
-
-      const amenitiesdata = await client.fetch(
-        groq`*[_id == "6cdccbdb-98aa-41e8-81fd-cfb4d8c6942f"][0]{
-          title,
-          "slug": slug.current
-        }`
-      );
-      setAmenitiesPage(amenitiesdata);
-
-      const parkdata = await client.fetch(
-        groq`*[_id == "6089a43f-2ded-4b90-a037-22359653cb78"][0]{
-          title,
-          "slug": slug.current
-        }`
-      );
-      setParkPage(parkdata);
-
-      const villagedata = await client.fetch(
-        groq`*[_id == "bbb09081-bee7-496a-b6fa-303cc8625205"][0]{
-          title,
-          "slug": slug.current
-        }`
-      );
-      setVillagePage(villagedata);
-
-      const teamdata = await client.fetch(
-        groq`*[_id == "d8f59a49-e8bc-4e49-b6ba-5c1bb6ee979b"][0]{
-          title,
-          "slug": slug.current
-        }`
-      );
-      setTeamPage(teamdata);
-
-      const legaldata = await client.fetch(
-        groq`*[_id == "ecd6ff2b-434b-4a36-88c3-d88484466fe3"][0]{
-          title,
-          "slug": slug.current
-        }`
-      );
-      setLegalPage(legaldata);
+    const menuQuery = groq`*[_type == "menu" && (title == "Left Menu" || title == "Right Menu")] {
+      title,
+      items[]{
+        label,
+        url,
+        image
+      }
+    }`;
+    const fetchMenus = async () => {
+      const menus = await client.fetch(menuQuery);
+      const left = menus.find((m: any) => m.title === 'Left Menu');
+      const right = menus.find((m: any) => m.title === 'Right Menu');
+      setLeftMenu(left?.items || []);
+      setRightMenu(right?.items || []);
     };
-    fetchData();
+    fetchMenus();
   }, []);
 
+  const handleMouseEnter = (item: MenuItem) => {
+    if (item.image) {
+      const src = urlFor(item.image).width(1920).height(1080).url();
+      const alt = item.label;
+      const key = src + Date.now();
+      // Fade out previous currentImage
+      if (currentImage) {
+        setPrevImage({ ...currentImage, visible: false });
+        if (fadeTimeout.current) clearTimeout(fadeTimeout.current);
+        fadeTimeout.current = setTimeout(() => {
+          setPrevImage(null);
+        }, 600);
+      }
+      setCurrentImage({ src, alt, visible: false, key });
+      setTimeout(() => {
+        setCurrentImage((img) => img ? { ...img, visible: true } : img);
+      }, 10);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (currentImage) {
+      setPrevImage({ ...currentImage, visible: false });
+      setCurrentImage(null);
+      if (fadeTimeout.current) clearTimeout(fadeTimeout.current);
+      fadeTimeout.current = setTimeout(() => {
+        setPrevImage(null);
+      }, 600);
+    }
+  };
+
   return (
-    <header className="flex items-center justify-between" id="header">
-      <div className="left-menu" id="leftMenu">
-        <a className="nav-toggle" id="navToggle">
-          <div className="bar" id="firstBar"></div>
-          <div className="bar" id="secondBar"></div>
-          <div className="bar" id="thirdBar"></div>
-        </a>
-        {designPage && (
-          <Link 
-            className={`menuitem design`} 
-            id="design" 
-            href={`/${designPage.slug}`}
-          >
-            {designPage.title}
-          </Link>
-        )}
-        {craftsmanshipPage && (
-          <Link 
-            className={`menuitem craftsmanship`} 
-            id="craftsmanship" 
-            href={`/${craftsmanshipPage.slug}`}
-          >
-            {craftsmanshipPage.title}
-          </Link>
-        )}
-        {residencesPage && (
-          <Link 
-            className={`menuitem residences`} 
-            id="residences" 
-            href={`/${residencesPage.slug}`}
-          >
-            {residencesPage.title}
-          </Link>
-        )}
-        {amenitiesPage && (
-          <Link 
-            className={`menuitem amenities`} 
-            id="amenities" 
-            href={`/${amenitiesPage.slug}`}
-          >
-            {amenitiesPage.title}
-          </Link>
-        )}
-      </div>
-      <div className="siteLogo">
-        <Link className="" href="/">
-          <Image id="logo" src={symbol} alt=""/>
-          <Image id="purpleLogo" src={purplesymbol} alt=""/>
-        </Link>
-      </div>
-      <div className="right-menu" id="rightMenu">
-        {parkPage && (
-          <Link 
-            className={`menuitem park`} 
-            id="park" 
-            href={`/${parkPage.slug}`}
-          >
-            {parkPage.title}
-          </Link>
-        )}
-        {villagePage && (
-          <Link 
-            className={`menuitem village`} 
-            id="village" 
-            href={`/${villagePage.slug}`}
-          >
-            {villagePage.title}
-          </Link>
-        )}
-        <div className="inquire" id="openForm">Inquire</div>
-      </div>
-      <div id="mobileMenu">
-        <div id="menuBackground" className="menu-background"></div>
-        <div id="menu">
-          {designPage && (
-            <Link className={`menuitem design ${pathname === `/${designPage.slug}` ? 'active' : ''}`}  href={`/${designPage.slug}`}>
-              {designPage.title}
-            </Link>
-          )}
-        {craftsmanshipPage && (
-          <Link className={`menuitem craftsmanship ${pathname === `/${craftsmanshipPage.slug}` ? 'active' : ''}`} href={`/${craftsmanshipPage.slug}`}>
-            {craftsmanshipPage.title}
-          </Link>
-        )}
-        {residencesPage && (
-          <Link className={`menuitem residences ${pathname === `/${residencesPage.slug}` ? 'active' : ''}`}  href={`/${residencesPage.slug}`}>
-            {residencesPage.title}
-          </Link>
-        )}
-        {amenitiesPage && (
-          <Link className={`menuitem amenities ${pathname === `/${amenitiesPage.slug}` ? 'active' : ''}`} href={`/${amenitiesPage.slug}`}>
-            {amenitiesPage.title}
-          </Link>
-        )}
-      {parkPage && (
-          <Link className={`menuitem park ${pathname === `/${parkPage.slug}` ? 'active' : ''}`} href={`/${parkPage.slug}`}>
-            {parkPage.title}
-          </Link>
-        )}
-        {villagePage && (
-          <Link className={`menuitem village ${pathname === `/${villagePage.slug}` ? 'active' : ''}`} href={`/${villagePage.slug}`}>
-            {villagePage.title}
-          </Link>
-        )}
+    <>
+      {/* Render previous image (fading out) */}
+      {prevImage && (
+        <div
+          key={prevImage.key}
+          className="menu-hover-image-full"
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            zIndex: 4,
+            pointerEvents: 'none',
+            opacity: prevImage.visible ? 1 : 0,
+            transition: 'opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+          }}
+        >
+          <div className="slide-overlay"></div>
+          <Image
+            src={prevImage.src}
+            alt={prevImage.alt}
+            fill
+            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+            priority
+          />
         </div>
-        <div className="form-footer menu-footer" id="menuFooter">
-          <a className="addresslink" href="4500 Harding Pike, Nashville, TN 37205, USA" target="_blank">
-            <h6>4500 Harding Pike, Nashville</h6>
+      )}
+      {/* Render current image (fading in) */}
+      {currentImage && (
+        <div
+          key={currentImage.key}
+          className="menu-hover-image-full"
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            zIndex: 4,
+            pointerEvents: 'none',
+            opacity: currentImage.visible ? 1 : 0,
+            transition: 'opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+          }}
+        >
+          <div className="slide-overlay"></div>
+          <Image
+            src={currentImage.src}
+            alt={currentImage.alt}
+            fill
+            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+            priority
+          />
+        </div>
+      )}
+      <header className="flex items-center justify-between bg-transparent" id="header">
+        <div className="left-menu bg-transparent" id="leftMenu">
+          <a className="nav-toggle" id="navToggle">
+            <div className="bar" id="firstBar"></div>
+            <div className="bar" id="secondBar"></div>
+            <div className="bar" id="thirdBar"></div>
           </a>
-          <div className="form-footer-menu" id="menuFooter">
-          {teamPage && (
-          <Link className={`menuitem team ${pathname === `/${teamPage.slug}` ? 'active' : ''}`} href={`/${teamPage.slug}`}>
-            <h6>
-              {teamPage.title}
-            </h6>
-          </Link>
-        )}
-        {legalPage && (
-          <Link className={`menuitem legal ${pathname === `/${legalPage.slug}` ? 'active' : ''}`} href={`/${legalPage.slug}`}>
-            <h6>
-              {legalPage.title}
-            </h6>
-          </Link>
-        )}
-            <Link className="menuitem" href="https://www.hud.gov/offices/fheo/promotingfh/928-1.pdf" target="_blank"><h6>Fair Housing</h6></Link>
-            <Link className="login" href=""><h6>Log In</h6></Link>
-          </div>
-          <div className="mobileinquire" id="mobileopenForm">Inquire</div>
+          {leftMenu.map((item) => (
+            <div
+              key={item.label}
+              className="menuitem-container"
+              style={{ position: 'relative', display: 'inline-block' }}
+            >
+              <Link
+                className="menuitem"
+                href={item.url}
+                onMouseEnter={() => handleMouseEnter(item)}
+                onMouseLeave={handleMouseLeave}
+              >
+                {item.label}
+              </Link>
+            </div>
+          ))}
         </div>
-      </div>
-      <ContactForm />
-    </header>
+        <div className="siteLogo bg-transparent">
+          <Link className="" href="/">
+            <Image id="logo" src={symbol} alt="" />
+            <Image id="purpleLogo" src={purplesymbol} alt="" />
+          </Link>
+        </div>
+        <div className="right-menu bg-transparent" id="rightMenu">
+          {rightMenu.map((item) => (
+            <div
+              key={item.label}
+              className="menuitem-container"
+              style={{ position: 'relative', display: 'inline-block' }}
+            >
+              <Link
+                className="menuitem"
+                href={item.url}
+                onMouseEnter={() => handleMouseEnter(item)}
+                onMouseLeave={handleMouseLeave}
+              >
+                {item.label}
+              </Link>
+            </div>
+          ))}
+          <div className="inquire" id="openForm">Inquire</div>
+        </div>
+        <div id="mobileMenu">
+          <div id="menuBackground" className="menu-background"></div>
+          <div id="menu">
+            {leftMenu.concat(rightMenu).map((item) => (
+              <Link
+                key={item.label}
+                className={`menuitem ${pathname === item.url ? 'active' : ''}`}
+                href={item.url}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+          <div className="form-footer menu-footer" id="menuFooter">
+            <a className="addresslink" href="4500 Harding Pike, Nashville, TN 37205, USA" target="_blank">
+              <h6>4500 Harding Pike, Nashville</h6>
+            </a>
+            <div className="form-footer-menu" id="menuFooter">
+              <Link className="menuitem" href="https://www.hud.gov/offices/fheo/promotingfh/928-1.pdf" target="_blank"><h6>Fair Housing</h6></Link>
+              <Link className="login" href=""><h6>Log In</h6></Link>
+            </div>
+            <div className="mobileinquire" id="mobileopenForm">Inquire</div>
+          </div>
+        </div>
+        <ContactForm />
+      </header>
+    </>
   );
 }

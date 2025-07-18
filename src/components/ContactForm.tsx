@@ -404,16 +404,12 @@ export default function ContactForm() {
       <div className="form-footer-menu">
       {teamPage && (
           <Link className="menuitem team" href={`/${teamPage.slug}`}>
-            <h6>
               {teamPage.title}
-            </h6>
           </Link>
         )}
         {legalPage && (
           <Link className="menuitem legal" href={`/${legalPage.slug}`}>
-            <h6>
               {legalPage.title}
-            </h6>
           </Link>
         )}
         <Link className="menuitem" href="https://www.hud.gov/offices/fheo/promotingfh/928-1.pdf" target="_blank">Fair Housing</Link>
@@ -675,16 +671,12 @@ export default function ContactForm() {
       <div className="form-footer-menu">
       {teamPage && (
           <Link className="menuitem team" href={`/${teamPage.slug}`}>
-            <h6>
               {teamPage.title}
-            </h6>
           </Link>
         )}
         {legalPage && (
           <Link className="menuitem legal" href={`/${legalPage.slug}`}>
-            <h6>
               {legalPage.title}
-            </h6>
           </Link>
         )}
         <Link className="menuitem" href="https://www.hud.gov/offices/fheo/promotingfh/928-1.pdf" target="_blank">Fair Housing</Link>

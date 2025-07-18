@@ -137,10 +137,10 @@ export default function ContactForm() {
           <a className="addresslink" href="https://maps.app.goo.gl/ngRsVcKPu2c7aXJLA" target="_blank">4500 Harding Pike, Nashville</a>
           <div className="form-footer-menu">
             {teamPage && (
-              <Link className="menuitem team" href={`/${teamPage.slug}`}><h6>{teamPage.title}</h6></Link>
+              <Link className="menuitem team" href={`/${teamPage.slug}`}>{teamPage.title}</Link>
             )}
             {legalPage && (
-              <Link className="menuitem legal" href={`/${legalPage.slug}`}><h6>{legalPage.title}</h6></Link>
+              <Link className="menuitem legal" href={`/${legalPage.slug}`}>{legalPage.title}</Link>
             )}
             <Link className="menuitem" href="https://www.hud.gov/offices/fheo/promotingfh/928-1.pdf" target="_blank">Fair Housing</Link>
             <Link className="login" href="">Log In</Link>
@@ -615,10 +615,10 @@ export default function ContactForm() {
         <a className="addresslink" href="https://maps.app.goo.gl/ngRsVcKPu2c7aXJLA" target="_blank">4500 Harding Pike, Nashville</a>
         <div className="form-footer-menu">
           {teamPage && (
-            <Link className="menuitem team" href={`/${teamPage.slug}`}><h6>{teamPage.title}</h6></Link>
+            <Link className="menuitem team" href={`/${teamPage.slug}`}>{teamPage.title}</Link>
           )}
           {legalPage && (
-            <Link className="menuitem legal" href={`/${legalPage.slug}`}><h6>{legalPage.title}</h6></Link>
+            <Link className="menuitem legal" href={`/${legalPage.slug}`}>{legalPage.title}</Link>
           )}
           <Link className="menuitem" href="https://www.hud.gov/offices/fheo/promotingfh/928-1.pdf" target="_blank">Fair Housing</Link>
           <Link className="login" href="">Log In</Link>

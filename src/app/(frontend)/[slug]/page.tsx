@@ -74,7 +74,7 @@ export default async function Page({
                       <Image
                         priority={true}
                         unoptimized
-                        src={urlFor(slide.image).width(3840).height(2160).quality(100).fit('crop').format('jpg').url()}
+                        src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').format('jpg').url()}
                         alt={slide.image?.alt || ""}
                         width={3840}
                         height={2160}
@@ -97,7 +97,7 @@ export default async function Page({
                         <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                         <Image
                           unoptimized
-                          src={urlFor(slide.image).width(3840).height(2160).quality(100).fit('crop').format('jpg').url()}
+                          src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').format('jpg').url()}
                           alt={slide.image?.alt || ""}
                           width={3840}
                           height={2160}
@@ -169,7 +169,7 @@ export default async function Page({
                       <Image
                         priority={true}
                         unoptimized
-                        src={urlFor(slide.image).width(3840).height(2160).quality(100).fit('crop').format('jpg').url()}
+                        src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').format('jpg').url()}
                         alt={slide.image?.alt || ""}
                         width={3840}
                         height={2160}
@@ -191,7 +191,7 @@ export default async function Page({
                         </div>
                       <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                         <Image
-                          src={urlFor(slide.image).width(3840).height(2160).quality(100).fit('crop').format('jpg').url()}
+                          src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').format('jpg').url()}
                           alt={slide.image?.alt || ""}
                           width={3840}
                           height={2160}
@@ -278,7 +278,7 @@ export default async function Page({
                         <Image
                         priority={true}
                         unoptimized
-                        src={urlFor(slide.image).width(3840).height(2160).quality(100).fit('crop').format('jpg').url()}
+                        src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').format('jpg').url()}
                         alt={slide.image?.alt || ""}
                         width={3840}
                         height={2160}
@@ -301,7 +301,7 @@ export default async function Page({
                       <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                         <Image
                         unoptimized
-                          src={urlFor(slide.image).width(3840).height(2160).quality(100).fit('crop').format('jpg').url()}
+                          src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').format('jpg').url()}
                           alt={slide.image?.alt || ""}
                           width={3840}
                           height={2160}
@@ -418,7 +418,7 @@ export default async function Page({
                         <div className={`h-full`}>
                       <Image
                         unoptimized
-                        src={urlFor(slide.image).width(1920).height(2160).quality(100).fit('crop').format('jpg').url()}
+                        src={urlFor(slide.image).width(1920).height(2160).quality(70).fit('crop').format('jpg').url()}
                         alt={slide.image?.alt || ""}
                         width={1920}
                         height={1080}
@@ -515,7 +515,7 @@ export default async function Page({
                         <div className="image-container">
                       <Image
                         unoptimized
-                        src={urlFor(slide.image).width(1920).height(2160).quality(100).fit('crop').format('jpg').url()}
+                        src={urlFor(slide.image).width(1920).height(2160).quality(70).fit('crop').format('jpg').url()}
                         alt={slide.image?.alt || ""}
                         width={1920}
                         height={1080}
@@ -586,7 +586,7 @@ export default async function Page({
                         <div>
                         <Image
                         unoptimized
-                        src={urlFor(slide.smallImage).width(600).height(400).quality(100).fit('crop').format('jpg').url()}
+                        src={urlFor(slide.smallImage).width(600).height(400).quality(70).fit('crop').format('jpg').url()}
                         alt={slide.smallImage?.alt || ""}
                         width={600}
                         height={400}
@@ -614,7 +614,7 @@ export default async function Page({
                         <div>
                       <Image
                         unoptimized
-                        src={urlFor(slide.image).width(1920).height(2160).quality(100).fit('crop').format('jpg').url()}
+                        src={urlFor(slide.image).width(1920).height(2160).quality(70).fit('crop').format('jpg').url()}
                         alt={slide.image?.alt || ""}
                         width={1920}
                         height={1080}
@@ -642,7 +642,7 @@ export default async function Page({
                         <div>
                         <Image
                         unoptimized
-                        src={urlFor(slide.smallImage).width(600).height(400).quality(100).fit('crop').format('jpg').url()}
+                        src={urlFor(slide.smallImage).width(600).height(400).quality(70).fit('crop').format('jpg').url()}
                         alt={slide.smallImage?.alt || ""}
                         width={600}
                         height={400}

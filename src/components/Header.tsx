@@ -78,59 +78,61 @@ export function Header() {
 
   return (
     <>
-      {/* Render previous image (fading out) */}
-      {prevImage && (
-        <div
-          key={prevImage.key}
-          className="menu-hover-image-full"
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100vh',
-            zIndex: 4,
-            pointerEvents: 'none',
-            opacity: prevImage.visible ? 1 : 0,
-            transition: 'opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-          }}
-        >
-          <div className="slide-overlay"></div>
-          <Image
-            src={prevImage.src}
-            alt={prevImage.alt}
-            fill
-            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-            priority
-          />
-        </div>
-      )}
-      {/* Render current image (fading in) */}
-      {currentImage && (
-        <div
-          key={currentImage.key}
-          className="menu-hover-image-full"
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100vh',
-            zIndex: 4,
-            pointerEvents: 'none',
-            opacity: currentImage.visible ? 1 : 0,
-            transition: 'opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-          }}
-        >
-          <div className="slide-overlay"></div>
-          <Image
-            src={currentImage.src}
-            alt={currentImage.alt}
-            fill
-            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-            priority
-          />
-        </div>
+      {pathname === '/' && (
+        <>
+          {prevImage && (
+            <div
+              key={prevImage.key}
+              className="menu-hover-image-full"
+              style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh',
+                zIndex: 10,
+                pointerEvents: 'none',
+                opacity: prevImage.visible ? 1 : 0,
+                transition: 'opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+              }}
+            >
+              <div className="slide-overlay"></div>
+              <Image
+                src={prevImage.src}
+                alt={prevImage.alt}
+                fill
+                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                priority
+              />
+            </div>
+          )}
+          {currentImage && (
+            <div
+              key={currentImage.key}
+              className="menu-hover-image-full"
+              style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh',
+                zIndex: 10,
+                pointerEvents: 'none',
+                opacity: currentImage.visible ? 1 : 0,
+                transition: 'opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+              }}
+            >
+              <div className="slide-overlay"></div>
+              <Image
+                src={currentImage.src}
+                alt={currentImage.alt}
+                fill
+                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                priority
+              />
+            </div>
+          )}
+        </>
       )}
       <header className="flex items-center justify-between bg-transparent" id="header">
         <div className="left-menu bg-transparent" id="leftMenu">

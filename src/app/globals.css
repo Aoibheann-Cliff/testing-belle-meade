@@ -2586,9 +2586,6 @@ line-height: 1.225rem;
         display:block;
     }
 
-    .bbb09081-bee7-496a-b6fa-303cc8625205 .image-text-overlay-plain .slide-overlay{
-        padding-bottom: 1.5rem !important;
-    }
 }
 
 @media only screen and (max-width:765px)
@@ -3271,10 +3268,6 @@ line-height: 1.225rem;
     .slide-overlay {
         padding: 3.125rem 1.563rem 4.688rem;
     }
-
-    .bbb09081-bee7-496a-b6fa-303cc8625205 .image-text-overlay-plain .slide-overlay{
-        padding-bottom: 1.563rem !important;
-    }
 }
 
 @media only screen and (max-height: 670px){
@@ -3302,4 +3295,10 @@ line-height: 1.225rem;
   to {
     opacity: 1;
   }
+}
+
+.hide-content {
+  opacity: 0 !important;
+  transition: opacity 0.2s;
+  pointer-events: none;
 }

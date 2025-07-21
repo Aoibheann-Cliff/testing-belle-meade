@@ -237,6 +237,12 @@ export const pageType = defineType({
               name: 'text',
               title: 'Text',
               type: 'blockContent',
+              hidden: ({ parent }) => parent?.layout !== 'imageAndText' && parent?.layout !== 'imageRightTextLeft' && parent?.layout !== 'imageLeftTextRight' && parent?.layout !== 'imageLeftQuoteRight' && parent?.layout !== 'imageRightQuoteLeft'  && parent?.layout !== 'imageAndTextOverlay',
+            },
+            {
+              name: 'mobiletext',
+              title: 'Mobile Text',
+              type: 'blockContent',
               validation: Rule => Rule.custom((blocks: any[], context: any) => {
                 if (!blocks) return true;
                 // Skip validation for quote layouts
@@ -246,16 +252,10 @@ export const pageType = defineType({
                 const text = blocks
                   .filter(block => block._type === 'block')
                   .map(block => block.children.map(child => child.text).join(''))
-                  .join('');
+                  .join(' ');
                 const wordCount = text.trim().split(/\s+/).length;
                 return wordCount <= 40 ? true : 'Text must be 40 words or less';
               }),
-              hidden: ({ parent }) => parent?.layout !== 'imageAndText' && parent?.layout !== 'imageRightTextLeft' && parent?.layout !== 'imageLeftTextRight' && parent?.layout !== 'imageLeftQuoteRight' && parent?.layout !== 'imageRightQuoteLeft'  && parent?.layout !== 'imageAndTextOverlay',
-            },
-            {
-              name: 'mobiletext',
-              title: 'Mobile Text',
-              type: 'blockContent',
               hidden: ({ parent }) => parent?.layout !== 'imageAndText' && parent?.layout !== 'imageRightTextLeft' && parent?.layout !== 'imageLeftTextRight' && parent?.layout !== 'imageLeftQuoteRight' && parent?.layout !== 'imageRightQuoteLeft'  && parent?.layout !== 'imageAndTextOverlay',
             },
             {
@@ -265,22 +265,77 @@ export const pageType = defineType({
               hidden: ({ parent }) => parent?.layout !== 'imageLeftQuoteRight' && parent?.layout !== 'imageRightQuoteLeft',
             },
             {
+              name: 'captionOrLinkType',
+              title: 'Caption or Link Type',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Caption', value: 'caption' },
+                  { title: 'Link', value: 'link' },
+                ],
+                layout: 'radio',
+              },
+              hidden: ({ parent }) =>
+                parent?.layout !== 'imageOnly' &&
+                parent?.layout !== 'imageAndText' &&
+                parent?.layout !== 'imageRightTextLeft' &&
+                parent?.layout !== 'imageLeftTextRight' &&
+                parent?.layout !== 'imageLeftQuoteRight' &&
+                parent?.layout !== 'imageRightQuoteLeft' &&
+                parent?.layout !== 'imageAndTextOverlay' &&
+                parent?.layout !== 'smallImageLeftLargeImageRight' &&
+                parent?.layout !== 'largeImageLeftSmallImageRight',
+            },
+            {
               name: 'caption',
               title: 'Caption',
               type: 'string',
-              hidden: ({ parent }) => parent?.layout !== 'imageOnly' && parent?.layout !== 'imageRightTextLeft' && parent?.layout !== 'imageLeftTextRight' && parent?.layout !== 'imageLeftQuoteRight' && parent?.layout !== 'imageRightQuoteLeft' && parent?.layout !== 'imageAndTextOverlay' && parent?.layout !== 'smallImageLeftLargeImageRight' && parent?.layout !== 'largeImageLeftSmallImageRight',
+              hidden: ({ parent }) =>
+                (
+                  parent?.layout !== 'imageOnly' &&
+                  parent?.layout !== 'imageAndText' &&
+                  parent?.layout !== 'imageRightTextLeft' &&
+                  parent?.layout !== 'imageLeftTextRight' &&
+                  parent?.layout !== 'imageLeftQuoteRight' &&
+                  parent?.layout !== 'imageRightQuoteLeft' &&
+                  parent?.layout !== 'imageAndTextOverlay' &&
+                  parent?.layout !== 'smallImageLeftLargeImageRight' &&
+                  parent?.layout !== 'largeImageLeftSmallImageRight'
+                ) || parent?.captionOrLinkType !== 'caption',
+            },
+            {
+              name: 'link',
+              title: 'Link',
+              type: 'url',
+              hidden: ({ parent }) =>
+                (
+                  parent?.layout !== 'imageOnly' &&
+                  parent?.layout !== 'imageAndText' &&
+                  parent?.layout !== 'imageRightTextLeft' &&
+                  parent?.layout !== 'imageLeftTextRight' &&
+                  parent?.layout !== 'imageLeftQuoteRight' &&
+                  parent?.layout !== 'imageRightQuoteLeft' &&
+                  parent?.layout !== 'imageAndTextOverlay' &&
+                  parent?.layout !== 'smallImageLeftLargeImageRight' &&
+                  parent?.layout !== 'largeImageLeftSmallImageRight'
+                ) || parent?.captionOrLinkType !== 'link',
             },
             {
             name: 'linkText',
             title: 'Link Text',
             type: 'string',
-            hidden: ({ parent }) => parent?.layout !== 'imageAndText' && parent?.layout !== 'imageAndTextOverlay',
-          },
-            {
-            name: 'link',
-            title: 'Link',
-            type: 'url',
-            hidden: ({ parent }) => parent?.layout !== 'imageAndText' && parent?.layout !== 'imageAndTextOverlay',
+            hidden: ({ parent }) =>
+              (
+                parent?.layout !== 'imageOnly' &&
+                parent?.layout !== 'imageAndText' &&
+                parent?.layout !== 'imageRightTextLeft' &&
+                parent?.layout !== 'imageLeftTextRight' &&
+                parent?.layout !== 'imageLeftQuoteRight' &&
+                parent?.layout !== 'imageRightQuoteLeft' &&
+                parent?.layout !== 'imageAndTextOverlay' &&
+                parent?.layout !== 'smallImageLeftLargeImageRight' &&
+                parent?.layout !== 'largeImageLeftSmallImageRight'
+              ) || parent?.captionOrLinkType !== 'link',
           },
           {
             name: 'backgroundColor',

@@ -11,6 +11,48 @@ import symbol from '../app/symbol.svg';
 import purplesymbol from '../app/purple-symbol.svg';
 import ContactForm from '@/components/ContactForm';
 
+
+interface FooterLink {
+  label: string;
+  url: string;
+}
+
+interface FooterData {
+  title: string;
+  links: FooterLink[];
+}
+
+// Footer component moved to top level
+function Footer() {
+  const [footerData, setFooterData] = useState<FooterData | null>(null);
+
+  useEffect(() => {
+    const fetchFooter = async () => {
+      const data = await client.fetch(
+        groq`*[_type == "footer"][0]{
+          title,
+          links[]{
+            label,
+            url
+          }
+        }`
+      );
+      setFooterData(data);
+    };
+    fetchFooter();
+  }, []);
+  return (
+    <>
+      {footerData?.links?.map((link) => (
+        <Link key={link.label} className="menuitem" href={link.url}>
+          {link.label}
+        </Link>
+      ))}
+      <Link className="login" href="#">Log In</Link>
+    </>
+  );
+}
+
 interface MenuItem {
   label: string;
   url: string;
@@ -201,8 +243,7 @@ export function Header() {
               <h6>4500 Harding Pike, Nashville</h6>
             </a>
             <div className="form-footer-menu" id="menuFooter">
-              <Link className="menuitem" href="https://www.hud.gov/offices/fheo/promotingfh/928-1.pdf" target="_blank"><h6>Fair Housing</h6></Link>
-              <Link className="login" href=""><h6>Log In</h6></Link>
+              <Footer />
             </div>
             <div className="mobileinquire" id="mobileopenForm">Inquire</div>
           </div>

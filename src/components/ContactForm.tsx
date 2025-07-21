@@ -10,6 +10,47 @@ interface PageData {
   slug: string;
 }
 
+interface FooterLink {
+  label: string;
+  url: string;
+}
+
+interface FooterData {
+  title: string;
+  links: FooterLink[];
+}
+
+// Footer component moved to top level
+function Footer() {
+  const [footerData, setFooterData] = useState<FooterData | null>(null);
+
+  useEffect(() => {
+    const fetchFooter = async () => {
+      const data = await client.fetch(
+        groq`*[_type == "footer"][0]{
+          title,
+          links[]{
+            label,
+            url
+          }
+        }`
+      );
+      setFooterData(data);
+    };
+    fetchFooter();
+  }, []);
+  return (
+    <>
+      {footerData?.links?.map((link) => (
+        <Link key={link.label} className="menuitem" href={link.url}>
+          {link.label}
+        </Link>
+      ))}
+      <Link className="login" href="#">Log In</Link>
+    </>
+  );
+}
+
 export default function ContactForm() {
   const [teamPage, setTeamPage] = useState<PageData | null>(null);
   const [legalPage, setLegalPage] = useState<PageData | null>(null);
@@ -402,18 +443,7 @@ export default function ContactForm() {
         <div className="form-footer" id="formFooter">
       <a className="addresslink" href="https://maps.app.goo.gl/ngRsVcKPu2c7aXJLA" target="_blank">4500 Harding Pike, Nashville</a>
       <div className="form-footer-menu">
-      {teamPage && (
-          <Link className="menuitem team" href={`/${teamPage.slug}`}>
-              {teamPage.title}
-          </Link>
-        )}
-        {legalPage && (
-          <Link className="menuitem legal" href={`/${legalPage.slug}`}>
-              {legalPage.title}
-          </Link>
-        )}
-        <Link className="menuitem" href="https://www.hud.gov/offices/fheo/promotingfh/928-1.pdf" target="_blank">Fair Housing</Link>
-        <Link className="login" href="">Log In</Link>
+        <Footer />
       </div>
       </div>
       </div>
@@ -663,26 +693,13 @@ export default function ContactForm() {
         SUBMIT
       </button>
     </form>
-    <div>
-      </div>
     </div>
     <div className="form-footer" id="formFooter">
       <a className="addresslink" href="https://maps.app.goo.gl/ngRsVcKPu2c7aXJLA" target="_blank">4500 Harding Pike, Nashville</a>
       <div className="form-footer-menu">
-      {teamPage && (
-          <Link className="menuitem team" href={`/${teamPage.slug}`}>
-              {teamPage.title}
-          </Link>
-        )}
-        {legalPage && (
-          <Link className="menuitem legal" href={`/${legalPage.slug}`}>
-              {legalPage.title}
-          </Link>
-        )}
-        <Link className="menuitem" href="https://www.hud.gov/offices/fheo/promotingfh/928-1.pdf" target="_blank">Fair Housing</Link>
-        <Link className="login" href="">Log In</Link>
-      </div>
+        <Footer />
       </div>
     </div>
-  );
+  </div>
+);
 }

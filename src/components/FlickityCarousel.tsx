@@ -140,7 +140,7 @@ lightboxCloseButtons.forEach(button => {
           if(nextPageLink){
           if (index === flkty.slides.length - 1) {
               const width = window.innerWidth;
-              if (width <= 1366) {
+              if (width <= 1180) {
                 const naturalWidth = nextPageTitle.scrollWidth + "px";
                 setTimeout(() => {
                   nextPageLink.style.transform = "translateX(0px)";

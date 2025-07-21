@@ -41,6 +41,11 @@ body.has-slider{
     min-height: 100svh;
 }
 
+div#sanity h1, div#sanity h2, div#sanity h3, div#sanity h4, div#sanity h5, div#sanity h6, div#sanity p{
+    color:black !important;
+    text-shadow:none !important;
+}
+
 h1{
     color:#FFF9F2 !important;
     font-family: 'Millionaire-Roman';  
@@ -1481,7 +1486,7 @@ div:has(> .react-dropdown-select) {
     margin:auto;
   }
 
-  #mobileMenu .menuitem{
+  #mobileMenu #menu .menuitem{
     font-family: 'Millionaire-Roman';
     font-size: 1.875rem;
     font-style: normal;
@@ -1781,7 +1786,7 @@ div:has(> .react-dropdown-select) {
 
     .inner-quote-text{
         gap:1.563rem !important;
-        width:75%;
+        width:65%;
     }
 
     .siteLogo{
@@ -1874,10 +1879,6 @@ div:has(> .react-dropdown-select) {
     
     .inquire{
         height:2.25rem;
-    }
-
-    .next-page-link{
-        max-width:3.125rem;
     }
 
     .purple-arrow {
@@ -2096,7 +2097,7 @@ line-height: 1.225rem;
     header{
         padding:2rem 3.75rem;
     }
-    #mobileMenu .menuitem{
+    #mobileMenu #menu .menuitem{
         font-size: 1.563rem;
         font-style: normal;
         font-weight: 400;
@@ -2108,11 +2109,6 @@ line-height: 1.225rem;
         padding-top: 8.75rem !important;
         padding-bottom: 0rem !important; 
         height:fit-content !important;
-    }
-
-    .form-footer h6, .form-footer-menu .menuitem{
-        font-size: 0.75rem;
-        letter-spacing: 0.113rem;
     }
 
     .mobileinquire{
@@ -2231,6 +2227,7 @@ line-height: 1.225rem;
 
     .slide-footer .caption{
         padding-left:1.25rem;
+        padding-right:2rem;
     }
 
     .lastslide .button-next{
@@ -2255,6 +2252,7 @@ line-height: 1.225rem;
 
     .slide-footer{
         padding: 1.5rem 3.75rem;
+        align-items: flex-end;
     }
 
     .slide-overlay h3{
@@ -2518,7 +2516,6 @@ line-height: 1.225rem;
     .slide-overlay .text {
         width: 100%;
         max-width: 100%;
-        padding-bottom:45px;
     }
 
     .menu-background{
@@ -2584,6 +2581,15 @@ line-height: 1.225rem;
 
     .mobile-text{
         display:block;
+    }
+
+    #mobileMenu .form-footer-menu .menuitem{
+        font-size: 0.625rem !important;
+        letter-spacing: .113em !important;
+        text-transform: uppercase !important;
+        font-family: Dia !important;
+        font-style: normal !important;
+        font-weight: 400 !important;
     }
 
 }
@@ -2690,9 +2696,10 @@ line-height: 1.225rem;
 
     .slide-footer{
         padding: 1.813rem 1.563rem !important;
+        align-items: flex-end;
     }
 
-    #mobileMenu .menuitem{
+    #mobileMenu #menu .menuitem{
         font-size: 1.563rem;
         font-style: normal;
         font-weight: 400;
@@ -2710,9 +2717,13 @@ line-height: 1.225rem;
         margin: auto;
     }
 
-    .form-footer h6, .form-footer-menu .menuitem{
-        font-size: 0.75rem;
-        letter-spacing: 0.113rem;
+    #mobileMenu .form-footer-menu .menuitem{
+        font-size: 0.625rem !important;
+        letter-spacing: .094rem !important;
+        text-transform: uppercase !important;
+        font-family: Dia !important;
+        font-style: normal !important;
+        font-weight: 400 !important;
     }
 
     .mobileinquire{
@@ -2891,6 +2902,7 @@ line-height: 1.225rem;
 
     .slide-footer .caption{
         padding-left:1.25rem;
+        padding-right:2rem;
     }
 
     .lastslide .button-next{
@@ -2941,6 +2953,10 @@ line-height: 1.225rem;
         flex-direction:column !important;
       }
 
+      .quote-slide.flex-row-reverse{
+        flex-direction:column-reverse !important;
+      }
+
       .quote-image{
         order:2;
         height:50svh;
@@ -2968,6 +2984,9 @@ line-height: 1.225rem;
 
       .inner-quote-text{
         gap:1.125rem !important;
+      }
+
+      .quote-slide.flex-row .inner-quote-text{
         padding-top:4.5rem;
       }
 

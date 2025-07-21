@@ -119,7 +119,14 @@ export default async function Page({
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
-                          {slide.caption && (<h5 className="caption">{slide.caption}</h5>)}
+                          {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
+                            <a href={slide.link} target="_blank" rel="noopener noreferrer">
+                              <h5 className="caption">{slide.linkText}</h5>
+                            </a>
+                          )}
+                          {slide.captionOrLinkType !== 'link' && slide.caption && (
+                            <h5 className="caption">{slide.caption}</h5>
+                          )}
                           <button type="button" className="lightbox">
                               <Image src={lightbox} alt="next"/>
                           </button>
@@ -220,11 +227,6 @@ export default async function Page({
                               </Tag>
                             );
                           })}
-                          {slide.linkText && slide.link &&(
-                            <a href={slide.link} target="_blank">
-                              <h5>{slide.linkText}</h5>
-                            </a>
-                          )}
                         </div>
                       </div>
                       <div className="slide-footer">
@@ -330,11 +332,6 @@ export default async function Page({
                               </Tag>
                             );
                           })}
-                          {slide.linkText && slide.link &&(
-                            <a href={slide.link} target="_blank">
-                              <h5>{slide.linkText}</h5>
-                            </a>
-                          )}
                         </div>
                       </div>
                         <div className="slide-footer">
@@ -342,7 +339,14 @@ export default async function Page({
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
-                          {slide.caption && (<h5 className="caption">{slide.caption}</h5>)}
+                          {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
+                            <a href={slide.link} target="_blank" rel="noopener noreferrer">
+                              <h5 className="caption">{slide.linkText}</h5>
+                            </a>
+                          )}
+                          {slide.captionOrLinkType !== 'link' && slide.caption && (
+                            <h5 className="caption">{slide.caption}</h5>
+                          )}
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {
@@ -435,7 +439,14 @@ export default async function Page({
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
-                          {slide.caption && (<h5 className="caption">{slide.caption}</h5>)}
+                          {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
+                            <a href={slide.link} target="_blank" rel="noopener noreferrer">
+                              <h5 className="caption">{slide.linkText}</h5>
+                            </a>
+                          )}
+                          {slide.captionOrLinkType !== 'link' && slide.caption && (
+                            <h5 className="caption">{slide.caption}</h5>
+                          )}
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {
@@ -494,11 +505,6 @@ export default async function Page({
                               </Tag>
                             );
                           })}
-                        {slide.linkText && slide.link &&(
-                            <a href={slide.link} target="_blank">
-                              <h5>{slide.linkText}</h5>
-                            </a>
-                          )}
                         </div>
                       </div>
                       {slide.mediaType === 'video' && slide.videoFile?.asset?.url && (
@@ -531,7 +537,14 @@ export default async function Page({
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
-                          {slide.caption && (<h5 className="caption">{slide.caption}</h5>)}
+                          {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
+                            <a href={slide.link} target="_blank" rel="noopener noreferrer">
+                              <h5 className="caption">{slide.linkText}</h5>
+                            </a>
+                          )}
+                          {slide.captionOrLinkType !== 'link' && slide.caption && (
+                            <h5 className="caption">{slide.caption}</h5>
+                          )}
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {
@@ -660,7 +673,14 @@ export default async function Page({
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
-                          {slide.caption && (<h5 className="caption">{slide.caption}</h5>)}
+                          {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
+                            <a href={slide.link} target="_blank" rel="noopener noreferrer">
+                              <h5 className="caption">{slide.linkText}</h5>
+                            </a>
+                          )}
+                          {slide.captionOrLinkType !== 'link' && slide.caption && (
+                            <h5 className="caption">{slide.caption}</h5>
+                          )}
                         </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {

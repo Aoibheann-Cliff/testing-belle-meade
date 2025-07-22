@@ -522,7 +522,7 @@ footer{
     -webkit-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-.login{
+.footer-button{
     padding-top:0.25rem;
     letter-spacing: .113rem;
     text-transform: uppercase;
@@ -610,7 +610,7 @@ footer{
     color:#FFF9F2 !important;
 }
 
-.login:hover{
+.footer-button:hover{
     background-color: #FFF9F2;
     color:#4C2F48 !important;
 }
@@ -619,11 +619,11 @@ footer{
     color:#FFF9F2 !important;
 }
 
-.login h6{
+.footer-button h6{
     line-height:1 !important;
 }
 
-.login:hover h6{
+.footer-button:hover h6{
     color:#4C2F48 !important;
 }
 
@@ -1042,6 +1042,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     bottom: 0px;
     left: 0px;
     height: 1px;
+    bottom:-2px;
     background: currentcolor;
     transform-origin: right center;
     transform: scaleX(0);
@@ -1305,10 +1306,15 @@ input::placeholder{
     bottom: 0px;
     left: 0px;
     height: 1px;
+    bottom:-1px;
     background: #4C2F48;
     transform-origin: right center;
     transform: scaleX(0);
     transition: transform 0.83s cubic-bezier(0.33, 0, 0.13, 1);
+}
+
+#footer .menuitem:after{
+    bottom:-1px;
 }
 
 .form-footer .menuitem:hover::after {
@@ -1316,16 +1322,16 @@ input::placeholder{
     transform-origin: left center;
 }
 
-.form-footer .login{
+.form-footer .footer-button{
     border: 1px solid #4C2F48;
     color:#4C2F48 !important;
 }
 
-.form-footer .login:hover{
+.form-footer .footer-button:hover{
     background-color: #4C2F48 !important;
 }
 
-.form-footer .login:hover{
+.form-footer .footer-button:hover{
     color:#FFF9F2 !important;
 }
 
@@ -1594,8 +1600,12 @@ div:has(> .react-dropdown-select) {
         letter-spacing: 0.122rem;
     }
 
-    .login{
+    .footer-button{
         font-size: 0.625rem;
+    }
+
+    .image-text-slide .inner-text{
+        width: 65%;
     }
 
 }
@@ -1869,7 +1879,7 @@ div:has(> .react-dropdown-select) {
         display:none;
     }
 
-    .login{
+    .footer-button{
         height:2rem;
     }
 
@@ -2139,7 +2149,7 @@ line-height: 1.225rem;
         position:static !important;
     }
 
-    .login{
+    .footer-button{
         padding:0px !important;
         border:0px !important;
     }
@@ -2677,7 +2687,7 @@ line-height: 1.225rem;
         position:static !important;
     }
 
-    .login{
+    .footer-button{
         padding:0px !important;
         border:0px !important;
     }
@@ -3129,7 +3139,7 @@ line-height: 1.225rem;
         display:flex;
     }
 
-    .login{
+    .footer-button{
         height:fit-content;
     }
 

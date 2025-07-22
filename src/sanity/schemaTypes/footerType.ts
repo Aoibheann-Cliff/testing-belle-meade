@@ -18,9 +18,21 @@ export const footerType = {
           fields: [
             { name: 'label', title: 'Label', type: 'string' },
             { name: 'url', title: 'URL', type: 'string' },
+            {
+              name: 'style',
+              title: 'Style',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'None', value: 'none' },
+                  { title: 'Button', value: 'button' },
+                ],
+                layout: 'radio',
+              },
+            },
           ],
         },
       ],
     },
   ],
-} 
+};

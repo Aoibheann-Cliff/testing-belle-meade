@@ -15,6 +15,7 @@ import ContactForm from '@/components/ContactForm';
 interface FooterLink {
   label: string;
   url: string;
+  style: string;
 }
 
 interface FooterData {
@@ -33,6 +34,7 @@ function Footer() {
           title,
           links[]{
             label,
+            style,
             url
           }
         }`
@@ -44,11 +46,14 @@ function Footer() {
   return (
     <>
       {footerData?.links?.map((link) => (
-        <Link key={link.label} className="menuitem" href={link.url}>
-          {link.label}
-        </Link>
+        <Link
+        key={link.label}
+        className={link.style === 'button' ? 'footer-button' : 'menuitem'}
+        href={link.url}
+      >
+        {link.label}
+      </Link>
       ))}
-      <Link className="login" href="#">Log In</Link>
     </>
   );
 }

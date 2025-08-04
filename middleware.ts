@@ -6,6 +6,7 @@ const password = 'yourpassword'
 const auth = 'Basic ' + Buffer.from(`${username}:${password}`).toString('base64')
 
 export function middleware(req: NextRequest) {
+    console.log('🔐 Middleware running')
   const basicAuth = req.headers.get('authorization')
 
   if (basicAuth === auth) {
@@ -22,5 +23,5 @@ export function middleware(req: NextRequest) {
 
 // Run middleware on all paths
 export const config = {
-  matcher: '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    matcher: '/((?!api|_next|favicon.ico).*)',
 }

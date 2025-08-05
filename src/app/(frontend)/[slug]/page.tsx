@@ -115,12 +115,12 @@ export default async function Page({
                       </div>
                       )}
                         <div className="slide-footer">
-                        <a href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
+                        <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
                           {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
-                            <a href={slide.link} target="_blank" rel="noopener noreferrer">
+                            <a aria-label={slide.linkText} href={slide.link} target="_blank" rel="noopener noreferrer">
                               <h5 className="caption">{slide.linkText}</h5>
                             </a>
                           )}
@@ -143,9 +143,9 @@ export default async function Page({
                         return (
                           <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
                             <div className="next-page-title" id="next-page-title">
-                              <a style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                              <a  aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
                             </div>
-                            <a href={`/${page.nextPage.slug.current}`}>
+                            <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
                               <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
                               </svg>
@@ -230,7 +230,7 @@ export default async function Page({
                         </div>
                       </div>
                       <div className="slide-footer">
-                          <a href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
+                          <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
@@ -246,9 +246,9 @@ export default async function Page({
                           return (
                             <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
                               <div className="next-page-title" id="next-page-title">
-                                <a style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                                <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
                               </div>
-                              <a href={`/${page.nextPage.slug.current}`}>
+                              <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
                                 <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
                                 </svg>
@@ -335,12 +335,12 @@ export default async function Page({
                         </div>
                       </div>
                         <div className="slide-footer">
-                          <a href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
+                          <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
                           {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
-                            <a href={slide.link} target="_blank" rel="noopener noreferrer">
+                            <a aria-label={slide.linkText} href={slide.link} target="_blank" rel="noopener noreferrer">
                               <h5 className="caption">{slide.linkText}</h5>
                             </a>
                           )}
@@ -360,9 +360,9 @@ export default async function Page({
                         return (
                           <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
                             <div className="next-page-title" id="next-page-title">
-                              <a style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                              <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
                             </div>
-                            <a href={`/${page.nextPage.slug.current}`}>
+                            <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
                               <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
                               </svg>
@@ -435,12 +435,12 @@ export default async function Page({
                       )}
                       </div>
                         <div className="slide-footer">
-                          <a href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
+                          <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
                           {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
-                            <a href={slide.link} target="_blank" rel="noopener noreferrer">
+                            <a aria-label={slide.linkText} href={slide.link} target="_blank" rel="noopener noreferrer">
                               <h5 className="caption">{slide.linkText}</h5>
                             </a>
                           )}
@@ -460,9 +460,9 @@ export default async function Page({
                         return (
                           <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
                             <div className="next-page-title" id="next-page-title">
-                              <a style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                              <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
                             </div>
-                            <a href={`/${page.nextPage.slug.current}`}>
+                            <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
                               <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
                               </svg>
@@ -533,12 +533,12 @@ export default async function Page({
                       </div>
                     )}
                       <div className="slide-footer">
-                          <a href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
+                          <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
                           {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
-                            <a href={slide.link} target="_blank" rel="noopener noreferrer">
+                            <a aria-label={slide.linkText} href={slide.link} target="_blank" rel="noopener noreferrer">
                               <h5 className="caption">{slide.linkText}</h5>
                             </a>
                           )}
@@ -558,9 +558,9 @@ export default async function Page({
                         return (
                           <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
                             <div className="next-page-title" id="next-page-title">
-                              <a style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                              <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
                             </div>
-                            <a href={`/${page.nextPage.slug.current}`}>
+                            <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
                               <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
                               </svg>
@@ -669,12 +669,12 @@ export default async function Page({
                         </div>
                       )}
                         <div className="slide-footer">
-                          <a href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
+                          <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
                           <h5 className="count">{index + 1} / {totalSlides}</h5>
                           <div className="button-next"><Image src={arrownext} alt="next"/></div>
                           {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
-                            <a href={slide.link} target="_blank" rel="noopener noreferrer">
+                            <a aria-label={slide.linkText} href={slide.link} target="_blank" rel="noopener noreferrer">
                               <h5 className="caption">{slide.linkText}</h5>
                             </a>
                           )}
@@ -694,9 +694,9 @@ export default async function Page({
                         return (
                           <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
                             <div className="next-page-title" id="next-page-title">
-                              <a style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                              <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
                             </div>
-                            <a href={`/${page.nextPage.slug.current}`}>
+                            <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
                               <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
                               </svg>

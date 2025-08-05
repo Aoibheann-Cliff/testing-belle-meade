@@ -244,7 +244,7 @@ export function Header() {
             ))}
           </div>
           <div className="form-footer menu-footer" id="menuFooter">
-            <a className="addresslink" href="4500 Harding Pike, Nashville, TN 37205, USA" target="_blank">
+            <a aria-label="Address" className="addresslink" href="4500 Harding Pike, Nashville, TN 37205, USA" target="_blank">
               <h6>4500 Harding Pike, Nashville</h6>
             </a>
             <div className="form-footer-menu" id="menuFooter">

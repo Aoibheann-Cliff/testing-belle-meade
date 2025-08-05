@@ -1,27 +1,33 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import {NextRequest, NextResponse} from 'next/server'
 
-const username = 'admin'
-const password = 'yourpassword'
-const auth = 'Basic ' + Buffer.from(`${username}:${password}`).toString('base64')
+const BASIC_USER = process.env.BASIC_USER ?? ''
+const BASIC_PASS = process.env.BASIC_PASS ?? ''
 
-export function middleware(req: NextRequest) {
-    console.log('🔐 Middleware running')
-  const basicAuth = req.headers.get('authorization')
+if (!BASIC_USER || !BASIC_PASS) {    
+    throw new Error('Missing env.BASIC_USER or env.BASIC_PASS')
+}
 
-  if (basicAuth === auth) {
-    return NextResponse.next()
-  }
+export const isAuthorized = (authHeader: string | null): boolean => {    
+  if (!authHeader || !authHeader?.startsWith('Basic ')) {        
+    return false    
+  }    
+  const decoded = Buffer.from(authHeader.slice(6).trim(), 'base64').toString('utf8')    
+  const [user, pass] = decoded.split(':')    
+  return user === BASIC_USER && pass === BASIC_PASS
+}
 
-  return new NextResponse('Authentication required', {
-    status: 401,
-    headers: {
-      'WWW-Authenticate': 'Basic realm="Secure Area"',
-    },
+export function middleware(req: NextRequest) {    
+  const authHeader = req.headers.get('authorization')
+
+  if (isAuthorized(authHeader)) {        
+    return NextResponse.next()    
+  }    
+  return new Response('Auth Required', {        
+      status: 401,        
+      headers: {'WWW-Authenticate': 'Basic realm="Secure Area"'}    
   })
 }
 
-// Run middleware on all paths
 export const config = {
-    matcher: '/((?!api|_next|favicon.ico).*)',
+  matcher: '/((?!_next).*)'
 }

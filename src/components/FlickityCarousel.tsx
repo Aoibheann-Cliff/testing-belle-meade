@@ -139,26 +139,38 @@ lightboxCloseButtons.forEach(button => {
         flkty.on('change', function(index) { 
           if(nextPageLink){
           if (index === flkty.slides.length - 1) {
-              const width = window.innerWidth;
-              if (width <= 1180) {
-                const naturalWidth = nextPageTitle.scrollWidth + "px";
-                setTimeout(() => {
-                  nextPageLink.style.transform = "translateX(0px)";
-                }, 1000);
-                gsap.to(nextPageLink, {
+            const matchesLandscape1366 = window.matchMedia("(max-width: 1366px) and (orientation: landscape)").matches;
+            const matchesPortrait1024 = window.matchMedia("(max-width: 1024px) and (orientation: portrait)").matches;
+            
+            if (matchesLandscape1366 || matchesPortrait1024) {
+              const naturalWidth = nextPageTitle.scrollWidth + "px";
+            
+              setTimeout(() => {
+                nextPageLink.style.transform = "translateX(0px)";
+              }, 1000);
+            
+              gsap.fromTo(nextPageLink, 
+                {
+                  maxWidth: "3.125rem",
+                  width: "3.125rem"
+                }, 
+                {
                   maxWidth: naturalWidth,
                   width: naturalWidth,
                   duration: 1,
                   delay: 3,
                   ease: "power3.out"
-                });
-                gsap.to(nextPageTitle, {
-                  opacity: 1,
-                  duration: 0.3,
-                  ease: "power1.out",
-                  delay: 4
-                });
-              } else {
+                }
+              );
+              
+            
+              gsap.to(nextPageTitle, {
+                opacity: 1,
+                duration: 0.3,
+                ease: "power1.out",
+                delay: 4
+              });
+            } else {
                 nextPageLink.addEventListener('mouseenter', () => {
                   gsap.killTweensOf([nextPageLink, nextPageTitle]);
                   nextPageTitle.style.display = 'block';

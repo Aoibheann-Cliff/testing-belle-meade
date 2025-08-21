@@ -43,7 +43,7 @@ export default async function Page({
 
   return (
     <>
-    <main id="contentWrapper" className={`container content-wrapper ${page.pageType} ${page._id}`}>
+    <main id="contentWrapper" className={`container content-wrapper ${page.title} ${page.pageType} ${page._id}`}>
       <PageEffects />
       {/* Slideshow Page */}
       {page?.pageType === "slideshowpage" && totalSlides > 0 && (
@@ -57,7 +57,7 @@ export default async function Page({
                 case "imageOnly":
                   if (!slide.image) return <></>
                   return (
-                    <div key={index} className="relative min-h-screen overlay-slide">
+                    <div key={index} className="relative min-h-screen media-only overlay-slide">
                       <div className="flickity-top-overlay"></div>
                       {slide.mediaType === 'video' && slide.videoFile?.asset?.url && (
                       <video
@@ -320,7 +320,7 @@ export default async function Page({
                       </div>
                       </div>
                       )}
-                        <div className="slide-overlay">
+                        {/* <div className="slide-overlay">
                         <div className="text">
                           {slide.title && <h5 className="title">{slide.title}</h5>}
                           {slide.text && <div className={`${slide.mobiletext && ('has-mobile-text')}`}><PortableText value={slide.text} /></div>}
@@ -333,7 +333,7 @@ export default async function Page({
                             );
                           })}
                         </div>
-                      </div>
+                      </div> */}
                         <div className="slide-footer">
                           <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>

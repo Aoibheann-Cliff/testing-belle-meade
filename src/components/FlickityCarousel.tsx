@@ -113,14 +113,6 @@ lightboxCloseButtons.forEach(button => {
         });
       });
 
-
-      setTimeout(() => {
-        if (window.innerWidth < 1023 && flkty) {
-          if (flkty.selectedIndex === 0) {
-            flkty.select(1);
-          }
-        }
-      }, 3500);
   
       if (carouselRef.current) {
         flkty = new Flickity(carouselRef.current, {
@@ -132,6 +124,7 @@ lightboxCloseButtons.forEach(button => {
           wrapAround: false,
           draggable: true,
           fade: true,
+          arrowShape: 'M3 53L28 28L3 3M0.999999 51L26 26L1 0.999998',
         });
   
         setFlickityInstance(flkty);

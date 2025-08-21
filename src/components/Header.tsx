@@ -233,15 +233,22 @@ export function Header() {
         <div id="mobileMenu">
           <div id="menuBackground" className="menu-background"></div>
           <div id="menu">
-            {leftMenu.concat(rightMenu).map((item) => (
-              <Link
-                key={item.label}
-                className={`menuitem ${pathname === item.url ? 'active' : ''}`}
-                href={item.url}
-              >
-                {item.label}
-              </Link>
-            ))}
+          {leftMenu.concat(rightMenu).map((item) => (
+            <Link
+              key={item.label}
+              className={`menuitem ${pathname === item.url ? 'active' : ''}`}
+              href={item.url}
+              onClick={(e) => {
+                if (pathname === item.url) {
+                  e.preventDefault();
+                  window.location.reload(); // force reload
+                } else {
+                }
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
           </div>
           <div className="form-footer menu-footer" id="menuFooter">
             <a aria-label="Address" className="addresslink" href="4500 Harding Pike, Nashville, TN 37205, USA" target="_blank">

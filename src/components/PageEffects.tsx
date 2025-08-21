@@ -44,26 +44,23 @@ export default function GlobalPageEffects() {
         bounds: true,
         excludeClass: 'panzoom-exclude',
         boundsPadding: 0.1,
+        beforeMouseDown: function() {
+          // Prevent panning by always returning false
+          return false;
+        }
+      });
+    
+      // Reset translation so zoom only happens from the center
+      panzoomInstance.on('transform', (e) => {
+        const t = panzoomInstance.getTransform();
+        panzoomInstance.moveTo(0, 0); // lock position
       });
     
       img.addEventListener('click', () => {
         console.log('Transform:', panzoomInstance.getTransform());
       });
-  
     });
-  
-
-    // setTimeout(() => {
-    //   header.style.opacity = "1";
-    // }, 100);
-
-    // setTimeout(() => {
-    //   footer.style.opacity = "1";
-    // }, 100);
-
-    // setTimeout(() => {
-    //   wrapper.style.opacity = "1";
-    // }, 100);
+    
 
       function toggleHamburger() {
         const width = window.innerWidth;

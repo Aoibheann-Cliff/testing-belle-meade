@@ -263,7 +263,7 @@ export default async function Page({
                 case "imageAndTextOverlayPlain":
                   if (!slide.image) return <></>
                   return (
-                    <div key={index} className="min-h-screen image-text-overlay-plain">
+                    <div key={index} className="min-h-screen media-only image-text-overlay-plain">
                       <div className="flickity-top-overlay"></div>
                       {slide.mediaType === 'video' && slide.videoFile?.asset?.url && (
                       <video

@@ -320,42 +320,42 @@ export default function GlobalPageEffects() {
 
     closeBtn?.addEventListener("click", closeForm);
 
-    const overlay = document.getElementById('overlay');
-    overlay.style.opacity = "1";
-    overlay.style.background = "#4C2F48";
+  //   const overlay = document.getElementById('overlay');
+  //   overlay.style.opacity = "1";
+  //   overlay.style.background = "#4C2F48";
 
-    function popupScroll() {
-      if (!localStorage.getItem('showPopup')) {
-          localStorage.setItem('showPopup', 'true'); 
-          overlay.style.opacity = "1";
-          setTimeout(() => {
-            symbolimg.style.opacity = "1";
-          }, 1000);
-          setTimeout(() => {
-            symbolimg.style.opacity = "0";
-          }, 2500);
-          setTimeout(() => {
-            symbolimg.style.display = "none";
-            logotype.style.opacity = "1";
-            ipadlogotype.style.opacity = "1";
-          }, 3500);
-          setTimeout(() => {
-            overlay.style.opacity = "0";
-            logotype.style.opacity = "0";
-            ipadlogotype.style.opacity = "0";
-          }, 5000);
-          setTimeout(() => {
-            logotype.style.display = "none";
-            ipadlogotype.style.display = "none";
-            overlay.style.display = "none";
-          }, 6000);
-      } else{
-        overlay.style.display = "none";
-        symbolimg.style.display = "none";
-        logotype.style.display = "none";
-      }
-  }
-  popupScroll();
+  //   function popupScroll() {
+  //     if (!localStorage.getItem('showPopup')) {
+  //         localStorage.setItem('showPopup', 'true'); 
+  //         overlay.style.opacity = "1";
+  //         setTimeout(() => {
+  //           symbolimg.style.opacity = "1";
+  //         }, 1000);
+  //         setTimeout(() => {
+  //           symbolimg.style.opacity = "0";
+  //         }, 2500);
+  //         setTimeout(() => {
+  //           symbolimg.style.display = "none";
+  //           logotype.style.opacity = "1";
+  //           ipadlogotype.style.opacity = "1";
+  //         }, 3500);
+  //         setTimeout(() => {
+  //           overlay.style.opacity = "0";
+  //           logotype.style.opacity = "0";
+  //           ipadlogotype.style.opacity = "0";
+  //         }, 5000);
+  //         setTimeout(() => {
+  //           logotype.style.display = "none";
+  //           ipadlogotype.style.display = "none";
+  //           overlay.style.display = "none";
+  //         }, 6000);
+  //     } else{
+  //       overlay.style.display = "none";
+  //       symbolimg.style.display = "none";
+  //       logotype.style.display = "none";
+  //     }
+  // }
+  // popupScroll();
 
 
     return () => {

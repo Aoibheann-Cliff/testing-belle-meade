@@ -320,9 +320,9 @@ export default function GlobalPageEffects() {
 
     closeBtn?.addEventListener("click", closeForm);
 
-  //   const overlay = document.getElementById('overlay');
-  //   overlay.style.opacity = "1";
-  //   overlay.style.background = "#4C2F48";
+    // const overlay = document.getElementById('overlay');
+    // overlay.style.opacity = "0";
+    // overlay.style.background = "#4C2F48";
 
   //   function popupScroll() {
   //     if (!localStorage.getItem('showPopup')) {

@@ -4,6 +4,8 @@ import { auth } from "./actions";
 import Image from "next/image";
 import logoType from "../logotype.svg";
 import signInArrow from "../sign-in-arrow.svg";
+import symbol from '../symbol.svg';
+import LoginPageEffects from "@/components/LoginPageEffects";
 
 interface Props {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -21,13 +23,13 @@ export default async function SignIn(props: Props) {
   const error = searchParams.error;
 
   return (
+    <>
+    <div className="loading-overlay" id="overlay"></div>
+    <div className="symbol" id="symbol"><Image src={symbol} alt="symbol"/></div>
+    <div className="logotype" id="logotype"><Image src={logoType} alt="logotype"/></div>
+    <div className="ipad-logotype" id="ipadlogotype"><Image src={logoType} alt="logotype"/></div>
+      <LoginPageEffects />
     <div className="login-form-container">
-      <div className="logotype" id="logotype">
-        <Image src={logoType} alt="logotype" />
-      </div>
-      <div className="ipad-logotype" id="ipadlogotype">
-        <Image src={logoType} alt="logotype" />
-      </div>
 
       <form className="login-form" action={auth}>
         <input
@@ -55,10 +57,7 @@ export default async function SignIn(props: Props) {
           Incorrect password. Please try again.
         </p>
       )}
-
-      <h3>
-        If you require a password, we invite you to <a href="">contact us</a>.
-      </h3>
     </div>
+    </>
   );
 }

@@ -8,7 +8,8 @@ import { useEffect, useState } from 'react';
 interface FooterLink {
   label: string;
   url: string;
-  style?: string; // make optional in case it's not set
+  style?: string;
+  newTab?: boolean; // add this
 }
 
 interface FooterData {
@@ -27,7 +28,8 @@ export function Footer() {
           links[]{
             label,
             style,
-            url
+            url,
+            newTab // fetch the new field
           }
         }`
       );
@@ -43,6 +45,8 @@ export function Footer() {
           key={link.label}
           className={link.style === 'button' ? 'footer-button' : 'menuitem'}
           href={link.url}
+          target={link.newTab ? '_blank' : undefined} // open in new tab if true
+          rel={link.newTab ? 'noopener noreferrer' : undefined} // security for new tab
         >
           {link.label}
         </Link>

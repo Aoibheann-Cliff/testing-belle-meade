@@ -243,20 +243,14 @@ export const pageType = defineType({
               name: 'mobiletext',
               title: 'Mobile Text',
               type: 'blockContent',
-              validation: Rule => Rule.custom((blocks: any[], context: any) => {
-                if (!blocks) return true;
-                // Skip validation for quote layouts
-                if (context.parent?.layout === 'imageLeftQuoteRight' || context.parent?.layout === 'imageRightQuoteLeft') {
-                  return true;
-                }
-                const text = blocks
-                  .filter(block => block._type === 'block')
-                  .map(block => block.children.map(child => child.text).join(''))
-                  .join(' ');
-                const wordCount = text.trim().split(/\s+/).length;
-                return wordCount <= 40 ? true : 'Text must be 40 words or less';
-              }),
-              hidden: ({ parent }) => parent?.layout !== 'imageAndText' && parent?.layout !== 'imageRightTextLeft' && parent?.layout !== 'imageLeftTextRight' && parent?.layout !== 'imageLeftQuoteRight' && parent?.layout !== 'imageRightQuoteLeft'  && parent?.layout !== 'imageAndTextOverlay',
+              validation: Rule => Rule.custom(() => true),
+              hidden: ({ parent }) =>
+                parent?.layout !== 'imageAndText' &&
+                parent?.layout !== 'imageRightTextLeft' &&
+                parent?.layout !== 'imageLeftTextRight' &&
+                parent?.layout !== 'imageLeftQuoteRight' &&
+                parent?.layout !== 'imageRightQuoteLeft' &&
+                parent?.layout !== 'imageAndTextOverlay',
             },
             {
               name: 'credit',
@@ -350,14 +344,6 @@ export const pageType = defineType({
               ],
               layout: 'dropdown',
             },
-            hidden: ({ parent }) =>
-              parent?.layout !== 'imageAndText' &&
-              parent?.layout !== 'imageRightTextLeft' &&
-              parent?.layout !== 'imageLeftTextRight' &&
-              parent?.layout !== 'imageRightQuoteLeft' &&
-              parent?.layout !== 'imageLeftQuoteRight' &&
-              parent?.layout !== 'smallImageLeftLargeImageRight' &&
-              parent?.layout !== 'largeImageLeftSmallImageRight',
           },          
           ]
         })

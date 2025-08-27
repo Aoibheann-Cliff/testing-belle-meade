@@ -171,7 +171,7 @@ lightboxCloseButtons.forEach(button => {
                   const naturalWidth = nextPageTitle.scrollWidth + "px";
                 
                   gsap.to(nextPageLink, {
-                    width: naturalWidth,
+                    width: "34%",
                     duration: 0.6,
                     ease: "power3.out"
                   });

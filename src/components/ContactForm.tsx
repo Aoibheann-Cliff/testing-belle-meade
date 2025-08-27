@@ -14,6 +14,7 @@ interface FooterLink {
   label: string;
   url: string;
   style: string;
+  newTab?: boolean; // add this
 }
 
 interface FooterData {
@@ -21,7 +22,6 @@ interface FooterData {
   links: FooterLink[];
 }
 
-// Footer component moved to top level
 function Footer() {
   const [footerData, setFooterData] = useState<FooterData | null>(null);
 
@@ -33,7 +33,8 @@ function Footer() {
           links[]{
             label,
             style,
-            url
+            url,
+            newTab // fetch the new field
           }
         }`
       );
@@ -41,16 +42,19 @@ function Footer() {
     };
     fetchFooter();
   }, []);
+
   return (
     <>
       {footerData?.links?.map((link) => (
         <Link
-        key={link.label}
-        className={link.style === 'button' ? 'footer-button' : 'menuitem'}
-        href={link.url}
-      >
-        {link.label}
-      </Link>
+          key={link.label}
+          className={link.style === 'button' ? 'footer-button' : 'menuitem'}
+          href={link.url}
+          target={link.newTab ? '_blank' : undefined} // open in new tab if true
+          rel={link.newTab ? 'noopener noreferrer' : undefined}
+        >
+          {link.label}
+        </Link>
       ))}
     </>
   );

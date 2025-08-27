@@ -30,6 +30,11 @@ export const footerType = {
                 layout: 'radio',
               },
             },
+            {
+              name: 'newTab',
+              title: 'Open in new tab',
+              type: 'boolean',
+            },
           ],
         },
       ],

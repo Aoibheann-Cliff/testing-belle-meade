@@ -4,7 +4,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { PAGE_QUERY } from "@/sanity/lib/queries";
 import FlickityCarousel from "@/components/FlickityCarousel";
-import { PortableText } from "@portabletext/react";
+import { PortableText, PortableTextMarkComponentProps } from "@portabletext/react";
 import React from "react";
 import arrow from '../purple-arrow.svg';
 import arrownext from '@/app/mobile-arrow-next.svg';
@@ -41,6 +41,24 @@ export default async function Page({
 
   const totalSlides = transformedSlides.length;
 
+  const Link = ({ value, children }: PortableTextMarkComponentProps<any>) => {
+    const href = value?.href || "#";
+    const rel = !href.startsWith("/") ? "noreferrer noopener" : undefined;
+    const target = value?.blank ? "_blank" : "_self";
+  
+    return (
+      <a href={href} rel={rel} target={target}>
+        {children}
+      </a>
+    );
+  };
+  
+  const components = {
+    marks: {
+      link: Link,
+    },
+  };
+
   return (
     <>
     <main id="contentWrapper" className={`container content-wrapper ${page.title} ${page.pageType} ${page._id}`}>
@@ -71,23 +89,23 @@ export default async function Page({
                       )}
                       {slide.mediaType === 'image' && (
                         <div>
-                      <Image
-                        priority={true}
-                        unoptimized
-                        src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').format('jpg').url()}
-                        alt={slide.image?.alt || ""}
-                        width={3840}
-                        height={2160}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
-                        className={`slide-image w-full h-full min-h-screen`}
-                        style={{
-                          objectPosition: slide.image?.hotspot ? 
-                            `${(slide.image.hotspot.x * 100)}% ${(slide.image.hotspot.y * 100)}%` : 
-                            'center'
-                        }}
-                      />
+                        <Image
+                          priority
+                          unoptimized
+                          src={urlFor(slide.image).quality(70).format('jpg').url()}
+                          alt={slide.image?.alt || ""}
+                          fill
+                          quality={100}
+                          placeholder="blur"
+                          blurDataURL={urlFor(slide.image).width(10).quality(10).url()}
+                          className="slide-image w-full min-h-screen"
+                          style={{
+                            objectPosition: slide.image?.hotspot
+                              ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
+                              : "center",
+                          }}
+                        />
+
                             <div className="lightbox-close panzoom-exclude">
                           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
                           <path d="M1 1L29 29" stroke="#ffffff"/>
@@ -97,18 +115,17 @@ export default async function Page({
                         <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                         <Image
                           unoptimized
-                          src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').format('jpg').url()}
+                          src={urlFor(slide.image).quality(70).format('jpg').url()}
                           alt={slide.image?.alt || ""}
-                          width={3840}
-                          height={2160}
+                          fill
                           quality={100}
                           placeholder="blur"
-                          blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
-                          className={`w-full h-full overlay-img`}
+                          blurDataURL={urlFor(slide.image).width(10).quality(10).url()}
+                          className="object-contain overlay-img"
                           style={{
-                            objectPosition: slide.image?.hotspot ? 
-                              `${(slide.image.hotspot.x * 100)}% ${(slide.image.hotspot.y * 100)}%` : 
-                              'center'
+                            objectPosition: slide.image?.hotspot
+                              ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
+                              : "center",
                           }}
                         />
                       </div>
@@ -143,7 +160,7 @@ export default async function Page({
                         return (
                           <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
                             <div className="next-page-title" id="next-page-title">
-                              <a  aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                              <a  aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}><h3 style={{color: strokeColor}}>{page.nextPage.title}</h3></a>
                             </div>
                             <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
                               <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -197,19 +214,19 @@ export default async function Page({
                           </svg>
                         </div>
                       <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
-                        <Image
-                          src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').format('jpg').url()}
+                      <Image
+                          unoptimized
+                          src={urlFor(slide.image).quality(70).format('jpg').url()}
                           alt={slide.image?.alt || ""}
-                          width={3840}
-                          height={2160}
+                          fill
                           quality={100}
                           placeholder="blur"
-                          blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
-                          className={`w-full h-full overlay-img`}
+                          blurDataURL={urlFor(slide.image).width(10).quality(10).url()}
+                          className="object-contain overlay-img"
                           style={{
-                            objectPosition: slide.image?.hotspot ? 
-                              `${(slide.image.hotspot.x * 100)}% ${(slide.image.hotspot.y * 100)}%` : 
-                              'center'
+                            objectPosition: slide.image?.hotspot
+                              ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
+                              : "center",
                           }}
                         />
                           </div>
@@ -218,7 +235,7 @@ export default async function Page({
                       <div className="slide-overlay">
                         <div className="text">
                           {slide.title && <h5 className="title">{slide.title}</h5>}
-                          {slide.text && <div className={`${slide.mobiletext && ('has-mobile-text')}`}><PortableText value={slide.text} /></div>}
+                          {slide.text && <div className={`${slide.mobiletext && ('has-mobile-text')}`}><PortableText value={slide.text} components={components} /></div>}
                           {(slide.mobiletext || []).map((block, i) => {
                             const Tag = block.style === 'normal' ? 'p' : block.style || 'p';
                             return (
@@ -246,7 +263,7 @@ export default async function Page({
                           return (
                             <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
                               <div className="next-page-title" id="next-page-title">
-                                <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                                <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}><h3 style={{color: strokeColor}}>{page.nextPage.title}</h3></a>
                               </div>
                               <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
                                 <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -301,20 +318,19 @@ export default async function Page({
                           </svg>
                         </div>
                       <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
-                        <Image
-                        unoptimized
-                          src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').format('jpg').url()}
+                      <Image
+                          unoptimized
+                          src={urlFor(slide.image).quality(70).format('jpg').url()}
                           alt={slide.image?.alt || ""}
-                          width={3840}
-                          height={2160}
+                          fill
                           quality={100}
                           placeholder="blur"
-                          blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
-                          className={`w-full h-full overlay-img`}
+                          blurDataURL={urlFor(slide.image).width(10).quality(10).url()}
+                          className="object-contain overlay-img"
                           style={{
-                            objectPosition: slide.image?.hotspot ? 
-                              `${(slide.image.hotspot.x * 100)}% ${(slide.image.hotspot.y * 100)}%` : 
-                              'center'
+                            objectPosition: slide.image?.hotspot
+                              ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
+                              : "center",
                           }}
                         />
                       </div>
@@ -360,7 +376,7 @@ export default async function Page({
                         return (
                           <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
                             <div className="next-page-title" id="next-page-title">
-                              <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                              <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}><h3 style={{color: strokeColor}}>{page.nextPage.title}</h3></a>
                             </div>
                             <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
                               <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -460,7 +476,7 @@ export default async function Page({
                         return (
                           <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
                             <div className="next-page-title" id="next-page-title">
-                              <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                              <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}><h3 style={{color: strokeColor}}>{page.nextPage.title}</h3></a>
                             </div>
                             <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
                               <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -558,7 +574,7 @@ export default async function Page({
                         return (
                           <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
                             <div className="next-page-title" id="next-page-title">
-                              <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                              <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}><h3 style={{color: strokeColor}}>{page.nextPage.title}</h3></a>
                             </div>
                             <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
                               <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -694,7 +710,7 @@ export default async function Page({
                         return (
                           <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
                             <div className="next-page-title" id="next-page-title">
-                              <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}>{page.nextPage.title}</a>
+                              <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}><h3 style={{color: strokeColor}}>{page.nextPage.title}</h3></a>
                             </div>
                             <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
                               <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -733,14 +749,14 @@ export default async function Page({
                 className="intro-image"
               />
             )}
-           { page.introblock ? <PortableText value={page.introblock} /> : <></>}
+           { page.introblock ? <PortableText value={page.introblock} components={components} /> : <></>}
           </section>
 
           <section className="text-section">
             {page.textSections?.map((section, index) => (
               <div className="text-block" key={index}>
                 {section.heading && <h5 className="title">{section.heading}</h5>}
-                {section.body && <PortableText value={section.body} />}
+                {section.body && <PortableText value={section.body} components={components} />}
               </div>
             ))}
           </section>

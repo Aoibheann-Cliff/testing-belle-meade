@@ -14,7 +14,6 @@ export default async function Page() {
 
   return (
     <>
-    <div className="loading-overlay" id="overlay"></div>
     <div className="symbol" id="symbol"><Image src={symbol} alt="symbol"/></div>
     <div className="logotype" id="logotype"><Image src={logoType} alt="logotype"/></div>
     <div className="ipad-logotype" id="ipadlogotype"><Image src={logoType} alt="logotype"/></div>

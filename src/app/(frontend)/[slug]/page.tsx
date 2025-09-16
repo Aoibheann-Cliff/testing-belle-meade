@@ -415,33 +415,44 @@ export default async function Page({
                           </div>
                         </div>
                       </div>
-                      <div className="quote-image">
-                      {slide.mediaType === 'video'  && slide.videoFile?.asset?.url && (
-                      <video
-                        src={slide.videoFile.asset.url}
-                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                      />
+                    <div className="quote-image">
+                      {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
+                        <video
+                          src={slide.videoFile.asset.url}
+                          className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                        />
                       )}
-                      {slide.mediaType === 'image' && (
-                        <div className={`h-full`}>
-                      <Image
-                        unoptimized
-                        src={urlFor(slide.image).width(1920).height(2160).quality(70).fit('crop').format('jpg').url()}
-                        alt={slide.image?.alt || ""}
-                        width={1920}
-                        height={1080}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
-                        className={`object-cover h-full w-full`}
-                      />
-                      </div>
+
+                      {slide.mediaType === "image" && slide.image && (
+                        <div className="h-full">
+                          <Image
+                            unoptimized
+                            src={urlFor(slide.image)
+                              .width(1920)
+                              .height(1080)
+                              .quality(80)
+                              .fit("crop")
+                              .url()}
+                            alt={slide.image?.alt || ""}
+                            width={1920}
+                            height={1080}
+                            quality={100}
+                            placeholder="blur"
+                            blurDataURL={urlFor(slide.image)
+                              .width(10)
+                              .height(6)
+                              .quality(10)
+                              .url()}
+                            className="object-cover h-full w-full"
+                          />
+                        </div>
                       )}
-                      </div>
+                    </div>
+
                         <div className="slide-footer">
                           <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>

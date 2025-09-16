@@ -246,7 +246,7 @@ export default function GlobalPageEffects() {
       setTimeout(() => {
         form.style.opacity = "1";
         formFooter.style.opacity = "1";
-      }, 1500);
+      }, 1200);
     });
 
     mobileopenBtn?.addEventListener("click", () => {
@@ -270,7 +270,7 @@ export default function GlobalPageEffects() {
       setTimeout(() => {
         form.style.opacity = "1";
         formFooter.style.opacity = "1";
-      }, 1500);
+      }, 1200);
     });
 
     closeBtn?.addEventListener("click", closeForm);

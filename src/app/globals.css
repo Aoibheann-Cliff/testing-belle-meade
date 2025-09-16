@@ -1638,6 +1638,7 @@ div:has(> .react-dropdown-select) {
     height: fit-content !important;
     min-height: fit-content !important;
     font-size: 0.938rem;
+    width:200px;
 }
 
 .login-form-container .submit img{
@@ -2179,6 +2180,12 @@ div:has(> .react-dropdown-select) {
     .login-form-container{
         padding-bottom:3.063rem;
     }
+
+    .Team .image-text-slide .inner-text-text{
+        max-height: 50vh;
+        overflow: scroll;
+    }
+
 }
 
 @media only screen and (max-device-width : 1366px) and (min-device-width : 768px)
@@ -2376,11 +2383,6 @@ line-height: 1.225rem;
 
     .Team .image-text-slide .inner-text{
         width:50%;
-    }
-
-    .Team .image-text-slide .inner-text-text{
-        max-height: 50vh;
-        overflow: scroll;
     }
 
     .image-text-slide .image-container img{

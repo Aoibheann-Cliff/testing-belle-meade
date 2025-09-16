@@ -932,7 +932,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     bottom: 0;
     display: flex;
     z-index: 2;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .slide-footer .title{
@@ -950,6 +950,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
 .slide-footer .caption{
     letter-spacing:0px !important;
     text-transform: none !important;
+    max-width:50vw;
 }
 
 .quote-text{
@@ -1860,7 +1861,7 @@ div:has(> .react-dropdown-select) {
       }
 
       .slide-footer .caption{
-        max-width:35vw;
+        max-width:40vw;
       }
 
       .slide-footer .title{
@@ -2134,44 +2135,6 @@ div:has(> .react-dropdown-select) {
         display:none;
     }
 
-    .quote-slide{
-        flex-direction:column !important;
-      }
-
-      .quote-slide.flex-row-reverse{
-        flex-direction:column-reverse !important;
-      }
-
-      .quote-image{
-        order:2;
-        height:50svh;
-      }
-
-      .quote-text{
-        order:1;
-        height:50svh;
-      }
-
-      .quote-slide img{
-        height:50svh;
-      }
-
-      .quote-image, .quote-text{
-        width:100%;
-      }
-
-      .inner-quote-text{
-        gap:1.125rem !important;
-      }
-
-      .quote-slide.flex-row .inner-quote-text{
-        padding-top:4.5rem;
-      }
-
-      .quote-slide .object-contain{
-        object-fit: contain !important;
-      }
-
       .login-form input, .login-form input::placeholder {
         font-size: 0.813rem;
         padding: 0.5rem 0 !important;
@@ -2188,6 +2151,47 @@ div:has(> .react-dropdown-select) {
 
 }
 
+@media only screen and (max-device-width : 1366px) and (orientation : landscape) {
+.quote-slide{
+    flex-direction:column !important;
+  }
+
+  .quote-slide.flex-row-reverse{
+    flex-direction:column-reverse !important;
+  }
+
+  .quote-image{
+    order:2;
+    height:50svh;
+  }
+
+  .quote-text{
+    order:1;
+    height:50svh;
+  }
+
+  .quote-slide img{
+    height:50svh;
+  }
+
+  .quote-image, .quote-text{
+    width:100%;
+  }
+
+  .inner-quote-text{
+    gap:1.125rem !important;
+  }
+
+  .quote-slide.flex-row .inner-quote-text{
+    padding-top:4.5rem;
+  }
+
+  .quote-slide .object-contain{
+    object-fit: contain !important;
+  }
+
+}
+
 @media only screen and (max-device-width : 1366px) and (min-device-width : 768px)
 and (orientation : portrait) {
     .media-only.flickity-cell img {
@@ -2197,6 +2201,10 @@ and (orientation : portrait) {
         object-position: center !important;
         object-fit: contain;
     }
+
+    .slide-footer .caption{
+        max-width:20vw !important;
+    }
 }
 
 @media only screen and (max-width:1180px){
@@ -2205,7 +2213,7 @@ and (orientation : portrait) {
     }
 
     .slide-footer .caption{
-        max-width:35vw;
+        max-width:30vw;
     }
 }
 

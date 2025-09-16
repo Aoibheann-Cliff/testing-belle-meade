@@ -10,6 +10,7 @@ import arrow from '../purple-arrow.svg';
 import arrownext from '@/app/mobile-arrow-next.svg';
 import arrowprevious from '@/app/mobile-arrow.svg';
 import lightbox from '@/app/lightbox.svg';
+import lightboxclose from '@/app/lightbox-close.svg';
 import PageEffects from "@/components/PageEffects";
 import { LayoutTypes } from "@/sanity/types";
 
@@ -106,11 +107,8 @@ export default async function Page({
                           }}
                         />
 
-                            <div className="lightbox-close panzoom-exclude">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                          <path d="M1 1L29 29" stroke="#ffffff"/>
-                          <path d="M29 1L1 29" stroke="#ffffff"/>
-                          </svg>
+                        <div className="lightbox-close panzoom-exclude">
+                            <Image src={lightboxclose} alt="close"/>
                         </div>
                         <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                         <Image
@@ -208,10 +206,7 @@ export default async function Page({
                         }}
                       />
                        <div className="lightbox-close panzoom-exclude">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                          <path d="M1 1L29 29" stroke="#ffffff"/>
-                          <path d="M29 1L1 29" stroke="#ffffff"/>
-                          </svg>
+                          <Image src={lightboxclose} alt="close"/>
                         </div>
                       <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                       <Image
@@ -312,10 +307,7 @@ export default async function Page({
                         }}
                       />
                       <div className="lightbox-close panzoom-exclude">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                          <path d="M1 1L29 29" stroke="#ffffff"/>
-                          <path d="M29 1L1 29" stroke="#ffffff"/>
-                          </svg>
+                          <Image src={lightboxclose} alt="close"/>
                         </div>
                       <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                       <Image
@@ -505,6 +497,7 @@ export default async function Page({
                       <div className="text" style={{ backgroundColor: bg }}>
                         <div className="inner-text">
                           {slide.title && <h2 className="title">{slide.title}</h2>}
+                          <div className="inner-text-text">
                           {(slide.text || []).map((block, i) => {
                             const Tag = block.style === 'normal' ? 'p' : block.style || 'p';
                             return (
@@ -521,6 +514,7 @@ export default async function Page({
                               </Tag>
                             );
                           })}
+                          </div>
                         </div>
                       </div>
                       {slide.mediaType === 'video' && slide.videoFile?.asset?.url && (

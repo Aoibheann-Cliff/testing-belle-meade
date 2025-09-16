@@ -136,7 +136,7 @@ lightboxCloseButtons.forEach(button => {
             const matchesPortrait1024 = window.matchMedia("(max-width: 1024px) and (orientation: portrait)").matches;
             
             if (matchesLandscape1366 || matchesPortrait1024) {
-              const naturalWidth = nextPageTitle.scrollWidth + "px";
+              const naturalWidth = "75%"
             
               setTimeout(() => {
                 nextPageLink.style.transform = "translateX(0px)";

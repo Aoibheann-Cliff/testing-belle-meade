@@ -2439,6 +2439,11 @@ line-height: 1.225rem;
     }
 
     .slide-footer .caption{
+        width:fit-content;
+        max-width:fit-content;
+    }
+
+    .slide-footer .caption{
         padding-left:1.25rem;
         padding-right:2rem;
     }
@@ -2896,6 +2901,12 @@ line-height: 1.225rem;
     .footer-button{
         padding:0px !important;
         border:0px !important;
+    }
+
+
+    .slide-footer .caption{
+        width:fit-content;
+        max-width:fit-content;
     }
 
     .slide-overlay .title{

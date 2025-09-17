@@ -13,7 +13,6 @@ export default function GlobalPageEffects() {
   useEffect(() => {
     const symbolimg = document.getElementById('symbol');
     const logotype = document.getElementById('logotype');
-    const ipadlogotype = document.getElementById('ipadlogotype');
 
     const overlay = document.getElementById('overlay');
     overlay.style.opacity = "1";
@@ -30,7 +29,6 @@ export default function GlobalPageEffects() {
           setTimeout(() => {
             symbolimg.style.display = "none";
             logotype.style.opacity = "1";
-            ipadlogotype.style.opacity = "1";
           }, 3500);
           setTimeout(() => {
             overlay.style.opacity = "0";

@@ -2,7 +2,7 @@ import { getSession } from "@/utils/auth";
 import { redirect } from "next/navigation";
 import { auth } from "./actions";
 import Image from "next/image";
-import logoType from "../logotype.svg";
+import signInlogoType from "../sign-in-logotype.svg";
 import signInArrow from "../sign-in-arrow.svg";
 import symbol from '../symbol.svg';
 import LoginPageEffects from "@/components/LoginPageEffects";
@@ -53,8 +53,7 @@ export default async function SignIn(props: Props) {
     <>
     <div className="loading-overlay" id="overlay"></div>
     <div className="symbol" id="symbol"><Image src={symbol} alt="symbol"/></div>
-    <div className="logotype" id="logotype"><Image src={logoType} alt="logotype"/></div>
-    <div className="ipad-logotype" id="ipadlogotype"><Image src={logoType} alt="logotype"/></div>
+    <div className="logotype sign-in-logotype" id="logotype"><Image src={signInlogoType} alt="logotype"/></div>
       <LoginPageEffects />
     <div className="login-form-container">
 

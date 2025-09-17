@@ -194,8 +194,8 @@ h6{
 
 .carousel-logotype img, .carousel-ipad-logotype img{
     object-fit:contain !important;
-    height:8.625rem !important;
-    width:100vw;
+    height:fit-content !important;
+    width:375px;
 }
 
 #carousel{
@@ -204,8 +204,8 @@ h6{
 }
 
 .logotype {
-    width: 100vw;
-    height: 8.625rem;
+    width: 375px;
+    height: fit-content;
     position: absolute;
     z-index:1;
     top: 0;
@@ -225,6 +225,10 @@ h6{
     -webkit-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
+.sign-in-logotype{
+    padding-top:62.42px;
+}
+
 .login-form-container .logotype{
     opacity:1;
     display:block;
@@ -241,19 +245,15 @@ h6{
     text-underline-offset: 2px;
 }
 
-#logotype, #ipadlogotype{
+#logotype{
     z-index:100;
 }
 
 
 .logotype img{
-    height:8.625rem !important;
-    width:100vw;
+    height:fit-content !important;
+    width:375px;
     object-fit:contain !important;
-}
-
-.ipad-logotype, .carousel-ipad-logotype{
-    display:none;
 }
 
 /* .content-wrapper{
@@ -337,7 +337,7 @@ h6{
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 1.75rem;
+    line-height: 150%;
     text-align: center;
     color:#4C2F48 !important;
     text-shadow: none !important;
@@ -392,7 +392,7 @@ h6{
     -webkit-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-form{
+.inner-form-container{
     max-width: 43.375rem;
     margin: 0 auto;
     display: flex;
@@ -445,7 +445,7 @@ header{
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10;
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1231,9 +1231,12 @@ input::placeholder{
     background:#FFF9F2
 }
 
-.form-container .agent-company-input{
+.form-item{
     width: calc(50% - 0.75rem);
-    position:relative;
+}
+
+.form-item.full-width{
+    width: 100%;
 }
 
 .agent-company-input input{
@@ -1252,7 +1255,7 @@ input::placeholder{
     opacity:1;
 }
 
-.form-container input, .form-container select{
+.form-container input, .form-container .nice-select{
     border-bottom:1px solid #4d2e4880;
     border-left:0px;
     border-right:0px;
@@ -1260,15 +1263,34 @@ input::placeholder{
     opacity:1;
     letter-spacing: .141rem;
     text-transform: uppercase;
+    letter-spacing: .1269rem !important;
+    font-size: .8442rem !important;
     font-family: Dia;
-    font-size: .938rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     color: #4c2f48 !important;
     padding: 0.375rem 0rem;
-    width: calc(50% - 0.75rem);
+    width: 100%;
     height:1.875rem;
+    background-color:transparent !important;
+    border-radius:0px !important;
+}
+
+.form-container .nice-select .list{
+    background-color: #fff9f2 !important;
+    width:100% !important;
+    border-radius:0px !important;
+    transition:none !important;
+    margin-top:0px !important;
+    border:.75px solid #4c2f48 !important;
+    box-shadow: none !important;
+    max-height:200px;
+    overflow-y: scroll;
+}
+
+.form-container .nice-select .option.disabled{
+    display:none !important;
 }
 
 .form-container input::placeholder{
@@ -1442,26 +1464,46 @@ div:has(> .react-dropdown-select) {
     left:0px !important;
 }
 
-.react-dropdown-select-item{
+.nice-select .option{
     border-bottom:0px !important;
     font-family: 'Dia';
     font-size: 0.938rem;
     padding:0.563rem 0.625rem !important;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 400 !important;
     line-height: normal;
     color:#4C2F48;
+    min-height:fit-content !important;
+    height:fit-content !important;
+    padding-bottom:0px !important;
+    padding-top:0px !important;
     will-change:background-color, color;
-    transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -o-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -ms-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -moz-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -webkit-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+    -o-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+    -ms-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+    -moz-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+    -webkit-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
-.react-dropdown-select-item:hover{
+.nice-select .list:hover .option:not(:hover){
+    color:#4C2F48 !important;
+}
+
+.nice-select .option:hover, .nice-select .option.focus, .nice-select .option.selected.focus{
     color:#FFF9F2 !important;
     background-color: #4C2F48 !important;
+}
+
+.nice-select:after{
+    right:0px !important;
+    border-bottom: 1px solid #4c2f48 !important;
+    border-right: 1px solid #4c2f48 !important;
+    width:8px !important;
+    height:8px !important;
+}
+
+.nice-select:hover{
+    border-bottom:1px solid #4d2e4880 !important;
 }
 
 .react-dropdown-select-item-selected{
@@ -1650,6 +1692,10 @@ div:has(> .react-dropdown-select) {
     display:none;
 }
 
+#are_you_simulated{
+    display:none;
+}
+
 @media only screen and (max-height: 850px) and (min-width: 1000px) {
     .form-container{
         overflow-x: scroll;
@@ -1758,39 +1804,10 @@ div:has(> .react-dropdown-select) {
         height:9.875rem;
     }
 
-    .ipad-logotype{
-        display:block;
-        height:5.306rem;
-        width: 100vw;
-        position: absolute;
-        z-index:100;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        opacity:0;
-        will-change:opacity;
-        transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-        -o-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-        -ms-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-        -moz-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-        -webkit-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    }
-
-    .ipad-logotype img{
-        height:5.306rem !important;
-        width:100vw;
-        object-fit: contain;
-    }
-
     .logotype{
         display:block;
-        height:5.306rem;
-        width: 100vw;
+        height:fit-content;
+        width: 275px;
         position: absolute;
         z-index:1;
         top: 0;
@@ -1811,15 +1828,19 @@ div:has(> .react-dropdown-select) {
     }
 
     .logotype img{
-        height:5.306rem !important;
-        width:100vw;
+        height:fit-content !important;
+        width:275px;
         object-fit: contain;
     }
 
-    .carousel-ipad-logotype{
+    .sign-in-logotype{
+        padding-top:45.77px;
+    }
+
+    .carousel-logotype{
         display:block;
-        height:5.306rem;
-        width: 100vw;
+        height:fit-content;
+        width: 275px;
         position: absolute;
         z-index:3;
         top: 0;
@@ -1830,10 +1851,6 @@ div:has(> .react-dropdown-select) {
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-
-    .logotype, .carousel-logotype{
-        display:none;
     }
 
     .flickity-prev-next-button.previous, .flickity-prev-next-button.next, .flickity-enabled .flickity-prev-next-button.next, .flickity-enabled .flickity-prev-next-button.previous {
@@ -1913,7 +1930,7 @@ div:has(> .react-dropdown-select) {
 
     .contact-form-title{
         font-size: 1.125rem;
-        line-height: 1.575rem;
+        line-height: 150%;
         margin-bottom:2rem;
         margin-top:2.125rem;
     }
@@ -2259,20 +2276,20 @@ line-height: 1.225rem;
         height:7.063rem;
     }
 
-    .ipad-logotype, .carousel-ipad-logotype{
-        display:none;
-    }
-
     .logotype, .carousel-logotype{
         display:block;
-        height:3.875rem;
-        width:100vw;
+        height:fit-content;
+        width:200px;
     }
 
     .logotype img, .carousel-logotype img{
-        height:3.875rem !important;
+        height:fit-content !important;
         object-fit: contain;
-        width:100vw;
+        width:200px;
+    }
+
+    .sign-in-logotype{
+        padding-top:33.29px;
     }
 
     .inquire, footer{
@@ -2386,7 +2403,7 @@ line-height: 1.225rem;
         overflow-y: scroll;
         bottom: 0;
         height: fit-content !important;
-        background: #00000050 !important;
+        background: #00000060 !important;
     }
 
     .Team .image-text-slide .inner-text{
@@ -2548,9 +2565,10 @@ line-height: 1.225rem;
         top:2.3rem;
       }
 
-      form{
+      .inner-form-container{
         gap:1.25rem;
       }
+
 /* 
       .form-container .agent-company-input{
         width:100% !important;
@@ -2691,7 +2709,7 @@ line-height: 1.225rem;
         font-size: 1.125rem;
         font-style: normal;
         font-weight: 400;
-        line-height: 1.575rem;
+        line-height: 150%;
         max-width:85%;
         margin:0 auto 3.813rem auto;
     }
@@ -2859,19 +2877,15 @@ line-height: 1.225rem;
         height:7.063rem;
     }
 
-    .ipad-logotype, .carousel-ipad-logotype{
-        display:none;
-    }
-
     .logotype, .carousel-logotype{
         display:block;
-        height:3.875rem;
-        width:100vw;
+        height:fit-content;
+        width:200px;
     }
 
     .logotype img, .carousel-logotype img{
-        height:3.875rem !important;
-        width:100vw;
+        height:fit-content !important;
+        width:200px;
         object-fit: contain;
     }
 
@@ -3018,7 +3032,7 @@ line-height: 1.225rem;
         font-size: 1.125rem;
         font-style: normal;
         font-weight: 400;
-        line-height: 1.575rem;
+        line-height: 150%;
         margin-bottom:4.688rem;
     }
 
@@ -3068,7 +3082,7 @@ line-height: 1.225rem;
         overflow-y: scroll;
         bottom: 0;
         height: fit-content !important;
-        background: #00000050 !important;
+        background: #00000060 !important;
     }
 
     .Team .image-text-slide .inner-text-text{
@@ -3342,7 +3356,7 @@ line-height: 1.225rem;
         height: 50svh !important;
       }
 
-      .react-dropdown-select, input{
+      select, input{
         padding:0.688rem 0rem !important;
         height:2.3rem;
         min-height:2.3rem;
@@ -3354,7 +3368,7 @@ line-height: 1.225rem;
         top:2.3rem;
       }
 
-      form{
+      .inner-form-container{
         gap:2.5rem;
       }
 
@@ -3571,6 +3585,11 @@ line-height: 1.225rem;
     .login-form-container .submit img{
         width:0.589rem !important;
     }
+
+    .form-item{
+        width:100%;
+      }
+
 }
 
 @media only screen and (max-height: 670px){

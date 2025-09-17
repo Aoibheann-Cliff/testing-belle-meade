@@ -16,7 +16,6 @@ export default async function Page() {
     <>
     <div className="symbol" id="symbol"><Image src={symbol} alt="symbol"/></div>
     <div className="logotype" id="logotype"><Image src={logoType} alt="logotype"/></div>
-    <div className="ipad-logotype" id="ipadlogotype"><Image src={logoType} alt="logotype"/></div>
     <main id="contentWrapper" className="container content-wrapper homepage">
       <HomePageEffects />
 

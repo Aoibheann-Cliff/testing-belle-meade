@@ -18,6 +18,8 @@
     "flickity-fade": "^2.0.0",
     "gsap": "^3.13.0",
     "iron-session": "^8.0.4",
+    "jquery": "^3.7.1",
+    "jquery-nice-select": "^1.1.0",
     "lightbox.js-react": "^1.5.3",
     "medium-zoom": "^1.1.0",
     "next": "15.3.2",

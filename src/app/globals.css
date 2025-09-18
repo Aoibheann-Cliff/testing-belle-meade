@@ -1,3 +1,7 @@
+/* Utility class for hiding elements via React conditional logic */
+.form-item.hidden {
+    display: none !important;
+}
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
@@ -1871,7 +1875,7 @@ div:has(> .react-dropdown-select) {
     }
 
     .sign-in-logotype{
-        padding-top:45.77px;
+        padding-top:45.77px !important;
     }
 
     .carousel-logotype{
@@ -2205,7 +2209,7 @@ div:has(> .react-dropdown-select) {
 
 }
 
-@media only screen and (max-device-width : 1366px) and (orientation : landscape) {
+@media only screen and (max-device-width : 1366px) and (orientation : portrait) {
 .quote-slide{
     flex-direction:column !important;
   }
@@ -2351,17 +2355,17 @@ line-height: 1.225rem;
     .logotype, .carousel-logotype{
         display:block;
         height:fit-content;
-        width:200px;
+        width:240px;
     }
 
     .logotype img, .carousel-logotype img{
         height:fit-content !important;
         object-fit: contain;
-        width:200px;
+        width:240px;
     }
 
     .sign-in-logotype{
-        padding-top:33.29px;
+        padding-top:47.21px !important;
     }
 
     .inquire, footer{
@@ -2974,12 +2978,12 @@ line-height: 1.225rem;
     .logotype, .carousel-logotype{
         display:block;
         height:fit-content;
-        width:200px;
+        width:240px;
     }
 
     .logotype img, .carousel-logotype img{
         height:fit-content !important;
-        width:200px;
+        width:240px;
         object-fit: contain;
     }
 

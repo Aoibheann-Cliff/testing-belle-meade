@@ -1274,6 +1274,12 @@ input::placeholder{
 
 .form-item{
     width: calc(50% - 0.75rem);
+    display: flex;
+    align-items: flex-end;
+}
+
+.dropdown-wrapper, .answer{
+    width:100%;
 }
 
 .form-item.full-width{
@@ -1296,7 +1302,7 @@ input::placeholder{
     opacity:1;
 }
 
-.form-container input, .form-container .nice-select{
+.form-container input{
     border-bottom:1px solid #4d2e4880;
     border-left:0px;
     border-right:0px;
@@ -1318,12 +1324,63 @@ input::placeholder{
     border-radius:0px !important;
 }
 
-.form-container .nice-select .list{
+.rs__control{
+    border-bottom:1px solid #4d2e4880 !important;
+    border-left:0px !important;
+    border-right:0px !important;;
+    border-top:0px !important;
+    opacity:1;
+    letter-spacing: .141rem;
+    text-transform: uppercase;
+    letter-spacing: .1269rem !important;
+    font-size: .8442rem !important;
+    font-family: Dia;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #4c2f48 !important;
+    width: 100%;
+    min-height:30px !important;
+    background-color:transparent !important;
+    border-radius:0px !important;
+    box-shadow:none !important;
+}
+
+.rs__value-container{
+    padding:0px !important;
+}
+
+.rs__indicator-separator{
+    display:none !important;
+}
+
+.rs__indicator.rs__clear-indicator{
+    display:none !important;
+}
+
+.rs__placeholder{
+    margin:0px !important;
+    color: #4c2f48 !important;
+    font-family: Dia;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.rs__indicator{
+    padding:0px !important;
+}
+
+.rs__indicators{
+    margin-top:auto !important;
+}
+
+.form-container .rs__menu{
     background-color: #fff9f2 !important;
     width:100% !important;
     border-radius:0px !important;
     transition:none !important;
-    margin-top:0px !important;
+    margin-top:-1px !important;
     border:.75px solid #4c2f48 !important;
     box-shadow: none !important;
     max-height:200px;
@@ -1505,25 +1562,80 @@ div:has(> .react-dropdown-select) {
     left:0px !important;
 }
 
-.nice-select .option{
+.rs__menu *{
+    color:#4C2F48 !important;
+}
+
+.rs__option:hover{
+    background-color: #4C2F48 !important;
+    background: #4C2F48 !important;
+    color:#FFF9F2 !important;
+}
+
+.rs__option--is-focused{
+    background-color: #4C2F48 !important;
+    background: #4C2F48 !important;
+    color:#FFF9F2 !important;
+}
+
+.rs__option--is-selected{
+    background-color: #4C2F48 !important;
+    background: #4C2F48 !important;
+    color:#FFF9F2 !important;
+}
+
+.rs__indicators{
+    height:30px !important;
+}
+
+#answers_24099{
+    display:none !important;
+}
+
+.rs__multi-value{
+    margin-left:0px !important;
+}
+
+.rs__menu-list{
+    margin:0px !important;
+    padding:0px !important;
+}
+.rs__option{
     border-bottom:0px !important;
     font-family: 'Dia';
     font-size: 0.938rem;
     padding:0.563rem 0.625rem !important;
+    text-transform:uppercase !important;
     font-style: normal;
     font-weight: 400 !important;
     line-height: normal;
     color:#4C2F48;
     min-height:fit-content !important;
     height:fit-content !important;
-    padding-bottom:0px !important;
-    padding-top:0px !important;
     will-change:background-color, color;
     transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1) !important;
     -o-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1) !important;
     -ms-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1) !important;
     -moz-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1) !important;
     -webkit-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+}
+
+.rs__indicator svg{
+    fill:#4C2F48 !important;
+    width:15px !important;
+}
+
+.rs__single-value{
+    margin:0px !important;
+}
+
+.rs__input-container{
+    margin:0px !important;
+    padding:0px !important;
+}
+
+.rs__single-value{
+    color:#4C2F48 !important; 
 }
 
 .nice-select .list:hover .option:not(:hover){

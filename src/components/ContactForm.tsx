@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { client } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 import { useEffect, useRef, useState } from 'react';
+import Select from 'react-select';
 
 interface PageData {
   title: string;
@@ -94,35 +95,261 @@ export default function ContactForm() {
     representedByAgent: '',
     floorplans: [],
   });
+
+  const countryOptions = [
+    { value: "1", label: "Afghanistan" },
+    { value: "2", label: "Albania" },
+    { value: "3", label: "Algeria" },
+    { value: "4", label: "American Samoa" },
+    { value: "5", label: "Andorra" },
+    { value: "6", label: "Angola" },
+    { value: "7", label: "Anguilla" },
+    { value: "8", label: "Antigua and Barbuda" },
+    { value: "9", label: "Argentina" },
+    { value: "10", label: "Armenia" },
+    { value: "11", label: "Aruba" },
+    { value: "12", label: "Australia" },
+    { value: "13", label: "Austria" },
+    { value: "14", label: "Azerbaijan" },
+    { value: "15", label: "Bahamas" },
+    { value: "16", label: "Bahrain" },
+    { value: "17", label: "Bangladesh" },
+    { value: "18", label: "Barbados" },
+    { value: "19", label: "Belarus" },
+    { value: "20", label: "Belgium" },
+    { value: "21", label: "Belize" },
+    { value: "22", label: "Benin" },
+    { value: "23", label: "Bermuda" },
+    { value: "24", label: "Bhutan" },
+    { value: "25", label: "Bolivia" },
+    { value: "26", label: "Bosnia and Herzegovina" },
+    { value: "27", label: "Botswana" },
+    { value: "28", label: "Brazil" },
+    { value: "29", label: "Brunei Darussalam" },
+    { value: "30", label: "Bulgaria" },
+    { value: "31", label: "Burkina Faso" },
+    { value: "32", label: "Burundi" },
+    { value: "33", label: "Cambodia" },
+    { value: "34", label: "Cameroon" },
+    { value: "35", label: "Canada" },
+    { value: "36", label: "Cape Verde" },
+    { value: "37", label: "Cayman Islands" },
+    { value: "38", label: "Central African Republic" },
+    { value: "39", label: "Chad" },
+    { value: "40", label: "Chile" },
+    { value: "41", label: "China" },
+    { value: "42", label: "Colombia" },
+    { value: "43", label: "Comoros" },
+    { value: "44", label: "Congo" },
+    { value: "45", label: "Congo, the Democratic Republic of the" },
+    { value: "46", label: "Cook Islands" },
+    { value: "47", label: "Costa Rica" },
+    { value: "48", label: "Cote D'Ivoire" },
+    { value: "49", label: "Croatia" },
+    { value: "50", label: "Cuba" },
+    { value: "51", label: "Cyprus" },
+    { value: "52", label: "Czech Republic" },
+    { value: "53", label: "Denmark" },
+    { value: "54", label: "Djibouti" },
+    { value: "55", label: "Dominica" },
+    { value: "56", label: "Dominican Republic" },
+    { value: "57", label: "Ecuador" },
+    { value: "58", label: "Egypt" },
+    { value: "59", label: "El Salvador" },
+    { value: "60", label: "Equatorial Guinea" },
+    { value: "61", label: "Eritrea" },
+    { value: "62", label: "Estonia" },
+    { value: "63", label: "Ethiopia" },
+    { value: "64", label: "Falkland Islands (Malvinas)" },
+    { value: "65", label: "Faroe Islands" },
+    { value: "66", label: "Fiji" },
+    { value: "67", label: "Finland" },
+    { value: "68", label: "France" },
+    { value: "69", label: "French Guiana" },
+    { value: "70", label: "French Polynesia" },
+    { value: "71", label: "Gabon" },
+    { value: "72", label: "Gambia" },
+    { value: "73", label: "Georgia" },
+    { value: "74", label: "Germany" },
+    { value: "75", label: "Ghana" },
+    { value: "76", label: "Gibraltar" },
+    { value: "77", label: "Greece" },
+    { value: "78", label: "Greenland" },
+    { value: "79", label: "Grenada" },
+    { value: "80", label: "Guadeloupe" },
+    { value: "81", label: "Guam" },
+    { value: "82", label: "Guatemala" },
+    { value: "83", label: "Guinea" },
+    { value: "84", label: "Guinea-Bissau" },
+    { value: "85", label: "Guyana" },
+    { value: "86", label: "Haiti" },
+    { value: "87", label: "Holy See (Vatican City State)" },
+    { value: "88", label: "Honduras" },
+    { value: "89", label: "Hong Kong" },
+    { value: "90", label: "Hungary" },
+    { value: "91", label: "Iceland" },
+    { value: "92", label: "India" },
+    { value: "93", label: "Indonesia" },
+    { value: "94", label: "Iran, Islamic Republic of" },
+    { value: "95", label: "Iraq" },
+    { value: "96", label: "Ireland" },
+    { value: "97", label: "Israel" },
+    { value: "98", label: "Italy" },
+    { value: "99", label: "Jamaica" },
+    { value: "100", label: "Japan" },
+    { value: "101", label: "Jordan" },
+    { value: "102", label: "Kazakhstan" },
+    { value: "103", label: "Kenya" },
+    { value: "104", label: "Kiribati" },
+    { value: "105", label: "Korea, Democratic People's Republic of" },
+    { value: "106", label: "Korea, Republic of" },
+    { value: "107", label: "Kuwait" },
+    { value: "108", label: "Kyrgyzstan" },
+    { value: "109", label: "Lao People's Democratic Republic" },
+    { value: "110", label: "Latvia" },
+    { value: "111", label: "Lebanon" },
+    { value: "112", label: "Lesotho" },
+    { value: "113", label: "Liberia" },
+    { value: "114", label: "Libyan Arab Jamahiriya" },
+    { value: "115", label: "Liechtenstein" },
+    { value: "116", label: "Lithuania" },
+    { value: "117", label: "Luxembourg" },
+    { value: "118", label: "Macao" },
+    { value: "119", label: "Macedonia, the Former Yugoslav Republic of" },
+    { value: "120", label: "Madagascar" },
+    { value: "121", label: "Malawi" },
+    { value: "122", label: "Malaysia" },
+    { value: "123", label: "Maldives" },
+    { value: "124", label: "Mali" },
+    { value: "125", label: "Malta" },
+    { value: "126", label: "Marshall Islands" },
+    { value: "127", label: "Martinique" },
+    { value: "128", label: "Mauritania" },
+    { value: "129", label: "Mauritius" },
+    { value: "130", label: "Mexico" },
+    { value: "131", label: "Micronesia, Federated States of" },
+    { value: "132", label: "Moldova, Republic of" },
+    { value: "133", label: "Monaco" },
+    { value: "134", label: "Mongolia" },
+    { value: "135", label: "Montserrat" },
+    { value: "136", label: "Morocco" },
+    { value: "137", label: "Mozambique" },
+    { value: "138", label: "Myanmar" },
+    { value: "139", label: "Namibia" },
+    { value: "140", label: "Nauru" },
+    { value: "141", label: "Nepal" },
+    { value: "142", label: "Netherlands" },
+    { value: "143", label: "Netherlands Antilles" },
+    { value: "144", label: "New Caledonia" },
+    { value: "145", label: "New Zealand" },
+    { value: "146", label: "Nicaragua" },
+    { value: "147", label: "Niger" },
+    { value: "148", label: "Nigeria" },
+    { value: "149", label: "Niue" },
+    { value: "150", label: "Norfolk Island" },
+    { value: "151", label: "Northern Mariana Islands" },
+    { value: "152", label: "Norway" },
+    { value: "153", label: "Oman" },
+    { value: "154", label: "Pakistan" },
+    { value: "155", label: "Palau" },
+    { value: "156", label: "Panama" },
+    { value: "157", label: "Papua New Guinea" },
+    { value: "158", label: "Paraguay" },
+    { value: "159", label: "Peru" },
+    { value: "160", label: "Philippines" },
+    { value: "161", label: "Pitcairn" },
+    { value: "162", label: "Poland" },
+    { value: "163", label: "Portugal" },
+    { value: "164", label: "Puerto Rico" },
+    { value: "165", label: "Qatar" },
+    { value: "166", label: "Reunion" },
+    { value: "167", label: "Romania" },
+    { value: "168", label: "Russian Federation" },
+    { value: "169", label: "Rwanda" },
+    { value: "170", label: "Saint Helena" },
+    { value: "171", label: "Saint Kitts and Nevis" },
+    { value: "172", label: "Saint Lucia" },
+    { value: "173", label: "Saint Pierre and Miquelon" },
+    { value: "174", label: "Saint Vincent and the Grenadines" },
+    { value: "175", label: "Samoa" },
+    { value: "176", label: "San Marino" },
+    { value: "177", label: "Sao Tome and Principe" },
+    { value: "178", label: "Saudi Arabia" },
+    { value: "179", label: "Senegal" },
+    { value: "180", label: "Seychelles" },
+    { value: "181", label: "Sierra Leone" },
+    { value: "182", label: "Singapore" },
+    { value: "183", label: "Slovakia" },
+    { value: "184", label: "Slovenia" },
+    { value: "185", label: "Solomon Islands" },
+    { value: "186", label: "Somalia" },
+    { value: "187", label: "South Africa" },
+    { value: "188", label: "Spain" },
+    { value: "189", label: "Sri Lanka" },
+    { value: "190", label: "Sudan" },
+    { value: "191", label: "Suriname" },
+    { value: "192", label: "Svalbard and Jan Mayen" },
+    { value: "193", label: "Swaziland" },
+    { value: "194", label: "Sweden" },
+    { value: "195", label: "Switzerland" },
+    { value: "196", label: "Syrian Arab Republic" },
+    { value: "198", label: "Tajikistan" },
+    { value: "199", label: "Tanzania, United Republic of" },
+    { value: "200", label: "Thailand" },
+    { value: "201", label: "Togo" },
+    { value: "202", label: "Tokelau" },
+    { value: "203", label: "Tonga" },
+    { value: "204", label: "Trinidad and Tobago" },
+    { value: "205", label: "Tunisia" },
+    { value: "206", label: "Turkey" },
+    { value: "207", label: "Turkmenistan" },
+    { value: "208", label: "Turks and Caicos Islands" },
+    { value: "209", label: "Tuvalu" },
+    { value: "210", label: "Uganda" },
+    { value: "211", label: "Ukraine" },
+    { value: "212", label: "United Arab Emirates" },
+    { value: "213", label: "United Kingdom" },
+    { value: "214", label: "United States" },
+    { value: "215", label: "Uruguay" },
+    { value: "216", label: "Uzbekistan" },
+    { value: "217", label: "Vanuatu" },
+    { value: "218", label: "Venezuela" },
+    { value: "219", label: "Viet Nam" },
+    { value: "220", label: "Virgin Islands, British" },
+    { value: "221", label: "Virgin Islands, U.s." },
+    { value: "222", label: "Wallis and Futuna" },
+    { value: "223", label: "Western Sahara" },
+    { value: "224", label: "Yemen" },
+    { value: "225", label: "Zambia" },
+    { value: "226", label: "Zimbabwe" },
+    { value: "197", label: "Republic of China, Taiwan" },
+    { value: "453", label: "Sint Maarten (Dutch part)" },
+    { value: "454", label: "Aland Islands" },
+    { value: "455", label: "Bonaire, Sint Eustatius and Saba" },
+    { value: "456", label: "Bouvet Island" },
+    { value: "457", label: "British Indian Ocean Territory" },
+    { value: "458", label: "Christmas Island" },
+    { value: "459", label: "Cocos (Keeling) Islands" },
+    { value: "460", label: "Curacao" },
+    { value: "461", label: "Guernsey" },
+    { value: "462", label: "Heard Island and McDonald Islands" },
+    { value: "463", label: "Isle of Man" },
+    { value: "464", label: "Jersey" },
+    { value: "465", label: "Mayotte" },
+    { value: "466", label: "Montenegro" },
+    { value: "467", label: "Palestine" },
+    { value: "468", label: "Saint Barthelemy" },
+    { value: "469", label: "Saint Martin (French part)" },
+    { value: "470", label: "Serbia" },
+    { value: "471", label: "South Georgia and the South Sandwich Islands" },
+    { value: "472", label: "South Sudan" },
+    { value: "473", label: "Timor-Leste" },
+    { value: "474", label: "United States Minor Outlying Islands" },
+  ];
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    // Initialize jQuery Nice Select for enhanced dropdown styling
-    // Load only on client after hydration
-    (async () => {
-      if (typeof window === 'undefined') return;
-      try {
-        const jqMod: any = await import('jquery');
-        const $: any = jqMod.default || jqMod;
-        (window as any).jQuery = $;
-        (window as any).$ = $;
-        await import('jquery-nice-select');
-        if (typeof $.fn?.niceSelect === 'function') {
-          // Initialize all select.select-reset fields, including #answers_24670
-          const $targets = $('select.select-reset');
-          $targets.each((_: any, el: any) => {
-            const $el = $(el);
-            if ($el.next('.nice-select').length) {
-              $el.niceSelect('destroy');
-            }
-          });
-          $targets.niceSelect();
-        }
-      } catch {
-        // ignore if plugin not available
-      }
-    })();
     const fetchData = async () => {
       const teamdata = await client.fetch(
         groq`*[_id == "d8f59a49-e8bc-4e49-b6ba-5c1bb6ee979b"][0]{
@@ -142,36 +369,6 @@ export default function ContactForm() {
     };
     fetchData();
   }, []);
-
-  // Keep Nice Select instance for the "Are you represented by an agent?" dropdown
-  // in sync when it is conditionally shown/hidden based on iAm
-  useEffect(() => {
-    (async () => {
-      if (typeof window === 'undefined') return;
-      try {
-        const jqMod: any = await import('jquery');
-        const $: any = jqMod.default || jqMod;
-        // If plugin not available yet just bail silently
-        if (typeof $.fn?.niceSelect !== 'function') return;
-        const $rep = $('#answers_24098');
-        if ($rep.length === 0) return;
-
-        if (iAm !== 'Agent') {
-          // Ensure it's initialized/updated when becoming visible
-          if ($rep.next('.nice-select').length) {
-            $rep.niceSelect('update');
-          } else {
-            $rep.niceSelect();
-          }
-        } else {
-          // Destroy when hidden so React can remount cleanly later
-          if ($rep.next('.nice-select').length) {
-            $rep.niceSelect('destroy');
-          }
-        }
-      } catch {}
-    })();
-  }, [iAm]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -322,9 +519,32 @@ export default function ContactForm() {
           <div className="inner-form-container">
             <div className='form-item full-width'>
               {/* <label htmlFor="answers_24670">I am *</label> */}
-                 <div className='dropdown-wrapper'>
-                  <div className="answer"><select name="answers[24670][answers]" id="answers_24670" className="false select-reset" defaultValue="" onChange={(e) => setIAm(e.target.value)}><option value="" disabled>I am</option><option value="Buyer">Buyer</option>
-                  <option value="Agent">Agent</option></select></div>
+              <div className='dropdown-wrapper'>
+                <Select
+                  inputId="answers_24670"
+                  placeholder="I am"
+                  classNamePrefix="rs"
+                  isSearchable={false}
+                  options={[
+                    { value: 'Buyer', label: 'Buyer' },
+                    { value: 'Agent', label: 'Agent' },
+                  ]}
+                  value={
+                    iAm ? { value: iAm, label: iAm } : null
+                  }
+                  onChange={(opt) => {
+                    const value = (opt as { value: string } | null)?.value ?? '';
+                    setIAm(value);
+                  }}
+                  styles={{
+                    control: (base) => ({ ...base, borderRadius: 0 }),
+                  }}
+                />
+                <input
+                  type="hidden"
+                  name="answers[24670][answers]"
+                  value={iAm}
+                />
               </div>
             </div>
             <div className="form-item">
@@ -342,256 +562,30 @@ export default function ContactForm() {
             <div className="form-item">
               <div className='dropdown-wrapper answer'>
                 {/* <label>Country </label> */}
-                 <select name="contact[country_id]" id="contact_country_id" className="select-reset disable-require" required defaultValue="">
-                  <option value="" disabled>Country*</option>
-                  <option value="1">Afghanistan</option>
-                  <option value="2">Albania</option>
-                  <option value="3">Algeria</option>
-                  <option value="4">American Samoa</option>
-                  <option value="5">Andorra</option>
-                  <option value="6">Angola</option>
-                  <option value="7">Anguilla</option>
-                  <option value="8">Antigua and Barbuda</option>
-                  <option value="9">Argentina</option>
-                  <option value="10">Armenia</option>
-                  <option value="11">Aruba</option>
-                  <option value="12">Australia</option>
-                  <option value="13">Austria</option>
-                  <option value="14">Azerbaijan</option>
-                  <option value="15">Bahamas</option>
-                  <option value="16">Bahrain</option>
-                  <option value="17">Bangladesh</option>
-                  <option value="18">Barbados</option>
-                  <option value="19">Belarus</option>
-                  <option value="20">Belgium</option>
-                  <option value="21">Belize</option>
-                  <option value="22">Benin</option>
-                  <option value="23">Bermuda</option>
-                  <option value="24">Bhutan</option>
-                  <option value="25">Bolivia</option>
-                  <option value="26">Bosnia and Herzegovina</option>
-                  <option value="27">Botswana</option>
-                  <option value="28">Brazil</option>
-                  <option value="29">Brunei Darussalam</option>
-                  <option value="30">Bulgaria</option>
-                  <option value="31">Burkina Faso</option>
-                  <option value="32">Burundi</option>
-                  <option value="33">Cambodia</option>
-                  <option value="34">Cameroon</option>
-                  <option value="35">Canada</option>
-                  <option value="36">Cape Verde</option>
-                  <option value="37">Cayman Islands</option>
-                  <option value="38">Central African Republic</option>
-                  <option value="39">Chad</option>
-                  <option value="40">Chile</option>
-                  <option value="41">China</option>
-                  <option value="42">Colombia</option>
-                  <option value="43">Comoros</option>
-                  <option value="44">Congo</option>
-                  <option value="45">Congo, the Democratic Republic of the</option>
-                  <option value="46">Cook Islands</option>
-                  <option value="47">Costa Rica</option>
-                  <option value="48">Cote D&#39;Ivoire</option>
-                  <option value="49">Croatia</option>
-                  <option value="50">Cuba</option>
-                  <option value="51">Cyprus</option>
-                  <option value="52">Czech Republic</option>
-                  <option value="53">Denmark</option>
-                  <option value="54">Djibouti</option>
-                  <option value="55">Dominica</option>
-                  <option value="56">Dominican Republic</option>
-                  <option value="57">Ecuador</option>
-                  <option value="58">Egypt</option>
-                  <option value="59">El Salvador</option>
-                  <option value="60">Equatorial Guinea</option>
-                  <option value="61">Eritrea</option>
-                  <option value="62">Estonia</option>
-                  <option value="63">Ethiopia</option>
-                  <option value="64">Falkland Islands (Malvinas)</option>
-                  <option value="65">Faroe Islands</option>
-                  <option value="66">Fiji</option>
-                  <option value="67">Finland</option>
-                  <option value="68">France</option>
-                  <option value="69">French Guiana</option>
-                  <option value="70">French Polynesia</option>
-                  <option value="71">Gabon</option>
-                  <option value="72">Gambia</option>
-                  <option value="73">Georgia</option>
-                  <option value="74">Germany</option>
-                  <option value="75">Ghana</option>
-                  <option value="76">Gibraltar</option>
-                  <option value="77">Greece</option>
-                  <option value="78">Greenland</option>
-                  <option value="79">Grenada</option>
-                  <option value="80">Guadeloupe</option>
-                  <option value="81">Guam</option>
-                  <option value="82">Guatemala</option>
-                  <option value="83">Guinea</option>
-                  <option value="84">Guinea-Bissau</option>
-                  <option value="85">Guyana</option>
-                  <option value="86">Haiti</option>
-                  <option value="87">Holy See (Vatican City State)</option>
-                  <option value="88">Honduras</option>
-                  <option value="89">Hong Kong</option>
-                  <option value="90">Hungary</option>
-                  <option value="91">Iceland</option>
-                  <option value="92">India</option>
-                  <option value="93">Indonesia</option>
-                  <option value="94">Iran, Islamic Republic of</option>
-                  <option value="95">Iraq</option>
-                  <option value="96">Ireland</option>
-                  <option value="97">Israel</option>
-                  <option value="98">Italy</option>
-                  <option value="99">Jamaica</option>
-                  <option value="100">Japan</option>
-                  <option value="101">Jordan</option>
-                  <option value="102">Kazakhstan</option>
-                  <option value="103">Kenya</option>
-                  <option value="104">Kiribati</option>
-                  <option value="105">Korea, Democratic People&#39;s Republic of</option>
-                  <option value="106">Korea, Republic of</option>
-                  <option value="107">Kuwait</option>
-                  <option value="108">Kyrgyzstan</option>
-                  <option value="109">Lao People&#39;s Democratic Republic</option>
-                  <option value="110">Latvia</option>
-                  <option value="111">Lebanon</option>
-                  <option value="112">Lesotho</option>
-                  <option value="113">Liberia</option>
-                  <option value="114">Libyan Arab Jamahiriya</option>
-                  <option value="115">Liechtenstein</option>
-                  <option value="116">Lithuania</option>
-                  <option value="117">Luxembourg</option>
-                  <option value="118">Macao</option>
-                  <option value="119">Macedonia, the Former Yugoslav Republic of</option>
-                  <option value="120">Madagascar</option>
-                  <option value="121">Malawi</option>
-                  <option value="122">Malaysia</option>
-                  <option value="123">Maldives</option>
-                  <option value="124">Mali</option>
-                  <option value="125">Malta</option>
-                  <option value="126">Marshall Islands</option>
-                  <option value="127">Martinique</option>
-                  <option value="128">Mauritania</option>
-                  <option value="129">Mauritius</option>
-                  <option value="130">Mexico</option>
-                  <option value="131">Micronesia, Federated States of</option>
-                  <option value="132">Moldova, Republic of</option>
-                  <option value="133">Monaco</option>
-                  <option value="134">Mongolia</option>
-                  <option value="135">Montserrat</option>
-                  <option value="136">Morocco</option>
-                  <option value="137">Mozambique</option>
-                  <option value="138">Myanmar</option>
-                  <option value="139">Namibia</option>
-                  <option value="140">Nauru</option>
-                  <option value="141">Nepal</option>
-                  <option value="142">Netherlands</option>
-                  <option value="143">Netherlands Antilles</option>
-                  <option value="144">New Caledonia</option>
-                  <option value="145">New Zealand</option>
-                  <option value="146">Nicaragua</option>
-                  <option value="147">Niger</option>
-                  <option value="148">Nigeria</option>
-                  <option value="149">Niue</option>
-                  <option value="150">Norfolk Island</option>
-                  <option value="151">Northern Mariana Islands</option>
-                  <option value="152">Norway</option>
-                  <option value="153">Oman</option>
-                  <option value="154">Pakistan</option>
-                  <option value="155">Palau</option>
-                  <option value="156">Panama</option>
-                  <option value="157">Papua New Guinea</option>
-                  <option value="158">Paraguay</option>
-                  <option value="159">Peru</option>
-                  <option value="160">Philippines</option>
-                  <option value="161">Pitcairn</option>
-                  <option value="162">Poland</option>
-                  <option value="163">Portugal</option>
-                  <option value="164">Puerto Rico</option>
-                  <option value="165">Qatar</option>
-                  <option value="166">Reunion</option>
-                  <option value="167">Romania</option>
-                  <option value="168">Russian Federation</option>
-                  <option value="169">Rwanda</option>
-                  <option value="170">Saint Helena</option>
-                  <option value="171">Saint Kitts and Nevis</option>
-                  <option value="172">Saint Lucia</option>
-                  <option value="173">Saint Pierre and Miquelon</option>
-                  <option value="174">Saint Vincent and the Grenadines</option>
-                  <option value="175">Samoa</option>
-                  <option value="176">San Marino</option>
-                  <option value="177">Sao Tome and Principe</option>
-                  <option value="178">Saudi Arabia</option>
-                  <option value="179">Senegal</option>
-                  <option value="180">Seychelles</option>
-                  <option value="181">Sierra Leone</option>
-                  <option value="182">Singapore</option>
-                  <option value="183">Slovakia</option>
-                  <option value="184">Slovenia</option>
-                  <option value="185">Solomon Islands</option>
-                  <option value="186">Somalia</option>
-                  <option value="187">South Africa</option>
-                  <option value="188">Spain</option>
-                  <option value="189">Sri Lanka</option>
-                  <option value="190">Sudan</option>
-                  <option value="191">Suriname</option>
-                  <option value="192">Svalbard and Jan Mayen</option>
-                  <option value="193">Swaziland</option>
-                  <option value="194">Sweden</option>
-                  <option value="195">Switzerland</option>
-                  <option value="196">Syrian Arab Republic</option>
-                  <option value="198">Tajikistan</option>
-                  <option value="199">Tanzania, United Republic of</option>
-                  <option value="200">Thailand</option>
-                  <option value="201">Togo</option>
-                  <option value="202">Tokelau</option>
-                  <option value="203">Tonga</option>
-                  <option value="204">Trinidad and Tobago</option>
-                  <option value="205">Tunisia</option>
-                  <option value="206">Turkey</option>
-                  <option value="207">Turkmenistan</option>
-                  <option value="208">Turks and Caicos Islands</option>
-                  <option value="209">Tuvalu</option>
-                  <option value="210">Uganda</option>
-                  <option value="211">Ukraine</option>
-                  <option value="212">United Arab Emirates</option>
-                  <option value="213">United Kingdom</option>
-                  <option value="214">United States</option>
-                  <option value="215">Uruguay</option>
-                  <option value="216">Uzbekistan</option>
-                  <option value="217">Vanuatu</option>
-                  <option value="218">Venezuela</option>
-                  <option value="219">Viet Nam</option>
-                  <option value="220">Virgin Islands, British</option>
-                  <option value="221">Virgin Islands, U.s.</option>
-                  <option value="222">Wallis and Futuna</option>
-                  <option value="223">Western Sahara</option>
-                  <option value="224">Yemen</option>
-                  <option value="225">Zambia</option>
-                  <option value="226">Zimbabwe</option>
-                  <option value="197">Republic of China, Taiwan</option>
-                  <option value="453">Sint Maarten (Dutch part)</option>
-                  <option value="454">Aland Islands</option>
-                  <option value="455">Bonaire, Sint Eustatius and Saba</option>
-                  <option value="456">Bouvet Island</option>
-                  <option value="457">British Indian Ocean Territory</option>
-                  <option value="458">Christmas Island</option>
-                  <option value="459">Cocos (Keeling) Islands</option>
-                  <option value="460">Curacao</option>
-                  <option value="461">Guernsey</option>
-                  <option value="462">Heard Island and McDonald Islands</option>
-                  <option value="463">Isle of Man</option>
-                  <option value="464">Jersey</option>
-                  <option value="465">Mayotte</option>
-                  <option value="466">Montenegro</option>
-                  <option value="467">Palestine</option>
-                  <option value="468">Saint Barthelemy</option>
-                  <option value="469">Saint Martin (French part)</option>
-                  <option value="470">Serbia</option>
-                  <option value="471">South Georgia and the South Sandwich Islands</option>
-                  <option value="472">South Sudan</option>
-                  <option value="473">Timor-Leste</option>
-                  <option value="474">United States Minor Outlying Islands</option></select>
+                <Select
+                  inputId="contact_country_id"
+                  placeholder="Country*"
+                  classNamePrefix="rs"
+                  isSearchable={true}
+                  options={countryOptions}
+                  value={
+                    formData.country
+                      ? countryOptions.find(opt => opt.value === formData.country)
+                      : null
+                  }
+                  onChange={(opt) => {
+                    const value = (opt as { value: string } | null)?.value ?? '';
+                    setFormData((prev) => ({ ...prev, country: value }));
+                  }}
+                  styles={{
+                    control: (base) => ({ ...base, borderRadius: 0 }),
+                  }}
+                />
+                <input
+                  type="hidden"
+                  name="contact[country_id]"
+                  value={formData.country}
+                />
               </div>
             </div>
             <div className="form-item">
@@ -613,19 +607,68 @@ export default function ContactForm() {
             <div className='form-item'>
               {/* <label htmlFor="answers_24099">I am interested in</label> */}
               <div className='dropdown-wrapper'>
-                  <div className="answer"><select name="answers[24099][answers]" id="answers_24099" className="false select-reset" defaultValue=""><option value="" disabled>I am interested in</option><option value="One Bedroom">One Bedroom</option>
-                  <option value="Two Bedrooms">Two Bedrooms</option>
-                  <option value="Three Bedrooms">Three Bedrooms</option>
-                  <option value="Four Bedrooms">Four Bedrooms</option></select></div>
+                <Select
+                  inputId="answers_24099"
+                  placeholder="I am interested in"
+                  classNamePrefix="rs"
+                  isMulti
+                  isSearchable={false}
+                  options={[
+                    { value: 'One Bedroom', label: 'One Bedroom' },
+                    { value: 'Two Bedrooms', label: 'Two Bedrooms' },
+                    { value: 'Three Bedrooms', label: 'Three Bedrooms' },
+                    { value: 'Four Bedrooms', label: 'Four Bedrooms' },
+                  ]}
+                  value={formData.floorplans.map(plan => ({ value: plan, label: plan }))}
+                  onChange={(selectedOptions) => {
+                    const values = selectedOptions ? Array.from(selectedOptions).map(opt => opt.value) : [];
+                    setFormData((prev) => ({ ...prev, floorplans: values }));
+                  }}
+                  styles={{
+                    control: (base) => ({ ...base, borderRadius: 0 }),
+                  }}
+                />
+                {formData.floorplans.map((plan, index) => (
+                  <input
+                    key={index}
+                    type="hidden"
+                    name="answers[24099][answers][]"
+                    value={plan}
+                  />
+                ))}
               </div>
             </div>
             {iAm !== 'Agent' && (
               <div className='form-item'>
                 {/* <label htmlFor="answers_24098">Are you represented by an agent?</label> */}
                 <div className='dropdown-wrapper'>
-                   <div className="answer"><select name="answers[24098][answers]" id="answers_24098" className="false select-reset" defaultValue=""><option value="" disabled>Represented by an agent?</option><option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                    </select></div>
+                  <Select
+                    inputId="answers_24098"
+                    placeholder="Represented by an agent?"
+                    classNamePrefix="rs"
+                    isSearchable={false}
+                    options={[
+                      { value: 'Yes', label: 'Yes' },
+                      { value: 'No', label: 'No' },
+                    ]}
+                    value={
+                      formData.representedByAgent
+                        ? { value: formData.representedByAgent, label: formData.representedByAgent }
+                        : null
+                    }
+                    onChange={(opt) => {
+                      const value = (opt as { value: string } | null)?.value ?? '';
+                      setFormData((prev) => ({ ...prev, representedByAgent: value }));
+                    }}
+                    styles={{
+                      control: (base) => ({ ...base, borderRadius: 0 }),
+                    }}
+                  />
+                  <input
+                    type="hidden"
+                    name="answers[24098][answers]"
+                    value={formData.representedByAgent}
+                  />
                 </div>
               </div>
             )}

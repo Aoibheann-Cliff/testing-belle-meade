@@ -124,6 +124,37 @@ h6{
     font-family: 'Dia';
 }
 
+.Team .image-text-slide .inner-text{
+    width:85%;
+}
+
+.Team .image-text-slide .inner-text-text{
+    max-height:200px;
+    padding-right:70px;
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    overflow-y: auto;
+    scrollbar-width: thin !important; 
+    scrollbar-color: #ffffff80 transparent !important; 
+}
+
+.Team .image-text-slide .inner-text-text::-webkit-scrollbar {
+  width: 2px !important;
+}
+
+.Team .image-text-slide .inner-text-text::-webkit-scrollbar-track {
+  background: #ffffff80 !important;
+}
+
+.Team .image-text-slide .inner-text-text::-webkit-scrollbar-thumb {
+  background: #ffffff !important;
+}
+
+.Team .image-text-slide .inner-text-text::-webkit-scrollbar-thumb:hover {
+  background: #ffffff !important;
+}
+
 .loading-overlay{
     position:absolute;
     z-index:100;
@@ -558,11 +589,11 @@ footer{
     padding:0rem 1.25rem;
     border:1px solid #FFF9F2;
     will-change:background-color, color;
-    transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -o-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -ms-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -moz-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -webkit-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -o-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -ms-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -moz-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -webkit-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .inquire{
@@ -582,11 +613,11 @@ footer{
     border:1px solid #FFF9F2;
     cursor:pointer;
     will-change:background-color, color;
-    transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -o-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -ms-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -moz-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -webkit-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -o-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -ms-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -moz-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -webkit-transition: background-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), color 600ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .submit{
@@ -683,14 +714,14 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
 
 .flickity-prev-next-button.next{
     width:50%;
-    height:75%;
+    height:15%;
     padding-right: 3.125rem !important;
     right:0 !important;
 }
 
 .flickity-prev-next-button.previous{
     width:50%;
-    height:75%;
+    height:15%;
     padding-left: 3.125rem !important;
     left:0 !important;
     background-position: center left 3.125rem !important;
@@ -1059,10 +1090,16 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
 
 .menuitem{
     position:relative;
+    will-change:color;
+    transition: color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -o-transition: color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -ms-transition: color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -moz-transition: color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    -webkit-transition: color 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .menuitem{
-    color:#FFF9F2 !important;
+    color:#FFF9F2;
     font-family: 'Dia';  
     text-transform: uppercase;
     font-size:0.938rem;
@@ -2162,8 +2199,8 @@ div:has(> .react-dropdown-select) {
     }
 
     .Team .image-text-slide .inner-text-text{
-        max-height: 50vh;
-        overflow: scroll;
+        max-height: 175px;
+        overflow-y: auto;
     }
 
 }
@@ -2207,6 +2244,41 @@ div:has(> .react-dropdown-select) {
     object-fit: contain !important;
   }
 
+        .largeImageLeftSmallImageRight{
+        flex-direction: column;
+      }
+
+      .smallImageLeftLargeImageRight{
+        flex-direction: column;
+      }
+
+      .largeImageContainer{
+        width:100%;
+        height:50svh;
+      }
+
+      .smallImageContainer{
+        width:100%;
+        height:50svh;
+      }
+
+      .largeImageContainer img{
+        height:50svh;
+        min-height:50svh;
+        overflow:hidden;
+      }
+
+      .largeImageLeftSmallImageRight .smallImageContainer img, .largeImageLeftSmallImageRight .smallImageContainer video{
+        width:fit-content;
+        padding: 1.563rem 1.563rem 6rem 1.563rem;
+        height: 50svh !important;
+      }
+
+      .smallImageLeftLargeImageRight .smallImageContainer img, .smallImageLeftLargeImageRightt .smallImageContainer video{
+        width:fit-content;
+        padding: 6rem 1.563rem 1.563rem 1.563rem;
+        height: 50svh !important;
+      }
 }
 
 @media only screen and (max-device-width : 1366px) and (min-device-width : 768px)
@@ -2532,11 +2604,19 @@ line-height: 1.225rem;
       }
 
       .next-page-title{
-        padding-left:0.938rem;
+        padding-left:1rem;
         padding-right:2.313rem;
         opacity:0;
         display:block;
       }
+
+    .next-page-title h3{
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+      }
+
 
       .purple-arrow {
         width: 15px !important;
@@ -2643,25 +2723,38 @@ line-height: 1.225rem;
         object-fit: contain;
       }
 
-      .largeImageContainer{
-        width:50%;
-        height:100svh;
-      }
+    .largeImageContainer, .smallImageContainer {
+        width: 50%;
+        height: 100svh;
+    }
 
-      .smallImageContainer{
-        width:50%;
-        height:100svh;
-        display:flex;
-        align-items: center;
+    .smallImageContainer {
         justify-content: center;
-      }
+        align-items: center;
+        display: flex;
+    }
 
-      .flickity-cell .smallImageContainer img, .flickity-cell .smallImageContainer video{
+    .largeImageLeftSmallImageRight, .smallImageLeftLargeImageRight{
+        flex-direction: row;
+    }
+
+        .largeImageContainer img {
+        height: 100svh;
+        min-height: 100svh;
+    }
+
+    .flickity-cell .smallImageContainer img, .flickity-cell .smallImageContainer video {
+        aspect-ratio: auto !important;
         width: auto !important;
         height: 50vh !important;
         min-height: 50vh !important;
-        aspect-ratio: auto !important;
-      }
+        padding:0px !important;
+    }
+
+        .largeImageContainer, .smallImageContainer {
+        width: 50%;
+        height: 100svh;
+    }
 
       .image-lightbox{
         will-change:opacity;
@@ -2692,10 +2785,11 @@ line-height: 1.225rem;
         padding:0.438rem 0rem !important;
         margin:auto;
         max-width:2.688rem;
+        justify-content: flex-start;
       }
 
       .next-page-title{
-        padding-left:0.938rem;
+        padding-left:1rem;
         padding-right:2.313rem;
         opacity:0;
         display:block;
@@ -3086,8 +3180,8 @@ line-height: 1.225rem;
     }
 
     .Team .image-text-slide .inner-text-text{
-        max-height: 60vh;
-        overflow: scroll;
+        max-height: 150px;
+        overflow-y: auto;
     }
 
     .textpage-title{
@@ -3396,13 +3490,20 @@ line-height: 1.225rem;
         padding:0.438rem 0rem !important;
         margin:auto;
         max-width:2.688rem;
+        justify-content: flex-start;
       }
 
       .next-page-title{
-        padding-left:0.938rem;
+        padding-left:1rem;
         padding-right:2.313rem;
         opacity:0;
         display:block;
+      }
+
+      .next-page-title h3{
+        font-size: 1.063rem;
+        font-style: normal;
+        font-weight: 400;
       }
 
       .purple-arrow {

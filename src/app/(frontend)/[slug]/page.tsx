@@ -448,6 +448,11 @@ export default async function Page({
                               .quality(10)
                               .url()}
                             className="object-cover h-full w-full"
+                            style={{
+                              objectPosition: slide.image?.hotspot
+                                ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
+                                : "center",
+                            }}
                           />
                         </div>
                       )}

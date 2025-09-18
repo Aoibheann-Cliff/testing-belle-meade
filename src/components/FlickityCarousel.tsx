@@ -130,6 +130,37 @@ lightboxCloseButtons.forEach(button => {
         setFlickityInstance(flkty);
   
         flkty.on('change', function(index) { 
+
+          document.querySelector(".inquire").style.color = "#fff9f2";
+        document.querySelector(".inquire").style.borderColor = "#fff9f2";
+          document.querySelector("footer .footer-button").style.color = "#fff9f2";
+        document.querySelector("footer .footer-button").style.borderColor = "#fff9f2";
+        document.querySelectorAll(".right-menu .menuitem").forEach(item => {
+            item.style.color = "#fff9f2";
+          });
+          document.querySelectorAll("footer .menuitem").forEach(item => {
+            item.style.color = "#fff9f2";
+
+
+if(nextPageLink){
+  gsap.killTweensOf([nextPageLink, nextPageTitle]);
+
+  gsap.to(nextPageTitle, {
+    opacity: 0,
+    duration: 0.3,
+  });
+
+  gsap.to(nextPageLink, {
+    width: "3.125rem",
+    duration: 0.6,
+    ease: "power3.out",
+    delay: 0.6,
+    onComplete: () => {
+      nextPageTitle.style.display = 'none';
+    }
+  });
+}
+});
           if(nextPageLink){
           if (index === flkty.slides.length - 1) {
             const ipad = window.matchMedia("(max-width: 1366px)").matches;
@@ -162,6 +193,7 @@ lightboxCloseButtons.forEach(button => {
               },
               {
                 opacity: 1,
+                display: 'block',
                 duration: 0.3,
                 ease: "power1.out",
                 delay: 4
@@ -194,59 +226,55 @@ lightboxCloseButtons.forEach(button => {
               },
               {
                 opacity: 1,
+                display: 'block',
                 duration: 0.3,
                 ease: "power1.out",
                 delay: 4
               });
             }
             else {
-                nextPageLink.addEventListener('mouseenter', () => {
-                  gsap.killTweensOf([nextPageLink, nextPageTitle]);
-                  nextPageTitle.style.display = 'block';
-                  void nextPageTitle.offsetWidth;
-                  const naturalWidth = nextPageTitle.scrollWidth + "px";
-                
-                  gsap.to(nextPageLink, {
-                    width: "34%",
-                    duration: 0.6,
-                    ease: "power3.out"
-                  });
-                
-                  gsap.fromTo(nextPageTitle, {
-                    opacity: 0,
-                  },
-                  {
-                    opacity: 1,
-                    duration: 0.3,
-                    ease: "power1.out",
-                    delay: 0.6
-                  });
-                });
-                
-                nextPageLink.addEventListener('mouseleave', () => {
-                  gsap.killTweensOf([nextPageLink, nextPageTitle]);
-                
-                  gsap.to(nextPageTitle, {
-                    opacity: 0,
-                    duration: 0.3,
-                  });
-                
-                  gsap.to(nextPageLink, {
-                    width: "3.125rem",
-                    duration: 0.6,
-                    ease: "power3.out",
-                    delay: 0.6,
-                    onComplete: () => {
-                      nextPageTitle.style.display = 'none';
-                    }
-                  });
-                });
-                
+setTimeout(() => {
+  gsap.killTweensOf([nextPageLink, nextPageTitle]);
+  nextPageTitle.style.display = 'block';
+  void nextPageTitle.offsetWidth;
+  const naturalWidth = nextPageTitle.scrollWidth + "px";
 
-                setTimeout(() => {
-                  nextPageLink.style.transform = "translateX(0px)";
-                }, 1000);
-              }
+  gsap.to(nextPageLink, {
+    width: "34%",
+    duration: 0.6,
+    ease: "power3.out"
+  });
+
+  gsap.fromTo(nextPageTitle, {
+    opacity: 0,
+  },
+  {
+    opacity: 1,
+    display: 'block',
+    duration: 0.3,
+    ease: "power1.out",
+    delay: 0.6
+  });
+
+  const bgColor = window.getComputedStyle(nextPageLink).backgroundColor;
+  if (bgColor === "rgb(198, 187, 207)") {
+   document.querySelector(".inquire").style.color = "#4C2F48";
+   document.querySelector(".inquire").style.borderColor = "#4C2F48";
+    document.querySelector("footer .footer-button").style.color = "#4C2F48";
+   document.querySelector("footer .footer-button").style.borderColor = "#4C2F48";
+   document.querySelectorAll(".right-menu .menuitem").forEach(item => {
+      item.style.color = "#4C2F48";
+    });
+     document.querySelectorAll("footer .menuitem").forEach(item => {
+      item.style.color = "#4C2F48";
+    });
+  }
+}, 2500);
+
+setTimeout(() => {
+  nextPageLink.style.transform = "translateX(0px)";
+}, 1000);
+            }
         
         
           } else {

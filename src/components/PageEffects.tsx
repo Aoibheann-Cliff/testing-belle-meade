@@ -35,6 +35,20 @@ export default function GlobalPageEffects() {
     const header = document.getElementById('header');
     const footer = document.getElementById('footer');
 
+    document.querySelector(".inquire").style.color = "#fff9f2";
+    document.querySelector(".inquire").style.borderColor = "#fff9f2";
+    document.querySelectorAll(".right-menu .menuitem").forEach(item => {
+        item.style.color = "#fff9f2";
+    });
+    document.querySelectorAll("footer .menuitem").forEach(item => {
+    item.style.color = "#fff9f2";
+    });
+    document.querySelectorAll("footer .main-footer-button").forEach(item => {
+    item.style.color = "#fff9f2";
+    });
+    document.querySelectorAll("footer .main-footer-button").forEach(item => {
+    item.style.borderColor = "#fff9f2";
+    });
 
     document.querySelectorAll('.image-lightbox img').forEach((img) => {
       const panzoomInstance = panzoom(img, {
@@ -138,8 +152,8 @@ export default function GlobalPageEffects() {
     }, 1250);
 
       setTimeout(() => {
-          openBtn.style.color = "#fff9f2";
-          openBtn.style.border = "1px solid #fff9f2";
+          // openBtn.style.color = "#fff9f2";
+          // openBtn.style.border = "1px solid #fff9f2";
           setTimeout(() => {
         }, 500);
       }, 1500);
@@ -324,8 +338,8 @@ export default function GlobalPageEffects() {
         ease: "power3.out",
         onComplete: () => {
           menuContainer.style.display = "none";
-          openBtn.style.color = "#fff9f2";
-          openBtn.style.border = "1px solid #fff9f2";
+          // openBtn.style.color = "#fff9f2";
+          // openBtn.style.border = "1px solid #fff9f2";
         }
       });
     }

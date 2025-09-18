@@ -35,17 +35,20 @@ export default function GlobalPageEffects() {
     const header = document.getElementById('header');
     const footer = document.getElementById('footer');
 
-    // setTimeout(() => {
-    //   header.style.opacity = "1";
-    // }, 1000);
-
-    // setTimeout(() => {
-    //   footer.style.opacity = "1";
-    // }, 1000);
-
-    // setTimeout(() => {
-    //   wrapper.style.opacity = "1";
-    // }, 1000);
+    document.querySelector(".inquire").style.color = "#fff9f2";
+    document.querySelector(".inquire").style.borderColor = "#fff9f2";
+    document.querySelectorAll(".right-menu .menuitem").forEach(item => {
+        item.style.color = "#fff9f2";
+    });
+    document.querySelectorAll("footer .menuitem").forEach(item => {
+    item.style.color = "#fff9f2";
+    });
+    document.querySelectorAll("footer .main-footer-button").forEach(item => {
+    item.style.color = "#fff9f2";
+    });
+    document.querySelectorAll("footer .main-footer-button").forEach(item => {
+    item.style.borderColor = "#fff9f2";
+    });
 
     setTimeout(() => {
       const designMenuItem = document.getElementById('design');
@@ -196,10 +199,10 @@ export default function GlobalPageEffects() {
           purpleLogo.style.opacity = 0;
       }, 1250);
   
-        setTimeout(() => {
-            openBtn.style.color = "#fff9f2";
-            openBtn.style.border = "1px solid #fff9f2";
-        }, 1500);
+        // setTimeout(() => {
+        //     openBtn.style.color = "#fff9f2";
+        //     openBtn.style.border = "1px solid #fff9f2";
+        // }, 1500);
   
         setTimeout(() => {
           leftMenu.style.opacity = "1";
@@ -367,8 +370,8 @@ export default function GlobalPageEffects() {
           ease: "power3.out",
           onComplete: () => {
             menuContainer.style.display = "none";
-            openBtn.style.color = "#fff9f2";
-            openBtn.style.border = "1px solid #fff9f2";
+            // openBtn.style.color = "#fff9f2";
+            // openBtn.style.border = "1px solid #fff9f2";
           }
         });
       }

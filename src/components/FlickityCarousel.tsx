@@ -131,15 +131,15 @@ lightboxCloseButtons.forEach(button => {
   
         flkty.on('change', function(index) { 
 
-          document.querySelector(".inquire").style.color = "#fff9f2";
+        document.querySelector(".inquire").style.color = "#fff9f2";
         document.querySelector(".inquire").style.borderColor = "#fff9f2";
-          document.querySelector("footer .footer-button").style.color = "#fff9f2";
+        document.querySelector("footer .footer-button").style.color = "#fff9f2";
         document.querySelector("footer .footer-button").style.borderColor = "#fff9f2";
         document.querySelectorAll(".right-menu .menuitem").forEach(item => {
             item.style.color = "#fff9f2";
-          });
-          document.querySelectorAll("footer .menuitem").forEach(item => {
-            item.style.color = "#fff9f2";
+        });
+        document.querySelectorAll("footer .menuitem").forEach(item => {
+        item.style.color = "#fff9f2";
 
 
 if(nextPageLink){
@@ -198,6 +198,23 @@ if(nextPageLink){
                 ease: "power1.out",
                 delay: 4
               });
+
+              setTimeout(() => {
+            const bgColor = window.getComputedStyle(nextPageLink).backgroundColor;
+            if (bgColor === "rgb(198, 187, 207)") {
+            document.querySelector("#purpleLogo").style.opacity = 1;
+            document.querySelector(".inquire").style.color = "#4C2F48";
+            document.querySelector(".inquire").style.borderColor = "#4C2F48";
+              document.querySelector("footer .footer-button").style.color = "#4C2F48";
+            document.querySelector("footer .footer-button").style.borderColor = "#4C2F48";
+            document.querySelectorAll(".right-menu .menuitem").forEach(item => {
+                item.style.color = "#4C2F48";
+              });
+              document.querySelectorAll("footer .menuitem").forEach(item => {
+                item.style.color = "#4C2F48";
+              });
+            }
+            }, 3000);
             } 
             else if (ipad) {
               const naturalWidth = "34%"
@@ -231,6 +248,22 @@ if(nextPageLink){
                 ease: "power1.out",
                 delay: 4
               });
+              
+setTimeout(() => {
+            const bgColor = window.getComputedStyle(nextPageLink).backgroundColor;
+  if (bgColor === "rgb(198, 187, 207)") {
+   document.querySelector(".inquire").style.color = "#4C2F48";
+   document.querySelector(".inquire").style.borderColor = "#4C2F48";
+    document.querySelector("footer .footer-button").style.color = "#4C2F48";
+   document.querySelector("footer .footer-button").style.borderColor = "#4C2F48";
+   document.querySelectorAll(".right-menu .menuitem").forEach(item => {
+      item.style.color = "#4C2F48";
+    });
+     document.querySelectorAll("footer .menuitem").forEach(item => {
+      item.style.color = "#4C2F48";
+    });
+  }
+  }, 3000);
             }
             else {
 setTimeout(() => {

@@ -1751,7 +1751,7 @@ div:has(> .react-dropdown-select) {
 
 @media only screen and (max-width:1600px){
     .menuitem{
-        color:#FFF9F2 !important;
+        color:#FFF9F2;
         font-family: 'Dia';  
         text-transform: uppercase;
         font-size:0.813rem;

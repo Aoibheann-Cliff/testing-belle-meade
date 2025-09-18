@@ -43,7 +43,7 @@ export function Footer() {
       {footerData?.links?.map((link) => (
         <Link
           key={link.label}
-          className={link.style === 'button' ? 'footer-button' : 'menuitem'}
+          className={link.style === 'button' ? 'footer-button main-footer-button' : 'menuitem'}
           href={link.url}
           target={link.newTab ? '_blank' : undefined} // open in new tab if true
           rel={link.newTab ? 'noopener noreferrer' : undefined} // security for new tab

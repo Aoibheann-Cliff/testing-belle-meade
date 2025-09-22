@@ -1398,6 +1398,8 @@ input::placeholder{
 
 .rs__indicators{
     margin-top:auto !important;
+    position:absolute !important;
+    width:100% !important;
 }
 
 .form-container .rs__menu{

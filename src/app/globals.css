@@ -1621,6 +1621,7 @@ div:has(> .react-dropdown-select) {
 
 .rs__indicators{
     height:30px !important;
+    bottom:0 !important;
 }
 
 #answers_24099{

@@ -138,6 +138,7 @@ lightboxCloseButtons.forEach(button => {
         document.querySelectorAll(".right-menu .menuitem").forEach(item => {
             item.style.color = "#fff9f2";
         });
+        document.querySelector("#purpleLogo").style.opacity = 0;
         document.querySelectorAll("footer .menuitem").forEach(item => {
         item.style.color = "#fff9f2";
 

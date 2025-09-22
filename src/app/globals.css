@@ -2705,7 +2705,7 @@ line-height: 1.225rem;
         opacity:0;
     }
 
-    .flickity-prev-next-button.previous, .flickity-prev-next-button.next{
+    .flickity-prev-next-button.previous, .flickity-prev-next-button.next, .slide-footer .title{
         display:none !important;
     }
 

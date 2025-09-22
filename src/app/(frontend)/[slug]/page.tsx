@@ -328,20 +328,6 @@ export default async function Page({
                       </div>
                       </div>
                       )}
-                        {/* <div className="slide-overlay">
-                        <div className="text">
-                          {slide.title && <h5 className="title">{slide.title}</h5>}
-                          {slide.text && <div className={`${slide.mobiletext && ('has-mobile-text')}`}><PortableText value={slide.text} /></div>}
-                          {(slide.mobiletext || []).map((block, i) => {
-                            const Tag = block.style === 'normal' ? 'p' : block.style || 'p';
-                            return (
-                              <Tag className="mobile-text" key={i}>
-                                {block.children?.map((child) => child.text).join('')}
-                              </Tag>
-                            );
-                          })}
-                        </div>
-                      </div> */}
                         <div className="slide-footer">
                           <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
                           <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
@@ -502,7 +488,7 @@ export default async function Page({
                 case "imageLeftTextRight":
                 case "imageRightTextLeft": {
                   const reverse = slide.layout === "imageLeftTextRight";
-                  if (!slide.image) return <></>
+                  if (!slide.image) return <></>;
                   return (
                     <div
                       key={index}
@@ -514,64 +500,59 @@ export default async function Page({
                         <div className="inner-text">
                           {slide.title && <h2 className="title">{slide.title}</h2>}
                           <div className="inner-text-text">
-                          {(slide.text || []).map((block, i) => {
-                            const Tag = block.style === 'normal' ? 'p' : block.style || 'p';
-                            return (
-                              <Tag className={`${slide.mobiletext && ('has-mobile-text')}`} key={i}>
-                                {block.children?.map((child) => child.text).join('')}
-                              </Tag>
-                            );
-                          })}
-                          {(slide.mobiletext || []).map((block, i) => {
-                            const Tag = block.style === 'normal' ? 'p' : block.style || 'p';
-                            return (
-                              <Tag className="mobile-text" key={i}>
-                                {block.children?.map((child) => child.text).join('')}
-                              </Tag>
-                            );
-                          })}
+                            {slide.text && (
+                              <PortableText value={slide.text} components={components} />
+                            )}
+                            {(slide.mobiletext || []).map((block, i) => {
+                              const Tag = block.style === 'normal' ? 'p' : block.style || 'p';
+                              return (
+                                <Tag className="mobile-text" key={i}>
+                                  {block.children?.map((child) => child.text).join('')}
+                                </Tag>
+                              );
+                            })}
                           </div>
                         </div>
                       </div>
                       {slide.mediaType === 'video' && slide.videoFile?.asset?.url && (
-                      <video
-                        src={slide.videoFile.asset.url}
-                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                      />
+                        <video
+                          src={slide.videoFile.asset.url}
+                          className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                        />
                       )}
                       {slide.mediaType === 'image' && (
                         <div className="image-container">
-                      <Image
-                        unoptimized
-                        src={urlFor(slide.image).width(1920).height(2160).quality(70).fit('crop').format('jpg').url()}
-                        alt={slide.image?.alt || ""}
-                        width={1920}
-                        height={1080}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
-                        className={`object-cover min-h-screen`}
-                      />
-                      </div>
-                    )}
-                      <div className="slide-footer">
-                          <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
-                          <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
-                          <h5 className="count">{index + 1} / {totalSlides}</h5>
-                          <div className="button-next"><Image src={arrownext} alt="next"/></div>
-                          {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
-                            <a aria-label={slide.linkText} href={slide.link} target="_blank" rel="noopener noreferrer">
-                              <h5 className="caption">{slide.linkText}</h5>
-                            </a>
-                          )}
-                          {slide.captionOrLinkType !== 'link' && slide.caption && (
-                            <h5 className="caption">{slide.caption}</h5>
-                          )}
+                          <Image
+                            unoptimized
+                            src={urlFor(slide.image).width(1920).height(2160).quality(70).fit('crop').format('jpg').url()}
+                            alt={slide.image?.alt || ""}
+                            width={1920}
+                            height={1080}
+                            quality={100}
+                            placeholder="blur"
+                            blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
+                            className={`object-cover min-h-screen`}
+                          />
                         </div>
+                      )}
+                      <div className="slide-footer">
+                        <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
+                        <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
+                        <h5 className="count">{index + 1} / {totalSlides}</h5>
+                        <div className="button-next"><Image src={arrownext} alt="next"/></div>
+                        {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
+                          <a aria-label={slide.linkText} href={slide.link} target="_blank" rel="noopener noreferrer">
+                            <h5 className="caption">{slide.linkText}</h5>
+                          </a>
+                        )}
+                        {slide.captionOrLinkType !== 'link' && slide.caption && (
+                          <h5 className="caption">{slide.caption}</h5>
+                        )}
+                      </div>
                       <div className="flickity-bottom-overlay"></div>
                       {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {
                         const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase();

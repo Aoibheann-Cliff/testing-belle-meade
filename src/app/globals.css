@@ -1358,6 +1358,18 @@ input::placeholder{
     display:none !important;
 }
 
+.rs__multi-value__label{
+    color: #4c2f48 !important;
+}
+
+.rs__multi-value{
+    background:#E8E4EC !important;
+}
+
+.rs__multi-value__remove:hover{
+    background-color: #c6c3ca !important;
+    color: #4c2f48 !important;
+}
 .rs__placeholder{
     margin:0px !important;
     color: #4c2f48 !important;
@@ -1564,6 +1576,14 @@ div:has(> .react-dropdown-select) {
 
 .rs__menu *{
     color:#4C2F48 !important;
+}
+
+.rs__option{
+    height: 1.875rem;
+    letter-spacing: .1269rem !important;
+    font-size: .8442rem !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
 }
 
 .rs__option:hover{

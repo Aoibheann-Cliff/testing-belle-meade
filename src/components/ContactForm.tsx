@@ -4,7 +4,10 @@ import Script from 'next/script';
 import { client } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 import { useEffect, useRef, useState } from 'react';
-import Select from 'react-select';
+import dynamic from 'next/dynamic';
+import type { MultiValue } from 'react-select';
+const Select = dynamic(() => import('react-select'), { ssr: false });
+type Option = { value: string; label: string };
 
 interface PageData {
   title: string;
@@ -473,7 +476,7 @@ export default function ContactForm() {
           <h3 className="contact-form-thank-you">Thank you for your inquiry.</h3>
         </div>
         <div className="form-footer" id="formFooter">
-      <a className="addresslink" href="https://maps.app.goo.gl/ngRsVcKPu2c7aXJLA" target="_blank">4500 Harding Pike, Nashville</a>
+      <a className="addresslink" href="https://maps.app.goo.gl/ngRsVcKPu2c7aXJLA" target="_blank">One Iris Lane, Nashville, Tennessee</a>
       <div className="form-footer-menu">
         <Footer />
       </div>
@@ -519,8 +522,9 @@ export default function ContactForm() {
           <div className="inner-form-container">
             <div className='form-item full-width'>
               {/* <label htmlFor="answers_24670">I am *</label> */}
-              <div className='dropdown-wrapper'>
+                 <div className='dropdown-wrapper'>
                 <Select
+                  instanceId="answers_24670"
                   inputId="answers_24670"
                   placeholder="I am"
                   classNamePrefix="rs"
@@ -563,6 +567,7 @@ export default function ContactForm() {
               <div className='dropdown-wrapper answer'>
                 {/* <label>Country </label> */}
                 <Select
+                  instanceId="contact_country_id"
                   inputId="contact_country_id"
                   placeholder="Country*"
                   classNamePrefix="rs"
@@ -608,6 +613,7 @@ export default function ContactForm() {
               {/* <label htmlFor="answers_24099">I am interested in</label> */}
               <div className='dropdown-wrapper'>
                 <Select
+                  instanceId="answers_24099"
                   inputId="answers_24099"
                   placeholder="I am interested in"
                   classNamePrefix="rs"
@@ -618,10 +624,10 @@ export default function ContactForm() {
                     { value: 'Two Bedrooms', label: 'Two Bedrooms' },
                     { value: 'Three Bedrooms', label: 'Three Bedrooms' },
                     { value: 'Four Bedrooms', label: 'Four Bedrooms' },
-                  ]}
-                  value={formData.floorplans.map(plan => ({ value: plan, label: plan }))}
+                  ] as Option[]}
+                  value={formData.floorplans.map<Option>(plan => ({ value: plan, label: plan }))}
                   onChange={(selectedOptions) => {
-                    const values = selectedOptions ? Array.from(selectedOptions).map(opt => opt.value) : [];
+                    const values = (selectedOptions as MultiValue<Option> | null)?.map(o => o.value) ?? [];
                     setFormData((prev) => ({ ...prev, floorplans: values }));
                   }}
                   styles={{
@@ -643,6 +649,7 @@ export default function ContactForm() {
                 {/* <label htmlFor="answers_24098">Are you represented by an agent?</label> */}
                 <div className='dropdown-wrapper'>
                   <Select
+                    instanceId="answers_24098"
                     inputId="answers_24098"
                     placeholder="Represented by an agent?"
                     classNamePrefix="rs"
@@ -684,7 +691,7 @@ export default function ContactForm() {
         </form>
       </div>
       <div className="form-footer" id="formFooter">
-      <a className="addresslink" href="https://maps.app.goo.gl/ngRsVcKPu2c7aXJLA" target="_blank">4500 Harding Pike, Nashville</a>
+      <a className="addresslink" href="https://maps.app.goo.gl/ngRsVcKPu2c7aXJLA" target="_blank">One Iris Lane, Nashville, Tennessee</a>
       <div className="form-footer-menu">
         <Footer />
       </div>

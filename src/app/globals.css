@@ -2226,6 +2226,7 @@ div:has(> .react-dropdown-select) {
         height: 1px;
         width: 100%;
         background-color: #FFF9F2;
+        transform-origin: center;
         will-change:background-color, transform;
         transition: background-color 600ms ease-in-out, transform 600ms ease-in-out;
         -o-transition: background-color 600ms ease-in-out, transform 600ms ease-in-out;

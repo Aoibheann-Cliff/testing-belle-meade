@@ -106,9 +106,8 @@ export default async function Page({
                               : "center",
                           }}
                         />
-
                         <div className="lightbox-close panzoom-exclude">
-                            <Image src={lightboxclose} alt="close"/>
+                            <Image src={lightboxclose} alt="close" width={28} height={28} style={{ filter: 'drop-shadow(rgba(0, 0, 0, 0.75) 1px 0px 2px)' }} />
                         </div>
                         <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                         <Image
@@ -206,7 +205,7 @@ export default async function Page({
                         }}
                       />
                        <div className="lightbox-close panzoom-exclude">
-                          <Image src={lightboxclose} alt="close"/>
+                          <Image src={lightboxclose} alt="close" width={28} height={28} style={{ filter: 'drop-shadow(rgba(0, 0, 0, 0.75) 1px 0px 2px)' }} />
                         </div>
                       <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                       <Image
@@ -307,7 +306,7 @@ export default async function Page({
                         }}
                       />
                       <div className="lightbox-close panzoom-exclude">
-                          <Image src={lightboxclose} alt="close"/>
+                          <Image src={lightboxclose} alt="close" width={28} height={28} style={{ filter: 'drop-shadow(rgba(0, 0, 0, 0.75) 1px 0px 2px)' }} />
                         </div>
                       <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                       <Image

@@ -862,12 +862,16 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     background: url('./arrow.svg') !important;
     background-repeat: no-repeat !important;
     background-position: center left 3.125rem !important; 
+    -webkit-filter: drop-shadow(1px 1px 1.5px rgba(0,0,0,0.75));
+    filter: drop-shadow(1px 1px 1.5px rgba(0,0,0,0.75));
 }
 
 .flickity-prev-next-button.next {
     background: url('./next-arrow.svg') !important;
     background-repeat: no-repeat !important;
     background-position: center right 3.125rem !important; 
+    -webkit-filter: drop-shadow(1px 1px 1.5px rgba(0,0,0,0.75));
+    filter: drop-shadow(1px 1px 1.5px rgba(0,0,0,0.75));
 }
 
 .flickity-button:active{

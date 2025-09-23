@@ -143,7 +143,7 @@ export default async function Page({
                             <h5 className="caption">{slide.caption}</h5>
                           )}
                           <button type="button" className="lightbox">
-                              <Image src={lightbox} alt="next"/>
+                              <Image src={lightbox} alt="next" width={28} height={28} style={{ filter: 'drop-shadow(1px 1px 1.5px rgba(0,0,0,0.75))' }} />
                           </button>
                         </div>
                       <div className="flickity-bottom-overlay"></div>

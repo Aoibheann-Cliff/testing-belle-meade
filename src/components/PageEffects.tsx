@@ -79,12 +79,15 @@ export default function GlobalPageEffects() {
       function toggleHamburger() {
         const width = window.innerWidth;
       
+      
         if (width <= 600) {
-          firstBar.style.transform = "rotate(45deg) translate(0.375rem, 0.375rem)";
-          thirdBar.style.transform = "rotate(-45deg) translate(0.375rem, -0.375rem)";
+          const translateRem = 0.36;
+          firstBar.style.transform = `rotate(45deg) translate(${translateRem}rem, ${translateRem}rem)`;
+          thirdBar.style.transform = `rotate(-45deg) translate(${translateRem}rem, -${translateRem}rem)`;
         } else {
-          firstBar.style.transform = "rotate(45deg) translate(0.35rem, 0.35rem)";
-          thirdBar.style.transform = "rotate(-45deg) translate(0.35rem, -0.35rem)";
+          const translateRem = 0.36;
+          firstBar.style.transform = `rotate(45deg) translate(${translateRem}rem, ${translateRem}rem)`;
+          thirdBar.style.transform = `rotate(-45deg) translate(${translateRem}rem, -${translateRem}rem)`;
         }
       
         secondBar.style.width = "0";
@@ -123,6 +126,7 @@ export default function GlobalPageEffects() {
     function closeMenu() {
       firstBar.style.transform = "rotate(0deg) translate(0rem, 0rem)";
       secondBar.style.width = "";
+      secondBar.style.opacity = 1;
       thirdBar.style.transform = "rotate(0deg) translate(0rem, 0rem)";
       firstBar.style.backgroundColor = "#fff9f2";
       thirdBar.style.backgroundColor= "#fff9f2";

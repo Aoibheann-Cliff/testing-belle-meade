@@ -138,9 +138,18 @@ h6{
     display: flex;
     flex-direction: column;
     gap:1rem;
-    overflow-y: auto;
+  overflow: scroll !important;
     scrollbar-width: thin !important; 
     scrollbar-color: #ffffff80 transparent !important; 
+      scrollbar-gutter: stable !important;
+        overflow-y: scroll; /* Show vertical scrollbar */
+  overflow-x: scroll;
+}
+
+/* Chrome, Safari */
+.Team .image-text-slide::-webkit-scrollbar {
+  display: block !important;
+  width: 12px; /* optional width */
 }
 
 .Team .image-text-slide .inner-text-text::-webkit-scrollbar {
@@ -1137,123 +1146,6 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     overflow:hidden;
 }
 
-/* .form-container{
-    position:fixed;
-    z-index:99999;
-    top:-100svh;
-    right:0;
-    width:100%;
-    height:100svh;
-    max-height:100svh;
-    overflow:scroll;
-    display:none;
-    flex-direction: column;
-    min-height:100svh;
-    justify-content:center;
-    align-items: center;
-    background:#FFF9F2
-}
-
-.form-container label{
-    display: none !important;
-    color: #4c2f48 !important;
-}
-
-.form-item{
-    width:calc(50% - .75rem);
-}
-
-.form-container .agent-company-input{
-    width: calc(50% - 0.75rem);
-    position:relative;
-}
-
-.agent-company-input input{
-    position: absolute;
-    width: 100%;
-    top: 0;
-    display:none;
-    opacity:0;
-}
-
-.agent-company-input .react-dropdown-select-content input{
-    position: static;
-    width: 100%;
-    top: 0;
-    display:block;
-    opacity:1;
-} */
-
-/* .form-container input, .form-container select{
-    border-bottom:1px solid #4d2e4880;
-    border-left:0px;
-    border-right:0px;
-    border-top:0px;
-    opacity:1;
-    letter-spacing: .141rem;
-    text-transform: uppercase;
-    font-family: Dia;
-    font-size: .938rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    color: #4c2f48 !important;
-    padding: 0.375rem 0rem;
-    width: 100%;
-    height:1.875rem;
-}
-
-.form-container .error{
-    display:none;
-}
-
-.form-container input::placeholder{
-    letter-spacing: .141rem;
-    text-transform: uppercase;
-    font-family: Dia;
-    font-size: .938rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    color: #4c2f48 !important;
-}
-
-.message, .about{
-    width:100% !important;
-}
-
-:focus-visible {
-    outline:none !important;
-}
-
-input::placeholder{
-    color:#4C2F48;
-    opacity:1;
-    font-family: 'Dia';
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 2.25px;
-    text-transform: uppercase;
-} */
-
-/* .form-footer h6{
-    color:#4C2F48;
-    text-shadow:none;
-}
-
-.form-footer{
-    padding: 2.313rem 3.125rem;
-    width:100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position:absolute;
-    bottom:0;
-    left:0;
-} */
-
 
 .form-container{
     position:fixed;
@@ -1447,6 +1339,18 @@ input::placeholder{
     line-height: normal;
     letter-spacing: 2.25px;
     text-transform: uppercase;
+}
+
+.thank-you-message{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+    display:flex;
+    justify-content: center;
+    align-items:center;
 }
 
 .form-footer h6{
@@ -2352,8 +2256,17 @@ div:has(> .react-dropdown-select) {
     }
 
     .Team .image-text-slide .inner-text-text{
-        max-height: 175px;
-        overflow-y: auto;
+        height:fit-content;
+        max-height:fit-content;
+        overflow:hidden;
+    }
+
+    .Team .image-text-slide .inner-text-text *{
+        display:none;
+    }
+
+    .Team .image-text-slide .inner-text-text .mobile-text{
+        display:block;
     }
 
 }
@@ -3329,8 +3242,17 @@ line-height: 1.225rem;
     }
 
     .Team .image-text-slide .inner-text-text{
-        max-height: 150px;
-        overflow-y: auto;
+        height:fit-content;
+        max-height:fit-content;
+        overflow:hidden;
+    }
+
+        .Team .image-text-slide .inner-text-text *{
+        display:none;
+    }
+
+    .Team .image-text-slide .inner-text-text .mobile-text{
+        display:block;
     }
 
     .textpage-title{

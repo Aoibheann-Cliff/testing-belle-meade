@@ -722,6 +722,13 @@ export default async function Page({
         </section>
       )}
 
+      {/* Thank You Page */}
+      {page?.pageType === "thankyoupage" && (
+        <>
+        <div className="thank-you-message"><h3>Thank you for your inquiry.</h3></div>
+        </>
+      )}
+
       {/* Text Page */}
       {page?.pageType === "textpage" && (
         <>

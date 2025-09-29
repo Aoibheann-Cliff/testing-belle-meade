@@ -36,6 +36,7 @@ export default async function Page() {
           {homepage.backgroundvideo && (
           <video
             src={homepage.backgroundvideo.asset.url}
+            poster={homepage.backgroundvideoposter?.asset?.url}
             className="desktop-video w-full aspect-[1920/1080] object-cover min-h-screen"
             autoPlay
             muted
@@ -44,14 +45,15 @@ export default async function Page() {
           />
           )}
           {homepage.mobilebackgroundvideo && (
-          <video
-            src={homepage.mobilebackgroundvideo.asset.url}
-            className="mobile-video w-full aspect-[1920/1080] object-cover min-h-screen"
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
+            <video
+              src={homepage.mobilebackgroundvideo.asset.url}
+              poster={homepage.mobilebackgroundvideoposter?.asset?.url}
+              className="mobile-video w-full aspect-[1920/1080] object-cover min-h-screen"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
           )}
         </div>
           )}

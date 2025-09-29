@@ -29,9 +29,16 @@ export const pageType = defineType({
           { title: 'Slideshow Page', value: 'slideshowpage' },
           { title: 'Text Page', value: 'textpage' },
           { title: 'Contact Page', value: 'contactpage' },
+          { title: 'Thank You Page', value: 'thankyoupage' },
         ],
         layout: 'dropdown',
       },
+    }),
+    defineField({
+      name: 'thankyoumessage',
+      title: "Thank You Message",
+      type: 'string',
+      hidden: ({ document }) => document?.pageType !== 'thankyoupage',
     }),
     defineField({
       name: 'headline',
@@ -96,12 +103,24 @@ export const pageType = defineType({
       hidden: ({ document }) => document?.backgroundmediaType !== "video",
     }),
     defineField({
+      name: 'backgroundvideoposter',
+      title: 'Background Video Poster',
+      type: 'image',
+      hidden: ({ document }) => document?.backgroundmediaType !== "video",
+    }),
+    defineField({
       name: 'mobilebackgroundvideo',
       title: 'Mobile Background Video',
       type: 'file',
       options: {
         accept: 'video/*'
       },
+      hidden: ({ document }) => document?.backgroundmediaType !== "video",
+    }),
+    defineField({
+      name: 'mobilebackgroundvideoposter',
+      title: 'Mobile Background Video Poster',
+      type: 'image',
       hidden: ({ document }) => document?.backgroundmediaType !== "video",
     }),
     defineField({

@@ -133,8 +133,11 @@ lightboxCloseButtons.forEach(button => {
 
         document.querySelector(".inquire").style.color = "#fff9f2";
         document.querySelector(".inquire").style.borderColor = "#fff9f2";
-        document.querySelector("footer .footer-button").style.color = "#fff9f2";
-        document.querySelector("footer .footer-button").style.borderColor = "#fff9f2";
+        var footerButton = document.querySelector("footer .footer-button");
+        if(footerButton){
+        footerButton.style.color = "#fff9f2";
+        footerButton.style.borderColor = "#fff9f2";
+        }
         document.querySelectorAll(".right-menu .menuitem").forEach(item => {
             item.style.color = "#fff9f2";
         });
@@ -206,8 +209,11 @@ if(nextPageLink){
             document.querySelector("#purpleLogo").style.opacity = 1;
             document.querySelector(".inquire").style.color = "#4C2F48";
             document.querySelector(".inquire").style.borderColor = "#4C2F48";
-              document.querySelector("footer .footer-button").style.color = "#4C2F48";
-            document.querySelector("footer .footer-button").style.borderColor = "#4C2F48";
+            var footerButton = document.querySelector("footer .footer-button");
+            if(footerButton){
+            footerButton.style.color = "#4C2F48";
+            footerButton.style.borderColor = "#4C2F48";
+            }
             document.querySelectorAll(".right-menu .menuitem").forEach(item => {
                 item.style.color = "#4C2F48";
               });
@@ -255,8 +261,11 @@ setTimeout(() => {
   if (bgColor === "rgb(198, 187, 207)") {
    document.querySelector(".inquire").style.color = "#4C2F48";
    document.querySelector(".inquire").style.borderColor = "#4C2F48";
-    document.querySelector("footer .footer-button").style.color = "#4C2F48";
-   document.querySelector("footer .footer-button").style.borderColor = "#4C2F48";
+   var footerButton = document.querySelector("footer .footer-button");
+   if(footerButton){
+   footerButton.style.color = "#4C2F48";
+   footerButton.style.borderColor = "#4C2F48";
+   }
    document.querySelectorAll(".right-menu .menuitem").forEach(item => {
       item.style.color = "#4C2F48";
     });
@@ -294,8 +303,11 @@ setTimeout(() => {
   if (bgColor === "rgb(198, 187, 207)") {
    document.querySelector(".inquire").style.color = "#4C2F48";
    document.querySelector(".inquire").style.borderColor = "#4C2F48";
-    document.querySelector("footer .footer-button").style.color = "#4C2F48";
-   document.querySelector("footer .footer-button").style.borderColor = "#4C2F48";
+   var footerButton = document.querySelector("footer .footer-button");
+   if(footerButton){
+   footerButton.style.color = "#4C2F48";
+   footerButton.style.borderColor = "#4C2F48";
+   }
    document.querySelectorAll(".right-menu .menuitem").forEach(item => {
       item.style.color = "#4C2F48";
     });

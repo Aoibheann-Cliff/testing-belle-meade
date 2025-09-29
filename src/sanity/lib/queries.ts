@@ -58,6 +58,14 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
   }
 }`)
 
+export const metaDataQuery = `
+  *[_type == "metaData"][0] {
+    title,
+    description,
+    keywords,
+    "socialImage": socialimage.asset->url
+  }
+`;
 
 export const HOMEPAGE_QUERY = `
   *[_type == "page" && slug.current == "home"][0]{
@@ -74,6 +82,24 @@ export const HOMEPAGE_QUERY = `
       alt
     },
     mobilebackgroundimage {
+      asset->{
+        _id,
+        url
+      },
+      hotspot,
+      crop,
+      alt
+    },
+      backgroundvideoposter {
+      asset->{
+        _id,
+        url
+      },
+      hotspot,
+      crop,
+      alt
+    },
+       mobilebackgroundvideoposter {
       asset->{
         _id,
         url

@@ -485,7 +485,7 @@ footer.Thankyou .footer-button{
     display:none;
 }
 
-footer.Thankyou .addresslink{
+footer.Thankyou .addresslink, .form-footer .addresslink{
     display:block;
     color:#4C2F48 !important;
 }

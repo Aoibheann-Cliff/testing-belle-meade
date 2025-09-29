@@ -10,7 +10,7 @@ import LoginPageEffects from "@/components/LoginPageEffects";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Belle Meade Village',
+  title: '1 Iris Lane',
   icons: {
     icon: [
       { url: '/favicon.ico' },

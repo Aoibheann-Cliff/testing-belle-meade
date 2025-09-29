@@ -346,6 +346,7 @@ export default function GlobalPageEffects() {
   
         firstBar.style.transform = "rotate(0deg) translate(0rem, 0rem)";
         secondBar.style.width = "";
+        secondBar.style.opacity = 1;
         thirdBar.style.transform = "rotate(0deg) translate(0rem, 0rem)";
         firstBar.style.backgroundColor = "#fff9f2";
         thirdBar.style.backgroundColor= "#fff9f2";

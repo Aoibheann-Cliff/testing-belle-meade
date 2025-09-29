@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Belle Meade Village',
+  title: '1 Iris Lane',
   icons: {
     icon: [
       { url: '/favicon.ico' },

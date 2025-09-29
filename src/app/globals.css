@@ -1,4 +1,3 @@
-/* Utility class for hiding elements via React conditional logic */
 .form-item.hidden {
     display: none !important;
 }
@@ -296,16 +295,6 @@ h6{
     object-fit:contain !important;
 }
 
-/* .content-wrapper{
-    opacity:0;
-    will-change:opacity;
-    transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -o-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -ms-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -moz-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    -webkit-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
-} */
-
 .carousel-overlay{
     position:fixed;
     z-index:1;
@@ -335,43 +324,6 @@ h6{
     -moz-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
     -webkit-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
-
-/* .contact-form-title{
-    font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.75rem;
-    text-align: center;
-    color:#4C2F48 !important;
-    text-shadow: none !important;
-    max-width:43.375rem;
-    margin-bottom:4.125rem;
-}
-
-.contact-form-thank-you{
-    text-align: center;
-    max-width: 43.375rem;
-    font-size: 1.25rem;
-    font-style: normal;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: auto;
-    left: 0;
-    height: fit-content;
-    bottom: 0;
-    font-weight: 400;
-    line-height: 1.75rem;
-    color: #4c2f48 !important;
-    text-shadow: none !important;
-}
-
-.contact-form-close{
-    position:absolute;
-    top:2.688rem;
-    right:3.125rem;
-} */
-
 
 .contact-form-title{
     font-size: 1.25rem;
@@ -500,6 +452,56 @@ header{
     -webkit-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
+#header.Thankyou{
+    background:#fff9f2 !important;
+}
+
+header.Thankyou .left-menu, header.Thankyou .right-menu{
+    display:none;
+}
+
+header.Thankyou #Logo{
+    opacity:0;
+}
+
+header.Thankyou #purpleLogo{
+    opacity:1;
+}
+
+footer.Thankyou .menuitem{
+     color:#4C2F48 !important;
+}
+
+footer.Thankyou{
+    width:100%;
+}
+
+footer.Thankyou .footer-button{
+     color:#4C2F48 !important;
+     border-color:#4C2F48 !important;
+}
+
+.addresslink{
+    display:none;
+}
+
+footer.Thankyou .addresslink{
+    display:block;
+    color:#4C2F48 !important;
+}
+
+.thankyoupage{
+    background-color:#fff9f2 !important;
+}
+
+.thankyoupage .contact-form-close{
+    z-index:1000;
+    background:transparent;
+}
+
+.thank-you-message *{
+    color:#4C2F48 !important;
+}
 .flickity-enabled.is-fade .flickity-slider > * {
     pointer-events: none;
     z-index: 0;
@@ -531,10 +533,6 @@ footer{
     bottom: 0;
     right: 0;
     padding: 2.313rem 3.125rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 1.563rem;
     opacity:1;
     z-index:5;
     will-change:opacity;
@@ -543,6 +541,13 @@ footer{
     -ms-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
     -moz-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
     -webkit-transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.inner-footer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.563rem;
 }
 
 .siteLogo{
@@ -692,7 +697,7 @@ footer{
     opacity:50%;
 }
 
-footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
+footer .menuitem, .form-footer .menuitem, .form-footer .addresslink, .addresslink{
     letter-spacing: .113rem;
     text-transform: uppercase;
     font-family: Dia;
@@ -701,7 +706,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
     font-weight: 400;
 }
 
-.form-footer .menuitem, .form-footer .addresslink{
+.form-footer .menuitem, .form-footer .addresslink, .addresslink{
     color:#4C2F48 !important;
 }
 
@@ -1822,7 +1827,7 @@ div:has(> .react-dropdown-select) {
         letter-spacing: 0.122rem;
     }
 
-    footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
+    footer .menuitem, .form-footer .menuitem, .form-footer .addresslink, .addresslink{
         letter-spacing: .113rem;
         text-transform: uppercase;
         font-family: Dia;
@@ -1960,6 +1965,9 @@ div:has(> .react-dropdown-select) {
 
       footer{
         padding:2.5rem 3.125rem;
+      }
+
+      .inner-footer{
         gap:0.938rem;
       }
 
@@ -2055,7 +2063,7 @@ div:has(> .react-dropdown-select) {
         line-height:1.26rem;
     }
 
-    footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
+    footer .menuitem, .form-footer .menuitem, .form-footer .addresslink, .addresslink{
         font-size:0.5625rem;
     }
 
@@ -2236,7 +2244,7 @@ div:has(> .react-dropdown-select) {
         line-height:1.4rem;
     }
 
-    footer .menuitem, .form-footer .menuitem, .form-footer .addresslink{
+    footer .menuitem, .form-footer .menuitem, .form-footer .addresslink, .addresslink{
         font-size:0.625rem;
     }
 
@@ -3247,6 +3255,12 @@ line-height: 1.225rem;
         height:fit-content;
         max-height:fit-content;
         overflow:hidden;
+        width:100%;
+        padding-right:0px;
+    }
+
+    .Team .image-text-slide .inner-text{
+        width:100%;
     }
 
         .Team .image-text-slide .inner-text-text *{

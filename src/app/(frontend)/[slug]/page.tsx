@@ -725,6 +725,25 @@ export default async function Page({
       {/* Thank You Page */}
       {page?.pageType === "thankyoupage" && (
         <>
+        <a href="/" className="contact-form-close">
+            <div className="desktop-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M1 1L29 29" stroke="#4C2F48" />
+                <path d="M29 1L1 29" stroke="#4C2F48" />
+              </svg>
+            </div>
+            <div className="ipad-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M1.00049 0.707031L26.9999 26.7027" stroke="#4C2F48" />
+                <path d="M26.9995 0.707031L1.0001 26.7027" stroke="#4C2F48" />
+              </svg>
+            </div>
+            <div className="mobile-close">
+              <svg width="12" height="22" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 1L1 11L11 21" stroke="#4C2F48" />
+              </svg>
+            </div>
+          </a>
         <div className="thank-you-message"><h3>{page.thankyoumessage}</h3></div>
         </>
       )}

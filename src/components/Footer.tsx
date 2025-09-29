@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { client } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 interface FooterLink {
   label: string;
@@ -17,8 +18,19 @@ interface FooterData {
   links: FooterLink[];
 }
 
+function getPageTitle(pathname: string): string {
+  if (pathname === '/') return 'Home';
+  return pathname
+    .replace('/', '')
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
 export function Footer() {
   const [footerData, setFooterData] = useState<FooterData | null>(null);
+    const pathname = usePathname();
+    const pageTitle = getPageTitle(pathname);
 
   useEffect(() => {
     const fetchFooter = async () => {
@@ -39,7 +51,9 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="flex items-center justify-between" id="footer">
+    <footer className={`flex items-center justify-between ${pageTitle}`} id="footer">
+    <a className="addresslink">1 Iris Lane, Nashville, Tennessee</a>
+    <div className="inner-footer">
       {footerData?.links?.map((link) => (
         <Link
           key={link.label}
@@ -51,6 +65,7 @@ export function Footer() {
           {link.label}
         </Link>
       ))}
+      </div>
     </footer>
   );
 }

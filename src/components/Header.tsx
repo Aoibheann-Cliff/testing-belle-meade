@@ -69,8 +69,19 @@ interface MenuItem {
   image?: any;
 }
 
+function getPageTitle(pathname: string): string {
+  if (pathname === '/') return 'Home';
+  return pathname
+    .replace('/', '')
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
+
 export function Header() {
   const pathname = usePathname();
+  const pageTitle = getPageTitle(pathname);
   const [leftMenu, setLeftMenu] = useState<MenuItem[]>([]);
   const [rightMenu, setRightMenu] = useState<MenuItem[]>([]);
   // Only ever two images: current (fading in) and previous (fading out)
@@ -186,7 +197,7 @@ export function Header() {
           )}
         </>
       )}
-      <header className="flex items-center justify-between bg-transparent" id="header">
+      <header className={`flex items-center justify-between bg-transparent ${pageTitle}`} id="header">
         <div className="left-menu bg-transparent" id="leftMenu">
           <a className="nav-toggle" id="navToggle">
             <div className="bar" id="firstBar"></div>

@@ -256,8 +256,8 @@ export function Header() {
           ))}
           </div>
           <div className="form-footer menu-footer" id="menuFooter">
-            <a aria-label="Address" className="addresslink" href="One Iris Lane, Nashville, Tennessee, TN 37205, USA" target="_blank">
-              <h6>One Iris Lane, Nashville, Tennessee</h6>
+            <a aria-label="Address" className="addresslink">
+              <h6>1 Iris Lane, Nashville, Tennessee</h6>
             </a>
             <div className="form-footer-menu" id="menuFooter">
               <Footer />

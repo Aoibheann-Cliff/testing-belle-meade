@@ -476,7 +476,7 @@ export default function ContactForm() {
           <h3 className="contact-form-thank-you">Thank you for your inquiry.</h3>
         </div>
         <div className="form-footer" id="formFooter">
-      <a className="addresslink" href="https://maps.app.goo.gl/ngRsVcKPu2c7aXJLA" target="_blank">One Iris Lane, Nashville, Tennessee</a>
+<a className="addresslink">1 Iris Lane, Nashville, Tennessee</a>
       <div className="form-footer-menu">
         <Footer />
       </div>
@@ -691,7 +691,7 @@ export default function ContactForm() {
         </form>
       </div>
       <div className="form-footer" id="formFooter">
-      <a className="addresslink" href="https://maps.app.goo.gl/ngRsVcKPu2c7aXJLA" target="_blank">One Iris Lane, Nashville, Tennessee</a>
+<a className="addresslink">1 Iris Lane, Nashville, Tennessee</a>
       <div className="form-footer-menu">
         <Footer />
       </div>

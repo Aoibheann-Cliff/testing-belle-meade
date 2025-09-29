@@ -4,7 +4,8 @@ import {blockContentType} from './blockContentType'
 import {pageType} from './pageType'
 import { menuType } from './menuType'
 import { footerType } from './footerType'
+import { metaDataType } from './metaDataType'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, pageType, menuType, footerType],
+  types: [blockContentType, pageType, menuType, footerType, metaDataType],
 }

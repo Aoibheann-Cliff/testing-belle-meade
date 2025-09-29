@@ -725,7 +725,7 @@ export default async function Page({
       {/* Thank You Page */}
       {page?.pageType === "thankyoupage" && (
         <>
-        <div className="thank-you-message"><h3>Thank you for your inquiry.</h3></div>
+        <div className="thank-you-message"><h3>{page.thankyoumessage}</h3></div>
         </>
       )}
 

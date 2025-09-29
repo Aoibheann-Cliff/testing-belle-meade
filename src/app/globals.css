@@ -1351,6 +1351,8 @@ input::placeholder{
     display:flex;
     justify-content: center;
     align-items:center;
+    max-width:80%;
+    text-align:center;
 }
 
 .form-footer h6{

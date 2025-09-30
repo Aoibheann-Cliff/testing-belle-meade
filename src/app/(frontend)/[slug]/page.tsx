@@ -404,7 +404,7 @@ export default async function Page({
                       {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
                         <video
                           src={slide.videoFile.asset.url}
-                          className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                          className="w-full aspect-[1080/1920] object-cover min-h-screen"
                           autoPlay
                           muted
                           loop
@@ -417,14 +417,14 @@ export default async function Page({
                           <Image
                             unoptimized
                             src={urlFor(slide.image)
-                              .width(1920)
-                              .height(1080)
+                              .width(1080)
+                              .height(1920)
                               .quality(80)
                               .fit("crop")
                               .url()}
                             alt={slide.image?.alt || ""}
-                            width={1920}
-                            height={1080}
+                            width={1080}
+                            height={1920}
                             quality={100}
                             placeholder="blur"
                             blurDataURL={urlFor(slide.image)

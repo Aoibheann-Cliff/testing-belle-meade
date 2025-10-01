@@ -501,6 +501,7 @@ footer.Thankyou .addresslink, .form-footer .addresslink{
 
 .thank-you-message *{
     color:#4C2F48 !important;
+    text-shadow: none !important;
 }
 .flickity-enabled.is-fade .flickity-slider > * {
     pointer-events: none;
@@ -960,7 +961,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink, .addresslin
     width:100%;
     height:100%;
     z-index: 1;
-    background:#00000080;
+    background:#00000099;
 }
 
 .slide-overlay .text{
@@ -2551,7 +2552,8 @@ line-height: 1.225rem;
     }
 
     .Team .image-text-slide .inner-text{
-        width:50%;
+        width:100%;
+        padding-right:0px;
     }
 
     .image-text-slide .image-container img{
@@ -2596,11 +2598,13 @@ line-height: 1.225rem;
     }
 
     .button-next{
-        padding-left:0.938rem;
+        margin-left:0.938rem;
+        width: 0.566rem;
     }
 
     .button-previous{
-        padding-right:0.938rem;
+        margin-right:0.938rem;
+        width: 0.566rem;
     }
 
     .slide-footer .count{
@@ -2609,7 +2613,8 @@ line-height: 1.225rem;
 
     .slide-footer .caption{
         width:fit-content;
-        max-width:fit-content;
+        max-width:65%;
+        padding-right:0px !important;
     }
 
     .slide-footer .caption{
@@ -3094,7 +3099,8 @@ line-height: 1.225rem;
 
     .slide-footer .caption{
         width:fit-content;
-        max-width:fit-content;
+        max-width:65%;
+        padding-right:0px !important;
     }
 
     .slide-overlay .title{
@@ -3350,11 +3356,13 @@ line-height: 1.225rem;
     }
 
     .button-next{
-        padding-left:0.938rem;
+        margin-left:0.938rem;
+        width: 0.566rem;
     }
 
     .button-previous{
-        padding-right:0.938rem;
+        margin-right:0.938rem;
+                width: 0.566rem;
     }
 
     .slide-footer .count{

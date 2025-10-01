@@ -1,13 +1,16 @@
+import dynamic from "next/dynamic";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SanityLive } from "@/sanity/lib/live";
 import Script from "next/script";
-import ClientLayout from "@/components/ClientLayout";
+
+// Dynamically import client-only component to avoid SSR
+const Analytics = dynamic(() => import("@/components/Analytics"), { ssr: false });
 
 export default function FrontendLayout({ children }: { children: React.ReactNode }) {
   return (
     <section className="min-h-screen">
-      {/* Google Analytics scripts */}
+      {/* GA scripts */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
         strategy="afterInteractive"
@@ -25,11 +28,9 @@ export default function FrontendLayout({ children }: { children: React.ReactNode
 
       <Header />
 
-      {/* Wrap children in client layout for GA */}
-      <ClientLayout>
-        <main className="flex-grow">{children}</main>
-      </ClientLayout>
+      <Analytics />
 
+      <main className="flex-grow">{children}</main>
       <Footer />
       <SanityLive />
     </section>

@@ -2,13 +2,9 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SanityLive } from "@/sanity/lib/live";
 import Script from "next/script";
-import { Analytics } from "@/components/Analytics";
+import ClientLayout from "@/components/ClientLayout";
 
-export default function FrontendLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function FrontendLayout({ children }: { children: React.ReactNode }) {
   return (
     <section className="min-h-screen">
       {/* Google Analytics scripts */}
@@ -28,11 +24,14 @@ export default function FrontendLayout({
       </Script>
 
       <Header />
-      <main className="flex-grow">{children}</main>
+
+      {/* Wrap children in client layout for GA */}
+      <ClientLayout>
+        <main className="flex-grow">{children}</main>
+      </ClientLayout>
+
       <Footer />
       <SanityLive />
-
-      <Analytics />
     </section>
   );
 }

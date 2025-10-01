@@ -2,7 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SanityLive } from "@/sanity/lib/live";
 import Script from "next/script";
-import { ClientLayout } from "@/components/ClientLayout";
+import GATracker from "@/components/GATracker";
 
 export default function FrontendLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -25,11 +25,9 @@ export default function FrontendLayout({ children }: { children: React.ReactNode
 
       <Header />
 
-      {/* All client-side tracking happens inside this wrapper */}
-      <ClientLayout>
-        <main className="flex-grow">{children}</main>
-      </ClientLayout>
+      <GATracker /> {/* Only runs on client after hydration */}
 
+      <main className="flex-grow">{children}</main>
       <Footer />
       <SanityLive />
     </section>

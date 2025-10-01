@@ -6,7 +6,6 @@ export default function FrontendLayout({ children }: { children: React.ReactNode
   return (
     <section className="min-h-screen">
       <Header />
-      <Analytics/>
       <main className="flex-grow">{children}</main>
       <Footer />
       <SanityLive />

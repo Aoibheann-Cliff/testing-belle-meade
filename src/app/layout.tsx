@@ -3,6 +3,7 @@ import "@/app/globals.css";
 import { Metadata } from "next";
 import { client } from "@/sanity/lib/client";
 import { metaDataQuery } from "@/sanity/lib/queries";
+import { Analytics } from "@vercel/analytics/next"
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await client.fetch(metaDataQuery);
@@ -48,6 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+      <Analytics/>
         {children}
         <link
           rel="stylesheet"

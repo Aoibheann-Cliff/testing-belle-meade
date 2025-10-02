@@ -3131,7 +3131,6 @@ line-height: 1.225rem;
 
     #menu{
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
         display: flex;
         height: 100%;
@@ -3793,7 +3792,6 @@ line-height: 1.225rem;
 @media only screen and (max-height: 670px){
     #menu{
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
         display: flex;
         height: 100%;

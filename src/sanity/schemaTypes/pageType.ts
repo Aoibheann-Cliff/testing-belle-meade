@@ -82,6 +82,19 @@ export const pageType = defineType({
       hidden: ({ document }) => document?.pageType !== "homepage",
     }),
     defineField({
+      name: 'videotype',
+      title: "Video Type",
+      type: 'string',
+      options: {
+        list: [
+          { title: 'File', value: 'file' },
+          { title: 'Link', value: 'link' },
+        ],
+        layout: 'dropdown',
+      },
+      hidden: ({ document }) => document?.backgroundmediaType !== "video",
+    }),
+    defineField({
       name: 'backgroundimage',
       title: 'Background Image',
       type: 'image',
@@ -100,13 +113,13 @@ export const pageType = defineType({
       options: {
         accept: 'video/*'
       },
-      hidden: ({ document }) => document?.backgroundmediaType !== "video",
+      hidden: ({ document }) => document?.videotype !== "file",
     }),
     defineField({
       name: 'backgroundvideolink',
       title: 'Background Video Link',
       type: 'string',
-      hidden: ({ document }) => document?.backgroundmediaType !== "video",
+      hidden: ({ document }) => document?.videotype !== "link",
     }),
     defineField({
       name: 'backgroundvideoposter',
@@ -121,13 +134,13 @@ export const pageType = defineType({
       options: {
         accept: 'video/*'
       },
-      hidden: ({ document }) => document?.backgroundmediaType !== "video",
+      hidden: ({ document }) => document?.videotype !== "file",
     }),
     defineField({
       name: 'mobilebackgroundvideolink',
       title: 'Mobile Background Video Link',
       type: 'string',
-      hidden: ({ document }) => document?.backgroundmediaType !== "video",
+      hidden: ({ document }) => document?.videotype !== "link",
     }),
     defineField({
       name: 'mobilebackgroundvideoposter',
@@ -202,7 +215,8 @@ export const pageType = defineType({
               options: {
                 list: [
                   { title: 'Image', value: 'image' },
-                  { title: 'Video', value: 'video' },
+                  { title: 'Video File', value: 'videofile' },
+                  { title: 'Video Link', value: 'videolink' },
                 ],
                 layout: 'dropdown',
               },
@@ -215,7 +229,8 @@ export const pageType = defineType({
               options: {
                 list: [
                   { title: 'Image', value: 'image' },
-                  { title: 'Video', value: 'video' },
+                  { title: 'Video File', value: 'videofile' },
+                  { title: 'Video Link', value: 'videolink' },
                 ],
                 layout: 'dropdown',
               },
@@ -233,11 +248,17 @@ export const pageType = defineType({
             {
               name: 'videoFile',
               title: 'Video File',
-              hidden: ({ parent }) => parent?.mediaType !== 'video',
+              hidden: ({ parent }) => parent?.mediaType !== 'videofile',
               type: 'file',
               options: {
                 accept: 'video/*'
               }
+            },
+            {
+              name: 'videolink',
+              title: 'Video Link',
+              hidden: ({ parent }) => parent?.mediaType !== 'videolink',
+              type: 'string',
             },
             {
               name: 'smallImage',
@@ -252,11 +273,17 @@ export const pageType = defineType({
             {
               name: 'smallvideoFile',
               title: 'Small Video File',
-              hidden: ({ parent }) => parent?.smallmediaType !== 'video',
+              hidden: ({ parent }) => parent?.smallmediaType !== 'videofile',
               type: 'file',
               options: {
                 accept: 'video/*'
               }
+            },
+            {
+              name: 'smallvideoLink',
+              title: 'Small Video Link',
+              hidden: ({ parent }) => parent?.smallmediaType !== 'videolink',
+              type: 'string',
             },
             {
               name: 'title',

@@ -35,6 +35,7 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
     caption,
     credit,
     backgroundColor,
+    videolink,
     videoFile{
       asset->{
         url
@@ -47,6 +48,12 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
       hotspot,
       crop,
       alt
+    },
+    smallvideoLink,
+    smallvideoFile{
+      asset->{
+        url
+      }
     },
     smallImage {
       asset->{
@@ -75,6 +82,7 @@ export const HOMEPAGE_QUERY = `
     backgroundvideolink,
     mobilebackgroundvideolink,
     backgroundmediaType,
+    videotype,
     backgroundimage {
       asset->{
         _id,

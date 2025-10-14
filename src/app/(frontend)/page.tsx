@@ -38,30 +38,58 @@ export default async function Page() {
           </h3>
           {homepage.backgroundmediaType === "video" && (
             <div className={`h-full`}>
-              {(homepage.backgroundvideolink || homepage.backgroundvideo) && (
-                <video
-                  src={homepage.backgroundvideolink || homepage.backgroundvideo?.asset?.url}
-                  poster={homepage.backgroundvideoposter?.asset?.url}
-                  className="desktop-video w-full aspect-[1920/1080] object-cover min-h-screen"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                />
-              )}
-              {(homepage.mobilebackgroundvideolink || homepage.mobilebackgroundvideo) && (
-                <video
-                  src={homepage.mobilebackgroundvideolink || homepage.mobilebackgroundvideo?.asset?.url}
-                  poster={homepage.mobilebackgroundvideoposter?.asset?.url}
-                  className="mobile-video w-full aspect-[1920/1080] object-cover min-h-screen"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                />
-              )}
+            {homepage.videotype === 'link' && homepage.backgroundvideolink && (
+              <video
+                src={homepage.backgroundvideolink}
+                poster={homepage.backgroundvideoposter?.asset?.url}
+                className="desktop-video w-full aspect-[1920/1080] object-cover min-h-screen"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+            )}
+
+            {homepage.videotype === 'file' && homepage.backgroundvideo?.asset?.url && (
+              <video
+                src={homepage.backgroundvideo.asset.url}
+                poster={homepage.backgroundvideoposter?.asset?.url}
+                className="desktop-video w-full aspect-[1920/1080] object-cover min-h-screen"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+            )}
+
+            {homepage.mobilevideotype === 'link' && homepage.mobilebackgroundvideolink && (
+              <video
+                src={homepage.mobilebackgroundvideolink}
+                poster={homepage.mobilebackgroundvideoposter?.asset?.url}
+                className="mobile-video w-full aspect-[1920/1080] object-cover min-h-screen"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+            )}
+
+            {homepage.mobilevideotype === 'file' && homepage.mobilebackgroundvideo?.asset?.url && (
+              <video
+                src={homepage.mobilebackgroundvideo.asset.url}
+                poster={homepage.mobilebackgroundvideoposter?.asset?.url}
+                className="mobile-video w-full aspect-[1920/1080] object-cover min-h-screen"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+            )}
+
             </div>
           )}
           {homepage.backgroundmediaType === "image" && (

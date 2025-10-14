@@ -75,9 +75,19 @@ export default async function Page({
                     return (
                       <div key={index} className="relative min-h-screen media-only overlay-slide">
                         <div className="flickity-top-overlay"></div>
-                        {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
+                        {slide.mediaType === "videofile" && slide.videoFile?.asset?.url && (
                           <video
                             src={slide.videoFile.asset.url}
+                            className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          />
+                        )}
+                      {slide.mediaType === "videolink" && (
+                          <video
+                            src={slide.videolink}
                             className="w-full aspect-[1920/1080] object-cover min-h-screen"
                             autoPlay
                             muted
@@ -212,9 +222,19 @@ export default async function Page({
                     return (
                       <div key={index} className="relative min-h-screen intro-slide overlay-slide">
                         <div className="flickity-top-overlay"></div>
-                        {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
+                        {slide.mediaType === "videofile" && slide.videoFile?.asset?.url && (
                           <video
                             src={slide.videoFile.asset.url}
+                            className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          />
+                        )}
+                      {slide.mediaType === "videolink" && (
+                          <video
+                            src={slide.videolink}
                             className="w-full aspect-[1920/1080] object-cover min-h-screen"
                             autoPlay
                             muted
@@ -358,9 +378,19 @@ export default async function Page({
                     return (
                       <div key={index} className="min-h-screen media-only image-text-overlay-plain">
                         <div className="flickity-top-overlay"></div>
-                        {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
+                        {slide.mediaType === "videofile" && slide.videoFile?.asset?.url && (
                           <video
                             src={slide.videoFile.asset.url}
+                            className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          />
+                        )}
+                      {slide.mediaType === "videolink" && (
+                          <video
+                            src={slide.videolink}
                             className="w-full aspect-[1920/1080] object-cover min-h-screen"
                             autoPlay
                             muted
@@ -524,17 +554,26 @@ export default async function Page({
                           </div>
                         </div>
                         <div className="quote-image">
-                          {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
-                            <video
-                              src={slide.videoFile.asset.url}
-                              className="w-full aspect-[1080/1920] object-cover min-h-screen"
-                              autoPlay
-                              muted
-                              loop
-                              playsInline
-                            />
-                          )}
-
+                        {slide.mediaType === "videofile" && slide.videoFile?.asset?.url && (
+                          <video
+                            src={slide.videoFile.asset.url}
+                            className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          />
+                        )}
+                      {slide.mediaType === "videolink" && (
+                          <video
+                            src={slide.videolink}
+                            className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          />
+                        )}
                           {slide.mediaType === "image" && slide.image && (
                             <div className="h-full">
                               <Image
@@ -660,9 +699,19 @@ export default async function Page({
                             </div>
                           </div>
                         </div>
-                        {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
+                        {slide.mediaType === "videofile" && slide.videoFile?.asset?.url && (
                           <video
                             src={slide.videoFile.asset.url}
+                            className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          />
+                        )}
+                      {slide.mediaType === "videolink" && (
+                          <video
+                            src={slide.videolink}
                             className="w-full aspect-[1920/1080] object-cover min-h-screen"
                             autoPlay
                             muted
@@ -771,11 +820,21 @@ export default async function Page({
                         style={{ backgroundColor: bg }}
                       >
                         <div className="flickity-top-overlay"></div>
-                        {!reverse && slide.smallImage && (
+                        {!reverse && (slide.smallImage || slide.smallvideoLink || slide.smallvideoFile) && (
                           <div className="smallImageContainer">
-                            {slide.smallmediaType === "video" && slide.videoFile?.asset?.url && (
+                            {slide.smallmediaType === "videofile" && slide.smallvideoFile?.asset?.url && (
                               <video
-                                src={slide.videoFile.asset.url}
+                                src={slide.smallvideoFile.asset.url}
+                                className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                              />
+                            )}
+                          {slide.smallmediaType === "videolink" && (
+                              <video
+                                src={slide.smallvideoLink}
                                 className="w-full aspect-[1920/1080] object-cover min-h-screen"
                                 autoPlay
                                 muted
@@ -814,9 +873,19 @@ export default async function Page({
                           </div>
                         )}
                         <div className="largeImageContainer">
-                          {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
+                          {slide.mediaType === "videofile" && slide.videoFile?.asset?.url && (
                             <video
                               src={slide.videoFile.asset.url}
+                              className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
+                            />
+                          )}
+                          {slide.mediaType === "videolink" && (
+                            <video
+                              src={slide.videolink}
                               className="w-full aspect-[1920/1080] object-cover min-h-screen"
                               autoPlay
                               muted
@@ -848,11 +917,11 @@ export default async function Page({
                             </div>
                           )}
                         </div>
-                        {reverse && slide.smallImage && (
+                        {reverse && (slide.smallImage || slide.smallvideoLink || slide.smallvideoFile) && (
                           <div className="smallImageContainer">
-                            {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
+                            {slide.smallmediaType === "videofile" && slide.smallvideoFile?.asset?.url && (
                               <video
-                                src={slide.videoFile.asset.url}
+                                src={slide.smallvideoFile.asset.url}
                                 className="w-full aspect-[1920/1080] object-cover min-h-screen"
                                 autoPlay
                                 muted
@@ -860,7 +929,17 @@ export default async function Page({
                                 playsInline
                               />
                             )}
-                            {slide.mediaType === "image" && (
+                          {slide.smallmediaType === "videolink" && (
+                              <video
+                                src={slide.smallvideoLink}
+                                className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                              />
+                            )}
+                            {slide.smallmediaType === "image" && (
                               <div className="image-holder">
                                 <Image
                                   src={
@@ -998,20 +1077,13 @@ export default async function Page({
 
             <section className="introblock">
               {page.introimage && (
-                /* Text page intro image with WebP */
                 <Image
-                  src={
-                    urlFor(page.introimage).width(600).height(400).format("webp").url() ||
-                    "/placeholder.svg" ||
-                    "/placeholder.svg"
-                  }
-                  alt="symbol"
-                  width={600}
-                  height={400}
-                  quality={85}
-                  sizes="(max-width: 768px) 100vw, 600px"
-                  className="intro-image"
-                />
+                src={urlFor(page.introimage).width(600).height(400).fit('crop').url()}
+                alt="symbol"
+                width={600}
+                height={400}
+                className="intro-image"
+              />
               )}
               {page.introblock ? <PortableText value={page.introblock} components={components} /> : <></>}
             </section>

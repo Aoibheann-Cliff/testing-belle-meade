@@ -677,7 +677,7 @@ export default async function Page({
                     return (
                       <div
                         key={index}
-                        className={`image-text-slide min-h-screen flex ${reverse ? "flex-row-reverse" : "flex-row"}`}
+                        className={`image-text-slide min-h-screen flex ${reverse ? "flex-row-reverse" : "flex-row"} `}
                         style={{ backgroundColor: bg }}
                       >
                         <div className="flickity-top-overlay"></div>
@@ -685,7 +685,9 @@ export default async function Page({
                           <div className="inner-text">
                             {slide.title && <h2 className="title">{slide.title}</h2>}
                             <div className="inner-text-text">
+                            <div className={`${slide.mobiletext && "has-mobile-text"}`}>
                               {slide.text && <PortableText value={slide.text} components={components} />}
+                            </div>
                               {(slide.mobiletext || []).map((block, i) => {
                                 const Tag = block.style === "normal" ? "p" : block.style || "p"
                                 return (

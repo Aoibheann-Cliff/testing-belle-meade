@@ -64,7 +64,7 @@ export default async function Page() {
               />
             )}
 
-            {homepage.mobilevideotype === 'link' && homepage.mobilebackgroundvideolink && (
+            {homepage.videotype === 'link' && homepage.mobilebackgroundvideolink && (
               <video
                 src={homepage.mobilebackgroundvideolink}
                 poster={homepage.mobilebackgroundvideoposter?.asset?.url}
@@ -77,7 +77,7 @@ export default async function Page() {
               />
             )}
 
-            {homepage.mobilevideotype === 'file' && homepage.mobilebackgroundvideo?.asset?.url && (
+            {homepage.videotype === 'file' && homepage.mobilebackgroundvideo?.asset?.url && (
               <video
                 src={homepage.mobilebackgroundvideo.asset.url}
                 poster={homepage.mobilebackgroundvideoposter?.asset?.url}

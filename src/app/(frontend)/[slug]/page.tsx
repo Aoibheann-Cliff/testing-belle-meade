@@ -124,7 +124,7 @@ export default async function Page({
                             </div>
                             <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
                               <Image
-                                src={urlFor(slide.image).quality(80).format("webp").url() || "/placeholder.svg"}
+                                src={urlFor(slide.image).quality(85).format("webp").url() || "/placeholder.svg"}
                                 alt={slide.image?.alt || ""}
                                 fill
                                 loading="lazy"

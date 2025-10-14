@@ -724,16 +724,16 @@ export default async function Page({
                             <Image
                               src={
                                 urlFor(slide.image)
-                                  .width(1920)
-                                  .height(1080)
+                                  .width(1080)
+                                  .height(1920)
                                   .quality(85)
                                   .fit("crop")
                                   .format("webp")
                                   .url() || "/placeholder.svg"
                               }
                               alt={slide.image?.alt || ""}
-                              width={1920}
-                              height={1080}
+                              width={1080}
+                              height={1920}
                               quality={85}
                               sizes="(max-width: 768px) 100vw, 50vw"
                               placeholder="blur"
@@ -898,16 +898,16 @@ export default async function Page({
                               <Image
                                 src={
                                   urlFor(slide.image)
-                                    .width(1920)
-                                    .height(1080)
+                                    .width(1080)
+                                    .height(1920)
                                     .quality(85)
                                     .fit("crop")
                                     .format("webp")
                                     .url() || "/placeholder.svg"
                                 }
                                 alt={slide.image?.alt || ""}
-                                width={1920}
-                                height={1080}
+                                width={1080}
+                                height={1920}
                                 quality={85}
                                 sizes="(max-width: 768px) 100vw, 66vw"
                                 placeholder="blur"

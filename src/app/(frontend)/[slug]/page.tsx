@@ -725,6 +725,7 @@ export default async function Page({
                               src={
                                 urlFor(slide.image)
                                   .quality(85)
+
                                   .fit("crop")
                                   .format("webp")
                                   .url() || "/placeholder.svg"
@@ -737,6 +738,11 @@ export default async function Page({
                               placeholder="blur"
                               blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit("crop").url()}
                               className={`object-cover min-h-screen`}
+                              style={{
+                                objectPosition: slide.image?.hotspot
+                                  ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
+                                  : "center",
+                              }}
                             />
                           </div>
                         )}

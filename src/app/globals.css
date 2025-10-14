@@ -790,6 +790,10 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink, .addresslin
     width:100% !important;
 }
 
+.image-holder{
+    position:relative;
+}
+
 .intro-slide .text{
     padding-bottom:3.5rem;
 }

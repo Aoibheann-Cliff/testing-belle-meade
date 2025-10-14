@@ -72,6 +72,8 @@ export const HOMEPAGE_QUERY = `
   *[_type == "page" && slug.current == "home"][0]{
     title,
     text,
+    backgroundvideolink,
+    mobilebackgroundvideolink,
     backgroundmediaType,
     backgroundimage {
       asset->{

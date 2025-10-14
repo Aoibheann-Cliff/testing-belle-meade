@@ -103,6 +103,12 @@ export const pageType = defineType({
       hidden: ({ document }) => document?.backgroundmediaType !== "video",
     }),
     defineField({
+      name: 'backgroundvideolink',
+      title: 'Background Video Link',
+      type: 'string',
+      hidden: ({ document }) => document?.backgroundmediaType !== "video",
+    }),
+    defineField({
       name: 'backgroundvideoposter',
       title: 'Background Video Poster',
       type: 'image',
@@ -115,6 +121,12 @@ export const pageType = defineType({
       options: {
         accept: 'video/*'
       },
+      hidden: ({ document }) => document?.backgroundmediaType !== "video",
+    }),
+    defineField({
+      name: 'mobilebackgroundvideolink',
+      title: 'Mobile Background Video Link',
+      type: 'string',
       hidden: ({ document }) => document?.backgroundmediaType !== "video",
     }),
     defineField({

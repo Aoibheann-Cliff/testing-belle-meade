@@ -1,784 +1,1032 @@
-import { notFound } from "next/navigation";
-import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
-import { sanityFetch } from "@/sanity/lib/live";
-import { PAGE_QUERY } from "@/sanity/lib/queries";
-import FlickityCarousel from "@/components/FlickityCarousel";
-import { PortableText, PortableTextMarkComponentProps } from "@portabletext/react";
-import React from "react";
-import arrow from '../purple-arrow.svg';
-import arrownext from '@/app/mobile-arrow-next.svg';
-import arrowprevious from '@/app/mobile-arrow.svg';
-import lightbox from '@/app/lightbox.svg';
-import lightboxclose from '@/app/lightbox-close.svg';
-import PageEffects from "@/components/PageEffects";
-import { LayoutTypes } from "@/sanity/types";
+import { notFound } from "next/navigation"
+import Image from "next/image"
+import { urlFor } from "@/sanity/lib/image"
+import { sanityFetch } from "@/sanity/lib/live"
+import { PAGE_QUERY } from "@/sanity/lib/queries"
+import FlickityCarousel from "@/components/FlickityCarousel"
+import { PortableText, type PortableTextMarkComponentProps } from "@portabletext/react"
+import arrownext from "@/app/mobile-arrow-next.svg"
+import arrowprevious from "@/app/mobile-arrow.svg"
+import lightbox from "@/app/lightbox.svg"
+import lightboxclose from "@/app/lightbox-close.svg"
+import PageEffects from "@/components/PageEffects"
+import type { LayoutTypes } from "@/sanity/types"
 
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string }>
 }) {
-
   const p = await params
   const { data: page } = await sanityFetch({
     query: PAGE_QUERY,
     params: { slug: p.slug },
-  });
+  })
 
-  if (!page) notFound();
+  if (!page) notFound()
 
   // Flatten and transform slides
-  const transformedSlides = page.slides?.flatMap((slide) => {
-    if (slide.layout === "imageAndTextOverlay") {
-      return [
-        { ...slide, layout: "imageAndTextOverlayWithText" as LayoutTypes },
-        { ...slide, layout: "imageAndTextOverlayPlain" as LayoutTypes },
-      ];
-    }
-    return [slide];
-  }) || [];
+  const transformedSlides =
+    page.slides?.flatMap((slide) => {
+      if (slide.layout === "imageAndTextOverlay") {
+        return [
+          { ...slide, layout: "imageAndTextOverlayWithText" as LayoutTypes },
+          { ...slide, layout: "imageAndTextOverlayPlain" as LayoutTypes },
+        ]
+      }
+      return [slide]
+    }) || []
 
-
-  const totalSlides = transformedSlides.length;
+  const totalSlides = transformedSlides.length
 
   const Link = ({ value, children }: PortableTextMarkComponentProps<any>) => {
-    const href = value?.href || "#";
-    const rel = !href.startsWith("/") ? "noreferrer noopener" : undefined;
-    const target = value?.blank ? "_blank" : "_self";
-  
+    const href = value?.href || "#"
+    const rel = !href.startsWith("/") ? "noreferrer noopener" : undefined
+    const target = value?.blank ? "_blank" : "_self"
+
     return (
       <a href={href} rel={rel} target={target}>
         {children}
       </a>
-    );
-  };
-  
+    )
+  }
+
   const components = {
     marks: {
       link: Link,
     },
-  };
+  }
 
   return (
     <>
-    <main id="contentWrapper" className={`container content-wrapper ${page.title} ${page.pageType} ${page._id}`}>
-      <PageEffects />
-      {/* Slideshow Page */}
-      {page?.pageType === "slideshowpage" && totalSlides > 0 && (
-        <section>
-          <FlickityCarousel>
-            {transformedSlides.map((slide, index) => {
-              const bg = slide.backgroundColor || "#4C2F48";
-              const lightboxbg = slide.backgroundColor || "#000000";
+      <main id="contentWrapper" className={`container content-wrapper ${page.title} ${page.pageType} ${page._id}`}>
+        <PageEffects />
+        {/* Slideshow Page */}
+        {page?.pageType === "slideshowpage" && totalSlides > 0 && (
+          <section>
+            <FlickityCarousel>
+              {transformedSlides.map((slide, index) => {
+                const bg = slide.backgroundColor || "#4C2F48"
+                const lightboxbg = slide.backgroundColor || "#000000"
 
-              switch (slide.layout) {
-                case "imageOnly":
-                  if (!slide.image) return <></>
-                  return (
-                    <div key={index} className="relative min-h-screen media-only overlay-slide">
-                      <div className="flickity-top-overlay"></div>
-                      {slide.mediaType === 'video' && slide.videoFile?.asset?.url && (
-                      <video
-                        src={slide.videoFile.asset.url}
-                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                      />
-                      )}
-                      {slide.mediaType === 'image' && (
-                        <div>
-                        <Image
-                          priority
-                          unoptimized
-                          src={urlFor(slide.image).quality(70).format('jpg').url()}
-                          alt={slide.image?.alt || ""}
-                          fill
-                          quality={100}
-                          placeholder="blur"
-                          blurDataURL={urlFor(slide.image).width(10).quality(10).url()}
-                          className="slide-image w-full min-h-screen"
-                          style={{
-                            objectPosition: slide.image?.hotspot
-                              ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
-                              : "center",
-                          }}
-                        />
-                        <div className="lightbox-close panzoom-exclude">
-                            <Image src={lightboxclose} alt="close" width={28} height={28} style={{ filter: 'drop-shadow(rgba(0, 0, 0, 0.75) 1px 0px 2px)' }} />
-                        </div>
-                        <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
-                        <Image
-                          unoptimized
-                          src={urlFor(slide.image).quality(70).format('jpg').url()}
-                          alt={slide.image?.alt || ""}
-                          fill
-                          quality={100}
-                          placeholder="blur"
-                          blurDataURL={urlFor(slide.image).width(10).quality(10).url()}
-                          className="object-contain overlay-img"
-                          style={{
-                            objectPosition: slide.image?.hotspot
-                              ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
-                              : "center",
-                          }}
-                        />
-                      </div>
-                      </div>
-                      )}
+                switch (slide.layout) {
+                  case "imageOnly":
+                    if (!slide.image) return <></>
+                    return (
+                      <div key={index} className="relative min-h-screen media-only overlay-slide">
+                        <div className="flickity-top-overlay"></div>
+                        {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
+                          <video
+                            src={slide.videoFile.asset.url}
+                            className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          />
+                        )}
+                        {slide.mediaType === "image" && (
+                          <div className="image-holder">
+                            <Image
+                              priority
+                              src={urlFor(slide.image).quality(85).format("webp").url() || "/placeholder.svg"}
+                              alt={slide.image?.alt || ""}
+                              fill
+                              quality={85}
+                              sizes="100vw"
+                              placeholder="blur"
+                              blurDataURL={urlFor(slide.image).width(10).quality(10).url()}
+                              className="slide-image w-full min-h-screen"
+                              style={{
+                                objectPosition: slide.image?.hotspot
+                                  ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
+                                  : "center",
+                              }}
+                            />
+                            <div className="lightbox-close panzoom-exclude">
+                              <Image
+                                src={lightboxclose || "/placeholder.svg"}
+                                alt="close"
+                                width={28}
+                                height={28}
+                                style={{ filter: "drop-shadow(rgba(0, 0, 0, 0.75) 1px 0px 2px)" }}
+                              />
+                            </div>
+                            <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
+                              <Image
+                                src={urlFor(slide.image).quality(80).format("webp").url() || "/placeholder.svg"}
+                                alt={slide.image?.alt || ""}
+                                fill
+                                loading="lazy"
+                                quality={85}
+                                sizes="100vw"
+                                placeholder="blur"
+                                blurDataURL={urlFor(slide.image).width(10).quality(10).url()}
+                                className="object-contain overlay-img"
+                                style={{
+                                  objectPosition: slide.image?.hotspot
+                                    ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
+                                    : "center",
+                                }}
+                              />
+                            </div>
+                          </div>
+                        )}
                         <div className="slide-footer">
-                        <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
-                          <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
-                          <h5 className="count">{index + 1} / {totalSlides}</h5>
-                          <div className="button-next"><Image src={arrownext} alt="next"/></div>
-                          {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
+                          <a aria-label={page.title} href={`/${p.slug}`}>
+                            <h5 className="title">{page.title}</h5>
+                          </a>
+                          <div className="button-previous">
+                            <Image src={arrowprevious || "/placeholder.svg"} alt="previous" />
+                          </div>
+                          <h5 className="count">
+                            {index + 1} / {totalSlides}
+                          </h5>
+                          <div className="button-next">
+                            <Image src={arrownext || "/placeholder.svg"} alt="next" />
+                          </div>
+                          {slide.captionOrLinkType === "link" && slide.linkText && slide.link && (
                             <a aria-label={slide.linkText} href={slide.link} target="_blank" rel="noopener noreferrer">
                               <h5 className="caption">{slide.linkText}</h5>
                             </a>
                           )}
-                          {slide.captionOrLinkType !== 'link' && slide.caption && (
+                          {slide.captionOrLinkType !== "link" && slide.caption && (
                             <h5 className="caption">{slide.caption}</h5>
                           )}
                           <button type="button" className="lightbox">
-                              <Image src={lightbox} alt="next" width={28} height={28} style={{ filter: 'drop-shadow(1px 1px 1.5px rgba(0,0,0,0.75))' }} />
+                            <Image
+                              src={lightbox || "/placeholder.svg"}
+                              alt="next"
+                              width={28}
+                              height={28}
+                              style={{ filter: "drop-shadow(1px 1px 1.5px rgba(0,0,0,0.75))" }}
+                            />
                           </button>
                         </div>
-                      <div className="flickity-bottom-overlay"></div>
-                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {
-                        const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase();
-                        let strokeColor;
-                        if (!nextBg || nextBg === "#c6bbcf") {
-                          strokeColor = "#4C2F48";
-                        } else {
-                          strokeColor = "#fff";
-                        }
-                        return (
-                          <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
-                            <div className="next-page-title" id="next-page-title">
-                              <a  aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}><h3 style={{color: strokeColor}}>{page.nextPage.title}</h3></a>
-                            </div>
-                            <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
-                              <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
-                              </svg>
-                            </a>
-                          </div>
-                        );
-                      })()}
-                    </div>
-                  );
-
-                case "imageAndTextOverlayWithText":
-                  if (!slide.image) return <></>
-                  return (
-                    <div key={index} className="relative min-h-screen intro-slide overlay-slide">
-                      <div className="flickity-top-overlay"></div>
-                   {slide.mediaType === 'video' && slide.videoFile?.asset?.url &&  (
-                      <video
-                        src={slide.videoFile.asset.url}
-                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                      />
-                      )}
-                      {slide.mediaType === 'image' && (
-                        <div>
-                      <Image
-                        priority={true}
-                        unoptimized
-                        src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').format('jpg').url()}
-                        alt={slide.image?.alt || ""}
-                        width={3840}
-                        height={2160}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
-                        className={`slide-image w-full h-full min-h-screen`}
-                        style={{
-                          objectPosition: slide.image?.hotspot ? 
-                            `${(slide.image.hotspot.x * 100)}% ${(slide.image.hotspot.y * 100)}%` : 
-                            'center'
-                        }}
-                      />
-                       <div className="lightbox-close panzoom-exclude">
-                          <Image src={lightboxclose} alt="close" width={28} height={28} style={{ filter: 'drop-shadow(rgba(0, 0, 0, 0.75) 1px 0px 2px)' }} />
-                        </div>
-                      <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
-                      <Image
-                          unoptimized
-                          src={urlFor(slide.image).quality(70).format('jpg').url()}
-                          alt={slide.image?.alt || ""}
-                          fill
-                          quality={100}
-                          placeholder="blur"
-                          blurDataURL={urlFor(slide.image).width(10).quality(10).url()}
-                          className="object-contain overlay-img"
-                          style={{
-                            objectPosition: slide.image?.hotspot
-                              ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
-                              : "center",
-                          }}
-                        />
-                          </div>
-                        </div>
-                      )}
-                      <div className="slide-overlay">
-                        <div className="text">
-                          {slide.title && <h5 className="title">{slide.title}</h5>}
-                          {slide.text && <div className={`${slide.mobiletext && ('has-mobile-text')}`}><PortableText value={slide.text} components={components} /></div>}
-                          {(slide.mobiletext || []).map((block, i) => {
-                            const Tag = block.style === 'normal' ? 'p' : block.style || 'p';
+                        <div className="flickity-bottom-overlay"></div>
+                        {index + 1 === totalSlides &&
+                          page?.nextPage?.slug?.current &&
+                          (() => {
+                            const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase()
+                            let strokeColor
+                            if (!nextBg || nextBg === "#c6bbcf") {
+                              strokeColor = "#4C2F48"
+                            } else {
+                              strokeColor = "#fff"
+                            }
                             return (
-                              <Tag className="mobile-text" key={i}>
-                                {block.children?.map((child) => child.text).join('')}
-                              </Tag>
-                            );
-                          })}
-                        </div>
-                      </div>
-                      <div className="slide-footer">
-                          <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
-                          <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
-                          <h5 className="count">{index + 1} / {totalSlides}</h5>
-                          <div className="button-next"><Image src={arrownext} alt="next"/></div>
-                        </div>
-                        {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {
-                          const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase();
-                          let strokeColor;
-                          if (!nextBg || nextBg === "#c6bbcf") {
-                            strokeColor = "#4C2F48";
-                          } else {
-                            strokeColor = "#fff";
-                          }
-                          return (
-                            <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
-                              <div className="next-page-title" id="next-page-title">
-                                <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}><h3 style={{color: strokeColor}}>{page.nextPage.title}</h3></a>
+                              <div
+                                className="next-page-link"
+                                id="nextPageLink"
+                                style={{ backgroundColor: nextBg || "#c6bbcf" }}
+                              >
+                                <div className="next-page-title" id="next-page-title">
+                                  <a
+                                    aria-label={page.nextPage.title}
+                                    style={{ color: strokeColor }}
+                                    href={`/${page.nextPage.slug.current}`}
+                                  >
+                                    <h3 style={{ color: strokeColor }}>{page.nextPage.title}</h3>
+                                  </a>
+                                </div>
+                                <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
+                                  <svg
+                                    className="purple-arrow"
+                                    width="16"
+                                    height="29"
+                                    viewBox="0 0 16 29"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
+                                  </svg>
+                                </a>
                               </div>
-                              <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
-                                <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
-                                </svg>
-                              </a>
-                            </div>
-                          );
-                        })()}
-                      <div className="flickity-bottom-overlay"></div>
-                    </div>
-                  );
-
-                case "imageAndTextOverlayPlain":
-                  if (!slide.image) return <></>
-                  return (
-                    <div key={index} className="min-h-screen media-only image-text-overlay-plain">
-                      <div className="flickity-top-overlay"></div>
-                      {slide.mediaType === 'video' && slide.videoFile?.asset?.url && (
-                      <video
-                        src={slide.videoFile.asset.url}
-                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                      />
-                      )}
-                      {slide.mediaType === 'image' && (
-                        <div>
-                        <Image
-                        priority={true}
-                        unoptimized
-                        src={urlFor(slide.image).width(3840).height(2160).quality(70).fit('crop').format('jpg').url()}
-                        alt={slide.image?.alt || ""}
-                        width={3840}
-                        height={2160}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
-                        className={`slide-image w-full h-full min-h-screen`}
-                        style={{
-                          objectPosition: slide.image?.hotspot ? 
-                            `${(slide.image.hotspot.x * 100)}% ${(slide.image.hotspot.y * 100)}%` : 
-                            'center'
-                        }}
-                      />
-                      <div className="lightbox-close panzoom-exclude">
-                          <Image src={lightboxclose} alt="close" width={28} height={28} style={{ filter: 'drop-shadow(rgba(0, 0, 0, 0.75) 1px 0px 2px)' }} />
-                        </div>
-                      <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
-                      <Image
-                          unoptimized
-                          src={urlFor(slide.image).quality(70).format('jpg').url()}
-                          alt={slide.image?.alt || ""}
-                          fill
-                          quality={100}
-                          placeholder="blur"
-                          blurDataURL={urlFor(slide.image).width(10).quality(10).url()}
-                          className="object-contain overlay-img"
-                          style={{
-                            objectPosition: slide.image?.hotspot
-                              ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
-                              : "center",
-                          }}
-                        />
+                            )
+                          })()}
                       </div>
-                      </div>
-                      )}
-                        <div className="slide-footer">
-                          <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
-                          <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
-                          <h5 className="count">{index + 1} / {totalSlides}</h5>
-                          <div className="button-next"><Image src={arrownext} alt="next"/></div>
-                          {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
-                            <a aria-label={slide.linkText} href={slide.link} target="_blank" rel="noopener noreferrer">
-                              <h5 className="caption">{slide.linkText}</h5>
-                            </a>
-                          )}
-                          {slide.captionOrLinkType !== 'link' && slide.caption && (
-                            <h5 className="caption">{slide.caption}</h5>
-                          )}
-                        </div>
-                      <div className="flickity-bottom-overlay"></div>
-                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {
-                        const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase();
-                        let strokeColor;
-                        if (!nextBg || nextBg === "#c6bbcf") {
-                          strokeColor = "#4C2F48";
-                        } else {
-                          strokeColor = "#fff";
-                        }
-                        return (
-                          <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
-                            <div className="next-page-title" id="next-page-title">
-                              <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}><h3 style={{color: strokeColor}}>{page.nextPage.title}</h3></a>
-                            </div>
-                            <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
-                              <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
-                              </svg>
-                            </a>
-                          </div>
-                        );
-                      })()}
-                    </div>
-                  );
+                    )
 
-                case "imageLeftQuoteRight":
-                case "imageRightQuoteLeft": {
-                  const reverse = slide.layout === "imageLeftQuoteRight";
-                  if (!slide.image) return <></>
-                  return (
-                    <div
-                      key={index}
-                      className={`quote-slide min-h-screen flex ${reverse ? "flex-row-reverse" : "flex-row"}`}
-                      style={{ backgroundColor: bg }}
-                    >
-                      <div className="flickity-top-overlay"></div>
-                      <div className="quote-text">
-                        <div className={`${slide.mobiletext && ('inner-text-has-mobile-text')} inner-quote-text`}>
-                          {(slide.text || []).map((block, i) => {
-                            const Tag = block.style === 'normal' ? 'p' : block.style || 'p';
-                            return (
-                              <Tag className={`${slide.mobiletext && ('has-mobile-text')}`} key={i}>
-                                {block.children?.map((child) => child.text).join('')}
-                              </Tag>
-                            );
-                          })}
-                          {(slide.mobiletext || []).map((block, i) => {
-                            const Tag = block.style === 'normal' ? 'p' : block.style || 'p';
-                            return (
-                              <Tag className="mobile-text" key={i}>
-                                {block.children?.map((child) => child.text).join('')}
-                              </Tag>
-                            );
-                          })}
-                          <div className="credit">
-                            <h6>{slide.credit}</h6>
-                          </div>
-                        </div>
-                      </div>
-                    <div className="quote-image">
-                      {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
-                        <video
-                          src={slide.videoFile.asset.url}
-                          className="w-full aspect-[1080/1920] object-cover min-h-screen"
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                        />
-                      )}
-
-                      {slide.mediaType === "image" && slide.image && (
-                        <div className="h-full">
-                          <Image
-                            unoptimized
-                            src={urlFor(slide.image)
-                              .width(1080)
-                              .height(1920)
-                              .quality(80)
-                              .fit("crop")
-                              .url()}
-                            alt={slide.image?.alt || ""}
-                            width={1080}
-                            height={1920}
-                            quality={100}
-                            placeholder="blur"
-                            blurDataURL={urlFor(slide.image)
-                              .width(10)
-                              .height(6)
-                              .quality(10)
-                              .url()}
-                            className="object-cover h-full w-full"
-                            style={{
-                              objectPosition: slide.image?.hotspot
-                                ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
-                                : "center",
-                            }}
+                  case "imageAndTextOverlayWithText":
+                    if (!slide.image) return <></>
+                    return (
+                      <div key={index} className="relative min-h-screen intro-slide overlay-slide">
+                        <div className="flickity-top-overlay"></div>
+                        {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
+                          <video
+                            src={slide.videoFile.asset.url}
+                            className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
                           />
-                        </div>
-                      )}
-                    </div>
-
-                        <div className="slide-footer">
-                          <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
-                          <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
-                          <h5 className="count">{index + 1} / {totalSlides}</h5>
-                          <div className="button-next"><Image src={arrownext} alt="next"/></div>
-                          {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
-                            <a aria-label={slide.linkText} href={slide.link} target="_blank" rel="noopener noreferrer">
-                              <h5 className="caption">{slide.linkText}</h5>
-                            </a>
-                          )}
-                          {slide.captionOrLinkType !== 'link' && slide.caption && (
-                            <h5 className="caption">{slide.caption}</h5>
-                          )}
-                        </div>
-                      <div className="flickity-bottom-overlay"></div>
-                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {
-                        const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase();
-                        let strokeColor;
-                        if (!nextBg || nextBg === "#c6bbcf") {
-                          strokeColor = "#4C2F48";
-                        } else {
-                          strokeColor = "#fff";
-                        }
-                        return (
-                          <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
-                            <div className="next-page-title" id="next-page-title">
-                              <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}><h3 style={{color: strokeColor}}>{page.nextPage.title}</h3></a>
+                        )}
+                        {slide.mediaType === "image" && (
+                          <div className="image-holder">
+                            <Image
+                              src={
+                                urlFor(slide.image)
+                                  .width(1920)
+                                  .height(1080)
+                                  .quality(85)
+                                  .fit("crop")
+                                  .format("webp")
+                                  .url() || "/placeholder.svg"
+                              }
+                              alt={slide.image?.alt || ""}
+                              width={1920}
+                              height={1080}
+                              quality={85}
+                              sizes="100vw"
+                              placeholder="blur"
+                              blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit("crop").url()}
+                              className={`slide-image w-full h-full min-h-screen`}
+                              style={{
+                                objectPosition: slide.image?.hotspot
+                                  ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
+                                  : "center",
+                              }}
+                            />
+                            <div className="lightbox-close panzoom-exclude">
+                              <Image
+                                src={lightboxclose || "/placeholder.svg"}
+                                alt="close"
+                                width={28}
+                                height={28}
+                                style={{ filter: "drop-shadow(rgba(0, 0, 0, 0.75) 1px 0px 2px)" }}
+                              />
                             </div>
-                            <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
-                              <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
-                              </svg>
-                            </a>
+                            <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
+                              <Image
+                                src={urlFor(slide.image).quality(80).format("webp").url() || "/placeholder.svg"}
+                                alt={slide.image?.alt || ""}
+                                fill
+                                loading="lazy"
+                                quality={85}
+                                sizes="100vw"
+                                placeholder="blur"
+                                blurDataURL={urlFor(slide.image).width(10).quality(10).url()}
+                                className="object-contain overlay-img"
+                                style={{
+                                  objectPosition: slide.image?.hotspot
+                                    ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
+                                    : "center",
+                                }}
+                              />
+                            </div>
                           </div>
-                        );
-                      })()}
-                    </div>
-                  );
-                }
-
-                case "imageAndText":
-                case "imageLeftTextRight":
-                case "imageRightTextLeft": {
-                  const reverse = slide.layout === "imageLeftTextRight";
-                  if (!slide.image) return <></>;
-                  return (
-                    <div
-                      key={index}
-                      className={`image-text-slide min-h-screen flex ${reverse ? "flex-row-reverse" : "flex-row"}`}
-                      style={{ backgroundColor: bg }}
-                    >
-                      <div className="flickity-top-overlay"></div>
-                      <div className="text" style={{ backgroundColor: bg }}>
-                        <div className="inner-text">
-                          {slide.title && <h2 className="title">{slide.title}</h2>}
-                          <div className="inner-text-text">
+                        )}
+                        <div className="slide-overlay">
+                          <div className="text">
+                            {slide.title && <h5 className="title">{slide.title}</h5>}
                             {slide.text && (
-                              <PortableText value={slide.text} components={components} />
+                              <div className={`${slide.mobiletext && "has-mobile-text"}`}>
+                                <PortableText value={slide.text} components={components} />
+                              </div>
                             )}
                             {(slide.mobiletext || []).map((block, i) => {
-                              const Tag = block.style === 'normal' ? 'p' : block.style || 'p';
+                              const Tag = block.style === "normal" ? "p" : block.style || "p"
                               return (
                                 <Tag className="mobile-text" key={i}>
-                                  {block.children?.map((child) => child.text).join('')}
+                                  {block.children?.map((child) => child.text).join("")}
                                 </Tag>
-                              );
+                              )
                             })}
                           </div>
                         </div>
-                      </div>
-                      {slide.mediaType === 'video' && slide.videoFile?.asset?.url && (
-                        <video
-                          src={slide.videoFile.asset.url}
-                          className="w-full aspect-[1920/1080] object-cover min-h-screen"
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                        />
-                      )}
-                      {slide.mediaType === 'image' && (
-                        <div className="image-container">
-                          <Image
-                            unoptimized
-                            src={urlFor(slide.image).width(1920).height(2160).quality(70).fit('crop').format('jpg').url()}
-                            alt={slide.image?.alt || ""}
-                            width={1920}
-                            height={1080}
-                            quality={100}
-                            placeholder="blur"
-                            blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
-                            className={`object-cover min-h-screen`}
-                          />
-                        </div>
-                      )}
-                      <div className="slide-footer">
-                        <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
-                        <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
-                        <h5 className="count">{index + 1} / {totalSlides}</h5>
-                        <div className="button-next"><Image src={arrownext} alt="next"/></div>
-                        {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
-                          <a aria-label={slide.linkText} href={slide.link} target="_blank" rel="noopener noreferrer">
-                            <h5 className="caption">{slide.linkText}</h5>
-                          </a>
-                        )}
-                        {slide.captionOrLinkType !== 'link' && slide.caption && (
-                          <h5 className="caption">{slide.caption}</h5>
-                        )}
-                      </div>
-                      <div className="flickity-bottom-overlay"></div>
-                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {
-                        const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase();
-                        let strokeColor;
-                        if (!nextBg || nextBg === "#c6bbcf") {
-                          strokeColor = "#4C2F48";
-                        } else {
-                          strokeColor = "#fff";
-                        }
-                        return (
-                          <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
-                            <div className="next-page-title" id="next-page-title">
-                              <a aria-label={page.nextPage.title} style={{color: strokeColor}} href={`/${page.nextPage.slug.current}`}><h3 style={{color: strokeColor}}>{page.nextPage.title}</h3></a>
-                            </div>
-                            <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
-                              <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
-                              </svg>
-                            </a>
-                          </div>
-                        );
-                      })()}
-                    </div>
-                  );
-                }
-
-                case "smallImageLeftLargeImageRight":
-                case "largeImageLeftSmallImageRight": {
-                  const reverse = slide.layout === "largeImageLeftSmallImageRight";
-                  if (!slide.image) return <></>
-                  return (
-                    <div
-                      key={index}
-                      className={`small-large-image-slide ${slide.layout}  min-h-screen flex`}
-                      style={{ backgroundColor: bg }}
-                    >
-                      <div className="flickity-top-overlay"></div>
-                      {!reverse && slide.smallImage && (
-                        <div className="smallImageContainer">
-                      {slide.smallmediaType === 'video' && slide.videoFile?.asset?.url && (
-                      <video
-                        src={slide.videoFile.asset.url}
-                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                      />
-                      )}
-                      {slide.smallmediaType === 'image' && (
-                        <div>
-                        <Image
-                        unoptimized
-                        src={urlFor(slide.smallImage).width(600).height(400).quality(70).fit('crop').format('jpg').url()}
-                        alt={slide.smallImage?.alt || ""}
-                        width={600}
-                        height={400}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.smallImage).width(10).height(6).quality(10).fit('crop').url()}
-                        className={`object-cover slide-image`}
-                      />
-                        </div>
-                      )}
-                        </div>
-                      )}
-                      <div className="largeImageContainer">
-                      {slide.mediaType === 'video' && slide.videoFile?.asset?.url && (
-                      <video
-                        src={slide.videoFile.asset.url}
-                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                      />
-                      )}
-                      {slide.mediaType === 'image' && (
-                        <div>
-                      <Image
-                        unoptimized
-                        src={urlFor(slide.image).width(1920).height(2160).quality(70).fit('crop').format('jpg').url()}
-                        alt={slide.image?.alt || ""}
-                        width={1920}
-                        height={1080}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit('crop').url()}
-                        className="object-cover min-h-screen"
-                      />
-                      </div>
-                    )}
-                      </div>
-                      {reverse && slide.smallImage && (
-                        <div className="smallImageContainer">
-                        {slide.mediaType === 'video' && slide.videoFile?.asset?.url && (
-                      <video
-                        src={slide.videoFile.asset.url}
-                        className="w-full aspect-[1920/1080] object-cover min-h-screen"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                      />
-                      )}
-                      {slide.mediaType === 'image' && (
-                        <div>
-                        <Image
-                        unoptimized
-                        src={urlFor(slide.smallImage).width(600).height(400).quality(70).fit('crop').format('jpg').url()}
-                        alt={slide.smallImage?.alt || ""}
-                        width={600}
-                        height={400}
-                        quality={100}
-                        placeholder="blur"
-                        blurDataURL={urlFor(slide.smallImage).width(10).height(6).quality(10).fit('crop').url()}
-                        className={`object-cover`}
-                      />
-                      </div>
-                    )}
-                        </div>
-                      )}
                         <div className="slide-footer">
-                          <a aria-label={page.title} href={`/${p.slug}`}><h5 className="title">{page.title}</h5></a>
-                          <div className="button-previous"><Image src={arrowprevious} alt="previous"/></div>
-                          <h5 className="count">{index + 1} / {totalSlides}</h5>
-                          <div className="button-next"><Image src={arrownext} alt="next"/></div>
-                          {slide.captionOrLinkType === 'link' && slide.linkText && slide.link && (
+                          <a aria-label={page.title} href={`/${p.slug}`}>
+                            <h5 className="title">{page.title}</h5>
+                          </a>
+                          <div className="button-previous">
+                            <Image src={arrowprevious || "/placeholder.svg"} alt="previous" />
+                          </div>
+                          <h5 className="count">
+                            {index + 1} / {totalSlides}
+                          </h5>
+                          <div className="button-next">
+                            <Image src={arrownext || "/placeholder.svg"} alt="next" />
+                          </div>
+                        </div>
+                        {index + 1 === totalSlides &&
+                          page?.nextPage?.slug?.current &&
+                          (() => {
+                            const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase()
+                            let strokeColor
+                            if (!nextBg || nextBg === "#c6bbcf") {
+                              strokeColor = "#4C2F48"
+                            } else {
+                              strokeColor = "#fff"
+                            }
+                            return (
+                              <div
+                                className="next-page-link"
+                                id="nextPageLink"
+                                style={{ backgroundColor: nextBg || "#c6bbcf" }}
+                              >
+                                <div className="next-page-title" id="next-page-title">
+                                  <a
+                                    aria-label={page.nextPage.title}
+                                    style={{ color: strokeColor }}
+                                    href={`/${page.nextPage.slug.current}`}
+                                  >
+                                    <h3 style={{ color: strokeColor }}>{page.nextPage.title}</h3>
+                                  </a>
+                                </div>
+                                <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
+                                  <svg
+                                    className="purple-arrow"
+                                    width="16"
+                                    height="29"
+                                    viewBox="0 0 16 29"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
+                                  </svg>
+                                </a>
+                              </div>
+                            )
+                          })()}
+                        <div className="flickity-bottom-overlay"></div>
+                      </div>
+                    )
+
+                  case "imageAndTextOverlayPlain":
+                    if (!slide.image) return <></>
+                    return (
+                      <div key={index} className="min-h-screen media-only image-text-overlay-plain">
+                        <div className="flickity-top-overlay"></div>
+                        {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
+                          <video
+                            src={slide.videoFile.asset.url}
+                            className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          />
+                        )}
+                        {slide.mediaType === "image" && (
+                          <div className="image-holder">
+                            <Image
+                              src={
+                                urlFor(slide.image)
+                                  .width(1920)
+                                  .height(1080)
+                                  .quality(85)
+                                  .fit("crop")
+                                  .format("webp")
+                                  .url() || "/placeholder.svg"
+                              }
+                              alt={slide.image?.alt || ""}
+                              width={1920}
+                              height={1080}
+                              quality={85}
+                              sizes="100vw"
+                              placeholder="blur"
+                              blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit("crop").url()}
+                              className={`slide-image w-full h-full min-h-screen`}
+                              style={{
+                                objectPosition: slide.image?.hotspot
+                                  ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
+                                  : "center",
+                              }}
+                            />
+                            <div className="lightbox-close panzoom-exclude">
+                              <Image
+                                src={lightboxclose || "/placeholder.svg"}
+                                alt="close"
+                                width={28}
+                                height={28}
+                                style={{ filter: "drop-shadow(rgba(0, 0, 0, 0.75) 1px 0px 2px)" }}
+                              />
+                            </div>
+                            <div className="image-lightbox" style={{ backgroundColor: lightboxbg }}>
+                              <Image
+                                src={urlFor(slide.image).quality(80).format("webp").url() || "/placeholder.svg"}
+                                alt={slide.image?.alt || ""}
+                                fill
+                                loading="lazy"
+                                quality={85}
+                                sizes="100vw"
+                                placeholder="blur"
+                                blurDataURL={urlFor(slide.image).width(10).quality(10).url()}
+                                className="object-contain overlay-img"
+                                style={{
+                                  objectPosition: slide.image?.hotspot
+                                    ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
+                                    : "center",
+                                }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                        <div className="slide-footer">
+                          <a aria-label={page.title} href={`/${p.slug}`}>
+                            <h5 className="title">{page.title}</h5>
+                          </a>
+                          <div className="button-previous">
+                            <Image src={arrowprevious || "/placeholder.svg"} alt="previous" />
+                          </div>
+                          <h5 className="count">
+                            {index + 1} / {totalSlides}
+                          </h5>
+                          <div className="button-next">
+                            <Image src={arrownext || "/placeholder.svg"} alt="next" />
+                          </div>
+                          {slide.captionOrLinkType === "link" && slide.linkText && slide.link && (
                             <a aria-label={slide.linkText} href={slide.link} target="_blank" rel="noopener noreferrer">
                               <h5 className="caption">{slide.linkText}</h5>
                             </a>
                           )}
-                          {slide.captionOrLinkType !== 'link' && slide.caption && (
+                          {slide.captionOrLinkType !== "link" && slide.caption && (
                             <h5 className="caption">{slide.caption}</h5>
                           )}
                         </div>
-                      <div className="flickity-bottom-overlay"></div>
-                      {index + 1 === totalSlides && page?.nextPage?.slug?.current && (() => {
-                        const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase();
-                        let strokeColor;
-                        if (!nextBg || nextBg === "#c6bbcf") {
-                          strokeColor = "#4C2F48";
-                        } else {
-                          strokeColor = "#fff";
-                        }
-                        return (
-                          <div className="next-page-link" id="nextPageLink" style={{ backgroundColor: nextBg || "#c6bbcf" }}>
-                            <div className="next-page-title" id="next-page-title">
-                              <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}><h3 style={{color: strokeColor}}>{page.nextPage.title}</h3></a>
+                        <div className="flickity-bottom-overlay"></div>
+                        {index + 1 === totalSlides &&
+                          page?.nextPage?.slug?.current &&
+                          (() => {
+                            const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase()
+                            let strokeColor
+                            if (!nextBg || nextBg === "#c6bbcf") {
+                              strokeColor = "#4C2F48"
+                            } else {
+                              strokeColor = "#fff"
+                            }
+                            return (
+                              <div
+                                className="next-page-link"
+                                id="nextPageLink"
+                                style={{ backgroundColor: nextBg || "#c6bbcf" }}
+                              >
+                                <div className="next-page-title" id="next-page-title">
+                                  <a
+                                    aria-label={page.nextPage.title}
+                                    style={{ color: strokeColor }}
+                                    href={`/${page.nextPage.slug.current}`}
+                                  >
+                                    <h3 style={{ color: strokeColor }}>{page.nextPage.title}</h3>
+                                  </a>
+                                </div>
+                                <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
+                                  <svg
+                                    className="purple-arrow"
+                                    width="16"
+                                    height="29"
+                                    viewBox="0 0 16 29"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
+                                  </svg>
+                                </a>
+                              </div>
+                            )
+                          })()}
+                      </div>
+                    )
+
+                  case "imageLeftQuoteRight":
+                  case "imageRightQuoteLeft": {
+                    const reverse = slide.layout === "imageLeftQuoteRight"
+                    if (!slide.image) return <></>
+                    return (
+                      <div
+                        key={index}
+                        className={`quote-slide min-h-screen flex ${reverse ? "flex-row-reverse" : "flex-row"}`}
+                        style={{ backgroundColor: bg }}
+                      >
+                        <div className="flickity-top-overlay"></div>
+                        <div className="quote-text">
+                          <div className={`${slide.mobiletext && "inner-text-has-mobile-text"} inner-quote-text`}>
+                            {(slide.text || []).map((block, i) => {
+                              const Tag = block.style === "normal" ? "p" : block.style || "p"
+                              return (
+                                <Tag className={`${slide.mobiletext && "has-mobile-text"}`} key={i}>
+                                  {block.children?.map((child) => child.text).join("")}
+                                </Tag>
+                              )
+                            })}
+                            {(slide.mobiletext || []).map((block, i) => {
+                              const Tag = block.style === "normal" ? "p" : block.style || "p"
+                              return (
+                                <Tag className="mobile-text" key={i}>
+                                  {block.children?.map((child) => child.text).join("")}
+                                </Tag>
+                              )
+                            })}
+                            <div className="credit">
+                              <h6>{slide.credit}</h6>
                             </div>
-                            <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
-                              <svg className="purple-arrow" width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
-                              </svg>
-                            </a>
                           </div>
-                        );
-                      })()}
-                    </div>
-                  );
+                        </div>
+                        <div className="quote-image">
+                          {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
+                            <video
+                              src={slide.videoFile.asset.url}
+                              className="w-full aspect-[1080/1920] object-cover min-h-screen"
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
+                            />
+                          )}
+
+                          {slide.mediaType === "image" && slide.image && (
+                            <div className="h-full">
+                              <Image
+                                src={
+                                  urlFor(slide.image)
+                                    .width(1080)
+                                    .height(1920)
+                                    .quality(85)
+                                    .fit("crop")
+                                    .format("webp")
+                                    .url() || "/placeholder.svg"
+                                }
+                                alt={slide.image?.alt || ""}
+                                width={1080}
+                                height={1920}
+                                quality={85}
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                placeholder="blur"
+                                blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).url()}
+                                className="object-cover h-full w-full"
+                                style={{
+                                  objectPosition: slide.image?.hotspot
+                                    ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
+                                    : "center",
+                                }}
+                              />
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="slide-footer">
+                          <a aria-label={page.title} href={`/${p.slug}`}>
+                            <h5 className="title">{page.title}</h5>
+                          </a>
+                          <div className="button-previous">
+                            <Image src={arrowprevious || "/placeholder.svg"} alt="previous" />
+                          </div>
+                          <h5 className="count">
+                            {index + 1} / {totalSlides}
+                          </h5>
+                          <div className="button-next">
+                            <Image src={arrownext || "/placeholder.svg"} alt="next" />
+                          </div>
+                          {slide.captionOrLinkType === "link" && slide.linkText && slide.link && (
+                            <a aria-label={slide.linkText} href={slide.link} target="_blank" rel="noopener noreferrer">
+                              <h5 className="caption">{slide.linkText}</h5>
+                            </a>
+                          )}
+                          {slide.captionOrLinkType !== "link" && slide.caption && (
+                            <h5 className="caption">{slide.caption}</h5>
+                          )}
+                        </div>
+                        <div className="flickity-bottom-overlay"></div>
+                        {index + 1 === totalSlides &&
+                          page?.nextPage?.slug?.current &&
+                          (() => {
+                            const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase()
+                            let strokeColor
+                            if (!nextBg || nextBg === "#c6bbcf") {
+                              strokeColor = "#4C2F48"
+                            } else {
+                              strokeColor = "#fff"
+                            }
+                            return (
+                              <div
+                                className="next-page-link"
+                                id="nextPageLink"
+                                style={{ backgroundColor: nextBg || "#c6bbcf" }}
+                              >
+                                <div className="next-page-title" id="next-page-title">
+                                  <a
+                                    aria-label={page.nextPage.title}
+                                    style={{ color: strokeColor }}
+                                    href={`/${page.nextPage.slug.current}`}
+                                  >
+                                    <h3 style={{ color: strokeColor }}>{page.nextPage.title}</h3>
+                                  </a>
+                                </div>
+                                <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
+                                  <svg
+                                    className="purple-arrow"
+                                    width="16"
+                                    height="29"
+                                    viewBox="0 0 16 29"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
+                                  </svg>
+                                </a>
+                              </div>
+                            )
+                          })()}
+                      </div>
+                    )
+                  }
+
+                  case "imageAndText":
+                  case "imageLeftTextRight":
+                  case "imageRightTextLeft": {
+                    const reverse = slide.layout === "imageLeftTextRight"
+                    if (!slide.image) return <></>
+                    return (
+                      <div
+                        key={index}
+                        className={`image-text-slide min-h-screen flex ${reverse ? "flex-row-reverse" : "flex-row"}`}
+                        style={{ backgroundColor: bg }}
+                      >
+                        <div className="flickity-top-overlay"></div>
+                        <div className="text" style={{ backgroundColor: bg }}>
+                          <div className="inner-text">
+                            {slide.title && <h2 className="title">{slide.title}</h2>}
+                            <div className="inner-text-text">
+                              {slide.text && <PortableText value={slide.text} components={components} />}
+                              {(slide.mobiletext || []).map((block, i) => {
+                                const Tag = block.style === "normal" ? "p" : block.style || "p"
+                                return (
+                                  <Tag className="mobile-text" key={i}>
+                                    {block.children?.map((child) => child.text).join("")}
+                                  </Tag>
+                                )
+                              })}
+                            </div>
+                          </div>
+                        </div>
+                        {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
+                          <video
+                            src={slide.videoFile.asset.url}
+                            className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          />
+                        )}
+                        {slide.mediaType === "image" && (
+                          <div className="image-container">
+                            <Image
+                              src={
+                                urlFor(slide.image)
+                                  .width(1920)
+                                  .height(1080)
+                                  .quality(85)
+                                  .fit("crop")
+                                  .format("webp")
+                                  .url() || "/placeholder.svg"
+                              }
+                              alt={slide.image?.alt || ""}
+                              width={1920}
+                              height={1080}
+                              quality={85}
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                              placeholder="blur"
+                              blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit("crop").url()}
+                              className={`object-cover min-h-screen`}
+                            />
+                          </div>
+                        )}
+                        <div className="slide-footer">
+                          <a aria-label={page.title} href={`/${p.slug}`}>
+                            <h5 className="title">{page.title}</h5>
+                          </a>
+                          <div className="button-previous">
+                            <Image src={arrowprevious || "/placeholder.svg"} alt="previous" />
+                          </div>
+                          <h5 className="count">
+                            {index + 1} / {totalSlides}
+                          </h5>
+                          <div className="button-next">
+                            <Image src={arrownext || "/placeholder.svg"} alt="next" />
+                          </div>
+                          {slide.captionOrLinkType === "link" && slide.linkText && slide.link && (
+                            <a aria-label={slide.linkText} href={slide.link} target="_blank" rel="noopener noreferrer">
+                              <h5 className="caption">{slide.linkText}</h5>
+                            </a>
+                          )}
+                          {slide.captionOrLinkType !== "link" && slide.caption && (
+                            <h5 className="caption">{slide.caption}</h5>
+                          )}
+                        </div>
+                        <div className="flickity-bottom-overlay"></div>
+                        {index + 1 === totalSlides &&
+                          page?.nextPage?.slug?.current &&
+                          (() => {
+                            const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase()
+                            let strokeColor
+                            if (!nextBg || nextBg === "#c6bbcf") {
+                              strokeColor = "#4C2F48"
+                            } else {
+                              strokeColor = "#fff"
+                            }
+                            return (
+                              <div
+                                className="next-page-link"
+                                id="nextPageLink"
+                                style={{ backgroundColor: nextBg || "#c6bbcf" }}
+                              >
+                                <div className="next-page-title" id="next-page-title">
+                                  <a
+                                    aria-label={page.nextPage.title}
+                                    style={{ color: strokeColor }}
+                                    href={`/${page.nextPage.slug.current}`}
+                                  >
+                                    <h3 style={{ color: strokeColor }}>{page.nextPage.title}</h3>
+                                  </a>
+                                </div>
+                                <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
+                                  <svg
+                                    className="purple-arrow"
+                                    width="16"
+                                    height="29"
+                                    viewBox="0 0 16 29"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
+                                  </svg>
+                                </a>
+                              </div>
+                            )
+                          })()}
+                      </div>
+                    )
+                  }
+
+                  case "smallImageLeftLargeImageRight":
+                  case "largeImageLeftSmallImageRight": {
+                    const reverse = slide.layout === "largeImageLeftSmallImageRight"
+                    if (!slide.image) return <></>
+                    return (
+                      <div
+                        key={index}
+                        className={`small-large-image-slide ${slide.layout}  min-h-screen flex`}
+                        style={{ backgroundColor: bg }}
+                      >
+                        <div className="flickity-top-overlay"></div>
+                        {!reverse && slide.smallImage && (
+                          <div className="smallImageContainer">
+                            {slide.smallmediaType === "video" && slide.videoFile?.asset?.url && (
+                              <video
+                                src={slide.videoFile.asset.url}
+                                className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                              />
+                            )}
+                            {slide.smallmediaType === "image" && (
+                              <div className="image-holder">
+                                <Image
+                                  src={
+                                    urlFor(slide.smallImage)
+                                      .width(600)
+                                      .height(400)
+                                      .quality(85)
+                                      .fit("crop")
+                                      .format("webp")
+                                      .url() || "/placeholder.svg"
+                                  }
+                                  alt={slide.smallImage?.alt || ""}
+                                  width={600}
+                                  height={400}
+                                  quality={85}
+                                  sizes="(max-width: 768px) 50vw, 33vw"
+                                  placeholder="blur"
+                                  blurDataURL={urlFor(slide.smallImage)
+                                    .width(10)
+                                    .height(6)
+                                    .quality(10)
+                                    .fit("crop")
+                                    .url()}
+                                  className={`object-cover slide-image`}
+                                />
+                              </div>
+                            )}
+                          </div>
+                        )}
+                        <div className="largeImageContainer">
+                          {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
+                            <video
+                              src={slide.videoFile.asset.url}
+                              className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
+                            />
+                          )}
+                          {slide.mediaType === "image" && (
+                            <div className="image-holder">
+                              <Image
+                                src={
+                                  urlFor(slide.image)
+                                    .width(1920)
+                                    .height(1080)
+                                    .quality(85)
+                                    .fit("crop")
+                                    .format("webp")
+                                    .url() || "/placeholder.svg"
+                                }
+                                alt={slide.image?.alt || ""}
+                                width={1920}
+                                height={1080}
+                                quality={85}
+                                sizes="(max-width: 768px) 100vw, 66vw"
+                                placeholder="blur"
+                                blurDataURL={urlFor(slide.image).width(10).height(6).quality(10).fit("crop").url()}
+                                className="object-cover min-h-screen"
+                              />
+                            </div>
+                          )}
+                        </div>
+                        {reverse && slide.smallImage && (
+                          <div className="smallImageContainer">
+                            {slide.mediaType === "video" && slide.videoFile?.asset?.url && (
+                              <video
+                                src={slide.videoFile.asset.url}
+                                className="w-full aspect-[1920/1080] object-cover min-h-screen"
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                              />
+                            )}
+                            {slide.mediaType === "image" && (
+                              <div className="image-holder">
+                                <Image
+                                  src={
+                                    urlFor(slide.smallImage)
+                                      .width(600)
+                                      .height(400)
+                                      .quality(85)
+                                      .fit("crop")
+                                      .format("webp")
+                                      .url() || "/placeholder.svg"
+                                  }
+                                  alt={slide.smallImage?.alt || ""}
+                                  width={600}
+                                  height={400}
+                                  quality={85}
+                                  sizes="(max-width: 768px) 50vw, 33vw"
+                                  placeholder="blur"
+                                  blurDataURL={urlFor(slide.smallImage)
+                                    .width(10)
+                                    .height(6)
+                                    .quality(10)
+                                    .fit("crop")
+                                    .url()}
+                                  className={`object-cover`}
+                                />
+                              </div>
+                            )}
+                          </div>
+                        )}
+                        <div className="slide-footer">
+                          <a aria-label={page.title} href={`/${p.slug}`}>
+                            <h5 className="title">{page.title}</h5>
+                          </a>
+                          <div className="button-previous">
+                            <Image src={arrowprevious || "/placeholder.svg"} alt="previous" />
+                          </div>
+                          <h5 className="count">
+                            {index + 1} / {totalSlides}
+                          </h5>
+                          <div className="button-next">
+                            <Image src={arrownext || "/placeholder.svg"} alt="next" />
+                          </div>
+                          {slide.captionOrLinkType === "link" && slide.linkText && slide.link && (
+                            <a aria-label={slide.linkText} href={slide.link} target="_blank" rel="noopener noreferrer">
+                              <h5 className="caption">{slide.linkText}</h5>
+                            </a>
+                          )}
+                          {slide.captionOrLinkType !== "link" && slide.caption && (
+                            <h5 className="caption">{slide.caption}</h5>
+                          )}
+                        </div>
+                        <div className="flickity-bottom-overlay"></div>
+                        {index + 1 === totalSlides &&
+                          page?.nextPage?.slug?.current &&
+                          (() => {
+                            const nextBg = (page.nextPageBackgroundColour || "").trim().toLowerCase()
+                            let strokeColor
+                            if (!nextBg || nextBg === "#c6bbcf") {
+                              strokeColor = "#4C2F48"
+                            } else {
+                              strokeColor = "#fff"
+                            }
+                            return (
+                              <div
+                                className="next-page-link"
+                                id="nextPageLink"
+                                style={{ backgroundColor: nextBg || "#c6bbcf" }}
+                              >
+                                <div className="next-page-title" id="next-page-title">
+                                  <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
+                                    <h3 style={{ color: strokeColor }}>{page.nextPage.title}</h3>
+                                  </a>
+                                </div>
+                                <a aria-label={page.nextPage.title} href={`/${page.nextPage.slug.current}`}>
+                                  <svg
+                                    className="purple-arrow"
+                                    width="16"
+                                    height="29"
+                                    viewBox="0 0 16 29"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path d="M0.999999 28L14.5 14.5L1 0.999999" stroke={strokeColor} />
+                                  </svg>
+                                </a>
+                              </div>
+                            )
+                          })()}
+                      </div>
+                    )
+                  }
+
+                  default:
+                    return null
                 }
-
-                default:
-                  return null;
-              }
-            })}
-          </FlickityCarousel>
-        </section>
-      )}
-
-      {/* Thank You Page */}
-      {page?.pageType === "thankyoupage" && (
-        <>
-        <a href="/" className="contact-form-close">
-            <div className="desktop-close">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
-                <path d="M1 1L29 29" stroke="#4C2F48" />
-                <path d="M29 1L1 29" stroke="#4C2F48" />
-              </svg>
-            </div>
-            <div className="ipad-close">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <path d="M1.00049 0.707031L26.9999 26.7027" stroke="#4C2F48" />
-                <path d="M26.9995 0.707031L1.0001 26.7027" stroke="#4C2F48" />
-              </svg>
-            </div>
-            <div className="mobile-close">
-              <svg width="12" height="22" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11 1L1 11L11 21" stroke="#4C2F48" />
-              </svg>
-            </div>
-          </a>
-        <div className="thank-you-message"><h3>{page.thankyoumessage}</h3></div>
-        </>
-      )}
-
-      {/* Text Page */}
-      {page?.pageType === "textpage" && (
-        <>
-          <section className="textpage-title">
-            <h1 className="title">{page.headline}</h1>
+              })}
+            </FlickityCarousel>
           </section>
+        )}
 
-          <section className="introblock">
-            {page.introimage && (
-              <Image
-                src={urlFor(page.introimage).width(600).height(400).fit('crop').url()}
-                alt="symbol"
-                width={600}
-                height={400}
-                className="intro-image"
-              />
-            )}
-           { page.introblock ? <PortableText value={page.introblock} components={components} /> : <></>}
-          </section>
-
-          <section className="text-section">
-            {page.textSections?.map((section, index) => (
-              <div className="text-block" key={index}>
-                {section.heading && <h5 className="title">{section.heading}</h5>}
-                {section.body && <PortableText value={section.body} components={components} />}
+        {/* Thank You Page */}
+        {page?.pageType === "thankyoupage" && (
+          <>
+            <a href="/" className="contact-form-close">
+              <div className="desktop-close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                  <path d="M1 1L29 29" stroke="#4C2F48" />
+                  <path d="M29 1L1 29" stroke="#4C2F48" />
+                </svg>
               </div>
-            ))}
-          </section>
-        </>
-      )}
-    </main>
-        </>
-  );
+              <div className="ipad-close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  <path d="M1.00049 0.707031L26.9999 26.7027" stroke="#4C2F48" />
+                  <path d="M26.9995 0.707031L1.0001 26.7027" stroke="#4C2F48" />
+                </svg>
+              </div>
+              <div className="mobile-close">
+                <svg width="12" height="22" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11 1L1 11L11 21" stroke="#4C2F48" />
+                </svg>
+              </div>
+            </a>
+            <div className="thank-you-message">
+              <h3>{page.thankyoumessage}</h3>
+            </div>
+          </>
+        )}
+
+        {/* Text Page */}
+        {page?.pageType === "textpage" && (
+          <>
+            <section className="textpage-title">
+              <h1 className="title">{page.headline}</h1>
+            </section>
+
+            <section className="introblock">
+              {page.introimage && (
+                /* Text page intro image with WebP */
+                <Image
+                  src={
+                    urlFor(page.introimage).width(600).height(400).format("webp").url() ||
+                    "/placeholder.svg" ||
+                    "/placeholder.svg"
+                  }
+                  alt="symbol"
+                  width={600}
+                  height={400}
+                  quality={85}
+                  sizes="(max-width: 768px) 100vw, 600px"
+                  className="intro-image"
+                />
+              )}
+              {page.introblock ? <PortableText value={page.introblock} components={components} /> : <></>}
+            </section>
+
+            <section className="text-section">
+              {page.textSections?.map((section, index) => (
+                <div className="text-block" key={index}>
+                  {section.heading && <h5 className="title">{section.heading}</h5>}
+                  {section.body && <PortableText value={section.body} components={components} />}
+                </div>
+              ))}
+            </section>
+          </>
+        )}
+      </main>
+    </>
+  )
 }

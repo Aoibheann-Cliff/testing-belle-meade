@@ -2804,7 +2804,7 @@ line-height: 1.225rem;
       }
 
       .lightbox-close{
-        position:absolute;
+        position:fixed;
         bottom: 1.75rem;
         right: 1.563rem;
         z-index:10000000;
@@ -3506,7 +3506,7 @@ line-height: 1.225rem;
       }
 
       .lightbox-close{
-        position:absolute;
+        position:fixed;
         bottom: 1.75rem;
         right: 1.563rem;
         z-index:10000000;

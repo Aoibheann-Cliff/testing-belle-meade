@@ -134,23 +134,21 @@ h6{
 .Team .image-text-slide .inner-text-text{
     max-height:200px;
     padding-right:70px;
+    height:fit-content;
     display: flex;
     flex-direction: column;
     gap:1rem;
-    scrollbar-width: thin !important; 
-    scrollbar-color: #ffffff80 transparent !important; 
-    scrollbar-gutter: stable !important;
-    overflow-y: hidden;
-    overflow-x: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .Team .image-text-slide .inner-text-text::-webkit-scrollbar {
   width: 2px !important;
 }
 
-.Team .image-text-slide .inner-text-text::-webkit-scrollbar-track {
+/* .Team .image-text-slide .inner-text-text::-webkit-scrollbar-track {
   background: #ffffff80 !important;
-}
+} */
 
 .Team .image-text-slide .inner-text-text::-webkit-scrollbar-thumb {
   background: #ffffff !important;
@@ -1755,6 +1753,12 @@ div:has(> .react-dropdown-select) {
     display:block;
 }
 
+.has-mobile-text{
+    display:flex;
+    flex-direction: column;
+    gap:1rem;
+}
+
 .mobile-text{
     display:none;
 }
@@ -2337,6 +2341,12 @@ div:has(> .react-dropdown-select) {
 
     .mobile-image{
         display:none;
+    }
+
+    .has-mobile-text{
+        display:flex;
+        flex-direction: column;
+        gap:1rem;
     }
 
     .mobile-text{
@@ -3355,7 +3365,7 @@ line-height: 1.225rem;
         width:100%;
     }
 
-        .Team .image-text-slide .inner-text-text *{
+    .Team .image-text-slide .inner-text-text *{
         display:none;
     }
 

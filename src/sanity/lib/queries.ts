@@ -83,6 +83,23 @@ export const HOMEPAGE_QUERY = `
     mobilebackgroundvideolink,
     backgroundmediaType,
     videotype,
+    popup {
+      icon {
+        asset->{
+          _id,
+          url
+        }
+      },
+      text[],
+      image {
+        asset->{
+          _id,
+          url
+        }
+      },
+      link,
+      linktext
+    },
     backgroundimage {
       asset->{
         _id,

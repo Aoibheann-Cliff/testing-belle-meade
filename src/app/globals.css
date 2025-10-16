@@ -140,15 +140,9 @@ h6{
   overflow: scroll !important;
     scrollbar-width: thin !important; 
     scrollbar-color: #ffffff80 transparent !important; 
-      scrollbar-gutter: stable !important;
-        overflow-y: scroll; /* Show vertical scrollbar */
-  overflow-x: scroll;
-}
-
-/* Chrome, Safari */
-.Team .image-text-slide::-webkit-scrollbar {
-  display: block !important;
-  width: 12px; /* optional width */
+    scrollbar-gutter: stable !important;
+    overflow-y: hidden; /* Show vertical scrollbar */
+    overflow-x: scroll;
 }
 
 .Team .image-text-slide .inner-text-text::-webkit-scrollbar {
@@ -360,6 +354,11 @@ h6{
     top:2.688rem;
     right:3.125rem;
     z-index:10;
+}
+
+.popup-close{
+    cursor:pointer;
+    margin-top:auto;
 }
 
 .desktop-close{
@@ -1805,6 +1804,76 @@ div:has(> .react-dropdown-select) {
     display:none;
 }
 
+.popup-icon{
+    position:fixed;
+    bottom:0svh;
+}
+
+.popup{
+    background: #4c2f48;
+    width: 34%;
+    position: fixed;
+    top: 0;
+    z-index: 10000000;
+    left: 0;
+    height: 100svh;
+    padding:50px;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.inner-popup{
+    padding-right: 55px;
+    height: calc(100svh - 100px);
+    overflow-y: scroll;
+    gap: 50px;
+    flex-direction: column;
+    display: flex;
+}
+  
+  .inner-popup::-webkit-scrollbar {
+    width: 2px !important;
+  }
+  
+  .inner-popupt::-webkit-scrollbar-track {
+    background: #ffffff80 !important;
+  }
+  
+  .inner-popup::-webkit-scrollbar-thumb {
+    background: #ffffff !important;
+  }
+  
+  .inner-popup::-webkit-scrollbar-thumb:hover {
+    background: #ffffff !important;
+  }
+
+  .popup-link{
+    text-transform: uppercase;
+    position:relative;
+    width:fit-content;
+    text-transform: uppercase;
+    letter-spacing: .141rem;
+    z-index: 100;
+    font-family: Dia;
+    font-size: .938rem;
+    font-style: normal;
+    font-weight: 400;
+  }
+
+   .popup-link:after{
+        content: "";
+        transform-origin: 100%;
+        background: currentColor;
+        height: 1px;
+        width:100%;
+        transition: transform .83s cubic-bezier(.33, 0, .13, 1);
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+    }
+
 @media only screen and (max-height: 850px) and (min-width: 1000px) {
     .form-container{
         overflow-x: scroll;
@@ -2107,12 +2176,6 @@ div:has(> .react-dropdown-select) {
     .credit{
         width:75%;
     }
-
-    /* .contact-form-close{
-        top:2.732rem;
-        left:3.125rem;
-        right:unset;
-    } */
 
     .desktop-close{
         display:none;
@@ -2752,11 +2815,6 @@ line-height: 1.225rem;
         gap:1.25rem;
       }
 
-/* 
-      .form-container .agent-company-input{
-        width:100% !important;
-      } */
-
       .form-container{
         justify-content: flex-start;
         padding:10.5rem 3.5rem 0rem 3.5rem;
@@ -3033,6 +3091,10 @@ line-height: 1.225rem;
         font-family: Dia !important;
         font-style: normal !important;
         font-weight: 400 !important;
+    }
+
+    .popup{
+        width:100%;
     }
 
 }
@@ -3810,6 +3872,21 @@ line-height: 1.225rem;
     .form-item{
         width:100%;
       }
+
+      .popup{
+        width:100%;
+    }
+
+    .inner-popup{
+        padding-right:25px;
+        padding-bottom:25px;
+        height: calc(100svh - 25px);
+        gap:30px;
+    }
+
+    .popup{
+        padding:25px 25px 0px 25px;
+    }
 
 }
 

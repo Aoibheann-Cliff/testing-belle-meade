@@ -164,7 +164,20 @@ export const pageType = defineType({
         })
       ],
       hidden: ({ document }) => document?.pageType !== 'textpage',
-    }),      
+    }),   
+    defineField({
+      type: 'object',
+      name: 'popup',
+      title: 'Popup',
+      fields: [
+        { name: 'icon', type: 'image', title: 'Icon' },
+        { name: 'text', type: 'blockContent', title: 'Text' },
+        { name: 'image', type: 'image', title: 'Image' },
+        { name: 'link', type: 'string', title: 'Link' },
+        { name: 'linktext', type: 'string', title: 'Link Text' }
+      ],
+      hidden: ({ document }) => document?.pageType !== 'homepage',
+  }),   
     defineField({
       name: 'slides',
       title: 'Slides',

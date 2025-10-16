@@ -193,11 +193,7 @@ export default function GlobalPageEffects() {
           logo.style.opacity = 1;
           purpleLogo.style.opacity = 0;
       }, 1250);
-  
-        // setTimeout(() => {
-        //     openBtn.style.color = "#fff9f2";
-        //     openBtn.style.border = "1px solid #fff9f2";
-        // }, 1500);
+
   
         setTimeout(() => {
           leftMenu.style.opacity = "1";
@@ -264,6 +260,56 @@ export default function GlobalPageEffects() {
       }
 
 
+      const popup = document.querySelector('.popup');
+      const innerPopup = document.querySelector('.inner-popup');
+      const popupIcon = document.querySelector('.popup-icon');
+      const popupClose = document.querySelector('.popup-close');
+      
+      function openPopup() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const isMobile = window.innerWidth <= 768  && height > width; 
+        const isIpad = window.innerWidth <= 1366 &&  window.innerWidth >= 1024; 
+        const isRotatedPhone = window.innerWidth <= 1023 && height < width;
+        let popupWidth = "34%";
+        let popupPadding = "50px";
+        if (isMobile) {
+          popupWidth = "100%";
+          popupPadding = "25px";
+        } else if (isIpad) {
+          popupWidth = "50%";
+          popupPadding = "50px";
+        } else if (isRotatedPhone) {
+          popupWidth = "100%";
+          popupPadding = "2.75rem 3.75rem";
+        }
+      
+        gsap.fromTo(popup, 
+          { width: "0%" }, 
+          { width: popupWidth, padding: popupPadding, duration: 1, ease: "power3.out" }
+        );
+      
+        gsap.fromTo(innerPopup, 
+          { opacity: 0 }, 
+          { opacity: 1, delay: 0.8, duration: 1, ease: "power3.out" }
+        );
+        gsap.fromTo(popupClose, 
+          { opacity: 0 }, 
+          { opacity: 1, delay: 0.8, duration: 1, ease: "power3.out" }
+        );
+      }
+      
+      function closePopup() {
+        gsap.to(innerPopup, { opacity: 0, duration: 0.5, ease: "power3.out" });
+        gsap.to(popupClose, { opacity: 0, duration: 0.5, ease: "power3.out" });
+      
+        gsap.to(popup, { width: "0%", padding: "0px", duration: 1, ease: "power3.inOut", delay: 0.5 });
+
+      }
+      
+      popupIcon?.addEventListener('click', openPopup);
+      popupClose?.addEventListener('click', closePopup);
+    
 
     navToggle?.addEventListener('click', toggleHamburger);
 

@@ -23,23 +23,12 @@ export default async function Page() {
         <HomePageEffects />
         {homepage?.popup?.icon && (
           <div className="popup-icon">
-          <Image
-            priority={true}
-            className="icon"
-            src={
-              urlFor(homepage.popup.icon)
-                .width(1920)
-                .height(1080)
-                .quality(75)
-                .format("webp")
-                .url() || "/placeholder.svg"
-            }
-            alt={homepage.popup.icon.alt || ""}
-            width={1920}
-            height={1080}
-            quality={85}
-            sizes="100vw"
-          />
+              <Image
+                src={urlFor(homepage.popup.icon).width(100).height(100).fit('crop').url()}
+                alt="symbol"
+                width={100}
+                height={100}
+              />
           </div>
         )}
         {homepage?.popup?.text && (
@@ -70,13 +59,13 @@ export default async function Page() {
                 {homepage.popup.linktext}
               </a>
             )}
-            <div className="popup-close">
+          </div>
+          <div className="popup-close">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
                   <path d="M1 1L29 29" stroke="#fff9f2" />
                   <path d="M29 1L1 29" stroke="#fff9f2" />
                 </svg>
             </div>
-          </div>
           </div>
         )}
         <div

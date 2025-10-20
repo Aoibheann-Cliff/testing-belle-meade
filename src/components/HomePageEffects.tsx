@@ -265,51 +265,82 @@ export default function GlobalPageEffects() {
       const popupIcon = document.querySelector('.popup-icon');
       const popupClose = document.querySelector('.popup-close');
       
-      function openPopup() {
+      let popupIsOpen = false;
+      let currentPopupWidth = "34%";
+      let currentPopupPadding = "50px";
+      
+      function updatePopupDimensions() {
         const width = window.innerWidth;
         const height = window.innerHeight;
-        const isMobile = window.innerWidth <= 768  && height > width; 
-        const isIpad = window.innerWidth <= 1366 &&  window.innerWidth >= 1024; 
-        const isRotatedPhone = window.innerWidth <= 1023 && height < width;
-        let popupWidth = "34%";
-        let popupPadding = "50px";
+        const isMobile = width <= 767 && height > width;
+        const isIpad = width <= 1366 && width >= 768 && height > width;
+        const isRotatedIpad = width <= 1366 && width >= 1181 && height < width;
+        const isRotatedPhone = width <= 1023 && height < width;
+      
         if (isMobile) {
-          popupWidth = "100%";
-          popupPadding = "25px";
+          currentPopupWidth = "100%";
+          currentPopupPadding = "25px";
         } else if (isIpad) {
-          popupWidth = "50%";
-          popupPadding = "50px";
+          currentPopupWidth = "50%";
+          currentPopupPadding = "50px";
+        } else if (isRotatedIpad) {
+          currentPopupWidth = "34%";
+          currentPopupPadding = "50px";
         } else if (isRotatedPhone) {
-          popupWidth = "100%";
-          popupPadding = "2.75rem 3.75rem";
+          currentPopupWidth = "100%";
+          currentPopupPadding = "2.75rem 3.75rem";
+        } else {
+          currentPopupWidth = "34%";
+          currentPopupPadding = "50px";
         }
       
-        gsap.fromTo(popup, 
-          { width: "0%" }, 
-          { width: popupWidth, padding: popupPadding, duration: 1, ease: "power3.out" }
+        // Update popup instantly if open
+        if (popupIsOpen) {
+          gsap.to(popup, {
+            width: currentPopupWidth,
+            padding: currentPopupPadding,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        }
+      }
+      
+      function openPopup() {
+        popupIsOpen = true;
+        updatePopupDimensions(); // updates currentPopupWidth and currentPopupPadding
+      
+        gsap.fromTo(popup,
+          { width: "0%" },
+          { width: currentPopupWidth, padding: currentPopupPadding, duration: 1, ease: "power3.out" }
         );
       
-        gsap.fromTo(innerPopup, 
-          { opacity: 0 }, 
+        gsap.fromTo(innerPopup,
+          { opacity: 0 },
           { opacity: 1, delay: 0.8, duration: 1, ease: "power3.out" }
         );
-        gsap.fromTo(popupClose, 
-          { opacity: 0 }, 
+      
+        gsap.fromTo(popupClose,
+          { opacity: 0 },
           { opacity: 1, delay: 0.8, duration: 1, ease: "power3.out" }
         );
       }
       
       function closePopup() {
+        popupIsOpen = false;
+      
         gsap.to(innerPopup, { opacity: 0, duration: 0.5, ease: "power3.out" });
         gsap.to(popupClose, { opacity: 0, duration: 0.5, ease: "power3.out" });
-      
         gsap.to(popup, { width: "0%", padding: "0px", duration: 1, ease: "power3.inOut", delay: 0.5 });
-
       }
       
       popupIcon?.addEventListener('click', openPopup);
       popupClose?.addEventListener('click', closePopup);
-    
+      
+      window.addEventListener("resize", () => {
+        clearTimeout(window.popupResizeTimer);
+        window.popupResizeTimer = setTimeout(updatePopupDimensions, 150);
+      });
+      
 
     navToggle?.addEventListener('click', toggleHamburger);
 

@@ -1832,6 +1832,17 @@ div:has(> .react-dropdown-select) {
     width:52px;
     height:52px;
     z-index:100;
+    border-radius:50%;
+    will-change:background-color;
+    transition: background-color 600ms ease-in-out;
+    -o-transition: background-color 600ms ease-in-out;
+    -ms-transition: background-color 600ms ease-in-out;
+    -moz-transition: background-color 600ms ease-in-out;
+    -webkit-transition: background-color 600ms ease-in-out;
+}
+
+.popup-icon:hover{
+    background: #ffffff75;
 }
 
 .popup{
@@ -2810,7 +2821,7 @@ line-height: 1.225rem;
         align-items: flex-end;
     }
 
-    .slide-overlay h3{
+    .slide-overlay h3, .inner-popup h3{
         font-size: 1.25rem;
         font-style: normal;
         font-weight: 400;
@@ -3184,7 +3195,12 @@ line-height: 1.225rem;
         padding-bottom:25px;
         height: calc(100svh - 182px);
         gap:30px;
-        margin-top:107px;
+        margin-top:60px;
+    }
+
+    .inner-popup img{
+        width:75%;
+        object-fit: contain;
     }
 
     .popup-close{
@@ -3573,7 +3589,7 @@ line-height: 1.225rem;
         padding: 3.125rem 1.563rem 4.688rem;
     }
 
-    .slide-overlay h3{
+    .slide-overlay h3, .inner-popup h3{
         font-size: 1.25rem;
         font-style: normal;
         font-weight: 400;

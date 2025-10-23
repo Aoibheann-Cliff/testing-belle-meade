@@ -253,6 +253,11 @@ h6{
     width:100vw;
 }
 
+.video-container{
+    display:flex;
+    align-items: flex-end;
+}
+
 .logotype {
     width: 375px;
     height: fit-content;
@@ -317,13 +322,14 @@ h6{
     width:fit-content;
     left:0;
     right:0;
-    bottom:2.938rem;
+    bottom:2.313rem;
     margin:0 auto;
     text-align:center;
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 1.75rem;
+    line-height: 1;
+    vertical-align: baseline;
     will-change:opacity;
     transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
     -o-transition: opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -719,6 +725,8 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink, .addresslin
     font-size: .75rem;
     font-style: normal;
     font-weight: 400;
+    line-height:1;
+    vertical-align: baseline;
 }
 
 .form-footer .menuitem, .form-footer .addresslink, .addresslink{
@@ -995,7 +1003,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink, .addresslin
 
 .slide-footer{
     position: absolute;
-    padding: 2.75rem 3.125rem;
+    padding: 2.313rem 3.125rem;
     width: 100%;
     bottom: 0;
     display: flex;
@@ -1005,6 +1013,8 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink, .addresslin
 
 .slide-footer .title{
     padding-right:1.25rem;
+    line-height:1;
+    vertical-align: baseline;
 }
 
 .slide-footer .count{
@@ -1013,12 +1023,16 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink, .addresslin
     text-transform: none !important;
     font-variant-numeric: oldstyle-nums proportional-nums;
     white-space: nowrap;
+    line-height:1;
+    vertical-align: baseline;
 }
 
 .slide-footer .caption{
     letter-spacing:0px !important;
     text-transform: none !important;
     max-width:50vw;
+    line-height:1;
+    vertical-align: baseline;
 }
 
 .quote-text{
@@ -1832,17 +1846,6 @@ div:has(> .react-dropdown-select) {
     width:52px;
     height:52px;
     z-index:100;
-    border-radius:50%;
-    will-change:background-color;
-    transition: background-color 600ms ease-in-out;
-    -o-transition: background-color 600ms ease-in-out;
-    -ms-transition: background-color 600ms ease-in-out;
-    -moz-transition: background-color 600ms ease-in-out;
-    -webkit-transition: background-color 600ms ease-in-out;
-}
-
-.popup-icon:hover{
-    background: #ffffff75;
 }
 
 .popup{
@@ -1979,7 +1982,7 @@ scrollbar-width: 2px !important;
   @media only screen and (max-width:1366px)
   and (orientation : portrait) {
     .tagline{
-        bottom: 3.063rem !important; 
+        bottom: 2.5rem !important; 
     }
 
     .image-text-slide{
@@ -2116,7 +2119,7 @@ scrollbar-width: 2px !important;
       }
 
       .slide-footer{
-        padding:3rem 3.125rem;
+        padding:2.5rem 3.125rem;
         align-items:flex-end;
       }
 
@@ -2198,9 +2201,10 @@ scrollbar-width: 2px !important;
     }
 
     .tagline{
-        bottom:3.063rem;
+        bottom:2.5rem;
         font-size:0.9rem;
-        line-height:1.26rem;
+        line-height:1;
+        vertical-align: baseline;
     }
 
     footer .menuitem, .form-footer .menuitem, .form-footer .addresslink, .addresslink{
@@ -2375,7 +2379,8 @@ scrollbar-width: 2px !important;
 
     .tagline{
         font-size:1rem;
-        line-height:1.4rem;
+        line-height:1;
+        vertical-align: baseline;
     }
 
     footer .menuitem, .form-footer .menuitem, .form-footer .addresslink, .addresslink{
@@ -2617,7 +2622,7 @@ line-height: 1.225rem;
 
     .tagline{
         font-size: 0.938rem;
-        line-height: 1.313rem;
+        line-height: 1;
         max-width:100%;
         bottom:1.875rem;
     }
@@ -2783,6 +2788,7 @@ line-height: 1.225rem;
 
     .slide-footer .count{
         padding:0px;
+        line-height:1.05rem !important;
     }
 
     .slide-footer .caption{
@@ -2821,7 +2827,7 @@ line-height: 1.225rem;
         align-items: flex-end;
     }
 
-    .slide-overlay h3, .inner-popup h3{
+    .slide-overlay h3{
         font-size: 1.25rem;
         font-style: normal;
         font-weight: 400;
@@ -3195,12 +3201,7 @@ line-height: 1.225rem;
         padding-bottom:25px;
         height: calc(100svh - 182px);
         gap:30px;
-        margin-top:60px;
-    }
-
-    .inner-popup img{
-        width:75%;
-        object-fit: contain;
+        margin-top:107px;
     }
 
     .popup-close{
@@ -3570,6 +3571,7 @@ line-height: 1.225rem;
 
     .slide-footer .count{
         padding:0px;
+        line-height:1.05rem !important;
     }
 
     .slide-footer .caption{
@@ -3589,7 +3591,7 @@ line-height: 1.225rem;
         padding: 3.125rem 1.563rem 4.688rem;
     }
 
-    .slide-overlay h3, .inner-popup h3{
+    .slide-overlay h3{
         font-size: 1.25rem;
         font-style: normal;
         font-weight: 400;

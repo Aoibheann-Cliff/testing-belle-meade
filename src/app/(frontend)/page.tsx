@@ -83,7 +83,7 @@ export default async function Page() {
             {homepage.text}
           </h3>
           {homepage.backgroundmediaType === "video" && (
-            <div className={`h-full`}>
+            <div className={`h-full video-container`}>
             {homepage.videotype === 'link' && homepage.backgroundvideolink && (
               <video
                 src={homepage.backgroundvideolink}

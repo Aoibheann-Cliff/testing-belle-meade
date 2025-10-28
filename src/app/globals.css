@@ -1853,6 +1853,7 @@ div:has(> .react-dropdown-select) {
     -ms-transition: background-color 600ms ease-in-out;
     -moz-transition: background-color 600ms ease-in-out;
     -webkit-transition: background-color 600ms ease-in-out;
+    cursor:pointer;
 }
 
 .popup-icon:hover{

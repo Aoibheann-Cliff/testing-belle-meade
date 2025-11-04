@@ -3167,17 +3167,17 @@ line-height: 1.225rem;
         display:block;
     }
 
-    .mobile-video{
+    /* .mobile-video{
         display:block;
-    }
+    } */
 
     .has-background-mobile-image .desktop-image{
         display:none;
     }
 
-    .has-background-mobile-video .desktop-video{
+    /* .has-background-mobile-video .desktop-video{
         display:none;
-    }
+    } */
 
     .has-mobile-text{
         display:none;

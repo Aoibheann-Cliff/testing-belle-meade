@@ -34,7 +34,10 @@ export default async function Page() {
         {homepage?.popup?.text && (
           <div className="popup">
             <div className="inner-popup">
-            <PortableText value={homepage.popup.text} components={components} />
+            <div>
+              <h5 className="title">{homepage.popup.title}</h5>
+              <PortableText value={homepage.popup.text} components={components} />
+            </div>
             {homepage?.popup?.image && (
             <Image
             priority={true}

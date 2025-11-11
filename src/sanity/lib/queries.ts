@@ -90,6 +90,7 @@ export const HOMEPAGE_QUERY = `
           url
         }
       },
+      title,
       text[],
       image {
         asset->{

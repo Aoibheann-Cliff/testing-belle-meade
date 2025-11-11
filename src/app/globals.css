@@ -997,7 +997,7 @@ footer .menuitem, .form-footer .menuitem, .form-footer .addresslink, .addresslin
     flex-direction: column;
 }
 
-.slide-overlay .title{
+.slide-overlay .title, .inner-popup .title{
     padding-bottom:0.938rem;
 }
 
@@ -2227,7 +2227,7 @@ scrollbar-width: 2px !important;
         display:none !important;
     }
 
-    .slide-overlay .title{
+    .slide-overlay .title, .inner-popup .title{
         padding-bottom:0.625rem;
     }
     
@@ -3325,7 +3325,7 @@ line-height: 1.225rem;
         padding-right:0px !important;
     }
 
-    .slide-overlay .title{
+    .slide-overlay .title, .inner-popup .title{
         padding-bottom:0.313rem;
     }
 

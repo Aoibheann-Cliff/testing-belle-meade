@@ -171,6 +171,7 @@ export const pageType = defineType({
       title: 'Popup',
       fields: [
         { name: 'icon', type: 'image', title: 'Icon' },
+        { name: 'title', type: 'string', title: 'Title' },
         { name: 'text', type: 'blockContent', title: 'Text' },
         { name: 'image', type: 'image', title: 'Image' },
         { name: 'link', type: 'string', title: 'Link' },
